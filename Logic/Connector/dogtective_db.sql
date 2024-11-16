@@ -2,4 +2,9 @@ CREATE DATABASE dogtective;
 
 USE dogtective;
 
-CREATE TABLE high_scores (first_name, last_name, score
+CREATE TABLE high_scores (
+date DATE,
+nickname VARCHAR(40),
+score INT NOT NULL
+);
+
