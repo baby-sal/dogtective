@@ -37,7 +37,7 @@ class DbClass(object):
         finally:
             curs.close()
 
-    def update_query(self, sql_query, params=None):
+    def update_query(self, sql_query, params):
         curs = self.connection.cursor()
         try:
             curs.execute(sql_query, params)
