@@ -1,5 +1,3 @@
-# @app and jsonify
-
 from flask import Flask, jsonify, request
 from db_utils import get_top_ten, add_new_score
 
