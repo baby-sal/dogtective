@@ -5,8 +5,5 @@ pygame
 pygame-textinput
 random
 
-# MySQL stuff
-flask
-json
+# mySQL
 mysql-connector-python
-requests
