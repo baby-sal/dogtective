@@ -1,6 +1,7 @@
 # anything you'd pip install or download when its squiggly during imports
 
 # game stuff
+sys
 pygame
 pygame-textinput
 random
