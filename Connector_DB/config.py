@@ -2,4 +2,4 @@
 HOST = "localhost"
 USER = "root"
 PASSWORD = "root"
-db_name="menu"
+db_name="game_init"

@@ -21,13 +21,13 @@ def _connect_to_db(db_name):
 
 # JSON handling functions
 
-def get_all_desserts():
+def get_all_items():
     try:
         db_connection = _connect_to_db()
         cur = db_connection.cursor()
         print("Connected to DB: %s" % db_name)
 
-        query = """SELECT * FROM desert_menu"""
+        query = """SELECT * FROM sprite"""
         cur.execute(query)
         result = cur.fetchall()  # this is a list with db records where each record is a tuple
 
@@ -44,13 +44,13 @@ def get_all_desserts():
             print("DB connection is closed")
 #gets a list of all the deserts from the deser_menu sql file
 
-def delete_dessert_by_id(id):
+def delete_items_by_id(id):
     try:
         db_connection = _connect_to_db()
         cur = db_connection.cursor()
         print("Connected to DB: %s" % db_name)
 
-        del_query = """DELETE FROM desert_menu WHERE dessert_id = {}""".format(id)
+        del_query = """DELETE FROM sprite WHERE sprite_id = {}""".format(id)
         cur.execute(del_query)
 
         db_connection.commit()  # IMPORTANT!!! Commit the transaction to apply the deletion
@@ -74,17 +74,17 @@ def delete_dessert_by_id(id):
         if db_connection:
             db_connection.close()
             print("DB connection is closed")
-def add_new_dessert_item(dessert_id, name, description, price):
+def add_new_item(sprite_id, name, damage, health):
     try:
-        db_name = 'menu'
+        db_name = 'game_init'
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
         print("Connected to DB: %s" % db_name)
 
         query = """
-            UPDATE  dessert_menu
-            WHERE name = '{name}' AND description = '{description}'
-            """.format(dessert_id=dessert_id, name=name, description=description, price=price)
+            UPDATE  spriteu
+            WHERE name = '{name}'
+            """.format(sprite_id=sprite_id, name=name, damage=damage, health=health)
         cur.execute(query)
         db_connection.commit()
         cur.close()
@@ -99,9 +99,9 @@ def add_new_dessert_item(dessert_id, name, description, price):
 
 if __name__ == "__main__":
     # print("TESTING DB CONNECTION")
-    get_all_desserts()
+    get_all_items()
     # gets all desserts
-    delete_dessert_by_id(2)
+    delete_items_by_id(2)
     #deletes menu item
-    add_new_dessert_item()
+    add_new_item(()
     #adds a new dessert item

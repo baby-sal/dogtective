@@ -5,17 +5,17 @@ from db_utils import get_all_desserts, delete_dessert_by_id, add_new_dessert_ite
 
 app = Flask(__name__) #dunder "name"
 @app.route('/menu_items', methods=['GET']) # defines a route to handle GET requests to /menu_items
-def get_all_dessert_items():
-    return jsonify(get_all_desserts())
+def get_all_items_requested():
+    return jsonify(get_all_requestable_items())
 # returns all dessert menu items
 
 @app.route("/menu_items/remove/<int:id>", methods=["DELETE"]) # removes an item from the dessert menu
-def delete_dessert():
+def delete_item():
     return jsonify(delete_dessert_by_id(id))
 # removes a dessert from the menu item
 
 @app.route('/menu_items', methods=['PUT'])
-def add_new_dessert():
+def add_new_requestable_item():
     new_item = request.get_json()
     add_new_dessert_item(
         dessert_id=new_item['dessert_id'],
