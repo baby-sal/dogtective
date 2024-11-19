@@ -7,4 +7,3 @@ date DATE,
 nickname VARCHAR(40),
 score INT NOT NULL
 );
-
