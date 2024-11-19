@@ -5,6 +5,8 @@ sys
 pygame
 pygame-textinput
 random
+math
+warnings
 
 # MySQL stuff
 flask
