@@ -3,6 +3,7 @@
 import pygame
 import sys
 
+
 # Game window set-up
 def initial_game_window():
     # Initialise pygame
@@ -26,6 +27,7 @@ def game_loop():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                pygame.quit()  # releases pygame resources
                 sys.exit()
 
 

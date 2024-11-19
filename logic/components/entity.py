@@ -25,7 +25,6 @@ class Character(Entity):
         super().__init__(name)
         self.health = health
 
-    # not sure what this is used for?
     def draw(self):
         pass
 
