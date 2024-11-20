@@ -53,6 +53,10 @@ win = p.display.set_mode((WIDTH, HEIGHT)) #dimensions for background
 p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
 
+dog = Dog()
+dog_group = p.sprite.Group()
+dog_group.add(dog)
+
 run = True
 while run:
     for event in p.event.get():
