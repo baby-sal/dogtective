@@ -125,7 +125,11 @@ class Flag(p.sprite.Sprite):
         else:
             self.image = p.image.load('White flag.png')#update name once image loaded
             self.visible = True
-            self.x = 50
+            self.x = 580#opposite end of the screen
+
+        self.y = HEIGHT / 2
+        self.image = p.transform.scale2x(self.image)
+        self.rect = self.image.get_rect()
 
 WIDTH = 640
 HEIGHT = 480
