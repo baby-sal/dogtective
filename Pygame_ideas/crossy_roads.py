@@ -59,6 +59,13 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
 
+class Car(p.sprite.Sprite):
+    def __init__(self, number):
+        super().__init__()
+        if number == 1:
+            self.x = 190
+            self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
+
 WIDTH = 640
 HEIGHT = 480
 
