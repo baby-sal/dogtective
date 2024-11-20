@@ -25,7 +25,7 @@ dogtective_coords = [10, 700]
 def game_loop():
 
     car_image = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
-    car = Obstacle("car", 10, 10, -1, car_image, 900, 0, 0.25)
+    car = Obstacle("car", 10, 10, 1, car_image, 0, 0, 0.25)
 
     game_display.blit(dogtective, dogtective_coords)
     car.draw(game_display)
@@ -40,8 +40,11 @@ def game_loop():
 
         game_display.fill((0, 0, 0))
 
-        car.update()
-        car.draw(game_display)
+        if (car.direction == -1 and car.rect.right > 0) or (car.direction == 1 and car.rect.left < display_width):
+            car.update()
+            print(car.rect.left)
+            car.draw(game_display)
+
         pygame.display.update()
         clock.tick(10)
 
