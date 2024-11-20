@@ -143,12 +143,13 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
-        win.fill((0, 255, 0))#bright green background colour, need to change (based on Red, green, blue (RGB))
-
+        screen_group.draw(win)# draw the background based on images
         dog_group.draw(win)#show the dogs on the screen similar to turtle
         car_group.draw(win)# show the cars on the screen
         dog_group.update()
         car_group.update()
+
+        screen_group.update()
 
         p.display.update()#user can see the changes going on
 
