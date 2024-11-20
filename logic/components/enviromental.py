@@ -37,7 +37,5 @@ class Obstacle(Environmental):
 
 
 if __name__ == "__main__":
-    tree = Environmental("tree")
-    print(tree)
-    car = Obstacle("car", 10, 2)
-    print(car)
+    # insert sample outputs here
+    pass
