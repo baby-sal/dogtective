@@ -282,10 +282,11 @@ while run:
         scoreDisplay()
         checkFlags()
 
-        dog_group.draw(win)#show the dogs on the screen similar to turtle
         car_group.draw(win)# show the cars on the screen
-        dog_group.update()
+        dog_group.draw(win)  # show the dogs on the screen similar to turtle
+
         car_group.update()
+        dog_group.update()
 
         screen_group.update()
 
