@@ -5,52 +5,54 @@ import sys
 from logic.components.enviromental import Obstacle
 
 
-# Game window set-up
+class GameRunner:
+    # Game window set-up
 
-# Initialise pygame
-pygame.init()
+    def __init__(self, dis_width, dis_height):
+        # Initialise pygame
+        pygame.init()
 
-display_width = 1200
-display_height = 780
+        self.dis_width = dis_width
+        self.dis_height = dis_height
 
-game_display = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption("Dogtective")
-clock = pygame.time.Clock()
+        self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
+        pygame.display.set_caption("Dogtective")
+        self.clock = pygame.time.Clock()
 
-dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
-dogtective_coords = [10, 700]
+        dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
+        dogtective_coords = [10, 700]
 
+        car_image = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+        car1 = Obstacle("car", 10, 10, [1, 0], car_image, 0, 0, 0.25)
+        car2 = Obstacle("car", 10, 10, [-1, 0], car_image, 1000, 200, 0.25)
+        self.cars = [car1, car2]
 
-# Game loop: Keeps window open until quit
-def game_loop():
-
-    car_image = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
-    car = Obstacle("car", 10, 10, 1, car_image, 0, 0, 0.25)
-
-    game_display.blit(dogtective, dogtective_coords)
-    car.draw(game_display)
-    pygame.display.update()
-
-    while True:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()  # releases pygame resources
-                sys.exit()
-
-        game_display.fill((0, 0, 0))
-
-        if (car.direction == -1 and car.rect.right > 0) or (car.direction == 1 and car.rect.left < display_width):
-            car.update()
-            print(car.rect.left)
-            car.draw(game_display)
-
+        self.game_display.blit(dogtective, dogtective_coords)
         pygame.display.update()
-        clock.tick(10)
+
+    # Game loop: Keeps window open until quit
+    def game_loop(self):
+
+        while True:
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()  # releases pygame resources
+                    sys.exit()
+
+            self.game_display.fill((0, 0, 0))
+
+            for car in self.cars:
+                car.update()
+                car.draw(self.game_display)
+
+            pygame.display.update()
+            self.clock.tick(20)
 
 
 def run():
-    game_loop()
+    game = GameRunner(1200, 720)
+    game.game_loop()
 
 
 if __name__ == '__main__':
