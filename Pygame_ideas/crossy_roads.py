@@ -136,7 +136,13 @@ class Flag(p.sprite.Sprite):
 
     def update(self):
         if self.visible:
+            self.collision()
             self.rect.center = (self.x, self.y)
+
+    def collision(self):
+        global SCORE, dog
+
+        flag_hit = p.sprite.spritecollide(self, dog_group, False, p.sprite.collide_mask)
 
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
