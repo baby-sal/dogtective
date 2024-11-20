@@ -166,6 +166,17 @@ class Explosion(object):
     def explode(self, x, y):
         x = x - self.width / 2
         y = y - self.height / 2
+        DeleteDog()
+
+        while self.costume < 9:
+            self.image = p.image.load(
+                'explosion' + str(self.costume) + '.png')  # update explosion name once image decided on
+            self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
+            win.blit(self.image, (x, y))
+            p.display.update()
+
+            self.costume += 1
+
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
