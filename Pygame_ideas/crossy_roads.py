@@ -63,7 +63,7 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
-        win.fill((0, 255, 0))#bright green colour
+        win.fill((0, 255, 0))#bright green background colour, need to change (based on Red, green, blue (RGB))
 
         dog_group.draw(win)
         dog_group.update()
