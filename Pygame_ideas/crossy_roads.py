@@ -149,6 +149,8 @@ class Flag(p.sprite.Sprite):
 
             if self.number == 1:
                 white_flag.visible = True
+                if SCORE < 5:
+                    SwitchLevel()
 
             else:
                 green_flag.visible = True
