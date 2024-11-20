@@ -65,12 +65,13 @@ class Car(p.sprite.Sprite):
         if number == 1:
             self.x = 190 #image size
             self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
-            self.vel = -4
+            self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460 #image size
             self.image = p.image.load('Fast Car.png')#rename once proper image loaded will start with .
-            self.vel = 5
+            self.vel = 5 #velocity of the car (fast)
+            #both cars go at different directions
 
 WIDTH = 640
 HEIGHT = 480
