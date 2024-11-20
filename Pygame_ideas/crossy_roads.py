@@ -162,6 +162,8 @@ def SwitchLevel():
     else:
         fast_car.vel += 1
 
+    SCORE += 1
+
 WIDTH = 640
 HEIGHT = 480
 
