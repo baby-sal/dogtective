@@ -97,7 +97,7 @@ class Car(p.sprite.Sprite):
 class Screen(p.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.img1 = p.image.load('Scene.png')#UPDATE with scenery images
+        self.img1 = p.image.load('Scene.png')#Update with scenery images
         self.img2 = p.image.load('You Win.png')#shows when a player has won, update png once image has been confirmed
         self.img3 = p.image.load('You lose.png')# shows when a player has lost, update png once image has been confirmed
 
