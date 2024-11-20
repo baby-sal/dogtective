@@ -105,6 +105,10 @@ class Screen(p.sprite.Sprite):
         self.img2 = p.transform.scale(self.img2, (WIDTH, HEIGHT))
         self.img3 = p.transform.scale(self.img3, (WIDTH, HEIGHT))
 
+        self.image = self.img1
+        self.x = 0
+        self.y = 0
+
 WIDTH = 640
 HEIGHT = 480
 
