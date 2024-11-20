@@ -135,6 +135,9 @@ class Flag(p.sprite.Sprite):
         if self.visible:
             self.rect.center = (self.x, self.y)
 
+def scoreDisplay():
+    score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
+
 WIDTH = 640
 HEIGHT = 480
 
