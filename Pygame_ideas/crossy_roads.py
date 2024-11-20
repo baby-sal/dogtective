@@ -164,6 +164,12 @@ fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
 
+green_flag = Flag(1)
+white_flag = Flag(2)
+flag_group = p.sprite.group()
+flag_group.add(green_flag, white_flag)
+flags = [green_flag, white_flag]
+
 run = True
 while run:
     clock.tick(60)#sets to 60 frames per second
