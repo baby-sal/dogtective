@@ -178,6 +178,7 @@ while run:
         car_group.update()
 
         screen_group.update()
+        scoreDisplay()
 
         p.display.update()#user can see the changes going on
 
