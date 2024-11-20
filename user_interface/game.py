@@ -22,9 +22,9 @@ class GameRunner:
         dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
         dogtective_coords = [10, 700]
 
-        car_image = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
-        car1 = Obstacle("car", 10, 10, [1, 0], car_image, 0, 0, 0.25)
-        car2 = Obstacle("car", 10, 10, [-1, 0], car_image, 1000, 200, 0.25)
+        car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+        car1 = Obstacle("car1", car_img, 0, 0, 0.2, 10, 10, [1, 0])
+        car2 = Obstacle("car2", car_img, 1000, 100, 0.2, 10, 10, [-1, 0])
         self.cars = [car1, car2]
 
         self.game_display.blit(dogtective, dogtective_coords)
