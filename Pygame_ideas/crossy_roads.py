@@ -23,6 +23,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         self.rect = self.image.get_rect()
 
     def update(self):
+        self.movement()
         self.rect.center = (self.x, self.y)
 
     def movement(self):
