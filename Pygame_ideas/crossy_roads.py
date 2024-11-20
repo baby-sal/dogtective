@@ -137,6 +137,7 @@ class Flag(p.sprite.Sprite):
 
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
+    win.blit(score_text, (255, 10))#x and y position of score text
 
 WIDTH = 640
 HEIGHT = 480
