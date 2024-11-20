@@ -196,6 +196,13 @@ def DeleteDog():
     car_group.update()
     flag_group.update()
 
+    p.display.update()
+
+def DeleteOtherItems():
+    car_group.empty()
+    flag_group.empty()
+    flags.clear()
+
 WIDTH = 640
 HEIGHT = 480
 
