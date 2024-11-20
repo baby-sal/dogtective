@@ -73,6 +73,11 @@ class Car(p.sprite.Sprite):
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
+        self.y = HEIGHT / 2
+        self.width = 100
+        self.height = 150
+        self.image = p.transform.scale(self.image, (self.width, self.height))
+
 WIDTH = 640
 HEIGHT = 480
 
