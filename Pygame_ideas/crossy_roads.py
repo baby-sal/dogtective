@@ -1,5 +1,7 @@
 import pygame as p
 
+class Dog(p.sprite.Sprite)#inheriting dog from sprite module
+
 WIDTH = 640
 HEIGHT = 480
 
@@ -15,8 +17,8 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
-        win.fill((0,255, 0))
-        p.display.update()
+        win.fill((0, 255, 0))#bright green colour
+        p.display.update()#user can see the changes going on
 
 p.quit() #prevents an endless loop
 
