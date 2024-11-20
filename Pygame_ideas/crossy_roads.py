@@ -31,9 +31,17 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
             self.x -= self.vel
             #left key pressed negative velocity
 
-        if keys[p.K_RIGHT]:
-            self.x -= self.vel
+        elif keys[p.K_RIGHT]:
+            self.x += self.vel
             #right key pressed positive velocity
+
+        if keys[p.K_UP]:
+            self.x -= self.vel
+            # left key pressed negative velocity
+
+        elif keys[p.K_DOWN]:
+            self.x -= self.vel
+            # right key pressed positive velocity
 
 WIDTH = 640
 HEIGHT = 480
