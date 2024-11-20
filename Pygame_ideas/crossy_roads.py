@@ -15,5 +15,8 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
+        win.fill((0,255, 0))
+        p.display.update()
+
 p.quit() #prevents an endless loop
 
