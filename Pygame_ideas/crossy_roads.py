@@ -67,7 +67,6 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check:
             explosion.explode(self.x, self.y)
-
 class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -163,7 +162,6 @@ class Flag(p.sprite.Sprite):
 
             else:
                 green_flag.visible = True
-
 class Explosion(object):
     def __init__(self):
         self.costume = 1
@@ -188,11 +186,9 @@ class Explosion(object):
             time.sleep(0.1)#slows down the frame time
 
         DeleteOtherItems()
-
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
-
 def checkFlags():
     for flag in flags:
         if not flag.visible:
@@ -200,7 +196,6 @@ def checkFlags():
         else:
             if not flag.alive():
                 flag_group.add(flag)
-
 def SwitchLevel():
     global SCORE
 
@@ -217,7 +212,6 @@ def SwitchLevel():
         fast_car.vel += 1
 
     SCORE += 1
-
 def DeleteDog():
     global dog
 
@@ -231,11 +225,17 @@ def DeleteDog():
     flag_group.update()
 
     p.display.update()
-
 def DeleteOtherItems():
     car_group.empty()
     flag_group.empty()
     flags.clear()
+
+def EndScreen(n):
+    if n == 0:
+        bg.image = bg.img3 #you loose background image, need to update based on images saved
+
+    elif n == 1:
+        bg.image = bg.img2 #you win background image, need to update based on images saved
 
 WIDTH = 640
 HEIGHT = 480
