@@ -21,7 +21,7 @@ class Obstacle(Environmental):
         super().__init__(name)
         self.damage = damage
         self.speed = speed
-        self.direction = direction  # 1 if right, -1 if left
+        self.direction = direction  # vector, [1, 0] = right, [-1, 0] = left, [0, 1] = down, [0, -1] = up
 
         width = image.get_width()
         height = image.get_height()
@@ -30,7 +30,8 @@ class Obstacle(Environmental):
         self.rect.topleft = (x, y)
 
     def update(self):
-        self.rect.x += self.direction * self.speed
+        self.rect.x += self.direction[0] * self.speed
+        self.rect.y += self.direction[1] * self.speed
 
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))
