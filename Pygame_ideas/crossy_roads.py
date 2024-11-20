@@ -63,8 +63,14 @@ class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         if number == 1:
-            self.x = 190
+            self.x = 190 #image size
             self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
+            self.vel = -4
+
+        else:
+            self.x = 460 #image size
+            self.image = p.image.load('Fast Car.png')#rename once proper image loaded will start with .
+            self.vel = 5
 
 WIDTH = 640
 HEIGHT = 480
