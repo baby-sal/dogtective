@@ -94,6 +94,12 @@ class Car(p.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
             #prevents cars from going off the edge of the background image
+class Screen(p.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.img1 = p.image.load('Scene.png')#UPDATE with scenery images
+        self.img2 = p.image.load('You Win.png')#shows when a player has won, update png once image has been confirmed
+        self.img3 = p.image.load('You lose.png')# shows when a player has lost, update png once image has been confirmed
 
 WIDTH = 640
 HEIGHT = 480
