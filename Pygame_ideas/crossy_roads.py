@@ -59,6 +59,7 @@ dog_group.add(dog)
 
 run = True
 while run:
+    clock.tick(60)#sets to 60 frames per second
     for event in p.event.get():
         if event.type == p.QUIT:
             run = False # end game if quit is entered
