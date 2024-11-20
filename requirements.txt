@@ -7,6 +7,7 @@ pygame-textinput
 random
 math
 warnings
+time
 
 # MySQL stuff
 flask

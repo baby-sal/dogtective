@@ -1,4 +1,5 @@
 import pygame as p
+import time
 
 class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def __init__(self):
@@ -176,6 +177,7 @@ class Explosion(object):
             p.display.update()
 
             self.costume += 1
+            time.sleep(0.1)#slows down the frame time
 
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
