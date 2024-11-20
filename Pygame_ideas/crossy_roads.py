@@ -203,13 +203,16 @@ while run:
             run = False # end game if quit is entered
 
         screen_group.draw(win)# draw the background based on images
+
+        scoreDisplay()
+        checkFlags()
+
         dog_group.draw(win)#show the dogs on the screen similar to turtle
         car_group.draw(win)# show the cars on the screen
         dog_group.update()
         car_group.update()
 
         screen_group.update()
-        scoreDisplay()
 
         p.display.update()#user can see the changes going on
 
