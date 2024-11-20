@@ -184,6 +184,18 @@ def SwitchLevel():
 
     SCORE += 1
 
+def DeleteDog():
+    global dog
+
+    dog.kill()
+    screen_group.draw(win)
+    car_group.draw(win)
+    flag_group.draw(win)
+
+    screen_group.update()
+    car_group.update()
+    flag_group.update()
+
 WIDTH = 640
 HEIGHT = 480
 
