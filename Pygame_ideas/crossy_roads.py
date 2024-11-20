@@ -131,6 +131,10 @@ class Flag(p.sprite.Sprite):
         self.image = p.transform.scale2x(self.image)
         self.rect = self.image.get_rect()
 
+    def update(self):
+        if self.visible:
+            self.rect.center = (self.x, self.y)
+
 WIDTH = 640
 HEIGHT = 480
 
