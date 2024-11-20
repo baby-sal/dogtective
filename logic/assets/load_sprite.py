@@ -23,8 +23,10 @@ def sprite_motion(link:str): #link to walk, attack, death or idle animation
 
 
 '''NOT SURE WHAT TO DO AFTER THIS! 
-When I tried I had made a small game loop to showcase the walking animation. 
-See lines 34 onwards 
+When I tried on my owen repo I had made a small game loop to showcase the walking animation. 
+Not sure if this can be incorporated into a function? 
+I have been meaning to watch this https://www.youtube.com/watch?v=nXOVcOBqFwM&ab_channel=CodingWithRuss which I think is useful
+See below
 
 run = True
 while run:
