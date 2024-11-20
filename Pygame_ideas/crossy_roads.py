@@ -144,6 +144,9 @@ win = p.display.set_mode((WIDTH, HEIGHT)) #dimensions for background
 p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
 
+SCORE = 0
+score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 80px, bold
+
 bg = Screen()
 screen_group = p.sprite.Group()
 screen_group.add(bg)
