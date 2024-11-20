@@ -80,6 +80,7 @@ class Car(p.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
+        self.movement()
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -92,6 +93,7 @@ class Car(p.sprite.Sprite):
         elif self.y + self.height /2 > HEIGHT:
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
+            #prevents cars from going off the edge of the background image
 
 WIDTH = 640
 HEIGHT = 480
