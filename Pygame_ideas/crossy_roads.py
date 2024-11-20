@@ -64,6 +64,10 @@ while run:
             run = False # end game if quit is entered
 
         win.fill((0, 255, 0))#bright green colour
+
+        dog_group.draw(win)
+        dog_group.update()
+
         p.display.update()#user can see the changes going on
 
 p.quit() #prevents an endless loop
