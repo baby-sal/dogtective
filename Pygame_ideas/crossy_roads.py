@@ -108,6 +108,11 @@ dog = Dog()
 dog_group = p.sprite.Group()
 dog_group.add(dog)
 
+slow_car = Car(1)
+fast_car = Car(2)
+car_group = p.sprite.Group()
+car_group.add(slow_car, fast_car)
+
 run = True
 while run:
     clock.tick(60)#sets to 60 frames per second
