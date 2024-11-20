@@ -139,6 +139,29 @@ def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
 
+def checkFlags():
+    for flag in flags:
+        if not flag.visible:
+            flag.kill()#if flag isn't visible kill the sprite
+        else:
+            if not flag.alive():
+                flag_group.add(flag)
+
+def SwitchLevel():
+    global SCORE
+
+    if slow_car.vel < 0:
+        slow_car.vel -= 1
+
+    else:
+        slow_car.vel += 1
+
+    if fast_car.vel < 0:
+        fast_car.vel -= 1
+
+    else:
+        fast_car.vel += 1
+
 WIDTH = 640
 HEIGHT = 480
 
