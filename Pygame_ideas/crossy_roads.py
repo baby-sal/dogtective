@@ -46,6 +46,19 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
             self.y += self.vel
             # right key down positive velocity
 
+    def correction(self):
+        if self.x - self.width / 2 < 0:
+            self.x = self.width / 2 #prevents dog from going off of the screen on the right side
+
+        elif self.x + self.width / 2 > WIDTH:
+            self.x = WIDTH - self.width / 2 #prevents dog from going off of the screen on the left side
+
+        if self.y - self.width / 2 < 0:
+            self.y = self.width / 2 #prevents dog from going off of the screen on the top side
+
+        elif self.y + self.width / 2 > WIDTH:
+            self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom side
+
 WIDTH = 640
 HEIGHT = 480
 
