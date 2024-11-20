@@ -159,6 +159,10 @@ class Flag(p.sprite.Sprite):
                 white_flag.visible = True
                 if SCORE < 5:
                     SwitchLevel()
+                else:
+                    dog_group.empty()
+                    DeleteOtherItems()
+                    EndScreen(1)
 
             else:
                 green_flag.visible = True
@@ -186,6 +190,7 @@ class Explosion(object):
             time.sleep(0.1)#slows down the frame time
 
         DeleteOtherItems()
+        EndScreen(0)
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
@@ -229,7 +234,6 @@ def DeleteOtherItems():
     car_group.empty()
     flag_group.empty()
     flags.clear()
-
 def EndScreen(n):
     if n == 0:
         bg.image = bg.img3 #you loose background image, need to update based on images saved
