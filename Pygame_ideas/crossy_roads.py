@@ -58,7 +58,6 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
-
 class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -113,6 +112,20 @@ class Screen(p.sprite.Sprite):
 
     def update(self):
         self.rect.topleft = (self.x, self.y)
+class Flag(p.sprite.Sprite):
+    def __init__(self, number):
+        super().__init__()
+        self.number = number
+
+        if self.number == 1:
+            self.image = p.image.load('green flag.png')#update name once image loaded
+            self.visible = False #invisible until white flag is touched
+            self.x = 50
+
+        else:
+            self.image = p.image.load('White flag.png')#update name once image loaded
+            self.visible = True
+            self.x = 50
 
 WIDTH = 640
 HEIGHT = 480
