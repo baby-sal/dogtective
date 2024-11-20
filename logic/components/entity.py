@@ -12,9 +12,5 @@ class Entity(ABC):
         pass
 
     @abstractmethod
-    def collision_damage(self, damage):
-        pass
-
-    @abstractmethod
     def __str__(self):
         pass
