@@ -101,6 +101,10 @@ class Screen(p.sprite.Sprite):
         self.img2 = p.image.load('You Win.png')#shows when a player has won, update png once image has been confirmed
         self.img3 = p.image.load('You lose.png')# shows when a player has lost, update png once image has been confirmed
 
+        self.img1 = p.transform.scale(self.img1, (WIDTH, HEIGHT))
+        self.img2 = p.transform.scale(self.img2, (WIDTH, HEIGHT))
+        self.img3 = p.transform.scale(self.img3, (WIDTH, HEIGHT))
+
 WIDTH = 640
 HEIGHT = 480
 
