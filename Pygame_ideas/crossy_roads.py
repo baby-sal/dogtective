@@ -21,6 +21,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         self.image = self.dog1
         self.rect = self.image.get_rect()
+        self.mask = p.mask.from_surface(self.image)
 
     def update(self):
         self.movement()
@@ -77,6 +78,7 @@ class Car(p.sprite.Sprite):
         self.height = 150
         self.image = p.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
+        self.mask = p.mask.from_surface(self.image)
 
     def update(self):
         self.movement()
@@ -130,6 +132,7 @@ class Flag(p.sprite.Sprite):
         self.y = HEIGHT / 2
         self.image = p.transform.scale2x(self.image)
         self.rect = self.image.get_rect()
+        self.mask = p.mask.from_surface(self.image)
 
     def update(self):
         if self.visible:
