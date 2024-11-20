@@ -2,7 +2,7 @@
 
 import pygame
 import sys
-from logic.components.enviromental import Obstacle
+from logic.components.environmental import Obstacle
 
 
 class GameRunner:
