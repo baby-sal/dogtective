@@ -26,6 +26,8 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
     def update(self):
         self.movement()
+        self.correction()
+        self.checkCollision()
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -60,6 +62,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
+
+    def checkCollision(self):
+        car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
+        if car_check:
+            explosion.explode(self.x, self.y)
+
 class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -179,6 +187,8 @@ class Explosion(object):
             self.costume += 1
             time.sleep(0.1)#slows down the frame time
 
+        DeleteOtherItems()
+
 def scoreDisplay():
     score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
@@ -257,6 +267,8 @@ white_flag = Flag(2)
 flag_group = p.sprite.group()
 flag_group.add(green_flag, white_flag)
 flags = [green_flag, white_flag]
+
+explosion = Explosion()
 
 run = True
 while run:
