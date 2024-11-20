@@ -31,10 +31,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         if keys[p.K_LEFT]:
             self.x -= self.vel
             #left key pressed negative velocity
+            self.image = self.dog2 #switch to dog image 2
 
         elif keys[p.K_RIGHT]:
             self.x += self.vel
             #right key pressed positive velocity
+            self.image = self.dog1 #switch to dog image 1
 
         if keys[p.K_UP]:
             self.y -= self.vel
