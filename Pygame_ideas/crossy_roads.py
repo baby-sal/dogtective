@@ -109,6 +109,11 @@ class Screen(p.sprite.Sprite):
         self.x = 0
         self.y = 0
 
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        self.rect.topleft = (self.x, self.y)
+
 WIDTH = 640
 HEIGHT = 480
 
@@ -117,6 +122,10 @@ p.init()#initialise all modules within pygame
 win = p.display.set_mode((WIDTH, HEIGHT)) #dimensions for background
 p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
+
+bg = Screen()
+screen_group = p.sprite.Group()
+screen_group.add(bg)
 
 dog = Dog()
 dog_group = p.sprite.Group()
