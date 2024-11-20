@@ -77,6 +77,9 @@ class Car(p.sprite.Sprite):
         self.width = 100
         self.height = 150
         self.image = p.transform.scale(self.image, (self.width, self.height))
+        self.rect = self.image.get_rect()
+
+
 
 WIDTH = 640
 HEIGHT = 480
