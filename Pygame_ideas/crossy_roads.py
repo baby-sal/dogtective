@@ -19,6 +19,22 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #set width and hieght for dog image 2
         self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))
 
+        self.image = self.dog1
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        self.rect.center = (self.x, self.y)
+
+    def movement(self):
+        keys = p.key.get_pressed()
+        if keys[p.K_LEFT]:
+            self.x -= self.vel
+            #left key pressed negative velocity
+
+        if keys[p.K_RIGHT]:
+            self.x -= self.vel
+            #right key pressed positive velocity
+
 WIDTH = 640
 HEIGHT = 480
 
