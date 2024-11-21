@@ -76,5 +76,4 @@ def add_new_score(nickname, score):
         database.db_disconnect()
 
 
-if __name__ == "__main__":
-    print(get_top_ten())
+# if __name__ == "__main__":
