@@ -180,8 +180,7 @@ class Explosion(object):
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load(
-                'explosion' + str(self.costume) + '.png')  # update explosion name once image decided on
+            self.image = p.image.load('../logic/characters/dogtective_sprite/Hurt.png')
             self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
             win.blit(self.image, (x, y))
             p.display.update()
