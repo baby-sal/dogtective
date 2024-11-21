@@ -15,10 +15,18 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/walk,png')
         #DOG 2 left
         self.dog2 = p.image.load('dog2.png') # update to file name
+        #Dog idle right - need to update
+        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')
+        #Dog idle left - need to update
+        self.dog4 = p.image.load('dog4.png')
         #set width and height for dog image 1
         self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
-        #set width and hieght for dog image 2
+        #set width and height for dog image 2
         self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))
+        #set width and height for dog image 3
+        self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
+        #set width and height for dog image 3
+        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))
 
         self.image = self.dog1
         self.rect = self.image.get_rect()
@@ -32,10 +40,18 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
     def movement(self):
         keys = p.key.get_pressed()
+        if not any(keys):#if no keys are pressed
+            if 'right' == 'right':
+                self.image = self.dog3
+            else:
+                self.image = self.dog4
+                #shows different idle images based on the last key pressed
+
         if keys[p.K_LEFT]:
             self.x -= self.vel
             #left key pressed negative velocity
             self.image = self.dog2 #switch to dog image 2
+
 
         elif keys[p.K_RIGHT]:
             self.x += self.vel
