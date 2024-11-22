@@ -262,6 +262,8 @@ def EndScreen(n):
 
     elif n == 1:
         bg.image = bg.img2 #you win background image, need to update based on images saved
+def Health():
+    pass#need to update later on once images loaded and at adding health stage
 
 WIDTH = 640
 HEIGHT = 480
@@ -274,6 +276,9 @@ clock = p.time.Clock() # timer
 
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 80px, bold
+"""HEALTH = 5
+health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
+# this is a bit more complex, may need help
 
 bg = Screen()
 screen_group = p.sprite.Group()
