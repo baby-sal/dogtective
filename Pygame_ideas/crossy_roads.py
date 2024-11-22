@@ -138,7 +138,7 @@ class Screen(p.sprite.Sprite):
 
     def update(self):
         self.rect.topleft = (self.x, self.y)
-class Flag(p.sprite.Sprite):
+"""class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         self.number = number
@@ -181,7 +181,7 @@ class Flag(p.sprite.Sprite):
                     EndScreen(1)
 
             else:
-                green_flag.visible = True
+                green_flag.visible = True"""
 class Explosion(object):
     def __init__(self):
         self.costume = 1
@@ -212,13 +212,13 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
-def checkFlags():
+"""def checkFlags():
     for flag in flags:
         if not flag.visible:
             flag.kill()#if flag isn't visible kill the sprite
         else:
             if not flag.alive():
-                flag_group.add(flag)
+                flag_group.add(flag)"""
 def SwitchLevel():
     global SCORE
 
@@ -241,17 +241,18 @@ def DeleteDog():
     dog.kill()
     screen_group.draw(win)
     car_group.draw(win)
-    flag_group.draw(win)
+    """flag_group.draw(win)"""
 
     screen_group.update()
     car_group.update()
-    flag_group.update()
+    """flag_group.update()"""
 
     p.display.update()
 def DeleteOtherItems():
     car_group.empty()
+    """
     flag_group.empty()
-    flags.clear()
+    flags.clear()"""
 def EndScreen(n):
     global gameOn
 
@@ -261,6 +262,8 @@ def EndScreen(n):
 
     elif n == 1:
         bg.image = bg.img2 #you win background image, need to update based on images saved
+def Health():
+    pass#need to update later on once images loaded and at adding health stage
 
 WIDTH = 640
 HEIGHT = 480
@@ -273,6 +276,9 @@ clock = p.time.Clock() # timer
 
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 80px, bold
+"""HEALTH = 5
+health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
+# this is a bit more complex, may need help
 
 bg = Screen()
 screen_group = p.sprite.Group()
@@ -287,11 +293,12 @@ fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
 
+"""
 green_flag = Flag(1)
 white_flag = Flag(2)
 flag_group = p.sprite.group()
 flag_group.add(green_flag, white_flag)
-flags = [green_flag, white_flag]
+flags = [green_flag, white_flag]"""
 
 explosion = Explosion()
 
@@ -307,7 +314,7 @@ while run:
         screen_group.draw(win)# draw the background based on images
 
         scoreDisplay()
-        checkFlags()
+        """checkFlags()"""
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
