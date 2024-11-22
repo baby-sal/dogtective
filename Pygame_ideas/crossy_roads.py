@@ -181,7 +181,7 @@ class Screen(p.sprite.Sprite):
                     EndScreen(1)
 
             else:
-                green_flag.visible = True
+                green_flag.visible = True"""
 class Explosion(object):
     def __init__(self):
         self.costume = 1
@@ -212,7 +212,7 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
-def checkFlags():
+"""def checkFlags():
     for flag in flags:
         if not flag.visible:
             flag.kill()#if flag isn't visible kill the sprite
