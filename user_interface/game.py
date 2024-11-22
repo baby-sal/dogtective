@@ -19,6 +19,7 @@ class GameRunner:
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
+        # to be replaced with instance of Player/Character
         dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
         dogtective_coords = [10, 700]
 
@@ -43,8 +44,10 @@ class GameRunner:
             self.game_display.fill((0, 0, 0))
 
             for car in self.cars:
-                car.update()
-                car.draw(self.game_display)
+                if self.game_display.get_rect().colliderect(car.rect):  # checks if car is still on screen
+                    car.update()
+                    print(car.rect.topright)
+                    car.draw(self.game_display)
 
             pygame.display.update()
             self.clock.tick(20)
