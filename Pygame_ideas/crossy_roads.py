@@ -138,7 +138,7 @@ class Screen(p.sprite.Sprite):
 
     def update(self):
         self.rect.topleft = (self.x, self.y)
-class Flag(p.sprite.Sprite):
+"""class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         self.number = number
@@ -218,7 +218,7 @@ def checkFlags():
             flag.kill()#if flag isn't visible kill the sprite
         else:
             if not flag.alive():
-                flag_group.add(flag)
+                flag_group.add(flag)"""
 def SwitchLevel():
     global SCORE
 
@@ -241,17 +241,18 @@ def DeleteDog():
     dog.kill()
     screen_group.draw(win)
     car_group.draw(win)
-    flag_group.draw(win)
+    """flag_group.draw(win)"""
 
     screen_group.update()
     car_group.update()
-    flag_group.update()
+    """flag_group.update()"""
 
     p.display.update()
 def DeleteOtherItems():
     car_group.empty()
+    """
     flag_group.empty()
-    flags.clear()
+    flags.clear()"""
 def EndScreen(n):
     global gameOn
 
@@ -287,11 +288,12 @@ fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
 
+"""
 green_flag = Flag(1)
 white_flag = Flag(2)
 flag_group = p.sprite.group()
 flag_group.add(green_flag, white_flag)
-flags = [green_flag, white_flag]
+flags = [green_flag, white_flag]"""
 
 explosion = Explosion()
 
@@ -307,7 +309,7 @@ while run:
         screen_group.draw(win)# draw the background based on images
 
         scoreDisplay()
-        checkFlags()
+        """checkFlags()"""
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
