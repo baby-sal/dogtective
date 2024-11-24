@@ -1,16 +1,16 @@
 # anything you'd pip install or download when its squiggly during imports
 
 # game stuff
-sys
+#sys
 pygame
 pygame-textinput
-random
-math
-warnings
-time
+#random
+#math
+#warnings
+#time
 
 # MySQL stuff
 flask
-json
+#json
 mysql-connector-python
 requests
