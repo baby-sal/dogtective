@@ -60,7 +60,7 @@ def get_top_ten():
     database = DbClass(HOST, USER, PASSWORD, DATABASE)
     try:
         database.db_connect()
-        sql_query = "SELECT * FROM high_scores"
+        sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
         result = database.get_query(sql_query)
         return result
     finally:
