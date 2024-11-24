@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db_utils import get_top_ten, add_new_score
+from db_utils_score import get_top_ten, add_new_score
 
 app = Flask(__name__)
 
