@@ -85,36 +85,38 @@ class Car(p.sprite.Sprite):
         if number == 1:
             self.x = 190
             self.image = p.image.load('./src/car0.png')
-            self.vel = -4 #velocity of the car (slow)
+            self.vel = -5 #velocity of the car (slow)
 
         else:
             self.x = 460
             self.image = p.image.load('./src/car1.png')#this can be the same image flipped the opposite way around
             self.vel = 5 #velocity of the car (fast)
-            #both cars go at different directions
 
         self.y = HEIGHT / 2
-        self.width = 50#set the width to 50
-        self.height = 100#set the hegith to 100
+        self.width = 100
+        self.height = 150
         self.image = p.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
+        self.original_image = self.image # Store the original image
 
-    def update(self):
-        self.movement()
-        self.rect.center = (self.x, self.y)
+        def update(self):
+            self.movement()
+            self.rect.center = (self.x, self.y)
 
-    def movement(self):
-        self.y += self.vel
+        def movement(self):
+            self.y += self.vel
 
-        if self.y - self.height / 2 < 0:
-            self.y = self.height / 2
-            self.vel *= -1
+            if self.y - self.height / 2 < 0:
+                self.y = self.height / 2
+                self.vel *= -1
+                self.image = p.transform.flip(self.image, False, True)
 
-        elif self.y + self.height /2 > HEIGHT:
-            self.y = HEIGHT - self.height / 2
-            self.vel *= -1
-            #prevents cars from going off the edge of the background image
+            elif self.y + self.height / 2 > HEIGHT:
+                self.y = HEIGHT - self.height / 2
+                self.vel *= -1
+                self.image = p.transform.flip(self.image, False, True)
+                # prevents cars from going off the edge of the background image
 """class Screen(p.sprite.Sprite):
     def __init__(self):
         super().__init__()
