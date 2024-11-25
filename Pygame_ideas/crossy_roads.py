@@ -16,7 +16,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #DOG 2 left
         """self.dog2 = p.image.load('dog2.png') # update to file name"""
         #Dog idle right
-        self.dog3 = p.image.load('./src/dogtective_1idledog.png')
+        self.dog3 = p.image.load('./src/Idle.png')
         #Dog idle left - need to update
         """self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
