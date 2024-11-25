@@ -239,11 +239,11 @@ def DeleteDog():
     global dog
 
     dog.kill()
-    screen_group.draw(win)
+    """screen_group.draw(win)"""
     car_group.draw(win)
     """flag_group.draw(win)"""
 
-    screen_group.update()
+    """screen_group.update()"""
     car_group.update()
     """flag_group.update()"""
 
@@ -280,9 +280,9 @@ score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 
 health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
 # this is a bit more complex, may need help
 
-bg = Screen()
+"""bg = Screen()
 screen_group = p.sprite.Group()
-screen_group.add(bg)
+screen_group.add(bg)"""
 
 dog = Dog()
 dog_group = p.sprite.Group()
@@ -323,7 +323,7 @@ while run:
         car_group.update()
         dog_group.update()
 
-        screen_group.update()
+        """screen_group.update()"""
 
         p.display.update()#user can see the changes going on
 
