@@ -103,5 +103,5 @@ if __name__ == "__main__":
     # gets all desserts
     delete_items_by_id(2)
     #deletes menu item
-    add_new_item(()
+    add_new_item(())
     #adds a new dessert item
