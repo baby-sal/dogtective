@@ -181,8 +181,8 @@ class Car(p.sprite.Sprite):
 class Explosion(object):
     def __init__(self):
         self.costume = 1
-        self.width = 140
-        self.height = 140
+        self.width = 100
+        self.height = 50
         self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
         self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
 
