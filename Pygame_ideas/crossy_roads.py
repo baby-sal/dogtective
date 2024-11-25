@@ -119,7 +119,7 @@ class Car(p.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
             #prevents cars from going off the edge of the background image
-class Screen(p.sprite.Sprite):
+"""class Screen(p.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.img1 = p.image.load('Scene.png')#Update with scenery images
@@ -137,7 +137,7 @@ class Screen(p.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        self.rect.topleft = (self.x, self.y)
+        self.rect.topleft = (self.x, self.y)# will uncomment once theses images have been uploaded"""
 """class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
