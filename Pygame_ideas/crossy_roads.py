@@ -85,7 +85,7 @@ class Car(p.sprite.Sprite):
         if number == 1:
             self.x = 190
             self.image = p.image.load('./src/car0.png')
-            self.vel = -5 #velocity of the car (slow)
+            self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460
