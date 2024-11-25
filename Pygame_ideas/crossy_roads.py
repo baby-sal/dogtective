@@ -12,7 +12,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/walk,png')
+        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
         #DOG 2 left
         self.dog2 = p.image.load('dog2.png') # update to file name
         #Dog idle right
@@ -88,12 +88,12 @@ class Car(p.sprite.Sprite):
         super().__init__()
         if number == 1:
             self.x = 190 #image size
-            self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png')
             self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460 #image size
-            self.image = p.image.load('Fast Car.png')#rename once proper image loaded will start with .
+            self.image = p.image.load('Fast Car.png')#this can be the same image flipped the opposite way around
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
@@ -311,7 +311,8 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
-        screen_group.draw(win)# draw the background based on images
+        """screen_group.draw(win)# draw the background based on images # will use once suitable background image found"""
+        win.fill((0, 255, 0))#shows bright green
 
         scoreDisplay()
         """checkFlags()"""
