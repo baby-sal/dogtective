@@ -90,6 +90,7 @@ class Car(p.sprite.Sprite):
         else:
             self.x = 460#position along the x axis
             self.image = p.image.load('../logic/assets/images/obstacles/car.png')#this can be the same image flipped the opposite way around
+            #see dog for how image can be flipped
             self.vel = 5 #velocity of the car (fast)
 
         self.y = HEIGHT / 2
