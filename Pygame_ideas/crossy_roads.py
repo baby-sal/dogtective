@@ -187,7 +187,7 @@ class Explosion(object):
         self.costume = 1
         self.width = 140
         self.height = 140
-        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
+        self.image = p.image.load('./src/Hurt.png')
         self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
 
     def explode(self, x, y):
