@@ -12,7 +12,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #Dog idle right
-        self.dog3 = p.image.load('./src/dog.png')
+        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')
         #Dog idle left - need to update
         self.dog4 = p.transform.flip(self.dog3, True, False)#flips the image of the dog to the opposite direction
         #set width and height for dog image 1
@@ -31,7 +31,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def update(self):
         self.movement()
         self.correction()
-        """self.checkCollision()"""
+        self.checkCollision()
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -75,10 +75,10 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
 
-    """def checkCollision(self):
+    def checkCollision(self):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check:
-            explosion.explode(self.x, self.y)"""
+            explosion.explode(self.x, self.y)
 class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -178,12 +178,12 @@ class Car(p.sprite.Sprite):
 
             else:
                 green_flag.visible = True"""
-"""class Explosion(object):
+class Explosion(object):
     def __init__(self):
         self.costume = 1
         self.width = 140
         self.height = 140
-        self.image = p.image.load('./src/Hurt.png')
+        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
         self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
 
     def explode(self, x, y):
@@ -201,7 +201,7 @@ class Car(p.sprite.Sprite):
             time.sleep(0.1)#slows down the frame time
 
         DeleteOtherItems()
-        EndScreen(0)"""
+        """EndScreen(0)"""
 def scoreDisplay():
     global gameOn
 
@@ -249,7 +249,7 @@ def DeleteOtherItems():
     """
     flag_group.empty()
     flags.clear()"""
-def EndScreen(n):
+"""def EndScreen(n):
     global gameOn
 
     gameOn = False
@@ -259,7 +259,7 @@ def EndScreen(n):
     elif n == 1:
         bg.image = bg.img2 #you win background image, need to update based on images saved
 def Health():
-    pass#need to update later on once images loaded and at adding health stage
+    pass#need to update later on once images loaded and at adding health stage"""
 
 WIDTH = 640
 HEIGHT = 480
@@ -296,7 +296,7 @@ flag_group = p.sprite.group()
 flag_group.add(green_flag, white_flag)
 flags = [green_flag, white_flag]"""
 
-"""explosion = Explosion()"""
+explosion = Explosion()
 
 gameOn = True
 
