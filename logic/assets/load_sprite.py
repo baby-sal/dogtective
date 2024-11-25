@@ -59,7 +59,7 @@ This would mean that the sprite would stay centre in the screen.
 first_frame = dogtective_walk_right[0]
 dogtective_x = screen_width // 2 - first_frame.get_width() // 2 # center of x_axis
 dogtective_y = screen_height // 2 - first_frame.get_height() // 2 # center of y_axis
-dogtective_speed = 1.5  # Speed of movement
+dogtective_speed = 0.5  # Speed of movement
 
 # Animation frames
 last_update = pygame.time.get_ticks()  # need this to refresh animation, see line x
