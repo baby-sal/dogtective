@@ -84,12 +84,12 @@ class Car(p.sprite.Sprite):
         super().__init__()
         if number == 1:
             self.x = 190 #image size
-            self.image = p.image.load('../logic/assets/images/obstacles/car.png')
+            self.image = p.image.load('./src/car0.png')
             self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460 #image size
-            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#this can be the same image flipped the opposite way around
+            self.image = p.image.load('./src/car1.png')#this can be the same image flipped the opposite way around
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
