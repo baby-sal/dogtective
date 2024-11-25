@@ -12,15 +12,15 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
+        """self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')"""
         #DOG 2 left
         """self.dog2 = p.image.load('dog2.png') # update to file name"""
         #Dog idle right
-        self.dog3 = p.image.load('./src/Idle.png')
+        self.dog3 = p.image.load('./src/dog.png')
         #Dog idle left - need to update
         """self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
-        self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
+        """self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))"""
         #set width and height for dog image 2
         """self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))"""
         #set width and height for dog image 3
@@ -35,7 +35,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def update(self):
         self.movement()
         self.correction()
-        self.checkCollision()
+        """self.checkCollision()"""
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -79,10 +79,10 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
 
-    def checkCollision(self):
+    """def checkCollision(self):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check:
-            explosion.explode(self.x, self.y)
+            explosion.explode(self.x, self.y)"""
 class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -182,7 +182,7 @@ class Car(p.sprite.Sprite):
 
             else:
                 green_flag.visible = True"""
-class Explosion(object):
+"""class Explosion(object):
     def __init__(self):
         self.costume = 1
         self.width = 140
@@ -205,7 +205,7 @@ class Explosion(object):
             time.sleep(0.1)#slows down the frame time
 
         DeleteOtherItems()
-        EndScreen(0)
+        EndScreen(0)"""
 def scoreDisplay():
     global gameOn
 
@@ -300,7 +300,7 @@ flag_group = p.sprite.group()
 flag_group.add(green_flag, white_flag)
 flags = [green_flag, white_flag]"""
 
-explosion = Explosion()
+"""explosion = Explosion()"""
 
 gameOn = True
 
