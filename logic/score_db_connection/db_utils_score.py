@@ -54,24 +54,22 @@ class DbClass(object):
             return f"Disconnected from {self.database}"
 
 
-## Functions
+    def get_top_ten():
+        database = DbClass(HOST, USER, PASSWORD, DATABASE)
+        try:
+            database.db_connect()
+            sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
+            result = database.get_query(sql_query)
+            return result
+        finally:
+            database.db_disconnect()
 
-def get_top_ten():
-    database = DbClass(HOST, USER, PASSWORD, DATABASE)
-    try:
-        database.db_connect()
-        sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
-        result = database.get_query(sql_query)
-        return result
-    finally:
-        database.db_disconnect()
-
-def add_new_score(nickname, score):
-    database = DbClass(HOST, USER, PASSWORD, DATABASE)
-    try:
-        database.db_connect()
-        sql_query = f"UPDATE high_scores SET date = CURDATE(), nickname = {nickname}, score = {score}"
-        database.update_query(sql_query, nickname, score)
-    finally:
-        database.db_disconnect()
+    def add_new_score(nickname, score):
+        database = DbClass(HOST, USER, PASSWORD, DATABASE)
+        try:
+            database.db_connect()
+            sql_query = f"UPDATE high_scores SET date = CURDATE(), nickname = {nickname}, score = {score}"
+            database.update_query(sql_query, nickname, score)
+        finally:
+            database.db_disconnect()
 
