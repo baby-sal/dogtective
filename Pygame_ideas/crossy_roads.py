@@ -28,7 +28,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #set width and height for dog image 3
         """self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))"""
 
-        self.image = self.dog1
+        self.image = self.dog3
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
 
