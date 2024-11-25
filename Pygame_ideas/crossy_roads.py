@@ -11,10 +11,6 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         self.height = 50
 
         #IMAGES NEED TO UPDATE
-        #DOG 1 right
-        """self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')"""
-        #DOG 2 left
-        """self.dog2 = p.image.load('dog2.png') # update to file name"""
         #Dog idle right
         self.dog3 = p.image.load('./src/dog.png')
         #Dog idle left - need to update
