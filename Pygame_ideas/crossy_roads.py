@@ -94,8 +94,8 @@ class Car(p.sprite.Sprite):
             #both cars go at different directions
 
         self.y = HEIGHT / 2
-        self.width = 100
-        self.height = 150
+        self.width = 50#set the width to 50
+        self.height = 100#set the hegith to 100
         self.image = p.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
