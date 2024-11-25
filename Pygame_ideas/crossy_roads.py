@@ -14,19 +14,19 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #DOG 1 right
         self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
         #DOG 2 left
-        self.dog2 = p.image.load('dog2.png') # update to file name
+        """self.dog2 = p.image.load('dog2.png') # update to file name"""
         #Dog idle right
         self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')
         #Dog idle left - need to update
-        self.dog4 = p.image.load('dog4.png')
+        """self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
         self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
         #set width and height for dog image 2
-        self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))
+        """self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))"""
         #set width and height for dog image 3
         self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
         #set width and height for dog image 3
-        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))
+        """self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))"""
 
         self.image = self.dog1
         self.rect = self.image.get_rect()
@@ -93,7 +93,7 @@ class Car(p.sprite.Sprite):
 
         else:
             self.x = 460 #image size
-            self.image = p.image.load('Fast Car.png')#this can be the same image flipped the opposite way around
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#this can be the same image flipped the opposite way around
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
