@@ -18,7 +18,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #Dog idle right
         self.dog3 = p.image.load('./src/dog.png')
         #Dog idle left - need to update
-        """self.dog4 = p.image.load('dog4.png')"""
+        self.dog4 = p.transform.flip(self.dog3, True, False)#flips the image of the dog to the opposite direction
         #set width and height for dog image 1
         """self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))"""
         #set width and height for dog image 2
@@ -26,7 +26,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         #set width and height for dog image 3
         self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
         #set width and height for dog image 3
-        """self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))"""
+        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))
 
         self.image = self.dog3
         self.rect = self.image.get_rect()
