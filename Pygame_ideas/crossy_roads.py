@@ -87,7 +87,7 @@ class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         if number == 1:
-            self.x = 190 #image size
+            self.x = 190 #initial x position
             self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
             """self.image = p.transform.rotate(self.image, 90)#rotates the car 90 degrees"""
             self.vel = -4 #velocity of the car (slow)
@@ -99,7 +99,7 @@ class Car(p.sprite.Sprite):
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
-        self.y = HEIGHT / 2
+        self.y = 300
         self.width = 100#image width
         self.height = 150#image height
         self.image = p.transform.scale(self.image, (self.width, self.height))
@@ -234,17 +234,21 @@ class Road(p.sprite.Sprite):
         super().__init__()
         if number == 1:
             self.x = 190 #image size
+            
         else:
             self.x = 460 #where it is on the x axis
-        
+
         self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()
-        self.width = 150#image width
+        self.width = 90#image width
         self.height = 200#image height
         self.image = p.transform.scale(self.image, (self.width, self.height))
         
         self.y = 0
         self.rect = self.image.get_rect(topleft=(self.width, self.height))
         self.mask = p.mask.from_surface(self.image)
+        
+        def update(self):
+            pass
 def scoreDisplay():
     global gameOn
     
