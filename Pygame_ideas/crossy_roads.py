@@ -254,6 +254,23 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
+class Health(p.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+    NUM_HEARTS = 5
+    HEART_WIDTH = 50
+    HEART_HEIGHT = 50
+    SCREEN_WIDTH = 640
+    SCREEN_HEIGHT = 480
+    
+    win = p.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
+    heart_image = p.image.load('Pygame_ideas\src\heart.png').convert_alpha()
+    heart_image = p.transform.scale(heart_image, (HEART_WIDTH, HEART_HEIGHT))
+    
+    for i in range(NUM_HEARTS):
+        win.blit(heart_image, (i * HEART_WIDTH, 0))
+    
 """def healthDisplay():
     global gameOn
     if gameOn:
