@@ -36,12 +36,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
     def movement(self):
         keys = p.key.get_pressed()#checks keys pressed
-        if not any(keys):#if no keys are pressed
+        """if not any(keys):#if no keys are pressed
             if 'right' == 'right':
                 self.image = self.dog3
             else:
                 self.image = self.dog4
-                #shows different idle images based on the last key pressed
+                #shows different idle images based on the last key pressed"""
 
         if keys[p.K_LEFT]:
             self.x -= self.vel
