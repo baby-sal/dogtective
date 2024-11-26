@@ -248,18 +248,17 @@ class Road(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         if number == 1:
-            self.x = 190 #image size
+            self.x = 190 #where it is on the x axis
             
         else:
             self.x = 460 #where it is on the x axis
-
-        self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()
-        self.width = 90#image width
-        self.height = 200#image height
-        self.image = p.transform.scale(self.image, (self.width, self.height))
         
-        self.y = 0
-        self.rect = self.image.get_rect(topleft=(self.width, self.height))
+        self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()            
+        self.width = 90#image width
+        self.height = 300#image height
+        self.image = p.transform.scale(self.image, (self.width, self.height))
+        self.y = 300
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))
         self.mask = p.mask.from_surface(self.image)
         
         def update(self):
