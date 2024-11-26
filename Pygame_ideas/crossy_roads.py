@@ -267,7 +267,12 @@ def scoreDisplay():
     global gameOn
     if gameOn:
         score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
+        start_ticks = p.time.get_ticks()
+        font = p.font.Font(None, 74)
+        elapsed_seconds = (p.time.get_ticks() - start_ticks) // 1000
+        timer_text = timer_font.render(f"Time: {elapsed_seconds}s", True, (0, 0, 0))
     win.blit(score_text, (255, 10))#x and y position of score text
+    win.blit(timer_text, (10, 10))
     
     p.display.flip()
     
@@ -335,6 +340,7 @@ clock = p.time.Clock() # timer
 
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 35, True)#set font to comic sans, size 80px, bold
+timer_font = p.font.SysFont('comicsans', 32, True)
 # this is a bit more complex, may need help
 
 """bg = Screen()
