@@ -306,6 +306,7 @@ gameOn = True
 
 run = True
 while run:
+    clock = p.time.Clock()
     clock.tick(60)#sets to 60 frames per second
     for event in p.event.get():
         if event.type == p.QUIT:
