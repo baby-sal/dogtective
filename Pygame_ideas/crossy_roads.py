@@ -140,18 +140,18 @@ class Car(p.sprite.Sprite):
 
     def update(self):
         self.rect.topleft = (self.x, self.y)"""
-"""class Flag(p.sprite.Sprite):
+class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         self.number = number
 
         if self.number == 1:
-            self.image = p.image.load('green flag.png')#update name once image loaded
+            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
             self.visible = False #invisible until white flag is touched
             self.x = 50
 
         else:
-            self.image = p.image.load('White flag.png')#update name once image loaded
+            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
             self.visible = True
             self.x = 580#opposite end of the screen
 
@@ -183,7 +183,7 @@ class Car(p.sprite.Sprite):
                     EndScreen(1)
 
             else:
-                green_flag.visible = True"""
+                green_flag.visible = True
 class Explosion(object):
     def __init__(self):
         self.costume = 1
@@ -231,13 +231,13 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(str(SCORE), True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
-"""def checkFlags():
+def checkFlags():
     for flag in flags:
         if not flag.visible:
             flag.kill()#if flag isn't visible kill the sprite
         else:
             if not flag.alive():
-                flag_group.add(flag)"""
+                flag_group.add(flag)
 def SwitchLevel():
     global SCORE
 
@@ -260,18 +260,18 @@ def DeleteDog():
     dog.kill()
     """screen_group.draw(win)"""
     car_group.draw(win)
-    """flag_group.draw(win)"""
+    flag_group.draw(win)
 
     """screen_group.update()"""
     car_group.update()
-    """flag_group.update()"""
+    flag_group.update()
 
     p.display.update()
 def DeleteOtherItems():
     car_group.empty()
-    """
+    
     flag_group.empty()
-    flags.clear()"""
+    flags.clear()
 def EndScreen(n):
     global gameOn
 
@@ -312,12 +312,11 @@ fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
 
-"""
 green_flag = Flag(1)
 white_flag = Flag(2)
-flag_group = p.sprite.group()
+flag_group = p.sprite.Group()
 flag_group.add(green_flag, white_flag)
-flags = [green_flag, white_flag]"""
+flags = [green_flag, white_flag]
 
 explosion = Explosion()
 
@@ -334,7 +333,7 @@ while run:
         """screen_group.draw(win)# draw the background based on images"""
 
         scoreDisplay()
-        """checkFlags()"""
+        checkFlags()
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
