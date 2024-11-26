@@ -187,17 +187,34 @@ class Explosion(object):
         self.costume = 1
         self.width = 100
         self.height = 50
-        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
-        self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
+        #hurt dog right facing
+        self.dog_hurt_right = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
+        self.dog_hurt_right = p.transform.scale(self.dog_hurt_right, (self.width, self.height))#updates the size of the image
+        #hurt dog left facing
+        self.dog_hurt_left = p.transform.flip(self.dog_hurt_right, True, False)#flip dog to face left.
+        
+        self.image = self.dog_hurt_right
+        self.rect = self.image.get_rect()
+        self.mask = p.mask.from_surface(self.image)
 
-    def explode(self, x, y):
+    def explode(self, x, y, last_direction):
         x = x - self.width / 2
         y = y - self.height / 2
+        
+        #check the last direction
+        if last_direction == 'left':
+            self.image = self.dog_hurt_left
+        else:
+            self.image = self.dog_hurt_right
+        
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
-            self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
+            if last_direction == 'left':
+                self.image = self.dog_hurt_left
+            else:
+                self.image = self.dog_hurt_right
+                
             win.blit(self.image, (x, y))
             p.display.update()
 
