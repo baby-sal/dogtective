@@ -35,7 +35,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
         self.rect.center = (self.x, self.y)
 
     def movement(self):
-        keys = p.key.get_pressed()
+        keys = p.key.get_pressed()#checks keys pressed
         if not any(keys):#if no keys are pressed
             if 'right' == 'right':
                 self.image = self.dog3
