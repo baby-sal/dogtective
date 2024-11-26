@@ -254,7 +254,7 @@ def scoreDisplay():
     
 
     if gameOn:
-        score_text = score_font.render(str(SCORE), True, (0, 0, 0))#set font to black, and show the level out of 5
+        score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
 def checkFlags():
     for flag in flags:
