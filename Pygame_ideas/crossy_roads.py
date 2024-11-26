@@ -89,11 +89,13 @@ class Car(p.sprite.Sprite):
         if number == 1:
             self.x = 190 #image size
             self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+            """self.image = p.transform.rotate(self.image, 90)#rotates the car 90 degrees"""
             self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460 #where it is on the x axis
             self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+            """self.image = p.transform.rotate(self.image, -90)#rotates the car -90 degrees"""
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
