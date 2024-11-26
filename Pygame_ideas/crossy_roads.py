@@ -251,11 +251,14 @@ class Road(p.sprite.Sprite):
             pass
 def scoreDisplay():
     global gameOn
-    
-
     if gameOn:
         score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
+"""def healthDisplay():
+    global gameOn
+    if gameOn:
+        score_text = score_font.render(f"Health: {HEALTH}", True, (0, 0, 0))#set font to black, and show the level out of 5
+    win.blit(score_text, (100, 10))#x and y position of score text"""
 def checkFlags():
     for flag in flags:
         if not flag.visible:
@@ -321,7 +324,7 @@ clock = p.time.Clock() # timer
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 50, True)#set font to comic sans, size 80px, bold
 """HEALTH = 5
-health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
+health.font = p.font.SysFont('comicsans', 50, True)"""#this one needs work to be similar to score but be image based instead,
 # this is a bit more complex, may need help
 
 """bg = Screen()
