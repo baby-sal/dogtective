@@ -324,6 +324,7 @@ while run:
         dog_group.update()
 
         """screen_group.update()"""
+        win.fill((0, 255, 0))#sets the background colour to show bright green
 
         p.display.update()#user can see the changes going on
 
