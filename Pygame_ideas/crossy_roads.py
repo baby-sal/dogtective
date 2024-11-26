@@ -311,7 +311,7 @@ while run:
     for event in p.event.get():
         if event.type == p.QUIT:
             run = False # end game if quit is entered
-        win.fill((0, 255, 0))#sets the background colour to show bright green
+        win.fill((0, 255, 0))#sets the background colour to show bright green"""
         """screen_group.draw(win)# draw the background based on images"""
 
         scoreDisplay()
