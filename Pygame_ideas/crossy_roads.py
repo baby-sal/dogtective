@@ -334,7 +334,7 @@ p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
 
 SCORE = 0
-score_font = p.font.SysFont('comicsans', 50, True)#set font to comic sans, size 80px, bold
+score_font = p.font.SysFont('comicsans', 35, True)#set font to comic sans, size 80px, bold
 # this is a bit more complex, may need help
 
 """bg = Screen()
