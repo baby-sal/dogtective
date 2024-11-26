@@ -195,7 +195,14 @@ class Explosion(object):
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
+            keys = p.key.get_pressed()
+            if not any(keys):  # if no keys are pressed
+                if 'right' == 'right':
+                    self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
+                else:
+                    self.image = p.transform.flip(self.image, True, False)
+                    # shows different idle images based on the last key pressed
+            """self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')"""
             self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
             win.blit(self.image, (x, y))
             p.display.update()
