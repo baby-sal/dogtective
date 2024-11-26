@@ -12,12 +12,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png').convert_alpha()
-        """#DOG 2 left"""
-        """self.dog2 = p.image.load('dog2.png') # update to file name
+        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
+        """#DOG 2 left
+        self.dog2 = p.image.load('dog2.png') # update to file name
         #Dog idle right
-        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')"""
-        """#Dog idle left - need to update
+        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
+        #Dog idle left - need to update
         self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
         self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
