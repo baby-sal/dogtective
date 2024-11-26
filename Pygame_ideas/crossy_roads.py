@@ -12,22 +12,22 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/walk,png')
-        #DOG 2 left
-        self.dog2 = p.image.load('dog2.png') # update to file name
+        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
+        """#DOG 2 left"""
+        """self.dog2 = p.image.load('dog2.png') # update to file name
         #Dog idle right
-        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')
-        #Dog idle left - need to update
-        self.dog4 = p.image.load('dog4.png')
+        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')"""
+        """#Dog idle left - need to update
+        self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
         self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
         #set width and height for dog image 2
-        self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))
+        self.dog2 = p.transform.flip(self.dog1, True, False)#flips dog image 1 to face the other direction
         #set width and height for dog image 3
-        self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
+        """self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
         #set width and height for dog image 3
-        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))
-
+        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))"""
+        
         self.image = self.dog1
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
@@ -40,12 +40,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
     def movement(self):
         keys = p.key.get_pressed()
-        if not any(keys):#if no keys are pressed
+        """ if not any(keys):#if no keys are pressed
             if 'right' == 'right':
                 self.image = self.dog3
             else:
                 self.image = self.dog4
-                #shows different idle images based on the last key pressed
+                #shows different idle images based on the last key pressed"""
 
         if keys[p.K_LEFT]:
             self.x -= self.vel
@@ -88,18 +88,18 @@ class Car(p.sprite.Sprite):
         super().__init__()
         if number == 1:
             self.x = 190 #image size
-            self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#rename once proper image loaded will start with .
             self.vel = -4 #velocity of the car (slow)
 
         else:
-            self.x = 460 #image size
-            self.image = p.image.load('Fast Car.png')#rename once proper image loaded will start with .
+            self.x = 460 #where it is on the x axis
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#rename once proper image loaded will start with .
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
         self.y = HEIGHT / 2
-        self.width = 100
-        self.height = 150
+        self.width = 100#image width
+        self.height = 150#image height
         self.image = p.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
@@ -119,7 +119,7 @@ class Car(p.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
             #prevents cars from going off the edge of the background image
-class Screen(p.sprite.Sprite):
+"""class Screen(p.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.img1 = p.image.load('Scene.png')#Update with scenery images
@@ -137,7 +137,7 @@ class Screen(p.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        self.rect.topleft = (self.x, self.y)
+        self.rect.topleft = (self.x, self.y)"""
 """class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -187,7 +187,7 @@ class Explosion(object):
         self.costume = 1
         self.width = 140
         self.height = 140
-        self.image = p.image.load('../logic/characters/dogtective_sprite/Hurt.png')
+        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
         self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
 
     def explode(self, x, y):
@@ -196,7 +196,7 @@ class Explosion(object):
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load('../logic/characters/dogtective_sprite/Hurt.png')
+            self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
             self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
             win.blit(self.image, (x, y))
             p.display.update()
@@ -239,11 +239,11 @@ def DeleteDog():
     global dog
 
     dog.kill()
-    screen_group.draw(win)
+    """screen_group.draw(win)"""
     car_group.draw(win)
     """flag_group.draw(win)"""
 
-    screen_group.update()
+    """screen_group.update()"""
     car_group.update()
     """flag_group.update()"""
 
@@ -253,7 +253,7 @@ def DeleteOtherItems():
     """
     flag_group.empty()
     flags.clear()"""
-def EndScreen(n):
+"""def EndScreen(n):
     global gameOn
 
     gameOn = False
@@ -263,7 +263,7 @@ def EndScreen(n):
     elif n == 1:
         bg.image = bg.img2 #you win background image, need to update based on images saved
 def Health():
-    pass#need to update later on once images loaded and at adding health stage
+    pass#need to update later on once images loaded and at adding health stage"""
 
 WIDTH = 640
 HEIGHT = 480
@@ -280,9 +280,9 @@ score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 
 health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
 # this is a bit more complex, may need help
 
-bg = Screen()
+"""bg = Screen()
 screen_group = p.sprite.Group()
-screen_group.add(bg)
+screen_group.add(bg)"""
 
 dog = Dog()
 dog_group = p.sprite.Group()
@@ -311,7 +311,7 @@ while run:
         if event.type == p.QUIT:
             run = False # end game if quit is entered
 
-        screen_group.draw(win)# draw the background based on images
+        """screen_group.draw(win)# draw the background based on images"""
 
         scoreDisplay()
         """checkFlags()"""
@@ -322,7 +322,7 @@ while run:
         car_group.update()
         dog_group.update()
 
-        screen_group.update()
+        """screen_group.update()"""
 
         p.display.update()#user can see the changes going on
 
