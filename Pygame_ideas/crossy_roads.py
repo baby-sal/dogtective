@@ -278,7 +278,7 @@ p.init()#initialise all modules within pygame
 
 win = p.display.set_mode((WIDTH, HEIGHT)) #dimensions for background
 p.display.set_caption('Crossy Road')
-clock = p.time.Clock() # timer
+clock = p.time.Clock() # helps to regulate the flow of the main loop
 
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 80px, bold
