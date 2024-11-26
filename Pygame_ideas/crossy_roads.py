@@ -159,7 +159,7 @@ class Flag(p.sprite.Sprite):
             self.width = 100
             self.height = 100
 
-        self.y = HEIGHT / 2
+        self.y = 200
         self.image = p.transform.scale2x(self.image)
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
