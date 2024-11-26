@@ -253,11 +253,11 @@ def DeleteOtherItems():
     """
     flag_group.empty()
     flags.clear()"""
-"""def EndScreen(n):
+def EndScreen(n):
     global gameOn
 
     gameOn = False
-    if n == 0:
+    """if n == 0:
         bg.image = bg.img3 #you loose background image, need to update based on images saved
 
     elif n == 1:
