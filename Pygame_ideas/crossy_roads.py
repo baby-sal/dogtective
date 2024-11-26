@@ -147,13 +147,17 @@ class Flag(p.sprite.Sprite):
 
         if self.number == 1:
             self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
-            self.visible = False #invisible until white flag is touched
+            self.visible = True #shows as visible
             self.x = 50
+            self.width = 100
+            self.height = 100
 
         else:
             self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
             self.visible = True
             self.x = 580#opposite end of the screen
+            self.width = 100
+            self.height = 100
 
         self.y = HEIGHT / 2
         self.image = p.transform.scale2x(self.image)
@@ -337,9 +341,11 @@ while run:
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
+        flag_group.draw(win)
 
         car_group.update()
         dog_group.update()
+        flag_group.update()
 
         """screen_group.update()"""
 
