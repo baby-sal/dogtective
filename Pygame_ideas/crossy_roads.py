@@ -1,6 +1,9 @@
 import pygame as p#saves typing pygame all the time
 import time#used to make dog move slower
 
+NUM_HEARTS = 5
+HEART_WIDTH = 50
+HEART_HEIGHT = 50
 class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def __init__(self):
         super().__init__()
@@ -229,6 +232,18 @@ class Explosion(object):
 
         DeleteOtherItems()
         EndScreen(0)
+"""class Health(p.sprite.Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = heart_image
+        self.rect = self.image.get_rect(topleft=(x, y))
+    
+    heart_image = p.image.load('Pygame_ideas\src\heart.png').convert_alpha()
+    heart_image = p.transform.scale(heart_image, (HEART_WIDTH, HEART_HEIGHT))"""
+    
+    
+
+
 class Road(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
@@ -254,28 +269,9 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
-class Health(p.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-    NUM_HEARTS = 5
-    HEART_WIDTH = 50
-    HEART_HEIGHT = 50
-    SCREEN_WIDTH = 640
-    SCREEN_HEIGHT = 480
     
-    win = p.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    p.display.flip()
     
-    heart_image = p.image.load('Pygame_ideas\src\heart.png').convert_alpha()
-    heart_image = p.transform.scale(heart_image, (HEART_WIDTH, HEART_HEIGHT))
-    
-    for i in range(NUM_HEARTS):
-        win.blit(heart_image, (i * HEART_WIDTH, 0))
-    
-"""def healthDisplay():
-    global gameOn
-    if gameOn:
-        score_text = score_font.render(f"Health: {HEALTH}", True, (0, 0, 0))#set font to black, and show the level out of 5
-    win.blit(score_text, (100, 10))#x and y position of score text"""
 def checkFlags():
     for flag in flags:
         if not flag.visible:
@@ -340,8 +336,6 @@ clock = p.time.Clock() # timer
 
 SCORE = 0
 score_font = p.font.SysFont('comicsans', 50, True)#set font to comic sans, size 80px, bold
-"""HEALTH = 5
-health.font = p.font.SysFont('comicsans', 50, True)"""#this one needs work to be similar to score but be image based instead,
 # this is a bit more complex, may need help
 
 """bg = Screen()
@@ -351,6 +345,12 @@ road1 = Road(1)
 road2 = Road(2)
 road_group = p.sprite.Group(road1, road2)
 road_group.add(road1, road2)
+
+"""hearts_group = p.sprite.Group()    
+for i in range(NUM_HEARTS):
+    heart = Health(i * HEART_WIDTH, 0)
+    hearts_group.add(heart)
+hearts_group.add(Health())"""
 
 dog = Dog()
 dog_group = p.sprite.Group()
@@ -386,6 +386,7 @@ while run:
         checkFlags()
         
         road_group.draw(win)
+        """hearts_group.draw(win)"""
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
