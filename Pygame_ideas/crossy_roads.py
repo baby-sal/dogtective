@@ -12,7 +12,7 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
+        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png').convert_alpha()
         """#DOG 2 left"""
         """self.dog2 = p.image.load('dog2.png') # update to file name
         #Dog idle right
@@ -88,12 +88,12 @@ class Car(p.sprite.Sprite):
         super().__init__()
         if number == 1:
             self.x = 190 #image size
-            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#rename once proper image loaded will start with .
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
             self.vel = -4 #velocity of the car (slow)
 
         else:
             self.x = 460 #where it is on the x axis
-            self.image = p.image.load('../logic/assets/images/obstacles/car.png')#rename once proper image loaded will start with .
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
@@ -187,7 +187,7 @@ class Explosion(object):
         self.costume = 1
         self.width = 140
         self.height = 140
-        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
+        self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
         self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
 
     def explode(self, x, y):
@@ -196,7 +196,7 @@ class Explosion(object):
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png')
+            self.image = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
             self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
             win.blit(self.image, (x, y))
             p.display.update()
@@ -306,7 +306,7 @@ gameOn = True
 
 run = True
 while run:
-    clock = p.time.Clock()
+    clock = p.time.Clock()#makes the game less laggy
     clock.tick(60)#sets to 60 frames per second
     for event in p.event.get():
         if event.type == p.QUIT:
