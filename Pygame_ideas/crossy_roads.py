@@ -229,8 +229,25 @@ class Explosion(object):
 
         DeleteOtherItems()
         EndScreen(0)
+class Road(p.sprite.Sprite):
+    def __init__(self, number):
+        super().__init__()
+        if number == 1:
+            self.x = 190 #image size
+        else:
+            self.x = 460 #where it is on the x axis
+        
+        self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()
+        self.width = 150#image width
+        self.height = 200#image height
+        self.image = p.transform.scale(self.image, (self.width, self.height))
+        
+        self.y = 0
+        self.rect = self.image.get_rect(topleft=(self.width, self.height))
+        self.mask = p.mask.from_surface(self.image)
 def scoreDisplay():
     global gameOn
+    
 
     if gameOn:
         score_text = score_font.render(str(SCORE), True, (0, 0, 0))#set font to black, and show the level out of 5
@@ -306,6 +323,10 @@ health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be
 """bg = Screen()
 screen_group = p.sprite.Group()
 screen_group.add(bg)"""
+road1 = Road(1)
+road2 = Road(2)
+road_group = p.sprite.Group(road1, road2)
+road_group.add(road1, road2)
 
 dog = Dog()
 dog_group = p.sprite.Group()
@@ -335,13 +356,18 @@ while run:
             run = False # end game if quit is entered
         win.fill((0, 255, 0))#sets the background colour to show bright green"""
         """screen_group.draw(win)# draw the background based on images"""
+        
 
         scoreDisplay()
         checkFlags()
+        
+        road_group.draw(win)
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
         flag_group.draw(win)
+        
+        road_group.update()
 
         car_group.update()
         dog_group.update()
