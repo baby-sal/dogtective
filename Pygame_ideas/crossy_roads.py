@@ -1,5 +1,5 @@
-import pygame as p
-import time
+import pygame as p#saves typing pygame all the time
+import time#used to make dog move slower
 
 class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def __init__(self):
@@ -210,7 +210,7 @@ def scoreDisplay():
     global gameOn
 
     if gameOn:
-        score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
+        score_text = score_font.render(str(SCORE), True, (0, 0, 0))#set font to black, and show the level out of 5
     win.blit(score_text, (255, 10))#x and y position of score text
 """def checkFlags():
     for flag in flags:
