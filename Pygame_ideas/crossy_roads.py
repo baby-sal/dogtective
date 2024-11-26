@@ -255,9 +255,9 @@ class Road(p.sprite.Sprite):
         
         self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()            
         self.width = 90#image width
-        self.height = 300#image height
+        self.height = 480#image height
         self.image = p.transform.scale(self.image, (self.width, self.height))
-        self.y = 300
+        self.y = 0
         self.rect = self.image.get_rect(topleft=(self.x, self.y))
         self.mask = p.mask.from_surface(self.image)
         
