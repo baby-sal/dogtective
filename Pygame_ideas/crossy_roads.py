@@ -268,7 +268,6 @@ def scoreDisplay():
     if gameOn:
         score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
         start_ticks = p.time.get_ticks()
-        font = p.font.Font(None, 74)
         elapsed_seconds = (p.time.get_ticks() - start_ticks) // 1000
         timer_text = timer_font.render(f"Time: {elapsed_seconds}s", True, (0, 0, 0))
     win.blit(score_text, (255, 10))#x and y position of score text
