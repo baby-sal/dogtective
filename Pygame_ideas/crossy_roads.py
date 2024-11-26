@@ -311,7 +311,7 @@ while run:
     for event in p.event.get():
         if event.type == p.QUIT:
             run = False # end game if quit is entered
-
+        win.fill((0, 255, 0))#sets the background colour to show bright green
         """screen_group.draw(win)# draw the background based on images"""
 
         scoreDisplay()
@@ -324,7 +324,6 @@ while run:
         dog_group.update()
 
         """screen_group.update()"""
-        """win.fill((0, 255, 0))#sets the background colour to show bright green"""
 
         p.display.update()#user can see the changes going on
 
