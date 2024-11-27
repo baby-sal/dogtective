@@ -3,6 +3,7 @@
 import pygame
 import sys
 from logic.components.environmental import Obstacle
+from logic.components.character import Character
 
 
 class GameRunner:
@@ -19,9 +20,8 @@ class GameRunner:
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
-        # to be replaced with instance of Player/Character
-        # dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
-        dogtective_coords = [10, 700]
+        self.dog_group = pygame.sprite.Group()
+        self.dog_group.add(Character("dog"))
 
         car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
         car1 = Obstacle("car1", car_img, 0, 0, 0.2, 10, 10, [1, 0])
@@ -30,6 +30,11 @@ class GameRunner:
 
         # self.game_display.blit(dogtective, dogtective_coords)
         pygame.display.update()
+
+    def render_all(self, *groups):
+        for group in groups:
+            group.draw(self.game_display)
+            group.update()
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
@@ -47,6 +52,8 @@ class GameRunner:
                 if self.game_display.get_rect().colliderect(car.rect):  # checks if car is still on screen
                     car.update()
                     car.draw(self.game_display)
+
+            self.render_all(self.dog_group)
 
             pygame.display.update()
             self.clock.tick(20)
