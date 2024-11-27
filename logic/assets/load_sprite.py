@@ -36,7 +36,6 @@ def sprite_motion(link, steps: int):
     return animation_list
 
 dogtective_walk_right = sprite_motion('../assets/images/characters/dogtective_sprite/Walk.png', 6)
-dogtective_idle = sprite_motion('../assets/images/characters/dogtective_sprite/Idle.png', 4)
 dogtective_walk_left = [pygame.transform.flip(frame, True, False).convert_alpha() for frame in dogtective_walk_right]
 
 # uncomment when required
@@ -68,7 +67,6 @@ last_update = pygame.time.get_ticks()  # need this to refresh animation, see lin
 animation_cooldown = 75  # in milliseconds, how long to cycle through each frame
 frame = 0
 
-
 run = True
 move = None
 
@@ -86,27 +84,22 @@ while run:
     direction = None  # None = Dog doesn't animate in starting position, change to a direction i.e. right if you want dog to animate on the spot
 
     if move is True:
-        #keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             dogtective_x -= dogtective_speed  # speed is required to move the dog along the x-axis
             direction = 'left'
             current_frame = dogtective_walk_left[frame]
-            screen.blit(current_frame, (dogtective_x, dogtective_y))
         if keys[pygame.K_RIGHT]:
             dogtective_x += dogtective_speed
             direction = 'right'
             current_frame = dogtective_walk_right[frame]
-            screen.blit(current_frame, (dogtective_x, dogtective_y))
         if keys[pygame.K_UP]:
             dogtective_y -= dogtective_speed  # speed is required to move the dog along the y-axis
             direction = 'up'
             current_frame = dogtective_walk_left[frame] #so dog will animate going up
-            screen.blit(current_frame, (dogtective_x, dogtective_y))
         if keys[pygame.K_DOWN]:
             dogtective_y += dogtective_speed
             direction = 'down'
             current_frame = dogtective_walk_right[frame] #so dog will animate going down
-            screen.blit(current_frame, (dogtective_x, dogtective_y))
 
         # Handle frame updates for animation
         current_time = pygame.time.get_ticks()
@@ -116,17 +109,11 @@ while run:
             if frame >= len(dogtective_walk_left):  # loops back to first image in sprite sheet
                 frame = 0
 
-        # Draw the sprite at the updated position
-        screen.blit(current_frame, (dogtective_x, dogtective_y))
-
-        # Update the display
-        pygame.display.update()
-
 
     # Draw the sprite at the updated position
     screen.blit(current_frame, (dogtective_x, dogtective_y))
 
-     # Update the display
+    # Update the display
     pygame.display.update()
 
 if __name__ == "__main__":
