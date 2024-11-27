@@ -24,10 +24,10 @@ class Character(p.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
 
-    def update(self):
+    def update(self, car_group):
         self.movement()
         self.correction()
-        # self.checkCollision()
+        self.checkCollision(car_group)
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -65,11 +65,11 @@ class Character(p.sprite.Sprite):
         elif self.y + self.width / 2 > WIDTH:
             self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
 
-    # def checkCollision(self):
-    #     car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
-    #     if car_check:
-    #         # explosion.explode(self.x, self.y)
-    #         print("hit by car")
+    def checkCollision(self, car_group):
+        car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
+        if car_check:
+            # explosion.explode(self.x, self.y)
+            print("hit by car")
 
     def collision_damage(self, damage):
         self.health -= damage

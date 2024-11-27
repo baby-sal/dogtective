@@ -24,9 +24,10 @@ class GameRunner:
         self.dog_group.add(Character("dog"))
 
         car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
-        car1 = Obstacle("car1", car_img, 0, 0, 0.2, 10, 10, [1, 0])
-        car2 = Obstacle("car2", car_img, 1000, 100, 0.2, 10, 10, [-1, 0])
-        self.cars = [car1, car2]
+        car1 = Obstacle("car1", car_img, 190, 0, 0.2, 10, 10, [1, 0])
+        car2 = Obstacle("car2", car_img, 460, 100, 0.2, 10, 10, [-1, 0])
+        self.car_group = pygame.sprite.Group()
+        self.car_group.add(car1, car2)
 
         # self.game_display.blit(dogtective, dogtective_coords)
         pygame.display.update()
@@ -35,6 +36,10 @@ class GameRunner:
         for group in groups:
             group.draw(self.game_display)
             group.update()
+
+    def render_dog(self, car_group):
+        self.dog_group.draw(self.game_display)
+        self.dog_group.update(car_group)
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
@@ -48,12 +53,8 @@ class GameRunner:
 
             self.game_display.fill((0, 0, 0))
 
-            for car in self.cars:
-                if self.game_display.get_rect().colliderect(car.rect):  # checks if car is still on screen
-                    car.update()
-                    car.draw(self.game_display)
-
-            self.render_all(self.dog_group)
+            self.render_all(self.car_group)
+            self.render_dog(self.car_group)
 
             pygame.display.update()
             self.clock.tick(20)
