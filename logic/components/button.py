@@ -3,7 +3,7 @@ class Button():
 		self.image = image
 		self.pos_x = pos_x
 		self.pos_y = pos_y
-		self.rect = self.image.get_rect(center=(self.pos_x, self.pos_y)
+		self.rect = self.image.get_rect(center=(self.pos_x, self.pos_y))
 
 	def update_button(self, screen):
 		screen.blit(self.image, self.rect)
