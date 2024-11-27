@@ -1,4 +1,6 @@
 import pygame as p
+import pygame.time
+
 # from logic.components.entity import Entity
 from user_interface.game_config import HEIGHT, WIDTH
 
@@ -13,6 +15,8 @@ class Character(p.sprite.Sprite):
         self.vel = 4
         self.width = 100
         self.height = 50
+        self.collision_immune = False
+        self.collision_time = 0
 
         self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
         # set width and height for dog image 1
@@ -25,6 +29,8 @@ class Character(p.sprite.Sprite):
         self.mask = p.mask.from_surface(self.image)
 
     def update(self, car_group):
+        if pygame.time.get_ticks() - self.collision_time > 3000:  # The time is in ms.
+            self.collision_immune = False
         self.movement()
         self.correction()
         self.checkCollision(car_group)
@@ -67,13 +73,13 @@ class Character(p.sprite.Sprite):
 
     def checkCollision(self, car_group):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
-        if car_check:
+        if car_check and not self.collision_immune:
             # explosion.explode(self.x, self.y)
-            print("hit by car")
-
-    def collision_damage(self, damage):
-        self.health -= damage
-        # print(f"{self.name} took {damage} damage. Remaining health: {self.health}")
+            self.health -= car_check[0].damage
+            print("Health: ", self.health)
+            self.collision_immune = True
+            self.collision_time = pygame.time.get_ticks()
+            print(self.collision_time)
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"
