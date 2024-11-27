@@ -20,8 +20,9 @@ class GameRunner:
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
+        self.dog = Character("dog")
         self.dog_group = pygame.sprite.Group()
-        self.dog_group.add(Character("dog"))
+        self.dog_group.add(self.dog)
 
         car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
         car1 = Obstacle("car1", car_img, 190, 0, 0.2, 1, 10, [1, 0])
@@ -43,26 +44,31 @@ class GameRunner:
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
-
-        while True:
+        run = True
+        while run:
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()  # releases pygame resources
-                    sys.exit()
+                    run = False
 
-            self.game_display.fill((0, 0, 0))
+            if self.dog.health > 0:
+                self.game_display.fill((50, 150, 50))
 
-            self.render_all(self.car_group)
-            self.render_dog(self.car_group)
+                self.render_all(self.car_group)
+                self.render_dog(self.car_group)
 
-            pygame.display.update()
-            self.clock.tick(20)
+                pygame.display.update()
+                self.clock.tick(20)
+            else:
+                # game over screen here
+                run = False
 
 
 def run():
     game = GameRunner(1200, 720)
     game.game_loop()
+    pygame.quit()
+    sys.exit()
 
 
 if __name__ == '__main__':
