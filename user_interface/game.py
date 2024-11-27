@@ -20,7 +20,7 @@ class GameRunner:
         self.clock = pygame.time.Clock()
 
         # to be replaced with instance of Player/Character
-        dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
+        # dogtective = pygame.image.load('../logic/assets/images/characters/dogtective_image.png')
         dogtective_coords = [10, 700]
 
         car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
@@ -28,7 +28,7 @@ class GameRunner:
         car2 = Obstacle("car2", car_img, 1000, 100, 0.2, 10, 10, [-1, 0])
         self.cars = [car1, car2]
 
-        self.game_display.blit(dogtective, dogtective_coords)
+        # self.game_display.blit(dogtective, dogtective_coords)
         pygame.display.update()
 
     # Game loop: Keeps window open until quit
@@ -46,7 +46,6 @@ class GameRunner:
             for car in self.cars:
                 if self.game_display.get_rect().colliderect(car.rect):  # checks if car is still on screen
                     car.update()
-                    print(car.rect.topright)
                     car.draw(self.game_display)
 
             pygame.display.update()
