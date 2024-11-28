@@ -14,3 +14,5 @@ def add_new_score():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+#debug outputs: cannot import name 'get_top_ten' from 'db_utils_score'

@@ -16,6 +16,7 @@ class DbClass(object):
         self.user = USER
         self.password = PASSWORD
         self.database = DATABASE
+        #as these are all set to empty string it prevents this file from running, so can't show what it does
 
     def db_connect(self):
         if DbClass.connection is None:
