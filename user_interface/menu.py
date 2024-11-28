@@ -5,10 +5,10 @@ from game import run
 
 pygame.init()
 
-DISPLAY = pygame.display.set_mode((1200, 720))
+display = pygame.display.set_mode((1200, 720))
 pygame.display.set_caption("Main Menu")
-BACKGROUND = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
-BACKGROUND= pygame.transform.smoothscale(BACKGROUND, DISPLAY.get_size())
+background = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
+background= pygame.transform.smoothscale(background, display.get_size())
 
 
 def pixel_font(size):
@@ -16,102 +16,102 @@ def pixel_font(size):
 
 def play():
     while True:
-        MOUSE_POS_PLAY = pygame.mouse.get_pos()
+        mouse_pos_play = pygame.mouse.get_pos()
 
-        DISPLAY.fill("blue4")
+        display.fill("blue4")
 
-        TEXT_PLAY = pixel_font(50).render("Play screen", True, "blue4")
-        RECT_PLAY = TEXT_PLAY.get_rect(center=(640,240))
-        DISPLAY.blit(TEXT_PLAY, RECT_PLAY)
+        text_play = pixel_font(50).render("Play screen", True, "blue4")
+        rect_play = text_play.get_rect(center=(640,240))
+        display.blit(text_play, rect_play)
 
-        GO_BACK = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"), pos_x = 640, pos_y = 240)
-        GO_BACK.update_button(DISPLAY)
+        go_back = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"), pos_x = 640, pos_y = 240)
+        go_back.update_button(display)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if GO_BACK.check_input(MOUSE_POS_PLAY):
+                if go_back.check_input(mouse_pos_play):
                     menu()
         pygame.display.update()
 
 
 def credits():
     while True:
-        MOUSE_POS_CREDITS = pygame.mouse.get_pos()
+        mouse_pos_credits = pygame.mouse.get_pos()
 
-        DISPLAY.fill("blue4")
+        display.fill("blue4")
 
-        TEXT_CREDITS = pixel_font(50).render("Credits screen", True, "blue4")
-        RECT_CREDITS = TEXT_CREDITS.get_rect(center=(640, 240))
-        DISPLAY.blit(TEXT_CREDITS, RECT_CREDITS)
+        text_credits = pixel_font(50).render("Credits screen", True, "blue4")
+        rect_credits = text_credits.get_rect(center=(640, 240))
+        display.blit(text_credits, rect_credits)
 
-        GO_BACK = Button(image=pygame.image.load(
+        go_back = Button(image=pygame.image.load(
             "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"), pos_x = 640, pos_y = 240)
-        GO_BACK.update_button(DISPLAY)
+        go_back.update_button(display)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if GO_BACK.check_input(MOUSE_POS_CREDITS):
+                if go_back.check_input(mouse_pos_credits):
                     menu()
         pygame.display.update()
 
 
 def leaderboard():
     while True:
-        MOUSE_POS_LDR = pygame.mouse.get_pos()
+        mouse_pos_ldr = pygame.mouse.get_pos()
 
-        DISPLAY.fill("blue4")
+        display.fill("blue4")
 
-        TEXT_LDR = pixel_font(50).render("Leaderboard screen", True, "blue4")
-        RECT_LDR = TEXT_LDR.get_rect(center=(640, 240))
-        DISPLAY.blit(TEXT_LDR, RECT_LDR)
+        text_ldr = pixel_font(50).render("Leaderboard screen", True, "blue4")
+        rect_ldr = text_ldr.get_rect(center=(640, 240))
+        display.blit(text_ldr, rect_ldr)
 
-        GO_BACK = Button(image=pygame.image.load(
+        go_back = Button(image=pygame.image.load(
             "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"),pos_x = 640, pos_y = 240)
-        GO_BACK.update_button(DISPLAY)
+        go_back.update_button(display)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if GO_BACK.check_input(MOUSE_POS_LDR):
+                if go_back.check_input(mouse_pos_ldr):
                     menu()
         pygame.display.update()
 
 def menu():
     while True:
-        DISPLAY.blit(BACKGROUND, (0, 0))
+        display.blit(background, (0, 0))
 
-        MOUSE_POS_MENU = pygame.mouse.get_pos()
+        mouse_pos_menu = pygame.mouse.get_pos()
 
-        TEXT_MENU = pixel_font(100).render("MENU", True, "teal")
-        RECT_MENU = TEXT_MENU.get_rect(center=(640,100))
+        text_menu = pixel_font(100).render("MENU", True, "teal")
+        rect_menu = text_menu.get_rect(center=(640,100))
 
-        BUTTON_PLAY = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/play01.png"), pos_x = 640, pos_y = 240)
-        BUTTON_LDR = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/leaderboard01.png"),pos_x = 640, pos_y = 400)
-        BUTTON_CREDITS = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/about01.png"), pos_x = 640, pos_y = 500)
+        button_play = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/play01.png"), pos_x = 640, pos_y = 240)
+        button_ldr = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/leaderboard01.png"),pos_x = 640, pos_y = 400)
+        button_credits = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/about01.png"), pos_x = 640, pos_y = 500)
 
-        DISPLAY.blit(TEXT_MENU, RECT_MENU)
+        display.blit(text_menu, rect_menu)
 
         """if time, make the buttons change on mouse pos"""
-        # for button in [BUTTON_PLAY,BUTTON_CREDITS,BUTTON_LDR]:
+        # for button in [button_play,button_credits,button_ldr]:
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if BUTTON_PLAY.check_input(MOUSE_POS_MENU):
+                if button_play.check_input(mouse_pos_menu):
                     run()
-                # if BUTTON_LDR.check_input(MOUSE_POS_MENU):
+                # if button_ldr.check_input(mouse_pos_menu):
 #                     show leaderboard
-#                 if BUTTON_CREDITS.check_input(MOUSE_POS_MENU):
+#                 if button_credits.check_input(mouse_pos_menu):
 #                     show credits
         pygame.display.update()
 
