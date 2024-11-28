@@ -143,54 +143,43 @@ class Car(p.sprite.Sprite):
 
     def update(self):
         self.rect.topleft = (self.x, self.y)"""
-class Flag(p.sprite.Sprite):
+class Health(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         self.number = number
 
-        if self.number == 1:
-            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
-            self.visible = True #shows as visible
-            self.x = 50
-            self.width = 100
-            self.height = 100
+        self.visible = True
+        self.x = 30#opposite end of the screen
+        self.width = 50
+        self.height = 50
 
-        else:
-            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
-            self.visible = True
-            self.x = 580#opposite end of the screen
-            self.width = 100
-            self.height = 100
-
-        self.y = 200
-        self.image = p.transform.scale2x(self.image)
+        self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded     
+        self.image = p.transform.rotate(self.image, -25)
+        self.y = 30
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
+    def draw_bones(self, screen): 
+            for i in range(self.number): screen.blit(self.image, (self.x + i * (self.width + -30), self.y))
+            
 
     def update(self):
         if self.visible:
             self.collision()
             self.rect.center = (self.x, self.y)
+            self.draw_bones()
+        
 
     def collision(self):
         global SCORE, dog
 
-        flag_hit = p.sprite.spritecollide(self, dog_group, False, p.sprite.collide_mask)
-
-        if flag_hit:
-            self.visible = False
-
-            if self.number == 1:
-                white_flag.visible = True
-                if SCORE < 5:
+        Health_hit = p.sprite.spritecollide(self, dog_group, False, p.sprite.collide_mask)
+        if self.number == 1:
+            if SCORE < 5:
                     SwitchLevel()
-                else:
+            else:
                     dog_group.empty()
                     DeleteOtherItems()
                     EndScreen(1)
-
-            else:
-                green_flag.visible = True
 class Explosion(object):
     def __init__(self):
         self.costume = 1
@@ -266,22 +255,13 @@ class Road(p.sprite.Sprite):
 def scoreDisplay():
     global gameOn
     if gameOn:
-        score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
         start_ticks = p.time.get_ticks()
         elapsed_seconds = (p.time.get_ticks() - start_ticks) // 1000
-        timer_text = timer_font.render(f"Time: {elapsed_seconds}s", True, (0, 0, 0))
-    win.blit(score_text, (255, 10))#x and y position of score text
-    win.blit(timer_text, (10, 10))
+        """timer_text = timer_font.render(f"Time: {elapsed_seconds}s", True, (0, 0, 0))"""
+    """win.blit(timer_text, (10, 10))"""
     
     p.display.flip()
     
-def checkFlags():
-    for flag in flags:
-        if not flag.visible:
-            flag.kill()#if flag isn't visible kill the sprite
-        else:
-            if not flag.alive():
-                flag_group.add(flag)
 def SwitchLevel():
     global SCORE
 
@@ -304,18 +284,18 @@ def DeleteDog():
     dog.kill()
     """screen_group.draw(win)"""
     car_group.draw(win)
-    flag_group.draw(win)
+    Health_group.draw(win)
 
     """screen_group.update()"""
     car_group.update()
-    flag_group.update()
+    Health_group.update()
 
     p.display.update()
 def DeleteOtherItems():
     car_group.empty()
     
-    flag_group.empty()
-    flags.clear()
+    Health_group.empty()
+    Healths.clear()
 def EndScreen(n):
     global gameOn
 
@@ -337,9 +317,7 @@ win = p.display.set_mode((WIDTH, HEIGHT)) #dimensions for background
 p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
 
-SCORE = 0
-score_font = p.font.SysFont('comicsans', 35, True)#set font to comic sans, size 80px, bold
-timer_font = p.font.SysFont('comicsans', 32, True)
+"""timer_font = p.font.SysFont('comicsans', 32, True)"""
 # this is a bit more complex, may need help
 
 """bg = Screen()
@@ -350,12 +328,6 @@ road2 = Road(2)
 road_group = p.sprite.Group(road1, road2)
 road_group.add(road1, road2)
 
-"""hearts_group = p.sprite.Group()    
-for i in range(NUM_HEARTS):
-    heart = Health(i * HEART_WIDTH, 0)
-    hearts_group.add(heart)
-hearts_group.add(Health())"""
-
 dog = Dog()
 dog_group = p.sprite.Group()
 dog_group.add(dog)
@@ -364,12 +336,6 @@ slow_car = Car(1)
 fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
-
-green_flag = Flag(1)
-white_flag = Flag(2)
-flag_group = p.sprite.Group()
-flag_group.add(green_flag, white_flag)
-flags = [green_flag, white_flag]
 
 explosion = Explosion()
 
@@ -387,20 +353,19 @@ while run:
         
 
         scoreDisplay()
-        checkFlags()
         
         road_group.draw(win)
+        health = Health(5)
+        health.draw_bones(win)
         """hearts_group.draw(win)"""
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
-        flag_group.draw(win)
         
         road_group.update()
 
         car_group.update()
         dog_group.update()
-        flag_group.update()
 
         """screen_group.update()"""
 
