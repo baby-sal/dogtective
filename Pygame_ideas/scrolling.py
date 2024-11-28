@@ -1,5 +1,15 @@
 import pygame, sys, os
 
+def loadImage(fileName, useColorKey=False):
+    if os.path.isfile(fileName):
+        image = pygame.image.load(fileName)
+        image = image.convert_alpha()
+        # Return the image
+        return image
+    else:
+        raise Exception("Error loading image: " + fileName + " - Check filename and path?")
+
+screen = pygame.display.set_mode([sizex, sizey], pygame.FULLSCREEN)
 class Background():
     def __init__(self):
         self.colour = pygame.Color("black")
