@@ -1,7 +1,6 @@
 import pygame as p
 import pygame.time
 
-# from logic.components.entity import Entity
 from user_interface.game_config import HEIGHT, WIDTH
 
 # class for NPC and player entities

@@ -1,4 +1,3 @@
-from logic.components.entity import Entity
 import pygame
 from user_interface.game_config import HEIGHT, WIDTH
 
