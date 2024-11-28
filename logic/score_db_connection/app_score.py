@@ -10,7 +10,7 @@ def get_high_scores():
 
 @app.route("/add_score", methods=["POST"])
 def add_new_score():
-    nickname, score = request.get_json()
+    nickname, score = requests.get_json()
     return jsonify(add_new_score(nickname,score))
 
 if __name__ == "__main__":
