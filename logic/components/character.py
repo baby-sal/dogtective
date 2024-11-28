@@ -82,5 +82,5 @@ class Character(p.sprite.Sprite):
 
 # sample outputs for testing only:
 if __name__ == "__main__":
-    a = Character("Kharma Chameleon")
+    a = Character("Kharma Chameleon")#can we make this code more relevant please?
     print(a)
