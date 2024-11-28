@@ -26,7 +26,7 @@ class Character(p.sprite.Sprite):
         self.move = False
         self.direction = "right"
 
-        self.image = self.idle.animation_list[0]
+        self.image = self.idle.frame
         self.mask = p.mask.from_surface(self.image)
         self.rect = self.mask.get_rect()
 
@@ -65,17 +65,17 @@ class Character(p.sprite.Sprite):
         if self.direction == "right":
             if self.move:
                 self.walk.update_animation()
-                self.image = self.walk.animation_list[self.walk.frame]
+                self.image = self.walk.frame
             else:
                 self.idle.update_animation()
-                self.image = self.idle.animation_list[self.idle.frame]
+                self.image = self.idle.frame
         else:
             if self.move:
                 self.walk.update_animation()
-                self.image = pygame.transform.flip(self.walk.animation_list[self.walk.frame], True, False).convert_alpha()
+                self.image = pygame.transform.flip(self.walk.frame, True, False).convert_alpha()
             else:
                 self.idle.update_animation()
-                self.image = pygame.transform.flip(self.idle.animation_list[self.idle.frame], True, False).convert_alpha()
+                self.image = pygame.transform.flip(self.idle.frame, True, False).convert_alpha()
 
     def correction(self):
         """Prevents character going off the side of the screen"""

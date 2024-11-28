@@ -1,14 +1,16 @@
 import pygame
+import itertools
 
 class SpriteSheet():
     def __init__(self, link, scale, steps):
         sprite_sheet_image = pygame.image.load(link).convert_alpha()
         self.sheet = sprite_sheet_image
         self.scale = scale
-        self.frame = 0
+        self.animation_list = itertools.cycle(self.sprite_motion(steps))
+        self.frame = next(self.animation_list)
         self.last_update = pygame.time.get_ticks()
         self.animation_cooldown = 75
-        self.animation_list = self.sprite_motion(steps)
+
 
     def get_image(self, frame, width, height, scale, colour):
         # first need to make a blank surface
@@ -36,10 +38,8 @@ class SpriteSheet():
     def update_animation(self):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_update >= self.animation_cooldown:
-            self.frame += 1
+            self.frame = next(self.animation_list)
             self.last_update = current_time
-            if self.frame >= len(self.animation_list):  # loops back to first image in sprite sheet
-                self.frame = 0
         return self.frame
 
 '''
