@@ -3,15 +3,16 @@ import pygame.time
 
 from user_interface.game_config import HEIGHT, WIDTH
 
-# class for NPC and player entities
+# class for player character
 class Character(p.sprite.Sprite):
 
     def __init__(self, name, health=5):
         super().__init__()
+        self.name = name
         self.health = health
         self.x = 50
         self.y = HEIGHT / 2
-        self.vel = 4
+        self.speed = 4
         self.width = 100
         self.height = 50
         self.collision_immune = False
@@ -32,48 +33,43 @@ class Character(p.sprite.Sprite):
             self.collision_immune = False
         self.movement()
         self.correction()
-        self.checkCollision(car_group)
+        self.check_collision(car_group)
         self.rect.center = (self.x, self.y)
 
     def movement(self):
         keys = p.key.get_pressed()
 
         if keys[p.K_LEFT]:
-            self.x -= self.vel
-            #left key pressed negative velocity
-            self.image = self.dog2 #switch to dog image 2
-
+            self.x -= self.speed  # left key pressed negative velocity
+            self.image = self.dog2  # switch to dog image 2
 
         elif keys[p.K_RIGHT]:
-            self.x += self.vel
-            #right key pressed positive velocity
-            self.image = self.dog1 #switch to dog image 1
+            self.x += self.speed  # right key pressed positive velocity
+            self.image = self.dog1   # switch to dog image 1
 
         if keys[p.K_UP]:
-            self.y -= self.vel
-            # left key up negative velocity
+            self.y -= self.speed  # left key up negative velocity
 
         elif keys[p.K_DOWN]:
-            self.y += self.vel
-            # right key down positive velocity
+            self.y += self.speed  # right key down positive velocity
 
     def correction(self):
+        """Prevents character going off the side of the screen"""
         if self.x - self.width / 2 < 0:
-            self.x = self.width / 2 #prevents dog from going off of the screen on the right side of the screen
+            self.x = self.width / 2
 
         elif self.x + self.width / 2 > WIDTH:
-            self.x = WIDTH - self.width / 2 #prevents dog from going off of the screen on the left side of the screen
+            self.x = WIDTH - self.width / 2
 
         if self.y - self.width / 2 < 0:
-            self.y = self.width / 2 #prevents dog from going off of the screen on the top of the screen
+            self.y = self.width / 2
 
         elif self.y + self.width / 2 > WIDTH:
-            self.y = WIDTH - self.width / 2 #prevents dog from going off of the screen on the bottom of the screen
+            self.y = WIDTH - self.width / 2
 
-    def checkCollision(self, car_group):
+    def check_collision(self, car_group):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check and not self.collision_immune:
-            # explosion.explode(self.x, self.y)
             self.health -= car_check[0].damage
             print("Health: ", self.health)
             self.collision_immune = True
@@ -88,4 +84,3 @@ class Character(p.sprite.Sprite):
 if __name__ == "__main__":
     a = Character("Kharma Chameleon")
     print(a)
-    a.collision_damage(10)

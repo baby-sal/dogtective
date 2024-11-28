@@ -1,7 +1,6 @@
 import pygame
-from user_interface.game_config import HEIGHT, WIDTH
+from user_interface.game_config import HEIGHT
 
-# this will need more functionality to justify its existence at some point
 class Environmental(pygame.sprite.Sprite):
 
     def __init__(self, name, image, x, y, scale):
@@ -38,7 +37,7 @@ class Obstacle(Environmental):
         elif self.rect.y + self.rect.height > HEIGHT:
             self.rect.y = HEIGHT - self.rect.height
             self.speed *= -1
-            #prevents cars from going off the edge of the background image
+            # prevents obstacle from going off the edge of the background image
 
     def __str__(self):
         return f"Name: {self.name}, Damage:{self.speed}, Speed: {self.speed}, "
