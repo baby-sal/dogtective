@@ -2,6 +2,8 @@ import pygame as p
 import pygame.time
 
 from user_interface.game_config import HEIGHT, WIDTH
+from logic.assets.get_sprite_image import SpriteSheet
+
 
 # class for player character
 class Character(p.sprite.Sprite):
@@ -18,20 +20,28 @@ class Character(p.sprite.Sprite):
         self.collision_immune = False
         self.collision_time = 0
 
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
-        # set width and height for dog image 1
-        self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
-        # set width and height for dog image 2
-        self.dog2 = p.transform.flip(self.dog1, True, False)  # flips dog image 1 to face the other direction
+        # self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
+        # # set width and height for dog image 1
+        # self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
+        # # set width and height for dog image 2
+        # self.dog2 = p.transform.flip(self.dog1, True, False)  # flips dog image 1 to face the other direction
 
-        self.image = self.dog1
-        self.rect = self.image.get_rect()
+        self.walk_sprite = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5)
+        self.walk_right = self.walk_sprite.sprite_motion(6)
+        self.walk_left = [pygame.transform.flip(frame, True, False).convert_alpha() for frame in self.walk_right]
+        self.move = False
+        self.direction = "right"
+
+        self.image = self.walk_right[0]
         self.mask = p.mask.from_surface(self.image)
+        self.rect = self.mask.get_rect()
 
     def update(self, car_group):
         if pygame.time.get_ticks() - self.collision_time > 3000:  # The time is in ms.
             self.collision_immune = False
+        self.move = False
         self.movement()
+        self.update_animation()
         self.correction()
         self.check_collision(car_group)
         self.rect.center = (self.x, self.y)
@@ -41,17 +51,34 @@ class Character(p.sprite.Sprite):
 
         if keys[p.K_LEFT]:
             self.x -= self.speed  # left key pressed negative velocity
-            self.image = self.dog2  # switch to dog image 2
+            self.direction = "left"
+            self.move = True
 
         elif keys[p.K_RIGHT]:
             self.x += self.speed  # right key pressed positive velocity
-            self.image = self.dog1   # switch to dog image 1
+            self.direction = "right"
+            self.move = True
 
         if keys[p.K_UP]:
             self.y -= self.speed  # left key up negative velocity
+            self.move = True
 
         elif keys[p.K_DOWN]:
             self.y += self.speed  # right key down positive velocity
+            self.move = True
+
+    def update_animation(self):
+        self.walk_sprite.update_animation()
+        if self.direction == "right":
+            if self.move:
+                self.image = self.walk_right[self.walk_sprite.frame]
+            else:
+                self.image = self.walk_right[0]
+        else:
+            if self.move:
+                self.image = self.walk_left[self.walk_sprite.frame]
+            else:
+                self.image = self.walk_left[0]
 
     def correction(self):
         """Prevents character going off the side of the screen"""

@@ -21,11 +21,10 @@ class Environmental(pygame.sprite.Sprite):
 
 class Obstacle(Environmental):
 
-    def __init__(self, name, image, x, y, scale, damage, speed, direction):
+    def __init__(self, name, image, x, y, scale, damage, speed):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
         self.speed = speed
-        self.direction = direction  # vector, [1, 0] = right, [-1, 0] = left, [0, 1] = down, [0, -1] = up
 
     def update(self):
         self.rect.y += self.speed
