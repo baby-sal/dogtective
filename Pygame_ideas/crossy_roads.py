@@ -1,6 +1,9 @@
-import pygame as p
-import time
+import pygame as p#saves typing pygame all the time
+import time#used to make dog move slower
 
+NUM_HEARTS = 5
+HEART_WIDTH = 50
+HEART_HEIGHT = 50
 class Dog(p.sprite.Sprite):#inheriting dog from sprite module
     def __init__(self):
         super().__init__()
@@ -12,22 +15,22 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
         #IMAGES NEED TO UPDATE
         #DOG 1 right
-        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/walk,png')
-        #DOG 2 left
+        self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
+        """#DOG 2 left
         self.dog2 = p.image.load('dog2.png') # update to file name
         #Dog idle right
-        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png')
+        self.dog3 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Walk.png')
         #Dog idle left - need to update
-        self.dog4 = p.image.load('dog4.png')
+        self.dog4 = p.image.load('dog4.png')"""
         #set width and height for dog image 1
         self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
         #set width and height for dog image 2
-        self.dog2 = p.transform.scale(self.dog2, (self.width, self.height))
+        self.dog2 = p.transform.flip(self.dog1, True, False)#flips dog image 1 to face the other direction
         #set width and height for dog image 3
-        self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
+        """self.dog3 = p.transform.scale(self.dog3, (self.width, self.height))
         #set width and height for dog image 3
-        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))
-
+        self.dog4 = p.transform.scale(self.dog4, (self.width, self.height))"""
+        
         self.image = self.dog1
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
@@ -40,12 +43,12 @@ class Dog(p.sprite.Sprite):#inheriting dog from sprite module
 
     def movement(self):
         keys = p.key.get_pressed()
-        if not any(keys):#if no keys are pressed
+        """ if not any(keys):#if no keys are pressed
             if 'right' == 'right':
                 self.image = self.dog3
             else:
                 self.image = self.dog4
-                #shows different idle images based on the last key pressed
+                #shows different idle images based on the last key pressed"""
 
         if keys[p.K_LEFT]:
             self.x -= self.vel
@@ -87,19 +90,21 @@ class Car(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         if number == 1:
-            self.x = 190 #image size
-            self.image = p.image.load('Slow Car.png')#rename once proper image loaded will start with .
+            self.x = 190 #initial x position
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+            """self.image = p.transform.rotate(self.image, 90)#rotates the car 90 degrees"""
             self.vel = -4 #velocity of the car (slow)
 
         else:
-            self.x = 460 #image size
-            self.image = p.image.load('Fast Car.png')#rename once proper image loaded will start with .
+            self.x = 460 #where it is on the x axis
+            self.image = p.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
+            """self.image = p.transform.rotate(self.image, -90)#rotates the car -90 degrees"""
             self.vel = 5 #velocity of the car (fast)
             #both cars go at different directions
 
-        self.y = HEIGHT / 2
-        self.width = 100
-        self.height = 150
+        self.y = 300
+        self.width = 100#image width
+        self.height = 150#image height
         self.image = p.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
@@ -119,7 +124,7 @@ class Car(p.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
             #prevents cars from going off the edge of the background image
-class Screen(p.sprite.Sprite):
+"""class Screen(p.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.img1 = p.image.load('Scene.png')#Update with scenery images
@@ -137,23 +142,27 @@ class Screen(p.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        self.rect.topleft = (self.x, self.y)
-"""class Flag(p.sprite.Sprite):
+        self.rect.topleft = (self.x, self.y)"""
+class Flag(p.sprite.Sprite):
     def __init__(self, number):
         super().__init__()
         self.number = number
 
         if self.number == 1:
-            self.image = p.image.load('green flag.png')#update name once image loaded
-            self.visible = False #invisible until white flag is touched
+            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
+            self.visible = True #shows as visible
             self.x = 50
+            self.width = 100
+            self.height = 100
 
         else:
-            self.image = p.image.load('White flag.png')#update name once image loaded
+            self.image = p.image.load('../Pygame_ideas/src/Bone.png').convert_alpha()#update name once image loaded
             self.visible = True
             self.x = 580#opposite end of the screen
+            self.width = 100
+            self.height = 100
 
-        self.y = HEIGHT / 2
+        self.y = 200
         self.image = p.transform.scale2x(self.image)
         self.rect = self.image.get_rect()
         self.mask = p.mask.from_surface(self.image)
@@ -181,23 +190,40 @@ class Screen(p.sprite.Sprite):
                     EndScreen(1)
 
             else:
-                green_flag.visible = True"""
+                green_flag.visible = True
 class Explosion(object):
     def __init__(self):
         self.costume = 1
-        self.width = 140
-        self.height = 140
-        self.image = p.image.load('../logic/characters/dogtective_sprite/Hurt.png')
-        self.image = p.transform.scale(self.image, (self.width, self.height))#updates the size of the image
+        self.width = 100
+        self.height = 50
+        #hurt dog right facing
+        self.dog_hurt_right = p.image.load('../logic/assets/images/characters/dogtective_sprite/Hurt.png').convert_alpha()
+        self.dog_hurt_right = p.transform.scale(self.dog_hurt_right, (self.width, self.height))#updates the size of the image
+        #hurt dog left facing
+        self.dog_hurt_left = p.transform.flip(self.dog_hurt_right, True, False)#flip dog to face left.
+        
+        self.image = self.dog_hurt_right
+        self.rect = self.image.get_rect()
+        self.mask = p.mask.from_surface(self.image)
 
-    def explode(self, x, y):
+    def explode(self, x, y, last_direction):
         x = x - self.width / 2
         y = y - self.height / 2
+        
+        #check the last direction
+        if last_direction == 'left':
+            self.image = self.dog_hurt_left
+        else:
+            self.image = self.dog_hurt_right
+        
         DeleteDog()
 
         while self.costume < 9:
-            self.image = p.image.load('../logic/characters/dogtective_sprite/Hurt.png')
-            self.image = p.transform.scale(self.image, (self.width, self.height))  # updates the size of the image
+            if last_direction == 'left':
+                self.image = self.dog_hurt_left
+            else:
+                self.image = self.dog_hurt_right
+                
             win.blit(self.image, (x, y))
             p.display.update()
 
@@ -206,19 +232,56 @@ class Explosion(object):
 
         DeleteOtherItems()
         EndScreen(0)
+"""class Health(p.sprite.Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = heart_image
+        self.rect = self.image.get_rect(topleft=(x, y))
+    
+    heart_image = p.image.load('Pygame_ideas\src\heart.png').convert_alpha()
+    heart_image = p.transform.scale(heart_image, (HEART_WIDTH, HEART_HEIGHT))"""
+    
+    
+
+
+class Road(p.sprite.Sprite):
+    def __init__(self, number):
+        super().__init__()
+        if number == 1:
+            self.x = 150 #where it is on the x axis
+            
+        else:
+            self.x = 420 #where it is on the x axis
+        
+        self.image = p.image.load('Pygame_ideas\src\Road.png').convert_alpha()            
+        self.width = 90#image width
+        self.height = 480#image height
+        self.image = p.transform.scale(self.image, (self.width, self.height))
+        self.y = 0
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))
+        self.mask = p.mask.from_surface(self.image)
+        
+        def update(self):
+            pass
 def scoreDisplay():
     global gameOn
-
     if gameOn:
-        score_text = score_font.render(str(SCORE) + ' / 5', True, (0, 0, 0))#set font to black, and show the level out of 5
+        score_text = score_font.render(f"Score: {SCORE}", True, (0, 0, 0))#set font to black, and show the level out of 5
+        start_ticks = p.time.get_ticks()
+        elapsed_seconds = (p.time.get_ticks() - start_ticks) // 1000
+        timer_text = timer_font.render(f"Time: {elapsed_seconds}s", True, (0, 0, 0))
     win.blit(score_text, (255, 10))#x and y position of score text
-"""def checkFlags():
+    win.blit(timer_text, (10, 10))
+    
+    p.display.flip()
+    
+def checkFlags():
     for flag in flags:
         if not flag.visible:
             flag.kill()#if flag isn't visible kill the sprite
         else:
             if not flag.alive():
-                flag_group.add(flag)"""
+                flag_group.add(flag)
 def SwitchLevel():
     global SCORE
 
@@ -239,31 +302,31 @@ def DeleteDog():
     global dog
 
     dog.kill()
-    screen_group.draw(win)
+    """screen_group.draw(win)"""
     car_group.draw(win)
-    """flag_group.draw(win)"""
+    flag_group.draw(win)
 
-    screen_group.update()
+    """screen_group.update()"""
     car_group.update()
-    """flag_group.update()"""
+    flag_group.update()
 
     p.display.update()
 def DeleteOtherItems():
     car_group.empty()
-    """
+    
     flag_group.empty()
-    flags.clear()"""
+    flags.clear()
 def EndScreen(n):
     global gameOn
 
     gameOn = False
-    if n == 0:
+    """if n == 0:
         bg.image = bg.img3 #you loose background image, need to update based on images saved
 
     elif n == 1:
         bg.image = bg.img2 #you win background image, need to update based on images saved
 def Health():
-    pass#need to update later on once images loaded and at adding health stage
+    pass#need to update later on once images loaded and at adding health stage"""
 
 WIDTH = 640
 HEIGHT = 480
@@ -275,14 +338,23 @@ p.display.set_caption('Crossy Road')
 clock = p.time.Clock() # timer
 
 SCORE = 0
-score_font = p.font.SysFont('comicsans', 80, True)#set font to comic sans, size 80px, bold
-"""HEALTH = 5
-health.font = p.font.SysFont('comicsans', 80, True)"""#this one needs work to be similar to score but be image based instead,
+score_font = p.font.SysFont('comicsans', 35, True)#set font to comic sans, size 80px, bold
+timer_font = p.font.SysFont('comicsans', 32, True)
 # this is a bit more complex, may need help
 
-bg = Screen()
+"""bg = Screen()
 screen_group = p.sprite.Group()
-screen_group.add(bg)
+screen_group.add(bg)"""
+road1 = Road(1)
+road2 = Road(2)
+road_group = p.sprite.Group(road1, road2)
+road_group.add(road1, road2)
+
+"""hearts_group = p.sprite.Group()    
+for i in range(NUM_HEARTS):
+    heart = Health(i * HEART_WIDTH, 0)
+    hearts_group.add(heart)
+hearts_group.add(Health())"""
 
 dog = Dog()
 dog_group = p.sprite.Group()
@@ -293,12 +365,11 @@ fast_car = Car(2)
 car_group = p.sprite.Group()
 car_group.add(slow_car, fast_car)
 
-"""
 green_flag = Flag(1)
 white_flag = Flag(2)
-flag_group = p.sprite.group()
+flag_group = p.sprite.Group()
 flag_group.add(green_flag, white_flag)
-flags = [green_flag, white_flag]"""
+flags = [green_flag, white_flag]
 
 explosion = Explosion()
 
@@ -306,23 +377,32 @@ gameOn = True
 
 run = True
 while run:
+    clock = p.time.Clock()#makes the game less laggy
     clock.tick(60)#sets to 60 frames per second
     for event in p.event.get():
         if event.type == p.QUIT:
             run = False # end game if quit is entered
-
-        screen_group.draw(win)# draw the background based on images
+        win.fill((0, 255, 0))#sets the background colour to show bright green"""
+        """screen_group.draw(win)# draw the background based on images"""
+        
 
         scoreDisplay()
-        """checkFlags()"""
+        checkFlags()
+        
+        road_group.draw(win)
+        """hearts_group.draw(win)"""
 
         car_group.draw(win)# show the cars on the screen
         dog_group.draw(win)  # show the dogs on the screen similar to turtle
+        flag_group.draw(win)
+        
+        road_group.update()
 
         car_group.update()
         dog_group.update()
+        flag_group.update()
 
-        screen_group.update()
+        """screen_group.update()"""
 
         p.display.update()#user can see the changes going on
 
