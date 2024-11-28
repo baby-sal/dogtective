@@ -9,7 +9,26 @@ def loadImage(fileName, useColorKey=False):
     else:
         raise Exception("Error loading image: " + fileName + " - Check filename and path?")
 
-screen = pygame.display.set_mode([sizex, sizey], pygame.FULLSCREEN)
+def screenSize(sizex, sizey, xpos=None, ypos=None, fullscreen=False):
+    global screen
+    global background
+    if xpos != None and ypos != None:
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % (xpos, ypos + 50)
+    else:
+        windowInfo = pygame.display.Info()
+        monitorWidth = windowInfo.current_w
+        monitorHeight = windowInfo.current_h
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((monitorWidth - sizex) / 2, (monitorHeight - sizey) / 2)
+    if fullscreen:
+        screen = pygame.display.set_mode([sizex, sizey], pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode([sizex, sizey])
+    background = Background()
+    screen.fill(background.colour)
+    pygame.display.set_caption("Graphics Window")
+    background.surface = screen.copy()
+    pygame.display.update()
+    return screen
 class Background():
     def __init__(self):
         self.colour = pygame.Color("black")
