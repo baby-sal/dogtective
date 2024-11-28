@@ -39,7 +39,7 @@ def scoreDisplay():
     
     pygame.display.flip()
     
-win = p.display.set_mode((WIDTH, HEIGHT))
+win = pygame.display.set_mode((WIDTH, HEIGHT))
 bg = Screen()
 screen_group = pygame.sprite.Group()
 screen_group.add(bg)
