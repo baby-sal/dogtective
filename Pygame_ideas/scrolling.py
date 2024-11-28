@@ -36,8 +36,8 @@ class Background():
         self.surface = screen.copy()
 
     def setColour(self, colour):
-        self.colour = parseColour(colour)
-        screen.fill(self.colour)
+        """self.colour = parseColour(colour)
+        screen.fill(self.colour)"""
         pygame.display.update()
         self.surface = screen.copy()
 
