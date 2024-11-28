@@ -60,7 +60,7 @@ class DbClass(object):
         try:
             database.db_connect()
             sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
-            result = database.get_query(sql_query)
+            result = database.get_query(sql_query)#it doesn't like assigning this to a variable, it wants you to just return this line
             return result
         finally:
             database.db_disconnect()
