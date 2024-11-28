@@ -1,14 +1,14 @@
 import pygame
 
 class SpriteSheet():
-    def __init__(self, link, scale):
+    def __init__(self, link, scale, steps):
         sprite_sheet_image = pygame.image.load(link).convert_alpha()
         self.sheet = sprite_sheet_image
         self.scale = scale
         self.frame = 0
         self.last_update = pygame.time.get_ticks()
         self.animation_cooldown = 75
-        self.animation_list = []
+        self.animation_list = self.sprite_motion(steps)
 
     def get_image(self, frame, width, height, scale, colour):
         # first need to make a blank surface
@@ -24,11 +24,14 @@ class SpriteSheet():
 
         black = (0, 0, 0)  # background of image
 
+        # Create animation list i.e., list containing each animation frame
+        animation_list = []
+
         for x in range(steps):
             # sprite sheet images are 48x48 pixels, therefore increase size by factor of 2 for 96x96
             # this can be changed
-            self.animation_list.append(self.get_image(x, 48, 48, self.scale, black))
-        return self.animation_list
+            animation_list.append(self.get_image(x, 48, 48, self.scale, black))
+        return animation_list
 
     def update_animation(self):
         current_time = pygame.time.get_ticks()

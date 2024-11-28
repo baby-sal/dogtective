@@ -20,19 +20,13 @@ class Character(p.sprite.Sprite):
         self.collision_immune = False
         self.collision_time = 0
 
-        # self.dog1 = p.image.load('../logic/assets/images/characters/dogtective_sprite/Idle.png').convert_alpha()
-        # # set width and height for dog image 1
-        # self.dog1 = p.transform.scale(self.dog1, (self.width, self.height))
-        # # set width and height for dog image 2
-        # self.dog2 = p.transform.flip(self.dog1, True, False)  # flips dog image 1 to face the other direction
+        self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
+        self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
 
-        self.walk_sprite = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5)
-        self.walk_right = self.walk_sprite.sprite_motion(6)
-        self.walk_left = [pygame.transform.flip(frame, True, False).convert_alpha() for frame in self.walk_right]
         self.move = False
         self.direction = "right"
 
-        self.image = self.walk_right[0]
+        self.image = self.idle.animation_list[0]
         self.mask = p.mask.from_surface(self.image)
         self.rect = self.mask.get_rect()
 
@@ -68,17 +62,20 @@ class Character(p.sprite.Sprite):
             self.move = True
 
     def update_animation(self):
-        self.walk_sprite.update_animation()
         if self.direction == "right":
             if self.move:
-                self.image = self.walk_right[self.walk_sprite.frame]
+                self.walk.update_animation()
+                self.image = self.walk.animation_list[self.walk.frame]
             else:
-                self.image = self.walk_right[0]
+                self.idle.update_animation()
+                self.image = self.idle.animation_list[self.idle.frame]
         else:
             if self.move:
-                self.image = self.walk_left[self.walk_sprite.frame]
+                self.walk.update_animation()
+                self.image = pygame.transform.flip(self.walk.animation_list[self.walk.frame], True, False).convert_alpha()
             else:
-                self.image = self.walk_left[0]
+                self.idle.update_animation()
+                self.image = pygame.transform.flip(self.idle.animation_list[self.idle.frame], True, False).convert_alpha()
 
     def correction(self):
         """Prevents character going off the side of the screen"""
