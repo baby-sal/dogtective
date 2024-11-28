@@ -22,6 +22,7 @@ class Character(p.sprite.Sprite):
 
         self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
         self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
+        self.hurt = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Hurt.png', 1.5, 2)
 
         self.move = False
         self.direction = "right"
@@ -31,7 +32,7 @@ class Character(p.sprite.Sprite):
         self.rect = self.mask.get_rect()
 
     def update(self, car_group):
-        if pygame.time.get_ticks() - self.collision_time > 3000:  # The time is in ms.
+        if pygame.time.get_ticks() - self.collision_time > 1500:  # The time is in ms.
             self.collision_immune = False
         self.move = False
         self.movement()
@@ -62,20 +63,18 @@ class Character(p.sprite.Sprite):
             self.move = True
 
     def update_animation(self):
-        if self.direction == "right":
-            if self.move:
-                self.walk.update_animation()
-                self.image = self.walk.frame
-            else:
-                self.idle.update_animation()
-                self.image = self.idle.frame
+        if self.move:
+            self.walk.cycle_animation()
+            self.image = self.walk.frame
+        elif self.collision_immune:
+            self.hurt.cycle_animation()
+            self.image = self.hurt.frame
         else:
-            if self.move:
-                self.walk.update_animation()
-                self.image = pygame.transform.flip(self.walk.frame, True, False).convert_alpha()
-            else:
-                self.idle.update_animation()
-                self.image = pygame.transform.flip(self.idle.frame, True, False).convert_alpha()
+            self.idle.cycle_animation()
+            self.image = self.idle.frame
+
+        if self.direction == "left":
+            self.image = pygame.transform.flip(self.image, True, False).convert_alpha()
 
     def correction(self):
         """Prevents character going off the side of the screen"""

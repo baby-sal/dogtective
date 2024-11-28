@@ -35,7 +35,7 @@ class SpriteSheet():
             animation_list.append(self.get_image(x, 48, 48, self.scale, black))
         return animation_list
 
-    def update_animation(self):
+    def cycle_animation(self):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_update >= self.animation_cooldown:
             self.frame = next(self.animation_list)
