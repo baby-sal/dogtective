@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
+import requests
 from db_utils_score import get_top_ten, add_new_score
 
 app = Flask(__name__)
@@ -9,8 +10,10 @@ def get_high_scores():
 
 @app.route("/add_score", methods=["POST"])
 def add_new_score():
-    nickname, score = request.get_json()
+    nickname, score = requests.get_json()
     return jsonify(add_new_score(nickname,score))
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+#debug outputs: cannot import name 'get_top_ten' from 'db_utils_score'

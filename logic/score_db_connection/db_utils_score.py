@@ -16,6 +16,7 @@ class DbClass(object):
         self.user = USER
         self.password = PASSWORD
         self.database = DATABASE
+        #as these are all set to empty string it prevents this file from running, so can't show what it does
 
     def db_connect(self):
         if DbClass.connection is None:
@@ -59,16 +60,16 @@ class DbClass(object):
         try:
             database.db_connect()
             sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
-            result = database.get_query(sql_query)
+            result = database.get_query(sql_query)#it doesn't like assigning this to a variable, it wants you to just return this line
             return result
         finally:
             database.db_disconnect()
 
-    def add_new_score(nickname, score):
+    def add_new_score(nickname, score):#this line flags as should be self, score in parameters instead of nickname, score
         database = DbClass(HOST, USER, PASSWORD, DATABASE)
         try:
             database.db_connect()
-            sql_query = f"UPDATE high_scores SET date = CURDATE(), nickname = {nickname}, score = {score}"
+            sql_query = f"UPDATE high_scores SET date = CURDATE(), nickname = {nickname}, score = {score}"#CURDATE is an unknown word
             database.update_query(sql_query, nickname, score)
         finally:
             database.db_disconnect()
