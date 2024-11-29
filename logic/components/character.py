@@ -85,11 +85,11 @@ class Character(p.sprite.Sprite):
         elif self.x + self.width / 2 > WIDTH:
             self.x = WIDTH - self.width / 2
 
-        if self.y - self.width / 2 < 0:
-            self.y = self.width / 2
+        if self.y - self.height / 2 < 0:
+            self.y = self.height / 2
 
-        elif self.y + self.width / 2 > WIDTH:
-            self.y = WIDTH - self.width / 2
+        elif self.y + self.width / 2 > HEIGHT:
+            self.y = HEIGHT - self.width / 2
 
     def check_collision(self, car_group):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
