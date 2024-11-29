@@ -6,7 +6,7 @@ from user_interface.game_config import HEIGHT, WIDTH
 # class for player character
 class Character(p.sprite.Sprite):
 
-    def __init__(self, name, health=5):
+    def __init__(self, name, health):
         super().__init__()
         self.name = name
         self.health = health
@@ -70,7 +70,7 @@ class Character(p.sprite.Sprite):
     def check_collision(self, car_group):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check and not self.collision_immune:
-            self.health -= car_check[0].damage
+            self.health.current -= car_check[0].damage
             print("Health: ", self.health)
             self.collision_immune = True
             self.collision_time = pygame.time.get_ticks()
@@ -78,9 +78,3 @@ class Character(p.sprite.Sprite):
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"
-
-
-# sample outputs for testing only:
-if __name__ == "__main__":
-    a = Character("Kharma Chameleon")#can we make this code more relevant please?
-    print(a)
