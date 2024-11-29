@@ -71,10 +71,9 @@ class Character(p.sprite.Sprite):
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
         if car_check and not self.collision_immune:
             self.health.current -= car_check[0].damage
-            print("Health: ", self.health)
+            # print(self.health.current)    # uncomment for testing
             self.collision_immune = True
             self.collision_time = pygame.time.get_ticks()
-            print(self.collision_time)
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"
