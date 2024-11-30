@@ -11,7 +11,7 @@ class DbClass(object):
 
     connection = None
 
-    def __init__(self, host, user, password, database):
+    def __init__(self, HOST, USER, PASSWORD, DATABASE):
         self.host = HOST
         self.user = USER
         self.password = PASSWORD
