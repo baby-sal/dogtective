@@ -92,7 +92,7 @@ def menu():
         dog_image(640,600)
 
         button_play = Button(image = None, pos_x = 640, pos_y = 350, font=pixel_font(75),
-         colour="darksalmon", text_in="play")
+         colour="brown", text_in="play")
         button_ldr = Button(image = None, pos_x = 640, pos_y = 425, font=pixel_font(75),
          colour="lightsalmon", text_in="LEADERBOARD")
         button_credits = Button(image = None, pos_x = 640, pos_y = 500, font=pixel_font(75),
