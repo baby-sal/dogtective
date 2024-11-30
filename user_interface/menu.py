@@ -8,13 +8,11 @@ pygame.init()
 display = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dogtective: Main Menu")
 background = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
-background= pygame.transform.smoothscale(background, display.get_size())
+background = pygame.transform.smoothscale(background, display.get_size())
 
 
 def pixel_font(size):
     return pygame.font.Font("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf", size)
-
-
 
 def leaderboard():
     while True:
@@ -32,7 +30,24 @@ def leaderboard():
 
 
 def credit_screen():
-    while True
+    while True:
+        pygame.display.set_caption("Dogtective: Credits")
+        credits_mouse_pos = pygame.mouse.get_pos()
+
+        display.fill("pink")
+
+        text_credits = pixel_font(50).render("CREDITS: \nAbbeygayle\nZarrin\nMel\nIman\nEstelle\nSally", True, "darkslateblue")
+
+        rect_credits = text_credits.get_rect(center=(640, 300))
+
+        display.blit(text_credits,rect_credits)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
 
 def menu():
     while True:
@@ -42,7 +57,7 @@ def menu():
 
         text_menu = pixel_font(150).render("MENU", True, "darkslateblue")
         rect_menu = text_menu.get_rect(center=(640,150))
-        dog_pic =
+        # dog_pic =
 
         button_play = Button(image = None, pos_x = 640, pos_y = 300, font=pixel_font(100),
          colour="crimson", click_colour="white", text_in="play")
@@ -66,9 +81,9 @@ def menu():
                 if button_play.check_input(mouse_pos_menu):
                     run()
                 # if button_ldr.check_input(mouse_pos_menu):
-                #         #leaderboard()
-                # if button_credits.check_input(mouse_pos_menu):
-                #         #credits()
+                #     leaderboard()
+                if button_credits.check_input(mouse_pos_menu):
+                    credit_screen()
         pygame.display.update()
 
 menu()
