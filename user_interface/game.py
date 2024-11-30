@@ -50,6 +50,12 @@ class GameRunner:
 
         pygame.display.update()
 
+    def load_background_image(self):
+        return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+
+    def render_background_image(self):
+        self.game_display.blit(self.background_image, (0, 0))
+
     def render_all(self, *groups):
         for group in groups:
             group.draw(self.game_display)
