@@ -21,6 +21,7 @@ class GameRunner:
         self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
+        self.background_image = self.load_background_image()
 
         health = Health(5)
         self.health_group = pygame.sprite.Group()
@@ -38,13 +39,11 @@ class GameRunner:
 
         pygame.display.update()
 
-    def background_image(self):
-        image = pygame.image.load(
-            '../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
-        return image
+    def load_background_image(self):
+        return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
 
     def render_background_image(self):
-        self.game_display.blit(self.background_image())
+        self.game_display.blit(self.background_image, (0, 0))
 
     def render_all(self, *groups):
         for group in groups:
@@ -65,7 +64,8 @@ class GameRunner:
                     run = False
 
             if self.dog.health.current > 0:
-                self.game_display.fill((50, 150, 50))
+                """self.game_display.fill((50, 150, 50))"""
+                self.render_background_image()
 
                 self.render_all(self.car_group, self.health_group)
                 self.render_dog(self.car_group)
