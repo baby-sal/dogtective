@@ -41,7 +41,7 @@ class GameRunner:
         self.car_group.add(car1, car2, car3)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
-        self.ball = Environmental(ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1)
+        self.ball = Environmental("ball", ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1, 100, 100)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self)
 
