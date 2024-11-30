@@ -59,9 +59,8 @@ class GameRunner:
             if self.dog.health.current > 0:
                 self.game_display.fill((50, 150, 50))
 
-                self.render_all(self.car_group)
+                self.render_all(self.car_group, self.health_group)
                 self.render_dog(self.car_group)
-                self.health_group.update(self.game_display)
 
                 pygame.display.update()
                 self.clock.tick(config.FPS)

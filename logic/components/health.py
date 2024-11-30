@@ -14,22 +14,19 @@ class Health(pygame.sprite.Sprite):
         self.width = 50
         self.height = 50
 
-        self.image = pygame.image.load('../logic/assets/images/objects/Bone.png').convert_alpha()
-        self.image = pygame.transform.rotate(self.image, -25)
-        self.rect = self.image.get_rect()
-        self.mask = pygame.mask.from_surface(self.image)
+        self.bone = pygame.image.load('../logic/assets/images/objects/Bone.png').convert_alpha()
+        self.bone = pygame.transform.rotate(self.bone, -25)
+        self.image = self.bone
+        self.rect = self.bone.get_rect()
 
-    def draw_bones(self, screen): 
+    def draw_bones(self):
+        health_surface = pygame.Surface((self.width * 5, self.height))
         for i in range(self.current):
-            screen.blit(self.image, (self.x + i * (self.width + -30), self.y))
+            health_surface.blit(self.bone, (i * (self.width - 30), 0))
+        self.image = health_surface
+        self.image.set_colorkey((0, 0, 0))
 
-    def update(self, screen):
+    def update(self):
         if self.visible:
             self.rect.center = (self.x, self.y)
-            self.draw_bones(screen)
-
-# """Health_hit = pygame.sprite.spritecollide(self, dog_group, False, pygame.sprite.collide_mask)"""
-#
-# win = pygame.display.set_mode((WIDTH, HEIGHT))
-# health = Health(5)
-# health.draw_bones(win)
+            self.draw_bones()
