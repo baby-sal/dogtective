@@ -81,10 +81,9 @@ def menu():
 
         text_blit("MENU", 100,"royalblue4", 640, 300)
 
-        """trying to put the dog on the menu screen but looks weird"""
-        # smol_dog_pic = pygame.transform.scale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/dogtective.png").convert()), (50,70))
-        # rect_dog = smol_dog_pic.get_rect(center=(640,575))
-        # display.blit(smol_dog_pic,rect_dog)
+        smol_dog_pic = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/dogtective_sprite/Walk.png").convert()
+        rect_dog = smol_dog_pic.get_rect(center=(640,212))
+        display.blit(smol_dog_pic,rect_dog)
 
         button_play = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(75),
          colour="darksalmon", text_in="play")
