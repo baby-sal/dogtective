@@ -8,6 +8,7 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
+from menu_display import MenuDisplay
 
 class GameState(Enum):
     MENU = 1
@@ -53,6 +54,8 @@ class GameRunner:
 
         pygame.display.update()
 
+        self.menu_display = MenuDisplay()
+
     def load_background_image(self):
         return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
 
@@ -64,10 +67,9 @@ class GameRunner:
         font = pygame.font.Font(None, 74)
         text = font.render("Dogtective", True, (255, 255, 255))
         self.game_display.blit(text, (
-        self.dis_width // 2 - text.get_width() // 2, self.dis_height // 2 - text.get_height() // 2))
-
-        sub_text = pygame.font.Font(None, 36).render("Press Enter to Play", True, (255, 255, 255))
-        self.game_display.blit(sub_text, (self.dis_width // 2 - sub_text.get_width() // 2, self.dis_height // 2 + 50))
+            self.dis_width // 2 - text.get_width() // 2, self.dis_height // 2 - text.get_height() // 2))
+        # Use the MenuDisplay instance to render the menu
+        self.menu_display.menu()
 
     def render_game_over(self):
         self.game_display.fill((0, 0, 0))  # Background color for game over screen
