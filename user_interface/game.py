@@ -34,14 +34,14 @@ class GameRunner:
         car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
         car_img2 = pygame.image.load('../logic/assets/images/obstacles/green_car.png').convert_alpha()
         car_img3 = pygame.image.load('../logic/assets/images/obstacles/red_car.png').convert_alpha()
-        car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3)
-        car2 = Obstacle("car2", car_img2, 550, 600, 0.2, 2, -5)
-        car3 = Obstacle("car3", car_img3, 975, 800, 0.2, 1, 3)
+        car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3, 155, 355)
+        car2 = Obstacle("car2", car_img2, 550, 600, 0.2, 2, -5, 155, 355)
+        car3 = Obstacle("car3", car_img3, 975, 800, 0.2, 1, 3, 155, 355)
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
-        self.ball = ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1
+        self.ball = Environmental(ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self)
 
