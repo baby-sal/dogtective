@@ -53,7 +53,8 @@ class GameRunner:
         pygame.display.update()
 
     def load_background_image(self):
-        return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+        image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+        return image
 
     def render_background_image(self):
         self.game_display.blit(self.background_image, (0, 0))
