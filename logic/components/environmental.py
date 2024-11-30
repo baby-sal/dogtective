@@ -5,8 +5,8 @@ class Environmental(pygame.sprite.Sprite):
 
     def __init__(self, name, image, x, y, scale):
         super().__init__()
-        width = 150
-        height = 150
+        width = 155
+        height = 355
         self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
