@@ -6,7 +6,7 @@ from logic.components.environmental import Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
-from game_config import WIDTH, HEIGHT
+import logic.assets.scrolling_background
 
 class GameRunner:
     # Game window set-up
@@ -15,8 +15,8 @@ class GameRunner:
         # Initialise pygame
         pygame.init()
 
-        self.dis_width = WIDTH
-        self.dis_height = HEIGHT
+        self.dis_width = config.WIDTH
+        self.dis_height = config.HEIGHT
 
         self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
         pygame.display.set_caption("Dogtective")
