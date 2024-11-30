@@ -1,5 +1,8 @@
 import pygame
 import sys
+
+from pygame.examples.cursors import image
+
 from logic.components.button import Button
 from game import run
 
@@ -22,6 +25,12 @@ def credit_blit(text, pos_y):
     text = pixel_font(40).render(text, True,"crimson")
     rect = text.get_rect(center=(640,pos_y))
     display.blit(text,rect)
+
+def dog_image(pos_x,pos_y):
+    smol_dog_pic = pygame.image.load(
+        "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/dogtective_sprite/Walk.png").convert()
+    rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
+    display.blit(smol_dog_pic, rect_dog)
 
 def leaderboard():
     while True:
@@ -46,7 +55,8 @@ def credit_screen():
         bg = pygame.transform.smoothscale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/urban-landscape-background-Preview.png").convert()), display.get_size())
         display.blit(bg, (0, 0))
 
-        text_blit("CREDITS:", 100, "orange", 640, 200)
+        text_blit("CREDITS:", 100, "orange", 640, 150)
+        dog_image(640,175)
         credit_blit("Abbeygayle Potts - co-Project Lead & architect", 250)
         credit_blit("Estelle Walford - UI/UX", 300)
         credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", 350)
@@ -78,12 +88,8 @@ def menu():
         mouse_pos_menu = pygame.mouse.get_pos()
 
         text_blit("Dogtective", 200, "royalblue4", 640, 175)
-
         text_blit("MENU", 100,"royalblue4", 640, 300)
-
-        smol_dog_pic = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/dogtective_sprite/Walk.png").convert()
-        rect_dog = smol_dog_pic.get_rect(center=(640,212))
-        display.blit(smol_dog_pic,rect_dog)
+        dog_image(640,212)
 
         button_play = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(75),
          colour="darksalmon", text_in="play")
