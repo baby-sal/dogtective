@@ -47,6 +47,7 @@ class GameRunner:
         self.ball_group.add(self)
 
         pygame.display.update()
+
     def add_internal(self, sprite):
         self.ball_group.add(sprite)
 
