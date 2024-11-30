@@ -3,7 +3,7 @@ from user_interface.game_config import HEIGHT
 
 class Environmental(pygame.sprite.Sprite):
 
-    def __init__(self, name, image, x, y, scale, width, height):
+    def __init__(self, name, image, x, y, scale):
         super().__init__()
         width = image.get_width()
         height = image.get_height()
