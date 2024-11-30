@@ -1,6 +1,6 @@
 import pygame
 import sys
-from logic.components.environmental import Obstacle
+from logic.components.environmental import Obstacle, Environmental
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
@@ -34,11 +34,16 @@ class GameRunner:
         car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
         car_img2 = pygame.image.load('../logic/assets/images/obstacles/green_car.png').convert_alpha()
         car_img3 = pygame.image.load('../logic/assets/images/obstacles/red_car.png').convert_alpha()
-        car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3)
+        car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3, )
         car2 = Obstacle("car2", car_img2, 550, 600, 0.2, 2, -5)
         car3 = Obstacle("car3", car_img3, 975, 800, 0.2, 1, 3)
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3)
+
+        ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
+        self.ball = ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1
+        self.ball_group = pygame.sprite.Group()
+        self.ball_group.add(self)
 
         pygame.display.update()
 
@@ -60,6 +65,7 @@ class GameRunner:
     # Game loop: Keeps window open until quit
     def game_loop(self):
         run = True
+        ball_active = False
 
         while run:
             for event in pygame.event.get():
@@ -68,7 +74,7 @@ class GameRunner:
 
             if self.dog.health.current > 0:
                 self.render_background_image()
-                self.render_all(self.car_group, self.health_group)
+                self.render_all(self.car_group, self.health_group, self.ball_group)
                 self.render_dog(self.car_group)
 
                 pygame.display.update()

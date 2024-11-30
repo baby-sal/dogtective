@@ -1,12 +1,10 @@
 import pygame
-from user_interface.game_config import HEIGHT
+from user_interface.game_config import HEIGHT, WIDTH
 
 class Environmental(pygame.sprite.Sprite):
 
-    def __init__(self, name, image, x, y, scale):
+    def __init__(self, name, image, x, y, scale, width, height):
         super().__init__()
-        width = 155
-        height = 355
         self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
@@ -21,10 +19,12 @@ class Environmental(pygame.sprite.Sprite):
 
 class Obstacle(Environmental):
 
-    def __init__(self, name, image, x, y, scale, damage, speed):
+    def __init__(self, name, image, x, y, scale, damage, speed, width, height):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
         self.speed = speed
+        width = 155
+        height = 355
 
     def update(self):
         self.rect.y += self.speed
