@@ -11,6 +11,7 @@ class GameRunner:
 
     def __init__(self):
         # Initialise pygame
+        self.sprites = pygame.sprite.Group()
         pygame.init()
 
         self.dis_width = config.WIDTH
@@ -28,7 +29,7 @@ class GameRunner:
         self.health_group.add(health)
 
         self.dog = Character("dog", health)
-        self.dog_group = pygame.sprite.Group()
+        self.dog_group = self.sprites
         self.dog_group.add(self.dog)
 
         car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
@@ -37,16 +38,17 @@ class GameRunner:
         car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3, 155, 355)
         car2 = Obstacle("car2", car_img2, 550, 600, 0.2, 2, -5, 155, 355)
         car3 = Obstacle("car3", car_img3, 975, 800, 0.2, 1, 3, 155, 355)
-        self.car_group = pygame.sprite.Group()
+        self.car_group = self.sprites
         self.car_group.add(car1, car2, car3)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
         self.ball = Environmental("ball", ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1)
-        self.ball_group = pygame.sprite.Group()
+        self.ball_group = self.sprites
         self.ball_group.add(self)
 
         pygame.display.update()
-
+    def add_internal(self, sprite):
+        self.ball_group.add(sprite)
     def load_background_image(self):
         return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
 
