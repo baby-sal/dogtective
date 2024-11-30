@@ -1,13 +1,10 @@
-# game render and loop
-
 import pygame
 import sys
-from logic.components.environmental import Obstacle, Environmental
+from logic.components.environmental import Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
-
 
 class GameRunner:
     # Game window set-up
@@ -43,20 +40,10 @@ class GameRunner:
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3)
 
-        # ball sprite for loading onto final background
-        # may need factoring into separate function/different name?
-        ball_img = pygame.image.load(
-            '../logic/assets/images/objects/ball.png').convert_alpha()
-        ball = Environmental("ball", ball_img, self.dis_width * 0.96,
-                             self.dis_height * 0.95, 0.1)
-        self.final_screen_ball_group = pygame.sprite.Group()
-        self.final_screen_ball_group.add(ball)
-
         pygame.display.update()
 
     def load_background_image(self):
-        image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
-        return image
+        return pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
 
     def render_background_image(self):
         self.game_display.blit(self.background_image, (0, 0))
@@ -70,34 +57,18 @@ class GameRunner:
         self.dog_group.draw(self.game_display)
         self.dog_group.update(car_group)
 
-    def render_final_screen_ball(self, ball):
-        self.final_screen_ball_group.draw(self.game_display)
-        self.final_screen_ball_group.update(ball)
-
     # Game loop: Keeps window open until quit
     def game_loop(self):
         run = True
-        ball_active = False
 
         while run:
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
 
             if self.dog.health.current > 0:
-                self.game_display.fill((50, 150, 50))
-
+                self.render_background_image()
                 self.render_all(self.car_group, self.health_group)
-
-                # # placeholder for ball to show after 3 seconds only until background is sorted - can be deleted
-                # if not ball_active and pygame.time.get_ticks() > 3000:
-                #     self.final_screen_ball_group = pygame.sprite.Group()
-                #     self.final_screen_ball_group.add(self.ball)
-                #     ball_active = True
-
-                # added here so it renders behind the dog, but will need changing when linking to the background
-                self.render_final_screen_ball(self.final_screen_ball_group)
                 self.render_dog(self.car_group)
 
                 pygame.display.update()
@@ -106,13 +77,11 @@ class GameRunner:
                 # game over screen here
                 run = False
 
-
 def run():
     game = GameRunner()
     game.game_loop()
     pygame.quit()
     sys.exit()
-
 
 if __name__ == '__main__':
     run()
