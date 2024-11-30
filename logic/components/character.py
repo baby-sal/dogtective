@@ -35,7 +35,7 @@ class Character(p.sprite.Sprite):
         if pygame.time.get_ticks() - self.collision_time > 1500:  # The time is in ms.
             self.collision_immune = False
         self.move = False
-        if self.health >= 0:
+        if self.health.current >= 0:
             self.movement()
         self.update_animation()
         self.correction()
