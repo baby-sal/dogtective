@@ -25,8 +25,9 @@ class Obstacle(Environmental):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
         self.speed = speed
-        width = image.get_width()
-        height = image.get_height()
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.rect.y += self.speed
