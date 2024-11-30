@@ -22,6 +22,8 @@ class GameRunner:
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
+        self.background_image = self.load_background_image()
+
         health = Health(5)
         self.health_group = pygame.sprite.Group()
         self.health_group.add(health)
