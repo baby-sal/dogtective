@@ -5,8 +5,8 @@ from game import run
 
 pygame.init()
 
-display = pygame.display.set_mode((1200, 720))
-pygame.display.set_caption("Main Menu")
+display = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption("Dogtective: Main Menu")
 background = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
 background= pygame.transform.smoothscale(background, display.get_size())
 
@@ -24,8 +24,10 @@ def play():
         rect_play = text_play.get_rect(center=(640,240))
         display.blit(text_play, rect_play)
 
-        go_back = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"), pos_x = 640, pos_y = 240)
+        go_back = Button(pos_x = 640, pos_y = 240, font=pygame.font.Font("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf"), colour = "black", click_colour = "white", text = "BACK")
+        go_back.click_colour(mouse_pos_play)
         go_back.update_button(display)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -37,7 +39,7 @@ def play():
         pygame.display.update()
 
 
-def credits():
+def credit_screen():
     while True:
         mouse_pos_credits = pygame.mouse.get_pos()
 
@@ -47,8 +49,10 @@ def credits():
         rect_credits = text_credits.get_rect(center=(640, 240))
         display.blit(text_credits, rect_credits)
 
-        go_back = Button(image=pygame.image.load(
-            "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"), pos_x = 640, pos_y = 240)
+        go_back = Button(pos_x=640, pos_y=240, text="BACK", font=pygame.font.Font(
+            "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf"),
+                         colour="black", click_colour="white")
+        go_back.click_colour(mouse_pos_credits)
         go_back.update_button(display)
 
         for event in pygame.event.get():
@@ -71,8 +75,9 @@ def leaderboard():
         rect_ldr = text_ldr.get_rect(center=(640, 240))
         display.blit(text_ldr, rect_ldr)
 
-        go_back = Button(image=pygame.image.load(
-            "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/back01.png"),pos_x = 640, pos_y = 240)
+        go_back = Button(pos_x=640, pos_y=240, font=pixel_font(100),
+                         colour="black", click_colour="white", text="BACK")
+        go_back.click_colour(mouse_pos_ldr)
         go_back.update_button(display)
 
         for event in pygame.event.get():
@@ -93,14 +98,19 @@ def menu():
         text_menu = pixel_font(100).render("MENU", True, "teal")
         rect_menu = text_menu.get_rect(center=(640,100))
 
-        button_play = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/play01.png"), pos_x = 640, pos_y = 240)
-        button_ldr = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/leaderboard01.png"),pos_x = 640, pos_y = 400)
-        button_credits = Button(image = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/about01.png"), pos_x = 640, pos_y = 500)
+        button_play = Button(pos_x = 640, pos_y = 300, font=pixel_font(100),
+         colour="black", click_colour="white", text="play")
+        button_ldr = Button(pos_x = 640, pos_y = 400, font=pixel_font(100),
+         colour="black", click_colour="white", text="LEADERBOARD")
+        button_credits = Button(pos_x = 640, pos_y = 500, font=pixel_font(100),
+         colour="black", click_colour="white", text="CREDITS")
+
 
         display.blit(text_menu, rect_menu)
 
-        """if time, make the buttons change on mouse pos"""
-        # for button in [button_play,button_credits,button_ldr]:
+        # for button in [button_play, button_ldr, button_credits]:
+        #     button.click_colour(mouse_pos_menu)
+        #     button.update_button(display)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -109,10 +119,10 @@ def menu():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if button_play.check_input(mouse_pos_menu):
                     run()
-                # if button_ldr.check_input(mouse_pos_menu):
-#                     show leaderboard
-#                 if button_credits.check_input(mouse_pos_menu):
-#                     show credits
+                if button_ldr.check_input(mouse_pos_menu):
+                    leaderboard()
+                if button_credits.check_input(mouse_pos_menu):
+                    credits()
         pygame.display.update()
 
 menu()
