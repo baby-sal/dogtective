@@ -88,14 +88,14 @@ def menu():
         mouse_pos_menu = pygame.mouse.get_pos()
 
         text_blit("Dogtective", 200, "royalblue4", 640, 175)
-        text_blit("MENU", 100,"royalblue4", 640, 300)
-        dog_image(640,212)
+        text_blit("MENU", 100,"royalblue4", 640, 275)
+        dog_image(640,600)
 
-        button_play = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(75),
+        button_play = Button(image = None, pos_x = 640, pos_y = 350, font=pixel_font(75),
          colour="darksalmon", text_in="play")
-        button_ldr = Button(image = None, pos_x = 640, pos_y = 500, font=pixel_font(75),
+        button_ldr = Button(image = None, pos_x = 640, pos_y = 425, font=pixel_font(75),
          colour="lightsalmon", text_in="LEADERBOARD")
-        button_credits = Button(image = None, pos_x = 640, pos_y = 600, font=pixel_font(75),
+        button_credits = Button(image = None, pos_x = 640, pos_y = 500, font=pixel_font(75),
          colour="lightsalmon", text_in="CREDITS")
 
 
