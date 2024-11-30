@@ -23,6 +23,7 @@ class GameRunner:
         self.clock = pygame.time.Clock()
 
         self.background_image = self.load_background_image()
+        self.scroll_background = ScrollBackground()
 
         health = Health(5)
         self.health_group = pygame.sprite.Group()
