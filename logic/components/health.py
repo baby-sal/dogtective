@@ -1,6 +1,4 @@
 import pygame
-from user_interface.game_config import HEIGHT, WIDTH
-
 
 class Health(pygame.sprite.Sprite):
     def __init__(self, max_health):
