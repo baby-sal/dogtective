@@ -34,7 +34,7 @@ class GameRunner:
 
         car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
         car_img2 = pygame.image.load('../logic/assets/images/obstacles/green_car.png').convert_alpha()
-        car_img3 = pygame.image.load('../logic/assets/images/obstacles/pink_car.png').convert_alpha()
+        car_img3 = pygame.image.load('../logic/assets/images/obstacles/red_car.png').convert_alpha()
         car1 = Obstacle("car1", car_img1, 140, 0, 0.2, 1, 3)
         car2 = Obstacle("car2", car_img2, 490, 600, 0.2, 2, -5)
         car3 = Obstacle("car1", car_img3, 915, 800, 0.2, 1, 3)
