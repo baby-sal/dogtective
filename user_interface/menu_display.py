@@ -1,7 +1,6 @@
 import pygame
 import sys
 from logic.components.button import Button
-from game import run  # Import run from game
 
 class MenuDisplay:
     def __init__(self):
@@ -67,7 +66,7 @@ class MenuDisplay:
                         self.menu()
             pygame.display.update()
 
-    def menu(self):
+    def menu(self, run_callback):
         while True:
             self.display.blit(self.background, (0, 0))
             mouse_pos_menu = pygame.mouse.get_pos()
@@ -88,7 +87,7 @@ class MenuDisplay:
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_play.check_input(mouse_pos_menu):
-                        run()
+                        run_callback()  # Call the provided run function
                     if button_credits.check_input(mouse_pos_menu):
                         self.credit_screen()
             pygame.display.update()

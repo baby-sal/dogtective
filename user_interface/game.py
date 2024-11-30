@@ -62,15 +62,6 @@ class GameRunner:
     def render_background_image(self):
         self.game_display.blit(self.background_image, (0, 0))
 
-    def render_menu(self):
-        self.game_display.fill((50, 150, 50))  # Background color for menu
-        font = pygame.font.Font(None, 74)
-        text = font.render("Dogtective", True, (255, 255, 255))
-        self.game_display.blit(text, (
-            self.dis_width // 2 - text.get_width() // 2, self.dis_height // 2 - text.get_height() // 2))
-        # Use the MenuDisplay instance to render the menu
-        self.menu_display.menu()
-
     def render_game_over(self):
         self.game_display.fill((0, 0, 0))  # Background color for game over screen
         font = pygame.font.Font(None, 74)
@@ -99,6 +90,15 @@ class GameRunner:
     def render_dog(self, car_group):
         self.dog_group.draw(self.game_display)
         self.dog_group.update(car_group)
+
+    def render_menu(self):
+        self.game_display.fill((50, 150, 50))  # Background color for menu
+        font = pygame.font.Font(None, 74)
+        text = font.render("Dogtective", True, (255, 255, 255))
+        self.game_display.blit(text, (
+            self.dis_width // 2 - text.get_width() // 2, self.dis_height // 2 - text.get_height() // 2))
+        # Use the MenuDisplay instance to render the menu
+        self.menu_display.menu(self.run)
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
