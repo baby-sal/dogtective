@@ -1,6 +1,6 @@
 import pygame
 import sys
-from logic.components.environmental import Obstacle, Environmental
+from logic.components.environmental import Obstacle, Environmental, Collectable
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
@@ -41,7 +41,7 @@ class GameRunner:
         self.car_group.add(car1, car2, car3)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
-        self.ball = Environmental("ball", ball_img, self.dis_width * 0.96, self.dis_height * 0.95, 0.1)
+        self.ball = Collectable("ball", ball_img, 1100, 350, 0.5)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self.ball)
 

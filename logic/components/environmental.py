@@ -51,6 +51,7 @@ class Collectable(Environmental):
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
         self.mask = pygame.mask.from_surface(self.image)
+        self.image = pygame.transform.scale(image, (int(100 * scale), int(100 * scale)))
 
 
 if __name__ == "__main__":
