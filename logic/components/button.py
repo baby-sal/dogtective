@@ -22,7 +22,7 @@ class Button:
 		if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
 			return True
 		return False
-
+	#
 	# def click_colour(self,pos):
 	# 	if pos[0] in range(self.rect.left, self.rect.right) and pos[1] in range(self.rect.top, self.rect.bottom):
 	# 		self.text = self.font.render(self.text, True, self.click_colour)
