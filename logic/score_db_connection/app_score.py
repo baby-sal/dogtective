@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from db_utils_score import get_top_ten, add_new_score
+#this might be where we connect the score file from python
 
 app = Flask(__name__)
 
