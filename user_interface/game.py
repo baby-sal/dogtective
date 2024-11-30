@@ -6,6 +6,7 @@ from logic.components.environmental import Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
+from game_config import WIDTH, HEIGHT
 
 class GameRunner:
     # Game window set-up
@@ -14,8 +15,8 @@ class GameRunner:
         # Initialise pygame
         pygame.init()
 
-        self.dis_width = config.WIDTH
-        self.dis_height = config.HEIGHT
+        self.dis_width = WIDTH
+        self.dis_height = HEIGHT
 
         self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
         pygame.display.set_caption("Dogtective")
@@ -36,6 +37,14 @@ class GameRunner:
         self.car_group.add(car1, car2)
 
         pygame.display.update()
+
+    def background_image(self):
+        image = pygame.image.load(
+            '../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+        return image
+
+    def render_background_image(self):
+        self.game_display.blit(self.background_image())
 
     def render_all(self, *groups):
         for group in groups:
