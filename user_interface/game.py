@@ -6,6 +6,7 @@ from logic.components.environmental import Obstacle, Environmental
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
+from logic.assets.scrolling_background import ScrollBackground
 
 
 class GameRunner:
