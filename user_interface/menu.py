@@ -18,27 +18,21 @@ def pixel_font(size):
 
 def leaderboard():
     while True:
-        mouse_pos_ldr = pygame.mouse.get_pos()
+        # mouse_pos_ldr = pygame.mouse.get_pos()
+        """call the db"""
+        #
+        # for event in pygame.event.get():
+        #     if event.type == pygame.QUIT:
+        #         pygame.quit()
+        #         sys.exit()
+        #     if event.type == pygame.MOUSEBUTTONDOWN:
+        #         if go_back.check_input(mouse_pos_ldr):
+        #             menu()
+        # pygame.display.update()
 
-        display.fill("blue4")
 
-        text_ldr = pixel_font(50).render("Leaderboard screen", True, "blue4")
-        rect_ldr = text_ldr.get_rect(center=(640, 240))
-        display.blit(text_ldr, rect_ldr)
-
-        go_back = Button(image=None, pos_x=640, pos_y=240, font=pixel_font(100),
-                         colour="black", click_colour="white", text_in="BACK")
-        go_back.click_colour(mouse_pos_ldr)
-        go_back.update_button(display)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if go_back.check_input(mouse_pos_ldr):
-                    menu()
-        pygame.display.update()
+def credit_screen():
+    while True
 
 def menu():
     while True:
@@ -48,6 +42,7 @@ def menu():
 
         text_menu = pixel_font(150).render("MENU", True, "darkslateblue")
         rect_menu = text_menu.get_rect(center=(640,150))
+        dog_pic =
 
         button_play = Button(image = None, pos_x = 640, pos_y = 300, font=pixel_font(100),
          colour="crimson", click_colour="white", text_in="play")
