@@ -13,6 +13,11 @@ background = pygame.transform.smoothscale(background, display.get_size())
 def pixel_font(size):
     return pygame.font.Font("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf", size)
 
+def text_blit(text, size, colour, rect_pos_x, rect_pos_y):
+    text = pixel_font(size).render(text,True, colour)
+    rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
+    display.blit(text, rect)
+
 def leaderboard():
     while True:
         # mouse_pos_ldr = pygame.mouse.get_pos()
@@ -37,20 +42,10 @@ def credit_screen():
         bg = pygame.transform.smoothscale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/urban-landscape-background-Preview.png").convert()), display.get_size())
         display.blit(bg, (0, 0))
 
-        text_title = pixel_font(150).render("CREDITS:", True, "orange")
-        rect_title = text_title.get_rect(center=(640, 100))
+        text_blit("CREDITS:", 100, "orange", 640, 100)
+        text_blit("\nAbbeygayle Potts - Project Lead \nEstelle Walford - Programmer \nIman Abdelgani- UI/UX \nMel Clarke- Testing \nSally Davies- UI/UX \nZarrin Rahman - Project Lead", 40, "crimson", 640, 300)
+        text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue", 640, 600)
 
-        text_credits = pixel_font(50).render("\nAbbeygayle Potts - Project Lead \nEstelle Walford - Programmer \nIman Abdelgani- UI/UX \nMel Clarke- Testing \nSally Davies- UI/UX \nZarrin Rahman - Project Lead", True, "crimson")
-        rect_credits = text_credits.get_rect(center=(640, 300))
-
-        text_sound = pixel_font(50).render(
-            "with special thanks to:\nAhmed Abdi - Sound Engineering & Design",
-            True, "darkblue")
-        rect_sound = text_credits.get_rect(center=(640, 720))
-
-        display.blit(text_title,rect_title)
-        display.blit(text_credits, rect_credits)
-        display.blit(text_sound, rect_sound)
 
         button_go_back = Button(image = None, pos_x = 1200, pos_y = 50, font=pixel_font(40),
          colour="purple4", text_in="go back")
@@ -73,23 +68,22 @@ def menu():
 
         mouse_pos_menu = pygame.mouse.get_pos()
 
-        text_menu = pixel_font(150).render("MENU", True, "plum4")
-        rect_menu = text_menu.get_rect(center=(640,200))
+        text_blit("Dogtective", 200, "royalblue4", 640, 175)
 
-        """trying to put the dog on the menu screen"""
+        text_blit("MENU", 100,"lightcoral", 640, 300)
 
-        # dog_pic = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/doctective_image/doctective_image.jpeg").convert()
-        # rect_dog = dog_pic.get_rect(bottomleft=(320,500))
+        """trying to put the dog on the menu screen but looks weird"""
+        # dog_pic = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/dogtective.png").convert()
+        # rect_dog = dog_pic.get_rect(bottomleft=(100,700))
+        # display.blit(dog_pic,rect_dog)
 
-        button_play = Button(image = None, pos_x = 640, pos_y = 300, font=pixel_font(100),
+        button_play = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(75),
          colour="darksalmon", text_in="play")
-        button_ldr = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(100),
+        button_ldr = Button(image = None, pos_x = 640, pos_y = 500, font=pixel_font(75),
          colour="lightsalmon", text_in="LEADERBOARD")
-        button_credits = Button(image = None, pos_x = 640, pos_y = 500, font=pixel_font(100),
+        button_credits = Button(image = None, pos_x = 640, pos_y = 600, font=pixel_font(75),
          colour="lightsalmon", text_in="CREDITS")
 
-
-        display.blit(text_menu, rect_menu)
 
         for button in [button_play, button_ldr, button_credits]:
             # button.click_colour(mouse_pos_menu)
