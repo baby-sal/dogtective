@@ -1,5 +1,6 @@
 import pygame as p
 import pygame.time
+# import sys may be needed when dog collides with ball and game ends?
 
 from user_interface.game_config import HEIGHT, WIDTH
 from logic.assets.get_sprite_image import SpriteSheet
@@ -31,7 +32,7 @@ class Character(p.sprite.Sprite):
         self.mask = p.mask.from_surface(self.image)
         self.rect = self.mask.get_rect()
 
-    def update(self, car_group):
+    def update(self, car_group): # do we need ball_group here?
         if pygame.time.get_ticks() - self.collision_time > 1500:  # The time is in ms.
             self.collision_immune = False
         self.move = False
@@ -39,7 +40,7 @@ class Character(p.sprite.Sprite):
             self.movement()
         self.update_animation()
         self.correction()
-        self.check_collision(car_group)
+        self.check_collision(car_group) # do we need ball_group here?
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -91,13 +92,18 @@ class Character(p.sprite.Sprite):
         elif self.y + self.width / 2 > HEIGHT:
             self.y = HEIGHT - self.width / 2
 
-    def check_collision(self, car_group):
+    def check_collision(self, car_group): # add ball_group
         car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
+        # ball_check = p.sprite.spritecollide(self, ball_group, False, p.sprite.collide_mask)
         if car_check and not self.collision_immune:
             self.health.current -= car_check[0].damage
             # print(self.health.current)    # uncomment for testing
             self.collision_immune = True
             self.collision_time = pygame.time.get_ticks()
+
+        # if ball_check and not self.collision_immune:
+        #     self.collision_immune = True
+        #     sys.exit()
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"
