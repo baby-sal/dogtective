@@ -45,6 +45,13 @@ class Obstacle(Environmental):
     def __str__(self):
         return f"Name: {self.name}, Damage:{self.speed}, Speed: {self.speed}, "
 
+class Collectable(Environmental):
+    def __init__(self, name, image, x, y, scale):
+        super().__init__(name, image, x, y, scale)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.mask = pygame.mask.from_surface(self.image)
+
 
 if __name__ == "__main__":
     # insert sample outputs here
