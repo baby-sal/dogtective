@@ -4,6 +4,7 @@ import pygame
 import sys
 from logic.components.environmental import Obstacle
 from logic.components.character import Character
+from logic.components.health import Health
 import user_interface.game_config as config
 
 
@@ -21,7 +22,11 @@ class GameRunner:
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
-        self.dog = Character("dog")
+        health = Health(5)
+        self.health_group = pygame.sprite.Group()
+        self.health_group.add(health)
+
+        self.dog = Character("dog", health)
         self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
@@ -51,10 +56,10 @@ class GameRunner:
                 if event.type == pygame.QUIT:
                     run = False
 
-            if self.dog.health > 0:
+            if self.dog.health.current > 0:
                 self.game_display.fill((50, 150, 50))
 
-                self.render_all(self.car_group)
+                self.render_all(self.car_group, self.health_group)
                 self.render_dog(self.car_group)
 
                 pygame.display.update()
