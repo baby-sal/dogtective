@@ -21,13 +21,14 @@ class Environmental(pygame.sprite.Sprite):
 
 class Obstacle(Environmental):
 
-    def __init__(self, name, image, x, y, scale, damage, speed, width, height):
+    def __init__(self, name, image, x, y, scale, damage, speed):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
         self.speed = speed
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
         self.mask = pygame.mask.from_surface(self.image)
+        self.image = pygame.transform.scale(image, (int(155 * scale), int(355 * scale)))
 
     def update(self):
         self.rect.y += self.speed
