@@ -18,6 +18,11 @@ def text_blit(text, size, colour, rect_pos_x, rect_pos_y):
     rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
     display.blit(text, rect)
 
+def credit_blit(text, pos_y):
+    text = pixel_font(40).render(text, True,"crimson")
+    rect = text.get_rect(center=(640,pos_y))
+    display.blit(text,rect)
+
 def leaderboard():
     while True:
         # mouse_pos_ldr = pygame.mouse.get_pos()
@@ -32,7 +37,6 @@ def leaderboard():
         #             menu()
         # pygame.display.update()
 
-
 def credit_screen():
     while True:
         pygame.display.set_caption("Dogtective: Credits")
@@ -42,8 +46,13 @@ def credit_screen():
         bg = pygame.transform.smoothscale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/urban-landscape-background-Preview.png").convert()), display.get_size())
         display.blit(bg, (0, 0))
 
-        text_blit("CREDITS:", 100, "orange", 640, 100)
-        text_blit("\nAbbeygayle Potts - Project Lead \nEstelle Walford - Programmer \nIman Abdelgani- UI/UX \nMel Clarke- Testing \nSally Davies- UI/UX \nZarrin Rahman - Project Lead", 40, "crimson", 640, 300)
+        text_blit("CREDITS:", 100, "orange", 640, 200)
+        credit_blit("Abbeygayle Potts - co-Project Lead & architect", 250)
+        credit_blit("Estelle Walford - UI/UX", 300)
+        credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", 350)
+        credit_blit("Mel Clarke - Testing", 400)
+        credit_blit("Sally Davies - UI/UX", 450)
+        credit_blit("Zarrin Rahman - co-Project Lead & architect", 500)
         text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue", 640, 600)
 
 
@@ -70,12 +79,12 @@ def menu():
 
         text_blit("Dogtective", 200, "royalblue4", 640, 175)
 
-        text_blit("MENU", 100,"lightcoral", 640, 300)
+        text_blit("MENU", 100,"royalblue4", 640, 300)
 
         """trying to put the dog on the menu screen but looks weird"""
-        # dog_pic = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/dogtective.png").convert()
-        # rect_dog = dog_pic.get_rect(bottomleft=(100,700))
-        # display.blit(dog_pic,rect_dog)
+        # smol_dog_pic = pygame.transform.scale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/dogtective.png").convert()), (50,70))
+        # rect_dog = smol_dog_pic.get_rect(center=(640,575))
+        # display.blit(smol_dog_pic,rect_dog)
 
         button_play = Button(image = None, pos_x = 640, pos_y = 400, font=pixel_font(75),
          colour="darksalmon", text_in="play")
