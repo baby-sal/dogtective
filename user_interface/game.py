@@ -42,10 +42,12 @@ class GameRunner:
         self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
-        car_img = pygame.image.load('../logic/assets/images/obstacles/car.png').convert_alpha()
-        car1 = Obstacle("car1", car_img, 140, 0, 0.2, 1, 3)
-        car2 = Obstacle("car2", car_img, 490, 600, 0.2, 2, -5)
-        car3 = Obstacle("car1", car_img, 915, 800, 0.2, 1, 3)
+        car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
+        car_img2 = pygame.image.load('../logic/assets/images/obstacles/green_car.png').convert_alpha()
+        car_img2 = pygame.image.load('../logic/assets/images/obstacles/pink_car.png').convert_alpha()
+        car1 = Obstacle("car1", car_img1, 140, 0, 0.2, 1, 3)
+        car2 = Obstacle("car2", car_img2, 490, 600, 0.2, 2, -5)
+        car3 = Obstacle("car1", car_img3, 915, 800, 0.2, 1, 3)
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3)
 
