@@ -16,5 +16,5 @@ c_sound = pygame.mixer.Sound("/Users/sallydavies/Desktop/PycharmProjects/CFGDegr
 #bark button add to character class?
 bark_sound = pygame.mixer.Sound("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/audio/Detective_Dog_Bark.mp3")
 
-elif keys[p.K_b]:
-    pygame.mixer.Sound.play(bark_sound)
+# elif keys[p.K_b]:
+#     pygame.mixer.Sound.play(bark_sound)
