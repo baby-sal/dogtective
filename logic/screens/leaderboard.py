@@ -2,7 +2,7 @@ import pygame
 import sys
 from logic.score_db_connection.db_utils_score import DbClass
 from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
-from user_interface.game_config import WIDTH, HEIGHT  # Correct path to game_config
+from user_interface.game_config import WIDTH, HEIGHT
 
 def leaderboard(self):
     WHITE = (255, 255, 255)
@@ -10,11 +10,12 @@ def leaderboard(self):
 
     font = pygame.font.Font(None, 36)
 
-    # Create an instance of DbClass
     db = DbClass(HOST, USER, PASSWORD, DATABASE)
-
-    # Fetch top ten scores from the database
     scores = db.get_top_ten()
+
+    if scores is None:
+        print("Failed to retrieve scores. Check database connection.")
+        scores = []
 
     go_back = pygame.Rect(50, 50, 100, 50)
 

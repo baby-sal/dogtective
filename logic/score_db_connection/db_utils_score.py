@@ -4,16 +4,21 @@ from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 class DbClass(object):
     connection = None
 
-    def __init__(self, HOST, USER, PASSWORD, DATABASE):
-        self.host = HOST
-        self.user = USER
-        self.password = PASSWORD
-        self.database = DATABASE
+    def __init__(self, host, user, password, database):
+        self.host = host
+        self.user = user
+        self.password = password
+        self.database = database
 
     def db_connect(self):
         if DbClass.connection is None:
             try:
-                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
+                DbClass.connection = mysql.connector.connect(
+                    host=self.host,
+                    user=self.user,
+                    password=self.password,
+                    database=self.database
+                )
                 if DbClass.connection.is_connected():
                     print("Successfully connected to the database.")
             except mysql.connector.Error as err:
