@@ -1,12 +1,12 @@
 import pygame
 import sys
-
-from pygame.examples.cursors import image
-
 from logic.components.button import Button
 from game import run
 
 pygame.init()
+
+menu_music = pygame.mixer.music.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/audio/BGM_menu.mp3")
+pygame.mixer.music.play(-1)
 
 display = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dogtective: Main Menu")
