@@ -118,8 +118,6 @@ def run():
     game.game_loop()
     pygame.quit()
     sys.exit()
-    menu = DogtectiveMenu()
-    menu.menu()
 
 if __name__ == '__main__':
     run()
