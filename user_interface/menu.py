@@ -1,6 +1,5 @@
 import pygame
 import sys
-from pygame.examples.cursors import image
 from logic.components.button import Button
 from game import run
 import user_interface.game_config as config
