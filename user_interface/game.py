@@ -5,6 +5,7 @@ from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
 from logic.assets.images.sprites import car_group, ball_group
+from logic.assets.internal_sprite import has_internal, add_internal, add_sprite
 
 class GameRunner:
     # Game window set-up
@@ -43,26 +44,13 @@ class GameRunner:
         pygame.display.update()
 
     def has_internal(self, sprite):
-        for group in self.groups.values():
-            if sprite in group:
-                return True
-            return False
+        has_internal(self, sprite)
 
     def add_internal(self, sprite, group_name):
-        if group_name in self.groups:
-            self.groups[group_name].add(sprite)
-        else:
-            print(f"Group {group_name} not found!")
+        add_internal(self, sprite, group_name)
 
     def add_sprite(self, sprite):
-        if hasattr(sprite, "_spritegroup"):
-            for spr in sprite.sprites():
-                if not self.has_internal(spr):
-                    self.add_internal(spr, spr._spritegroup)
-                    spr.add_internal(self)
-                elif not self.has_internal(sprite):
-                    self.add_internal(sprite, sprite._spritegroup)
-                    sprite.add_internal(self)
+        add_sprite(self, sprite)
 
     def load_background_image(self):
         image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
