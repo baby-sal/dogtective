@@ -25,6 +25,10 @@ class Obstacle(Environmental):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
         self.speed = speed
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.mask = pygame.mask.from_surface(self.image)
+        self.image = pygame.transform.scale(image, (int(155 * scale), int(355 * scale)))
 
     def update(self):
         self.rect.y += self.speed
@@ -40,6 +44,14 @@ class Obstacle(Environmental):
 
     def __str__(self):
         return f"Name: {self.name}, Damage:{self.speed}, Speed: {self.speed}, "
+
+class Collectable(Environmental):
+    def __init__(self, name, image, x, y, scale):
+        super().__init__(name, image, x, y, scale)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.mask = pygame.mask.from_surface(self.image)
+        self.image = pygame.transform.scale(image, (int(100 * scale), int(100 * scale)))
 
 
 if __name__ == "__main__":

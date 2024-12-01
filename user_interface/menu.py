@@ -10,11 +10,11 @@ pygame.init()
 
 display = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dogtective: Main Menu")
-background = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
+background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
 background = pygame.transform.smoothscale(background, display.get_size())
 
 def pixel_font(size):
-    return pygame.font.Font("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf", size)
+    return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
 
 def text_blit(text, size, colour, rect_pos_x, rect_pos_y):
     text = pixel_font(size).render(text,True, colour)
@@ -27,8 +27,7 @@ def credit_blit(text, pos_y):
     display.blit(text,rect)
 
 def dog_image(pos_x,pos_y):
-    smol_dog_pic = pygame.image.load(
-        "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/dogtective_sprite/Walk.png").convert()
+    smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
     rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
     display.blit(smol_dog_pic, rect_dog)
 
@@ -52,7 +51,7 @@ def credit_screen():
         mouse_pos_credits = pygame.mouse.get_pos()
 
         display.fill("pink")
-        bg = pygame.transform.smoothscale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/urban-landscape-background-Preview.png").convert()), display.get_size())
+        bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), self.display.get_size())
         display.blit(bg, (0, 0))
 
         text_blit("CREDITS:", 100, "orange", 640, 150)
