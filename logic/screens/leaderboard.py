@@ -12,3 +12,5 @@ def leaderboard(self):
                 #     self.menu()
                 pass
         pygame.display.update()
+
+#this will likely call the score function and import the score function when it has been created
