@@ -27,8 +27,7 @@ def credit_blit(text, pos_y):
     display.blit(text,rect)
 
 def dog_image(pos_x,pos_y):
-    smol_dog_pic = pygame.image.load(
-        "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/characters/dogtective_sprite/Walk.png").convert()
+    smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
     rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
     display.blit(smol_dog_pic, rect_dog)
 
