@@ -1,5 +1,5 @@
 import mysql.connector
-from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE  # Ensure the path is correct
+from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 
 class DbClass(object):
     connection = None
@@ -14,13 +14,18 @@ class DbClass(object):
         if DbClass.connection is None:
             try:
                 DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
-            except Exception as an_error:
-                print(f"Unable to connect: {an_error}")
-            else:
-                print("Successfully connected to the database.")
+                if DbClass.connection.is_connected():
+                    print("Successfully connected to the database.")
+            except mysql.connector.Error as err:
+                print(f"Error: {err}")
+                DbClass.connection = None
 
     def get_query(self, sql_query, params=None):
-        curs = self.connection.cursor()
+        if DbClass.connection is None:
+            self.db_connect()
+            if DbClass.connection is None:
+                return None  # Connection failed
+        curs = DbClass.connection.cursor()
         try:
             curs.execute(sql_query, params)
             return curs.fetchall()
@@ -31,10 +36,14 @@ class DbClass(object):
             curs.close()
 
     def update_query(self, sql_query, params):
-        curs = self.connection.cursor()
+        if DbClass.connection is None:
+            self.db_connect()
+            if DbClass.connection is None:
+                return None  # Connection failed
+        curs = DbClass.connection.cursor()
         try:
             curs.execute(sql_query, params)
-            self.connection.commit()
+            DbClass.connection.commit()
         except Exception as an_error:
             print(f"Error executing query {sql_query}: {an_error}")
             return None
@@ -42,9 +51,10 @@ class DbClass(object):
             curs.close()
 
     def db_disconnect(self):
-        if self.connection:
-            self.connection.close()
-            return f"Disconnected from {self.database}"
+        if DbClass.connection:
+            DbClass.connection.close()
+            DbClass.connection = None
+            print(f"Disconnected from {self.database}")
 
     def get_top_ten(self):
         self.db_connect()

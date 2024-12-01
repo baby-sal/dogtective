@@ -9,7 +9,10 @@ db = DbClass(HOST, USER, PASSWORD, DATABASE)
 
 @app.route("/high-scores", methods=["GET"])
 def high_scores():
-    return jsonify(db.get_top_ten())
+    scores = db.get_top_ten()
+    if scores is None:
+        return jsonify({"error": "Unable to fetch high scores"}), 500
+    return jsonify(scores)
 
 @app.route("/add_score", methods=["POST"])
 def add_score():
