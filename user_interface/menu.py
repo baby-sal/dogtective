@@ -2,7 +2,6 @@ import pygame
 import sys
 from logic.components.button import Button
 import user_interface.game_config as config
-from run import run_game
 
 class DogtectiveMenu:
     def __init__(self):
@@ -104,6 +103,7 @@ class DogtectiveMenu:
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
+                        from run import run_game  # Delayed import
                         run_game()
                     # if button_ldr.check_input(mouse_pos_menu):
                     #     self.leaderboard()
