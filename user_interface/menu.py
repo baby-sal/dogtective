@@ -51,7 +51,7 @@ def credit_screen():
         mouse_pos_credits = pygame.mouse.get_pos()
 
         display.fill("pink")
-        bg = pygame.transform.smoothscale((pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/urban-landscape-background-Preview.png").convert()), display.get_size())
+        bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), self.display.get_size())
         display.blit(bg, (0, 0))
 
         text_blit("CREDITS:", 100, "orange", 640, 150)
