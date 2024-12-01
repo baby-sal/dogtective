@@ -5,6 +5,8 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
+from user_interface.menu import DogtectiveMenu
+
 
 class GameRunner:
     # Game window set-up
@@ -116,6 +118,8 @@ def run():
     game.game_loop()
     pygame.quit()
     sys.exit()
+    menu = DogtectiveMenu()
+    menu.menu()
 
 if __name__ == '__main__':
     run()
