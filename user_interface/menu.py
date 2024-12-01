@@ -1,15 +1,14 @@
 import pygame
-import os
 from logic.screens.credits import credit_screen
 from logic.screens.leaderboard import leaderboard
 from logic.screens.menu_screen import menu
 from logic.screens.menu_display import dog_image, pixel_font, text_blit, credit_blit
-import user_interface.game_config as config
+from game_config import WIDTH, HEIGHT
 
 class DogtectiveMenu:
     def __init__(self):
         pygame.init()
-        self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
+        self.display = pygame.display.set_mode((WIDTH, HEIGHT))
 
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()

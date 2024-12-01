@@ -1,7 +1,7 @@
 import pygame
 import sys
 import user_interface.game_config as config
-from logic.score_db_connection.db_utils_score import DbClass  # Import the DbClass from your connector module
+from logic.score_db_connection.db_utils_score import DbClass
 from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
 from user_interface.menu import DogtectiveMenu
 
@@ -38,12 +38,11 @@ def leaderboard(self):
         self.display.blit(title_text, (config.WIDTH // 2 - title_text.get_width() // 2, 50))
 
         # Display scores from the database
-        for i, (name, score) in enumerate(scores):
-            score_text = font.render(f"{name}: {score}", True, BLACK)
+        for i, (nickname, score) in enumerate(scores):
+            score_text = font.render(f"{nickname}: {score}", True, BLACK)
             self.display.blit(score_text, (config.WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
         pygame.display.update()
-
 
 # Example usage
 if __name__ == "__main__":
