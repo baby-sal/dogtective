@@ -1,8 +1,8 @@
 import pygame
 import sys
 from logic.components.button import Button
-import game_config as config
-from run import run_game  # Import the function from run.py
+import user_interface.game_config as config
+from run import run_game
 
 class DogtectiveMenu:
     def __init__(self):
@@ -11,6 +11,7 @@ class DogtectiveMenu:
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+        self.clock = pygame.time.Clock()
 
     def pixel_font(self, size):
         return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
@@ -32,6 +33,7 @@ class DogtectiveMenu:
 
     def leaderboard(self):
         while True:
+            self.display.blit(self.background, (0, 0))  # Use the menu background
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -45,11 +47,7 @@ class DogtectiveMenu:
             pygame.display.set_caption("Dogtective: Credits")
             mouse_pos_credits = pygame.mouse.get_pos()
 
-            self.display.fill("pink")
-            bg = pygame.transform.smoothscale(
-                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
-                self.display.get_size())
-            self.display.blit(bg, (0, 0))
+            self.display.blit(self.background, (0, 0))  # Use the menu background
 
             self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
             self.dog_image(width // 2, height // 6)
@@ -83,7 +81,7 @@ class DogtectiveMenu:
 
     def menu(self):
         while True:
-            self.display.blit(self.background, (0, 0))
+            self.display.blit(self.background, (0, 0))  # Use the menu background
             mouse_pos_menu = pygame.mouse.get_pos()
 
             self.text_blit("Dogtective", 200, "royalblue4", 640, 175)
