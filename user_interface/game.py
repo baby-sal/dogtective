@@ -5,7 +5,6 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
-from user_interface.menu import DogtectiveMenu
 
 
 class GameRunner:
@@ -121,3 +120,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+
