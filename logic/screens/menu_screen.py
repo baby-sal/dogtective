@@ -3,7 +3,6 @@ import sys
 from logic.components.button import Button
 from user_interface.game import run
 
-
 def menu(self):
     while True:
         self.display.blit(self.background, (0, 0))
@@ -29,9 +28,9 @@ def menu(self):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if button_play.check_input(mouse_pos_menu):
                     pygame.mixer.music.stop()
-                    pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+                    pygame.mixer.music.load("../assets/audio/BGM_game.mp3")
                     pygame.mixer.music.play(-1)
-                    run()
+                    run()  # Call the run function from game.py to start the game
                 if button_ldr.check_input(mouse_pos_menu):
                     self.show_leaderboard()
                 if button_credits.check_input(mouse_pos_menu):
