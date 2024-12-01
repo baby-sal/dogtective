@@ -44,24 +44,30 @@ class DogtectiveMenu:
 
     def credit_screen(self):
         while True:
+            width = config.WIDTH
+            height = config.HEIGHT
             pygame.display.set_caption("Dogtective: Credits")
             mouse_pos_credits = pygame.mouse.get_pos()
 
             self.display.fill("pink")
-            bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), self.display.get_size())
+            bg = pygame.transform.smoothscale(
+                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+                self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text_blit("CREDITS:", 100, "orange", 640, 150)
-            self.dog_image(640, 175)
-            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", 250)
-            self.credit_blit("Estelle Walford - UI/UX", 300)
-            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", 350)
-            self.credit_blit("Mel Clarke - Testing", 400)
-            self.credit_blit("Sally Davies - UI/UX", 450)
-            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", 500)
-            self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue", 640, 600)
+            self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
+            self.dog_image(width // 2, height // 6)
+            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", height // 3)
+            self.credit_blit("Estelle Walford - UI/UX", height // 2.75)
+            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", height // 2.5)
+            self.credit_blit("Mel Clarke - Testing", height // 2.3)
+            self.credit_blit("Sally Davies - UI/UX", height // 2.1)
+            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", height // 1.9)
+            self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
+                           width // 2, height - height // 5)
 
-            button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=self.pixel_font(40), colour="purple4", text_in="go back")
+            button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.pixel_font(40), colour="purple4",
+                                    text_in="go back")
             button_go_back.update_button(self.display)
 
             for event in pygame.event.get():
