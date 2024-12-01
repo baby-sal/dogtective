@@ -1,8 +1,8 @@
 import pygame
-from credits import credit_screen
-from leaderboard import leaderboard
-from menu_screen import menu
-from menu_display import dog_image, pixel_font, text_blit, credit_blit, background_image
+from logic.screens.credits import credit_screen
+from logic.screens.leaderboard import leaderboard
+from logic.screens.menu_screen import menu
+from logic.screens.menu_display import dog_image, pixel_font, text_blit, credit_blit
 import user_interface.game_config as config
 
 class DogtectiveMenu:
@@ -10,10 +10,9 @@ class DogtectiveMenu:
         pygame.init()
         self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption("Dogtective: Main Menu")
-        self.load_background_image()
-
-    def load_background_image(self):
-        background_image(self)
+        self.background = pygame.image.load( "../logic/assets/images/menu/city_background.png").convert_alpha()
+        self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+        self.display.blit(self.background, (0, 0))
 
     def pixel_font(self, size):
         return pixel_font(self, size)
