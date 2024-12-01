@@ -1,4 +1,6 @@
 import pygame
+from user_interface.game_config import HEIGHT, WIDTH #is HEIGHT and WIDTH referenced within this file?
+
 
 class Health(pygame.sprite.Sprite):
     def __init__(self, max_health):
