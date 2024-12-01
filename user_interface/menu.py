@@ -10,7 +10,7 @@ pygame.init()
 
 display = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dogtective: Main Menu")
-background = pygame.image.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/images/menu/city_backgroud.png").convert()
+background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
 background = pygame.transform.smoothscale(background, display.get_size())
 
 def pixel_font(size):
