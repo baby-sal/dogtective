@@ -1,13 +1,13 @@
 import pygame
 import math as m
-import user_interface.game_config as config
+from user_interface.game_config  import WIDTH
 
 class ScrollBackground:
     def __init__(self):
         #do not need transparency for image background therefore do not need convert_alpha
         self.image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert()
         self.image_width = self.image.get_width()
-        self.screen_width = config.WIDTH
+        self.screen_width = WIDTH
         self.scroll = 0
         self.fps = 60
         self.clock = pygame.time.Clock()
