@@ -108,7 +108,35 @@ def you_lose():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if button_go_back.check_input(mouse_pos_credits):
+                if button_go_back.check_input(mouse_pos_end):
+                    menu()
+
+        pygame.display.update()
+
+def you_win():
+    while True:
+        mouse_pos_complete = pygame.mouse.get_pos()
+
+        display.fill("pink")
+        bg = pygame.transform.smoothscale(
+            pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+            display.get_size())
+        display.blit(bg, (0, 0))
+
+        text_blit("mission complete!", 175, "indigo", 640, 300)
+        dogtective_image(640, 575)
+
+        button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=pixel_font(40),
+                                colour="purple4", text_in="go back")
+
+        button_go_back.update_button(display)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if button_go_back.check_input(mouse_pos_complete):
                     menu()
 
         pygame.display.update()
