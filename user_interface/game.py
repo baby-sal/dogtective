@@ -12,7 +12,6 @@ class GameRunner:
     def __init__(self):
         # Initialise pygame
         pygame.init()
-
         self.dis_width = config.WIDTH
         self.dis_height = config.HEIGHT
 
