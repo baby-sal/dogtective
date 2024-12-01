@@ -1,12 +1,12 @@
 import pygame
 import sys
-
-from pygame.examples.cursors import image
-
 from logic.components.button import Button
 from game import run
 
 pygame.init()
+
+menu_music = pygame.mixer.music.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/audio/BGM_menu.mp3")
+pygame.mixer.music.play(-1)
 
 display = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dogtective: Main Menu")
@@ -51,7 +51,7 @@ def credit_screen():
         mouse_pos_credits = pygame.mouse.get_pos()
 
         display.fill("pink")
-        bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), self.display.get_size())
+        bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), display.get_size())
         display.blit(bg, (0, 0))
 
         text_blit("CREDITS:", 100, "orange", 640, 150)
@@ -108,6 +108,9 @@ def menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if button_play.check_input(mouse_pos_menu):
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/audio/BGM_game.mp3")
+                    pygame.mixer.music.play(-1)
                     run()
                 # if button_ldr.check_input(mouse_pos_menu):
                 #     leaderboard()
