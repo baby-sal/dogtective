@@ -40,7 +40,7 @@ class GameRunner:
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3)
 
-        ball_img = pygame.image.load('../logic/assets/images/objects/ball.png').convert_alpha()
+        ball_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
         self.ball = Collectable("ball", ball_img, 1100, 350, 0.5)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self.ball)
