@@ -12,7 +12,7 @@ def credit_screen(self):
 
         self.display.fill("pink")
         bg = pygame.transform.smoothscale(
-            pygame.image.load("../assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+            pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
             self.display.get_size())
         self.display.blit(bg, (0, 0))
 
