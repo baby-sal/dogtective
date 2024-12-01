@@ -1,7 +1,7 @@
 import pygame
 from user_interface.game_config import WIDTH, HEIGHT
 
-class Screen(p.sprite.Sprite):
+class EndScreen(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.img1 = pygame.image.load('Scene.png')#Update with scenery images
@@ -39,11 +39,11 @@ def scoreDisplay():
     
     pygame.display.flip()
     
-win = pygame.display.set_mode((WIDTH, HEIGHT))
-bg = Screen()
-screen_group = pygame.sprite.Group()
-screen_group.add(bg)
-screen_group.draw(win)
-screen_group.update()
+    win = pygame.display.set_mode((WIDTH, HEIGHT))
+    bg = Screen()
+    screen_group = pygame.sprite.Group()
+    screen_group.add(bg)
+    screen_group.draw(win)
+    screen_group.update()
 
 
