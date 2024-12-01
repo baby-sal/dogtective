@@ -103,13 +103,17 @@ class DogtectiveMenu:
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        from run import run_game  # Delayed import
-                        run_game()
+                        self.run_game()
                     # if button_ldr.check_input(mouse_pos_menu):
                     #     self.leaderboard()
                     if button_credits.check_input(mouse_pos_menu):
                         self.credit_screen()
             pygame.display.update()
+
+    def run_game(self):
+        from game import GameRunner
+        game = GameRunner()
+        game.game_loop()
 
 if __name__ == "__main__":
     menu = DogtectiveMenu()
