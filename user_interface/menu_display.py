@@ -41,7 +41,7 @@ class MenuDisplay:
             pygame.display.set_caption("Dogtective: Credits")
             mouse_pos_credits = pygame.mouse.get_pos()
             self.display.fill("pink")
-            bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert(), self.display.get_size())
+            bg = pygame.transform.smoothscale(pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(), self.display.get_size())
             self.display.blit(bg, (0, 0))
 
             self.text_blit("CREDITS:", 100, "orange", 640, 150)
