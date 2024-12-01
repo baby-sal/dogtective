@@ -1,6 +1,6 @@
 import pygame
 import sys
-from logic.components.environmental import Obstacle, Environmental, Collectable
+from logic.components.environmental import Obstacle, Collectable
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
