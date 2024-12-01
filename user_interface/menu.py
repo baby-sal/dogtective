@@ -3,7 +3,7 @@ from logic.screens.credits import credit_screen
 from logic.screens.leaderboard import leaderboard
 from logic.screens.menu_screen import menu
 from logic.screens.menu_display import dog_image, pixel_font, text_blit, credit_blit
-from game_config import WIDTH, HEIGHT
+from user_interface.game_config import WIDTH, HEIGHT
 
 class DogtectiveMenu:
     def __init__(self):
