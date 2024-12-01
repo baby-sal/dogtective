@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from logic.score_db_connection.db_utils_score import DbClass  # Import the DbClass
+from logic.score_db_connection.db_utils_score import DbClass
 from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
 
 app = Flask(__name__)
