@@ -57,14 +57,19 @@ class DogtectiveMenu:
 
             self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
             self.dog_image(width // 2, height // 6)
-            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", height // 3)
-            self.credit_blit("Estelle Walford - UI/UX", height // 2.75)
-            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", height // 2.5)
-            self.credit_blit("Mel Clarke - Testing", height // 2.3)
-            self.credit_blit("Sally Davies - UI/UX", height // 2.1)
-            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", height // 1.9)
+
+            # Adding space between each credit
+            y_offset = 250  # Initial offset
+            line_height = 50  # Space between lines
+
+            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", y_offset)
+            self.credit_blit("Estelle Walford - UI/UX", y_offset + line_height)
+            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", y_offset + 2 * line_height)
+            self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
+            self.credit_blit("Sally Davies - UI/UX", y_offset + 4 * line_height)
+            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", y_offset + 5 * line_height)
             self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
-                           width // 2, height - height // 5)
+                           width // 2, y_offset + 8 * line_height)
 
             button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.pixel_font(40), colour="purple4",
                                     text_in="go back")
