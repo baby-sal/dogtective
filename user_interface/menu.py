@@ -14,7 +14,7 @@ background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png")
 background = pygame.transform.smoothscale(background, display.get_size())
 
 def pixel_font(size):
-    return pygame.font.Font("/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/StayPixelRegular.ttf", size)
+    pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
 
 def text_blit(text, size, colour, rect_pos_x, rect_pos_y):
     text = pixel_font(size).render(text,True, colour)
