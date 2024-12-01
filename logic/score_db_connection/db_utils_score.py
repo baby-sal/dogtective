@@ -11,7 +11,7 @@ class DbClass(object):
 
     connection = None
 
-    def __init__(self, host, user, password, database):
+    def __init__(self, HOST, USER, PASSWORD, DATABASE):
         self.host = HOST
         self.user = USER
         self.password = PASSWORD
@@ -55,22 +55,20 @@ class DbClass(object):
             return f"Disconnected from {self.database}"
 
 
-    def get_top_ten():
-        database = DbClass(HOST, USER, PASSWORD, DATABASE)
+    def get_top_ten(self):
+        self.db_connect()
         try:
-            database.db_connect()
             sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
-            result = database.get_query(sql_query)#it doesn't like assigning this to a variable, it wants you to just return this line
-            return result
+            return self.get_query(sql_query)
         finally:
-            database.db_disconnect()
+            self.db_disconnect()
 
-    def add_new_score(nickname, score):#this line flags as should be self, score in parameters instead of nickname, score
-        database = DbClass(HOST, USER, PASSWORD, DATABASE)
+    def add_new_score(self, nickname, score):
+        self.db_connect()
         try:
-            database.db_connect()
-            sql_query = f"UPDATE high_scores SET date = CURDATE(), nickname = {nickname}, score = {score}"#CURDATE is an unknown word
-            database.update_query(sql_query, nickname, score)
+            sql_query = "INSERT INTO high_scores (date, nickname, score) VALUES (CURRENT_DATE(), %s, %s)"
+            self.update_query(sql_query, nickname, score)
         finally:
-            database.db_disconnect()
+            self.db_disconnect()
+            
 
