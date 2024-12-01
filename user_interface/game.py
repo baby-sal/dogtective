@@ -3,9 +3,8 @@ import sys
 from logic.components.environmental import Obstacle, Collectable
 from logic.components.character import Character
 from logic.components.health import Health
-import game_config as config
+import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
-from menu import DogtectiveMenu
 
 class GameRunner:
     # Game window set-up
@@ -19,16 +18,15 @@ class GameRunner:
         self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
-        self.game_state = config.MENU
 
         self.background_image = self.load_background_image()
         self.scroll_background = ScrollBackground()
 
-        self.health = Health(5)
+        health = Health(5)
         self.health_group = pygame.sprite.Group()
-        self.health_group.add(self.health)
+        self.health_group.add(health)
 
-        self.dog = Character("dog", self.health)
+        self.dog = Character("dog", health)
         self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
@@ -92,59 +90,26 @@ class GameRunner:
         self.dog_group.draw(self.game_display)
         self.dog_group.update(car_group)
 
-    def handle_menu(self):
-        menu = DogtectiveMenu()
-        menu.menu()
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.game_state = config.PLAYING
-            elif event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-    def handle_playing(self):
-        if self.dog.health.current > 0:
-            self.render_background_image()
-            self.render_all(self.car_group, self.health_group, self.ball_group)
-            self.render_dog(self.car_group)
-            pygame.display.update()
-            self.clock.tick(config.FPS)
-        else:
-            self.game_state = config.GAME_OVER
-
-    def handle_game_over(self):
-        print("Game Over! Press Enter to go to the menu.")
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.dog.health.current = 5
-                self.game_state = config.MENU
-            elif event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-    def handle_next_level(self):
-        print("Next Level! Press Enter to continue playing.")
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.dog.health.current = 5
-                self.game_state = config.PLAYING
-            elif event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
     # Game loop: Keeps window open until quit
     def game_loop(self):
         run = True
+        ball_active = False
 
         while run:
-            if self.game_state == config.MENU:
-                self.handle_menu()
-            elif self.game_state == config.PLAYING:
-                self.handle_playing()
-            elif self.game_state == config.GAME_OVER:
-                self.handle_game_over()
-            elif self.game_state == config.NEXT_LEVEL:
-                self.handle_next_level()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+
+            if self.dog.health.current > 0:
+                self.render_background_image()
+                self.render_all(self.car_group, self.health_group, self.ball_group)
+                self.render_dog(self.car_group)
+
+                pygame.display.update()
+                self.clock.tick(config.FPS)
+            else:
+                # game over screen here
+                run = False
 
 def run():
     game = GameRunner()
