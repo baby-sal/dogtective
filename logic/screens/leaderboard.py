@@ -7,6 +7,7 @@ from user_interface.game_config import WIDTH, HEIGHT
 def leaderboard(self):
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
+    pygame.display.set_caption("Dogtective: Leaderboard")
 
     font = pygame.font.Font(None, 36)
 
