@@ -1,5 +1,7 @@
 import pygame as p
 import pygame.time
+
+from logic.assets.audio.audio import bark_sound
 # import sys may be needed when dog collides with ball and game ends?
 
 from user_interface.game_config import HEIGHT, WIDTH
@@ -19,11 +21,13 @@ class Character(p.sprite.Sprite):
         self.width = 100
         self.height = 50
         self.collision_immune = False
+        self.bark_button_pressed = False
         self.collision_time = 0
 
         self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
         self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
         self.hurt = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Hurt.png', 1.5, 2)
+        self.bark = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Attack.png', 1.5, 4)
 
         self.move = False
         self.direction = "right"
@@ -51,6 +55,10 @@ class Character(p.sprite.Sprite):
 
     def movement(self):
         keys = p.key.get_pressed()
+        if keys[p.K_b]:
+            p.mixer.Sound.play(pygame.mixer.Sound("../logic/assets/audio/Detective_Dog_Bark.mp3"))
+            self.move = True
+            self.bark_button_pressed = True
 
         if keys[p.K_LEFT]:
             self.x -= self.speed  # left key pressed negative velocity
@@ -77,6 +85,9 @@ class Character(p.sprite.Sprite):
         elif self.collision_immune:
             self.hurt.cycle_animation()
             self.image = self.hurt.frame
+        elif self.bark_button_pressed:
+            self.bark.cycle_animation()
+            self.image = self.bark.frame
         else:
             self.idle.cycle_animation()
             self.image = self.idle.frame
