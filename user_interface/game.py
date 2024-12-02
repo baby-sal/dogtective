@@ -5,13 +5,10 @@ from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
 from logic.assets.images.sprites import car_group, toy_group
-from logic.assets.internal_sprite import has_internal, add_internal, add_sprite
+from logic.assets.internal_sprite import has_internal, add_internal, add_sprite, render_background_image, render_all, render_dog
 
 class GameRunner:
-    # Game window set-up
-
     def __init__(self):
-        # Initialise pygame
         pygame.init()
 
         self.dis_width = config.WIDTH
@@ -32,6 +29,9 @@ class GameRunner:
         self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
+        self.car_group = pygame.sprite.Group()
+        self.toy_group = pygame.sprite.Group()
+
         car_group(self)
         toy_group(self)
 
@@ -44,7 +44,7 @@ class GameRunner:
         pygame.display.update()
 
     def has_internal(self, sprite):
-        has_internal(self, sprite)
+        return has_internal(self, sprite)
 
     def add_internal(self, sprite, group_name):
         add_internal(self, sprite, group_name)
@@ -57,18 +57,14 @@ class GameRunner:
         return image
 
     def render_background_image(self):
-        self.game_display.blit(self.background_image, (0, 0))
+        render_background_image(self)
 
     def render_all(self, *groups):
-        for group in groups:
-            group.draw(self.game_display)
-            group.update()
+        render_all(self, *groups)
 
     def render_dog(self, car_group):
-        self.dog_group.draw(self.game_display)
-        self.dog_group.update(car_group)
+        render_dog(self, car_group)
 
-    # Game loop: Keeps window open until quit
     def game_loop(self):
         run = True
         ball_active = False
@@ -89,7 +85,6 @@ class GameRunner:
                 pygame.display.update()
                 self.clock.tick(config.FPS)
             else:
-                # game over screen here
                 run = False
 
 def run():
