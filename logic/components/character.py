@@ -88,6 +88,7 @@ class Character(p.sprite.Sprite):
         elif self.bark_button_pressed:
             self.bark.cycle_animation()
             self.image = self.bark.frame
+            self.bark_button_pressed = False # reset bark button after updating animation
         else:
             self.idle.cycle_animation()
             self.image = self.idle.frame
