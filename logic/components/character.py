@@ -1,7 +1,5 @@
 import pygame as p
 import pygame.time
-
-from logic.assets.audio.audio import bark_sound
 # import sys may be needed when dog collides with ball and game ends?
 
 from user_interface.game_config import HEIGHT, WIDTH
