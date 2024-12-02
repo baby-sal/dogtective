@@ -11,8 +11,8 @@ def car_group(self):
     self.car_group = pygame.sprite.Group()
     self.car_group.add(car1, car2, car3)
 
-def ball_group(self):
-    ball_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
-    self.ball = Collectable("ball", ball_img, 1100, 320, 0.5)
-    self.ball_group = pygame.sprite.Group()
-    self.ball_group.add(self.ball)
+def toy_group(self):
+    toy_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
+    self.toy = Collectable("ball", toy_img, 1100, 320, 0.5)
+    self.toy_group = pygame.sprite.Group()
+    self.toy_group.add(self.toy)

@@ -4,7 +4,7 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
-from logic.assets.images.sprites import car_group, ball_group
+from logic.assets.images.sprites import car_group, toy_group
 from logic.assets.internal_sprite import has_internal, add_internal, add_sprite
 
 class GameRunner:
@@ -33,12 +33,12 @@ class GameRunner:
         self.dog_group.add(self.dog)
 
         car_group(self)
-        ball_group(self)
+        toy_group(self)
 
         self.groups = {
             'car': self.car_group,
             'dog': self.dog_group,
-            'ball': self.ball_group
+            'ball': self.toy_group
         }
 
         pygame.display.update()
@@ -80,8 +80,11 @@ class GameRunner:
 
             if self.dog.health.current > 0:
                 self.render_background_image()
-                self.render_all(self.car_group, self.health_group, self.ball_group)
+                self.render_all(self.car_group, self.health_group, self.toy_group)
                 self.render_dog(self.car_group)
+
+                if pygame.sprite.spritecollide(self.dog, self.toy_group, True):
+                    run = False
 
                 pygame.display.update()
                 self.clock.tick(config.FPS)
