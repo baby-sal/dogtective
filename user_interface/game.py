@@ -67,7 +67,6 @@ class GameRunner:
 
     def game_loop(self):
         run = True
-        ball_active = False
 
         while run:
             for event in pygame.event.get():
