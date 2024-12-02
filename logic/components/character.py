@@ -112,10 +112,6 @@ class Character(p.sprite.Sprite):
             self.collision_time = pygame.time.get_ticks()
         p.mixer_music.unpause()
 
-        """for event in p.event.get():
-            if event.type == p.USEREVENT + 1:
-                pygame.mixer_music.unpause()
-                p.event.set_blocked(p.USEREVENT + 1)"""
         # if ball_check and not self.collision_immune:
         #     self.collision_immune = True
         #     sys.exit()
