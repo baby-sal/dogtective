@@ -16,5 +16,6 @@ c_sound = pygame.mixer.Sound("../logic/assets/audio/Car_Collision.mp3")
 #bark button add to character class?
 bark_sound = pygame.mixer.Sound("../logic/assets/audio/Detective_Dog_Bark.mp3")
 
-# elif keys[p.K_b]:
+# if event.type == pygame.KEYDOWN:
+#   if event.key == pygame.K_b
 #     pygame.mixer.Sound.play(bark_sound)
