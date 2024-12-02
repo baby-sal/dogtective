@@ -41,6 +41,10 @@ class GameRunner:
             'ball': self.toy_group
         }
 
+        # music for game loop ( can be added to the beginning)
+        pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+        pygame.mixer.music.play(-1)
+
         pygame.display.update()
 
     def has_internal(self, sprite):
