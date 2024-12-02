@@ -10,9 +10,6 @@ pygame.mixer.music.play(-1)
 loop_music = pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
 pygame.mixer.music.play(-1)
 
-#collision sound to be added to character class
-c_sound = pygame.mixer.Sound("../logic/assets/audio/Car_Collision.mp3")
-
 #bark button add to character class?
 bark_sound = pygame.mixer.Sound("../logic/assets/audio/Detective_Dog_Bark.mp3")
 

@@ -24,6 +24,7 @@ class Character(p.sprite.Sprite):
         self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
         self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
         self.hurt = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Hurt.png', 1.5, 2)
+        c_sound = pygame.mixer.Sound("../logic/assets/audio/Car_Collision.mp3").play() # play car collision sound
 
         self.move = False
         self.direction = "right"
