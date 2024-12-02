@@ -13,6 +13,6 @@ def car_group(self):
 
 def toy_group(self):
     toy_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
-    self.toy = Collectable("ball", toy_img, 1100, 320, 0.5)
+    self.toy = Collectable("toy", toy_img, 1100, 320, 0.5)
     self.toy_group = pygame.sprite.Group()
     self.toy_group.add(self.toy)
