@@ -11,6 +11,8 @@ class DogtectiveMenu:
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+        pygame.mixer.music.load("../logic/assets/audio/BGM_menu.mp3")
+        pygame.mixer.music.play(-1)
 
     def pixel_font(self, size):
         return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
