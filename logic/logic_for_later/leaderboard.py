@@ -32,6 +32,11 @@ class Leaderboard:
 
             pygame.display.update()
 
+if __name__ == "__main__":
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))
+    leaderboard = Leaderboard(screen)  # Pass the screen parameter
+    leaderboard.display_leaderboard()
 
 
 if __name__ == "__main__":
