@@ -1,9 +1,9 @@
 import pygame
 import sys
 from logic.components.button import Button
-from game import run
+"""from game import run"""
 import user_interface.game_config as config
-from user_interface.leaderboard import leaderboard
+from user_interface.leaderboard import Leaderboard
 
 class DogtectiveMenu:
     def __init__(self):
@@ -37,7 +37,7 @@ class DogtectiveMenu:
         self.display.blit(dogtective_pic, rect_dog)
 
     def leaderboard(self):
-        leaderboard(self)
+        Leaderboard(self)
 
     def credit_screen(self):
         while True:
@@ -159,13 +159,13 @@ class DogtectiveMenu:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_play.check_input(mouse_pos_menu):
+                    """if button_play.check_input(mouse_pos_menu):
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        run()
-                    # if button_ldr.check_input(mouse_pos_menu):
-                    #     self.leaderboard()
+                        run()"""
+                    if button_ldr.check_input(mouse_pos_menu):
+                        self.leaderboard()
                     if button_credits.check_input(mouse_pos_menu):
                         self.credit_screen()
             pygame.display.update()
