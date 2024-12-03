@@ -10,14 +10,10 @@ from logic.components.environmental import Collectable
 class GameLoop:
     # Game window set-up
 
-    def __init__(self):
+    def __init__(self, display):
         # Initialise pygame
-        pygame.init()
 
-        self.dis_width = config.WIDTH
-        self.dis_height = config.HEIGHT
-
-        self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
+        self.game_display = display
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
