@@ -2,6 +2,10 @@ import pygame
 
 
 class Text():
+
+    def __init__(self, display):
+        self.display = display
+
     def pixel_font(self, size):
         return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
 

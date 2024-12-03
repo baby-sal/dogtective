@@ -3,13 +3,14 @@ import sys
 import pygame
 from logic.components.button import Button
 from user_interface.screens.screen import Screen
-from user_interface.game_runner import Runner
+from user_interface.game_config import GameState
 
 
 class MenuRunner(Screen):
 
-    def __init__(self, display):
+    def __init__(self, display, runner):
         super().__init__(display)
+        self.runner = runner
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
@@ -17,7 +18,7 @@ class MenuRunner(Screen):
 
     def menu_runner(self):
 
-            while True:
+            while self.runner.current_state == GameState.MENU:
                 self.display.blit(self.background, (0, 0))
                 mouse_pos_menu = pygame.mouse.get_pos()
 
@@ -33,19 +34,19 @@ class MenuRunner(Screen):
                     button.update_button(self.display)
 
                 for event in pygame.event.get():
-                  if event.type == pygame.QUIT:
-                      pygame.quit()
-                      sys.exit()
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if button_play.check_input(mouse_pos_menu):
                             pygame.mixer.music.stop()
                             pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                             pygame.mixer.music.play(-1)
-                            Runner.state = "GAMEPLAY"
-                        if button_ldr.check_input(mouse_pos_menu):
+                            self.runner.current_state = GameState.GAMEPLAY
+                        # if button_ldr.check_input(mouse_pos_menu):
                             # self.leaderboard()
-                            Runner.state = "LEADERBOARD"
-                        if button_credits.check_input(mouse_pos_menu):
+                            # GameState = "LEADERBOARD"
+                        # if button_credits.check_input(mouse_pos_menu):
                             # self.credit_screen()
-                            Runner.state = "CREDITS"
+                            # Runner.state = "CREDITS"
                 pygame.display.update()

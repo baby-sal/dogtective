@@ -7,8 +7,6 @@ import user_interface.game_config as config
 
 class Runner():
 
-    state = "MENU"
-
     #def run_game
         #menu
         #game
@@ -25,19 +23,29 @@ class Runner():
 
         self.display = pygame.display.set_mode((self.dis_width, self.dis_height))
 
+        self.current_state = config.GameState.MENU
+
 
     def run(self):
-        menu = MenuRunner(self.display)
-        menu.menu_runner()
-        game = GameLoop(self.display)
-        game.game_loop()
-        pygame.quit()
-        sys.exit()
+        menu = MenuRunner(self.display, self)
+        # menu.menu_runner()
+        game = GameLoop(self.display, self)
+        # game.game_loop()
+        # pygame.quit()
+        # sys.exit()
 
-        # if state == "MENU":
-        #   menu.menu_runner()
-        # elif state == "GAMEPLAY":
-        #   game.game_loop()
-        # elif state == "CREDITS":
-        #   credits.cresits()
+        while True:
+            if self.current_state == config.GameState.MENU:
+                menu.menu_runner()
+            elif self.current_state == config.GameState.GAMEPLAY:
+                game.game_loop()
+            # elif state == "CREDITS":
+            #   credits.credits()
+
+
+if __name__ == "__main__":
+    runner = Runner()
+    runner.run()
+    pygame.quit()
+    sys.exit()
 

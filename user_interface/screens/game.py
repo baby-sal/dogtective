@@ -10,10 +10,11 @@ from logic.components.environmental import Collectable
 class GameLoop:
     # Game window set-up
 
-    def __init__(self, display):
+    def __init__(self, display, runner):
         # Initialise pygame
 
         self.game_display = display
+        self.runner = runner
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
@@ -73,7 +74,7 @@ class GameLoop:
                     sprite.add_internal(self)
 
     def load_background_image(self):
-        image = pygame.image.load('../../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+        image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
         return image
 
     def render_background_image(self):
