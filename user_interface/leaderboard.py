@@ -1,8 +1,9 @@
 import pygame
 import sys
-from logic.score_db_connection.db_utils_score import DbClass  # Import the DbClass from your connector module
-import logic.score_db_connection.config as config
-from user_interface.game_config import WIDTH
+import mysql.connector
+from user_interface.game_config import WIDTH, HEIGHT
+from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
+
 
 class Leaderboard:
     WHITE = (255, 255, 255)
@@ -11,16 +12,37 @@ class Leaderboard:
     def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font(None, 36)
+        self.connection = None
+        self.connect_db()
 
-        # Initialize DbClass with connection parameters
-        self.db = DbClass()
+    def connect_db(self):
+        try:
+            self.connection = mysql.connector.connect(
+                user=USER,
+                password=PASSWORD,
+                host=HOST,
+                database=DATABASE
+            )
+            if self.connection.is_connected():
+                print("Successfully connected to the database.")
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            self.connection = None
 
     def get_scores(self):
-        scores = self.db.get_top_ten()
-        if scores is None:
-            print("Failed to retrieve scores. Check database connection.")
-            scores = []
-        return scores
+        if self.connection is None:
+            print("Database connection is not established.")
+            return []
+
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT name, score FROM high_scores ORDER BY score DESC LIMIT 10")
+            return cursor.fetchall()
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return []
+        finally:
+            cursor.close()
 
     def show(self):
         scores = self.get_scores()
@@ -54,7 +76,7 @@ class Leaderboard:
 # Example usage
 if __name__ == "__main__":
     pygame.init()
-    display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
+    display = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Dogtective: Leaderboard")
     leaderboard = Leaderboard(display)
     leaderboard.show()
