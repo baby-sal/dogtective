@@ -7,12 +7,14 @@ import user_interface.game_config as config
 
 class MenuRunner():
 
-    def menu_runner(self):
-
+    def __init__(self):
         self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+
+
+def menu_runner(self):
 
         while True:
             self.display.blit(self.background, (0, 0))
