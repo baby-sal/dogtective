@@ -1,5 +1,4 @@
 from logic.components.button import Button
-from user_interface.game import run
 import pygame
 import user_interface.game_config as config
 import sys
@@ -10,11 +9,11 @@ class MainMenu:
         pygame.init()
         self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption("Dogtective: Main Menu")
-        self.background = pygame.image.load("../assets/images/menu/city_background.png").convert_alpha()
+        self.background = pygame.image.load("../../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
     def pixel_font(self, size):
-        return pygame.font.Font("../assets/fonts/pixel_font.ttf", size)
+        return pygame.font.Font("../../logic/assets/fonts/pixel_font.ttf", size)
 
     def menu(self):
         while True:

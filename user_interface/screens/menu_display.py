@@ -3,11 +3,11 @@ import os
 
 
 def pixel_font(self, size):
-    return pygame.font.Font("../assets/StayPixelRegular.ttf", size)
+    return pygame.font.Font("../../logic/assets/StayPixelRegular.ttf", size)
 
 
 def dog_image(self, pos_x, pos_y):
-    smol_dog_pic = pygame.image.load("../assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
+    smol_dog_pic = pygame.image.load("../../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
     rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
     self.display.blit(smol_dog_pic, rect_dog)
 
@@ -25,7 +25,7 @@ def credit_blit(self, text, pos_y):
 
 
 def background_image(self):
-    background_path = "../assets/images/menu/city_backgroud.png"
+    background_path = "../../logic/assets/images/menu/city_backgroud.png"
 
     if not os.path.exists(background_path):
         raise FileNotFoundError(f"No file '{background_path}' found in the working directory '{os.getcwd()}'.")
