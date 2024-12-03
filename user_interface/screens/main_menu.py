@@ -2,7 +2,7 @@ import pygame
 from credits import credit_screen
 from leaderboard import leaderboard
 from menu_screen import menu
-from menu_display import dog_image, pixel_font, text_blit, credit_blit, background_image
+from menu_display import pixel_font, text_blit,  background_image
 import user_interface.game_config as config
 
 class DogtectiveMenu:
