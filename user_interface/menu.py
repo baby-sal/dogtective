@@ -153,7 +153,7 @@ class DogtectiveMenu:
 
             self.text_blit("Dogtective", 200, "royalblue4", 640, 175)
             self.text_blit("MENU", 100, "royalblue4", 640, 275)
-            self.dog_image(640, 600)
+            self.dogtective_image(640, 600)
 
             button_play = Button(image=None, pos_x=640, pos_y=350, font=self.pixel_font(75), colour="brown", text_in="play")
             button_ldr = Button(image=None, pos_x=640, pos_y=425, font=self.pixel_font(75), colour="lightsalmon", text_in="LEADERBOARD")
