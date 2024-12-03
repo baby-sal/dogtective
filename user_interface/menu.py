@@ -2,7 +2,7 @@ import pygame
 import sys
 from logic.components.button import Button
 from game import run
-from logic.logic_for_later.leaderboard import leaderboard
+from logic.logic_for_later.leaderboard import Leaderboard
 import user_interface.game_config as config
 
 class DogtectiveMenu:
@@ -37,7 +37,7 @@ class DogtectiveMenu:
         self.display.blit(dogtective_pic, rect_dog)
 
     def leaderboard(self):
-        leaderboard()
+        Leaderboard()
 
     def credit_screen(self):
         while True:
