@@ -4,6 +4,7 @@ import user_interface.game_config as config
 from logic.score_db_connection.db_utils_score import DbClass  # Import the DbClass from your connector module
 from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
 from user_interface.menu import DogtectiveMenu
+from user_interface.game_config import WIDTH, HEIGHT
 
 def leaderboard(self):
     WHITE = (255, 255, 255)
@@ -16,6 +17,10 @@ def leaderboard(self):
 
     # Fetch top ten scores from the database
     scores = db.get_top_ten()
+
+    if scores is None:
+        print("Failed to retrieve scores. Check database connection.")
+        scores = []
 
     go_back = pygame.Rect(50, 50, 100, 50)
 
