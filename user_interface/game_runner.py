@@ -3,6 +3,7 @@ import sys, pygame
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
+from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
 
 
@@ -31,6 +32,7 @@ class Runner():
         menu = MenuRunner(self.display, self)
         game = GameLoop(self.display, self)
         credits = Credits(self.display, self)
+        end_screen = EndScreen(self.display, self)
 
         game_on = True
 
@@ -40,7 +42,11 @@ class Runner():
             elif self.current_state == config.GameState.GAMEPLAY:
                 game.game_loop()
             elif self.current_state == config.GameState.CREDITS:
-              credits.credit_screen()
+                credits.credit_screen()
+            elif self.current_state == config.GameState.WIN:
+                end_screen.you_win()
+            elif self.current_state == config.GameState.LOSE:
+                end_screen.you_lose()
             else:
                 game_on = False
 

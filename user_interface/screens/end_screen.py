@@ -1,12 +1,13 @@
 import pygame
 import sys
 from user_interface.screens.screen import Screen
+from user_interface.game_config import GameState
 from logic.components.button import Button
 
 class EndScreen(Screen):
 
     def you_win(self):
-        while True:
+        while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
 
             self.display.fill("pink")
@@ -29,12 +30,12 @@ class EndScreen(Screen):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
-                        menu()
+                        self.runner.current_state = GameState.MENU
 
             pygame.display.update()
 
     def you_lose(self):
-        while True:
+        while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
             self.display.fill("pink")
@@ -57,6 +58,6 @@ class EndScreen(Screen):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_end):
-                        menu()
+                        self.runner.current_state = GameState.MENU
 
             pygame.display.update()

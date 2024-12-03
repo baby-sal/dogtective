@@ -91,13 +91,13 @@ class GameLoop:
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
-        run = True
         ball_active = False
 
-        while run:
+        while self.runner.current_state == config.GameState.GAMEPLAY:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    run = False
+                    pygame.quit()
+                    sys.exit()
 
             if self.dog.health.current > 0:
                 self.render_background_image()
@@ -108,11 +108,11 @@ class GameLoop:
                 self.clock.tick(config.FPS)
 
                 if pygame.sprite.spritecollide(self.dog, self.ball_group, True):
-                    run = False
+                    self.runner.current_state = config.GameState.WIN
 
             else:
                 # game over screen here
-                run = False
+                self.runner.current_state = config.GameState.LOSE
 
 # def run():
 #     game = GameLoop()
