@@ -7,7 +7,7 @@ class Leaderboard:
     def __init__(self):
         self.db = DbClass(HOST, USER, PASSWORD, DATABASE)
 
-    def leaderboard(self):
+    def display_leaderboard(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -36,5 +36,5 @@ class Leaderboard:
 if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-    game = Game()
-    game.leaderboard()
+    leaderboard = Leaderboard()
+    leaderboard.display_leaderboard()
