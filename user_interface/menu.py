@@ -2,7 +2,6 @@ import pygame
 import sys
 from logic.components.button import Button
 from game import run
-from logic.logic_for_later.leaderboard import Leaderboard
 import user_interface.game_config as config
 
 class DogtectiveMenu:
@@ -36,9 +35,17 @@ class DogtectiveMenu:
         rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(dogtective_pic, rect_dog)
 
-    def display_leaderboard(self):
-        leaderboard = Leaderboard(self.display)
-        leaderboard.display_leaderboard()
+    def leaderboard(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # if go_back.check_input(mouse_pos_ldr):
+                    #     self.menu()
+                    pass
+            pygame.display.update()
 
     def credit_screen(self):
         while True:
