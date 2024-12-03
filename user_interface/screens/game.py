@@ -77,7 +77,7 @@ class GameLoop:
                     sprite.add_internal(self)
 
     def load_background_image(self):
-        image = pygame.image.load('../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
+        image = pygame.image.load('../../logic/assets/images/background/Background2_freepik_draft1.png').convert_alpha()
         return image
 
     def render_background_image(self):

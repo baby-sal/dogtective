@@ -1,7 +1,6 @@
 # from menu import
 import sys, pygame
-from game import GameLoop
-from menu import menu
+from user_interface.screens.game import GameLoop
 from user_interface.menu import DogtectiveMenu
 
 

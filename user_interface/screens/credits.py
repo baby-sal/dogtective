@@ -2,7 +2,7 @@ import sys
 import pygame
 import user_interface.game_config as config
 from logic.components.button import Button
-from user_interface.text import
+from user_interface.text import Text
 
 
 class Credits():
@@ -10,11 +10,17 @@ class Credits():
     def __init__(self, display):
         pygame.init()
         self.display = display
+        self.text = Text()
 
     def credit_blit(self, text, pos_y):
-        text = Text.pixel_font(40).render(text, True, "crimson")
-        rect = text.get_rect(center=(640, pos_y))
-        self.display.blit(text, rect)
+        credit_text = self.text.pixel_font(40).render(text, True, "crimson")
+        rect = credit_text.get_rect(center=(640, pos_y))
+        self.display.blit(credit_text, rect)
+
+    def dog_walk_image(self, pos_x, pos_y):
+        smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
+        rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
+        self.display.blit(smol_dog_pic, rect_dog)
 
     def credit_screen(self):
 
@@ -31,7 +37,7 @@ class Credits():
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
+            self.text.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
             self.dog_walk_image(640, 175)
 
             # Adding space between each credit
@@ -44,10 +50,10 @@ class Credits():
             self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
             self.credit_blit("Sally Davies - UI/UX", y_offset + 4 * line_height)
             self.credit_blit("Zarrin Rahman - co-Project Lead & architect", y_offset + 5 * line_height)
-            self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
+            self.text.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
                            width // 2, y_offset + 8 * line_height)
 
-            button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.pixel_font(40), colour="purple4",
+            button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
                                     text_in="go back")
             button_go_back.update_button(self.display)
 
