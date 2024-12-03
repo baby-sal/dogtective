@@ -2,25 +2,15 @@ import sys
 import pygame
 import user_interface.game_config as config
 from logic.components.button import Button
-from user_interface.text import Text
+from user_interface.screens.screen import Screen
 
 
-class Credits():
-
-    def __init__(self, display):
-        pygame.init()
-        self.display = display
-        self.text = Text()
+class Credits(Screen):
 
     def credit_blit(self, text, pos_y):
         credit_text = self.text.pixel_font(40).render(text, True, "crimson")
         rect = credit_text.get_rect(center=(640, pos_y))
         self.display.blit(credit_text, rect)
-
-    def dog_walk_image(self, pos_x, pos_y):
-        smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
-        rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
-        self.display.blit(smol_dog_pic, rect_dog)
 
     def credit_screen(self):
 
@@ -33,12 +23,12 @@ class Credits():
             self.display.fill("pink")
             bg = pygame.transform.smoothscale(
                 pygame.image.load(
-                    "../../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+                    "../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
             self.text.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
-            self.dog_walk_image(640, 175)
+            self.image.dog_walk_image(640, 175, self.display)
 
             # Adding space between each credit
             y_offset = 250  # Initial offset
