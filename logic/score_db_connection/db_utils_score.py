@@ -4,7 +4,7 @@ from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 class DbClass(object):
     connection = None
 
-    def __init__(self, host, user, password, database):
+    def __init__(self, host=HOST, user=USER, password=PASSWORD, database=DATABASE):
         self.host = host
         self.user = user
         self.password = password

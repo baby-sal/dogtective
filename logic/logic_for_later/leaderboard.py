@@ -1,12 +1,11 @@
 import pygame
 import sys
 from logic.score_db_connection.db_utils_score import DbClass
-from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 
 class Leaderboard:
     def __init__(self, screen):
         self.screen = screen
-        self.db = DbClass(HOST, USER, PASSWORD, DATABASE)
+        self.db = DbClass()  # Initialize without parameters
 
     def display_leaderboard(self):
         while True:
@@ -32,6 +31,7 @@ class Leaderboard:
                     y_offset += 40
 
             pygame.display.update()
+
 
 
 if __name__ == "__main__":
