@@ -166,16 +166,16 @@ class DogtectiveMenu:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                """if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_play.check_input(mouse_pos_menu):
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        run()
-                    # if button_ldr.check_input(mouse_pos_menu):
-                    #     self.leaderboard()
-                    if button_credits.check_input(mouse_pos_menu):
-                        self.credit_screen()
+                        run()"""
+                if button_ldr.check_input(mouse_pos_menu):
+                    self.leaderboard()
+                if button_credits.check_input(mouse_pos_menu):
+                    self.credit_screen()
             pygame.display.update()
 
 
