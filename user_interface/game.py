@@ -1,10 +1,11 @@
 import pygame
 import sys
-from logic.components.environmental import Obstacle, Environmental, Collectable
+from logic.components.environmental import Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
+from logic.components.environmental import Collectable
 
 class GameLoop:
     # Game window set-up
@@ -108,6 +109,10 @@ class GameLoop:
 
                 pygame.display.update()
                 self.clock.tick(config.FPS)
+
+                if pygame.sprite.spritecollide(self.dog, self.ball_group, True):
+                    run = False
+
             else:
                 # game over screen here
                 run = False

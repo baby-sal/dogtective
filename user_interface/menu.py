@@ -25,10 +25,15 @@ class DogtectiveMenu:
         rect = text.get_rect(center=(640, pos_y))
         self.display.blit(text, rect)
 
-    def dog_image(self, pos_x, pos_y):
+    def dog_walk_image(self, pos_x, pos_y):
         smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
         rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(smol_dog_pic, rect_dog)
+
+    def dogtective_image(self, pos_x, pos_y):
+        dogtective_pic = pygame.image.load("../logic/assets/images/characters/Dogtective_icon_no_background_1.png").convert_alpha()
+        rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
+        self.display.blit(dogtective_pic, rect_dog)
 
     def leaderboard(self):
         while True:
@@ -56,7 +61,7 @@ class DogtectiveMenu:
             self.display.blit(bg, (0, 0))
 
             self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
-            self.dog_image(width // 2, height // 6)
+            self.dog_walk_image(640, 175)
 
             # Adding space between each credit
             y_offset = 250  # Initial offset
@@ -82,6 +87,62 @@ class DogtectiveMenu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_credits):
                         self.menu()
+
+            pygame.display.update()
+
+    def you_lose(self):
+        while True:
+            mouse_pos_end = pygame.mouse.get_pos()
+
+            self.display.fill("pink")
+            bg = pygame.transform.smoothscale(
+                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+                self.display.get_size())
+            self.display.blit(bg, (0, 0))
+
+            self.text_blit("GAME OVER", 200, "crimson", 640, 300)
+            self.dogtective_image(640, 575)
+
+            button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=self.pixel_font(40),
+                                    colour="purple4", text_in="go back")
+
+            button_go_back.update_button(self.display)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if button_go_back.check_input(self.mouse_pos_credits):
+                        menu()
+
+            pygame.display.update()
+
+    def you_win(self):
+        while True:
+            mouse_pos_complete = pygame.mouse.get_pos()
+
+            self.display.fill("pink")
+            bg = pygame.transform.smoothscale(
+                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+                self.display.get_size())
+            self.display.blit(bg, (0, 0))
+
+            self.text_blit("mission complete!", 175, "indigo", 640, 300)
+            self.dogtective_image(640, 575)
+
+            button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=self.pixel_font(40),
+                                    colour="purple4", text_in="go back")
+
+            button_go_back.update_button(self.display)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if button_go_back.check_input(mouse_pos_complete):
+                        menu()
 
             pygame.display.update()
 

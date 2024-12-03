@@ -1,7 +1,7 @@
 import pygame
 from user_interface.game_config import WIDTH, HEIGHT
 
-class Screen(p.sprite.Sprite):
+class Screen(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.img1 = pygame.image.load('Scene.png')#Update with scenery images
