@@ -1,7 +1,7 @@
 import pygame
 import sys
 from logic.components.button import Button
-"""from game import run"""
+from game import run
 import user_interface.game_config as config
 from user_interface.leaderboard import Leaderboard
 
@@ -36,8 +36,9 @@ class DogtectiveMenu:
         rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(dogtective_pic, rect_dog)
 
-    def leaderboard(self):
-        Leaderboard(self)
+    def show_leaderboard(self):
+        leaderboard = Leaderboard(self.display)
+        leaderboard.show()
 
     def credit_screen(self):
         while True:
@@ -55,7 +56,6 @@ class DogtectiveMenu:
             self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
             self.dog_walk_image(640, 175)
 
-            # Adding space between each credit
             y_offset = 250  # Initial offset
             line_height = 50  # Space between lines
 
@@ -105,8 +105,8 @@ class DogtectiveMenu:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_go_back.check_input(self.mouse_pos_credits):
-                        menu()
+                    if button_go_back.check_input(mouse_pos_end):
+                        self.menu()
 
             pygame.display.update()
 
@@ -134,7 +134,7 @@ class DogtectiveMenu:
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
-                        menu()
+                        self.menu()
 
             pygame.display.update()
 
@@ -159,17 +159,16 @@ class DogtectiveMenu:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    """if button_play.check_input(mouse_pos_menu):
+                    if button_play.check_input(mouse_pos_menu):
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        run()"""
+                        run()
                     if button_ldr.check_input(mouse_pos_menu):
-                        self.leaderboard()
+                        self.show_leaderboard()
                     if button_credits.check_input(mouse_pos_menu):
                         self.credit_screen()
             pygame.display.update()
-
 
 if __name__ == "__main__":
     menu = DogtectiveMenu()

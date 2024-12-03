@@ -1,9 +1,8 @@
 import pygame
 import sys
-import user_interface.game_config as config
 from logic.score_db_connection.db_utils_score import DbClass  # Import the DbClass from your connector module
-from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
-
+import logic.score_db_connection.config as config
+from user_interface.game_config import WIDTH
 
 class Leaderboard:
     WHITE = (255, 255, 255)
@@ -12,7 +11,9 @@ class Leaderboard:
     def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font(None, 36)
-        self.db = DbClass(HOST, USER, PASSWORD, DATABASE)
+
+        # Initialize DbClass with connection parameters
+        self.db = DbClass()
 
     def get_scores(self):
         scores = self.db.get_top_ten()
@@ -40,12 +41,12 @@ class Leaderboard:
             self.display.blit(back_text, (go_back.x + 10, go_back.y + 10))
 
             title_text = self.font.render("Leaderboard", True, self.BLACK)
-            self.display.blit(title_text, (config.WIDTH // 2 - title_text.get_width() // 2, 50))
+            self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
 
             # Display scores from the database
             for i, (name, score) in enumerate(scores):
                 score_text = self.font.render(f"{name}: {score}", True, self.BLACK)
-                self.display.blit(score_text, (config.WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
+                self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
 
