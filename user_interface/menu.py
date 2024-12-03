@@ -36,8 +36,9 @@ class DogtectiveMenu:
         rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(dogtective_pic, rect_dog)
 
-    def leaderboard(self):
-        Leaderboard()
+    def display_leaderboard(self):
+        leaderboard = Leaderboard(self.display)
+        leaderboard.display_leaderboard()
 
     def credit_screen(self):
         while True:
@@ -165,11 +166,10 @@ class DogtectiveMenu:
                         pygame.mixer.music.play(-1)""" #this is the main game loop
                         run()
                     if button_ldr.check_input(mouse_pos_menu):
-                        self.leaderboard()
+                        self.display_leaderboard()
                     if button_credits.check_input(mouse_pos_menu):
                         self.credit_screen()
             pygame.display.update()
-
 
 if __name__ == "__main__":
     menu = DogtectiveMenu()
