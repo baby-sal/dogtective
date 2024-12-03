@@ -9,8 +9,7 @@ from user_interface.game_config import GameState
 class MenuRunner(Screen):
 
     def __init__(self, display, runner):
-        super().__init__(display)
-        self.runner = runner
+        super().__init__(display, runner)
         pygame.display.set_caption("Dogtective: Main Menu")
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
@@ -43,10 +42,8 @@ class MenuRunner(Screen):
                             pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                             pygame.mixer.music.play(-1)
                             self.runner.current_state = GameState.GAMEPLAY
-                        # if button_ldr.check_input(mouse_pos_menu):
-                            # self.leaderboard()
-                            # GameState = "LEADERBOARD"
-                        # if button_credits.check_input(mouse_pos_menu):
-                            # self.credit_screen()
-                            # Runner.state = "CREDITS"
+                        if button_ldr.check_input(mouse_pos_menu):
+                            self.runner.current_state = GameState.LEADERBOARD
+                        if button_credits.check_input(mouse_pos_menu):
+                            self.runner.current_state = GameState.CREDITS
                 pygame.display.update()

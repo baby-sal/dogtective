@@ -14,7 +14,7 @@ class Credits(Screen):
 
     def credit_screen(self):
 
-        while True:
+        while self.runner.current_state == config.GameState.CREDITS:
             width = config.WIDTH
             height = config.HEIGHT
             pygame.display.set_caption("Dogtective: Credits")
@@ -53,6 +53,6 @@ class Credits(Screen):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_credits):
-                        self.menu()
+                        self.runner.current_state = config.GameState.MENU
 
             pygame.display.update()

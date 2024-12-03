@@ -10,3 +10,7 @@ FPS = 60
 class GameState(Enum):
     MENU = 1
     GAMEPLAY = 2
+    WIN = 3
+    LOSE = 4
+    CREDITS = 5
+    LEADERBOARD = 6

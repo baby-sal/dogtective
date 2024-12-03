@@ -2,6 +2,7 @@
 import sys, pygame
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
+from user_interface.screens.credits import Credits
 import user_interface.game_config as config
 
 
@@ -28,19 +29,20 @@ class Runner():
 
     def run(self):
         menu = MenuRunner(self.display, self)
-        # menu.menu_runner()
         game = GameLoop(self.display, self)
-        # game.game_loop()
-        # pygame.quit()
-        # sys.exit()
+        credits = Credits(self.display, self)
 
-        while True:
+        game_on = True
+
+        while game_on:
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
                 game.game_loop()
-            # elif state == "CREDITS":
-            #   credits.credits()
+            elif self.current_state == config.GameState.CREDITS:
+              credits.credit_screen()
+            else:
+                game_on = False
 
 
 if __name__ == "__main__":
