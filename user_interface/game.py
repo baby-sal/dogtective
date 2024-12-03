@@ -6,7 +6,7 @@ from logic.components.health import Health
 import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
 
-class GameRunner:
+class GameLoop:
     # Game window set-up
 
     def __init__(self):
@@ -112,11 +112,11 @@ class GameRunner:
                 # game over screen here
                 run = False
 
-def run():
-    game = GameRunner()
-    game.game_loop()
-    pygame.quit()
-    sys.exit()
-
-if __name__ == '__main__':
-    run()
+# def run():
+#     game = GameLoop()
+#     game.game_loop()
+#     pygame.quit()
+#     sys.exit()
+#
+# if __name__ == '__main__':
+#     run()

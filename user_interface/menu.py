@@ -1,7 +1,7 @@
 import pygame
 import sys
 from logic.components.button import Button
-from game import run
+# from game import run
 import user_interface.game_config as config
 
 class DogtectiveMenu:
@@ -62,7 +62,7 @@ class DogtectiveMenu:
             y_offset = 250  # Initial offset
             line_height = 50  # Space between lines
 
-            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", y_offset)
+            self.credit_blit("Abbeygayle Potts - co-Project Lead, tester & architect", y_offset)
             self.credit_blit("Estelle Walford - UI/UX", y_offset + line_height)
             self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", y_offset + 2 * line_height)
             self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
@@ -110,7 +110,7 @@ class DogtectiveMenu:
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        run()
+                        # run()
                     # if button_ldr.check_input(mouse_pos_menu):
                     #     self.leaderboard()
                     if button_credits.check_input(mouse_pos_menu):
