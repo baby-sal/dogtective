@@ -12,13 +12,13 @@ class DogtectiveMenu:
         # self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         # self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
-    def pixel_font(self, size):
-        return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
-
-    def text_blit(self, text, size, colour, rect_pos_x, rect_pos_y):
-        text = self.pixel_font(size).render(text, True, colour)
-        rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
-        self.display.blit(text, rect)
+    # def pixel_font(self, size):
+    #     return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
+    #
+    # def text_blit(self, text, size, colour, rect_pos_x, rect_pos_y):
+    #     text = self.pixel_font(size).render(text, True, colour)
+    #     rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
+    #     self.display.blit(text, rect)
     #
     # def credit_blit(self, text, pos_y):
     #     text = self.pixel_font(40).render(text, True, "crimson")
@@ -35,17 +35,17 @@ class DogtectiveMenu:
         rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(dogtective_pic, rect_dog)
 
-    def leaderboard(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    # if go_back.check_input(mouse_pos_ldr):
-                    #     self.menu()
-                    pass
-            pygame.display.update()
+    # def leaderboard(self):
+    #     while True:
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 pygame.quit()
+    #                 sys.exit()
+    #             if event.type == pygame.MOUSEBUTTONDOWN:
+    #                 # if go_back.check_input(mouse_pos_ldr):
+    #                 #     self.menu()
+    #                 pass
+    #         pygame.display.update()
 
     # def credit_screen(self):
     #     while True:
