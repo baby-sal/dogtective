@@ -1,5 +1,7 @@
 import pygame
+import sys
 import user_interface.game_config as config
+from logic.components.button import Button
 
 def credit_screen(self):
     while True:
@@ -10,7 +12,7 @@ def credit_screen(self):
 
         self.display.fill("pink")
         bg = pygame.transform.smoothscale(
-            pygame.image.load("../assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+            pygame.image.load("../../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
             self.display.get_size())
         self.display.blit(bg, (0, 0))
 
