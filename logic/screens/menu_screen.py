@@ -3,6 +3,7 @@ import pygame
 import user_interface.game_config as config
 import sys
 from user_interface.leaderboard import Leaderboard
+from user_interface.screens.credits import Credits
 
 class MainMenu:
     def __init__(self):
@@ -52,7 +53,7 @@ class MainMenu:
 
     def show_credits(self):
         # Implement credits display logic
-        pass
+        Credits()
 
 
 if __name__ == "__main__":
