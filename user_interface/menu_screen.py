@@ -16,6 +16,11 @@ class MainMenu:
     def pixel_font(self, size):
         return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
 
+    def dogtective_image(self, pos_x, pos_y):
+        dogtective_pic = pygame.image.load("../logic/assets/images/characters/Dogtective_icon_no_background_1.png").convert_alpha()
+        rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
+        self.display.blit(dogtective_pic, rect_dog)
+
     def menu(self):
         while True:
             self.display.blit(self.background, (0, 0))

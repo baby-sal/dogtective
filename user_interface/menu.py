@@ -7,7 +7,7 @@ class DogtectiveMenu:
     def __init__(self):
         pygame.init()
         self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
-        pygame.display.set_caption("Dogtective: Main Menu")
+       """ pygame.display.set_caption("Dogtective: Main Menu")"""
         # self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         # self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
