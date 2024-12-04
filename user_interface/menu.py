@@ -13,7 +13,7 @@ class DogtectiveMenu:
         self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
         pygame.mixer.music.load(
-            "/Users/sallydavies/Desktop/PycharmProjects/CFGDegree-GroupProjectTeam5/logic/assets/audio/BGM_menu.mp3")
+            "../logic/assets/audio/BGM_menu.mp3")
         pygame.mixer.music.play(-1)
 
     def pixel_font(self, size):
