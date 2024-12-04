@@ -46,8 +46,6 @@ class MainMenu:
                     self.show_credits()
             pygame.display.update()
 
-            pygame.display.update()
-
     def show_leaderboard(self):
         # Implement leaderboard display logic
         pass
