@@ -5,7 +5,7 @@ from logic.score_db_connection.db_utils_score import DbClass
 class SavingScoreOntoDB:
     def __init__(self, db_path):
         self.db = DbClass()  # Initialize DbClass instance
-        self.db_path = db_path
+        self.db_path = 'logic.score_db_connection.dogtective_scores_db.sql'
         # Connect to the SQLite database with thread safety turned off
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
