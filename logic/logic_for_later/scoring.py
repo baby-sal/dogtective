@@ -1,7 +1,11 @@
 import pygame
 from logic.score_db_connection.saving_score_onto_db import DbClass
 
-# Character and Health classes (assuming they are defined elsewhere and imported correctly)
+# Initialize Pygame
+pygame.init()
+
+# Set up the display
+screen = pygame.display.set_mode((800, 600))  # Replace (800, 600) with your desired window size
 
 class Health:
     def __init__(self, max_health):
@@ -71,3 +75,6 @@ while game_running:
 print("Top Ten Scores:")
 for row in db.get_top_ten():
     print(row)
+
+# Quit Pygame properly
+pygame.quit()
