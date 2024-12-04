@@ -37,7 +37,9 @@ class Leaderboard:
         cursor = self.connection.cursor()
         try:
             cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-            return cursor.fetchall()
+            scores = cursor.fetchall()
+            print(f"Fetched scores: {scores}")  # Debug statement
+            return scores
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             return []
@@ -46,6 +48,10 @@ class Leaderboard:
 
     def show(self):
         scores = self.get_scores()
+        if not scores:
+            print("No scores to display.")  # Debug statement
+        else:
+            print(f"Displaying scores: {scores}")  # Debug statement
         go_back = pygame.Rect(50, 50, 100, 50)
 
         while True:
