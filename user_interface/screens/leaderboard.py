@@ -1,7 +1,7 @@
 import pygame
+import sys
 from user_interface.game_config import WIDTH, HEIGHT
 from logic.score_db_connection.db_utils_score import DbClass
-
 
 class Leaderboard:
     WHITE = (255, 255, 255)
@@ -10,18 +10,45 @@ class Leaderboard:
     def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font(None, 36)
-        self.connection = None
-        self.connect_db()
-
-    def connect_db(self):
-        DbClass.db_connect()
+        self.db = DbClass()  # Initialize DbClass instance
 
     def get_scores(self):
-       DbClass.get_scores()
+        self.db.db_connect()
+        scores = self.db.get_query("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
+        self.db.db_disconnect()
+        return scores
 
     def show(self):
-        DbClass.show()
+        scores = self.get_scores()
+        if not scores:
+            print("No scores to display.")
+            return
 
+        go_back = pygame.Rect(50, 50, 100, 50)
+
+        while True:
+            self.display.fill(self.WHITE)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if go_back.collidepoint(event.pos):
+                        return  # Return to break out of the loop and go back to menu
+
+            pygame.draw.rect(self.display, self.BLACK, go_back)
+            back_text = self.font.render("Go Back", True, self.WHITE)
+            self.display.blit(back_text, (go_back.x + 10, go_back.y + 10))
+
+            title_text = self.font.render("Leaderboard", True, self.BLACK)
+            self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
+
+            # Display scores from the database
+            for i, (nickname, score) in enumerate(scores):
+                score_text = self.font.render(f"{nickname}: {score}", True, self.BLACK)
+                self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
+
+            pygame.display.update()
 
 # Example usage
 if __name__ == "__main__":
