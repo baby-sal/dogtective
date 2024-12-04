@@ -41,9 +41,9 @@ class MainMenu:
                         pygame.mixer.music.play(-1)
                         run()"""
                 if button_ldr.check_input(mouse_pos_menu):
-                    self.leaderboard()
+                    self.show_leaderboard()
                 if button_credits.check_input(mouse_pos_menu):
-                    self.credit_screen()
+                    self.show_credits()
             pygame.display.update()
 
             pygame.display.update()
