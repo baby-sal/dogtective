@@ -1,4 +1,7 @@
 import pygame
+from logic.score_db_connection.saving_score_onto_db import DbClass
+
+# Character and Health classes (assuming they are defined elsewhere and imported correctly)
 
 class Health:
     def __init__(self, max_health):
@@ -48,6 +51,8 @@ def game_on(timer, character, score):
 timer = Timer()
 character = Character(name="Dogtective", health=Health(max_health=5))  # Create Character with Health instance
 score = Score(timer, character)
+db = DbClass()  # Instantiate the DbClass
+
 game_running = True
 
 while game_running:
@@ -58,4 +63,11 @@ while game_running:
 
     if character.health.current == 0:
         game_running = False
-        print("Game Over!")
+        nickname = input("Enter your nickname: ")
+        db.add_new_score(nickname, score_value)
+        print("Game Over! Your score has been saved.")
+
+# Retrieve top ten scores
+print("Top Ten Scores:")
+for row in db.get_top_ten():
+    print(row)
