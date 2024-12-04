@@ -7,17 +7,14 @@ import user_interface.game_config as config
 from logic.assets.scrolling_background import ScrollBackground
 from logic.components.environmental import Collectable
 
-class GameRunner:
+class GameLoop:
     # Game window set-up
 
-    def __init__(self):
+    def __init__(self, display, runner):
         # Initialise pygame
-        pygame.init()
 
-        self.dis_width = config.WIDTH
-        self.dis_height = config.HEIGHT
-
-        self.game_display = pygame.display.set_mode((self.dis_width, self.dis_height))
+        self.game_display = display
+        self.runner = runner
         pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
@@ -94,13 +91,13 @@ class GameRunner:
 
     # Game loop: Keeps window open until quit
     def game_loop(self):
-        run = True
         ball_active = False
 
-        while run:
+        while self.runner.current_state == config.GameState.GAMEPLAY:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    run = False
+                    pygame.quit()
+                    sys.exit()
 
             if self.dog.health.current > 0:
                 self.render_background_image()
@@ -111,17 +108,17 @@ class GameRunner:
                 self.clock.tick(config.FPS)
 
                 if pygame.sprite.spritecollide(self.dog, self.ball_group, True):
-                    run = False
+                    self.runner.current_state = config.GameState.WIN
 
             else:
                 # game over screen here
-                run = False
+                self.runner.current_state = config.GameState.LOSE
 
-def run():
-    game = GameRunner()
-    game.game_loop()
-    pygame.quit()
-    sys.exit()
-
-if __name__ == '__main__':
-    run()
+# def run():
+#     game = GameLoop()
+#     game.game_loop()
+#     pygame.quit()
+#     sys.exit()
+#
+# if __name__ == '__main__':
+#     run()

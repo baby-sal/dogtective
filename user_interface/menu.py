@@ -1,89 +1,94 @@
 import pygame
 import sys
 from logic.components.button import Button
-from game import run
+# from game import run
 import user_interface.game_config as config
-from user_interface.leaderboard import Leaderboard
 
 class DogtectiveMenu:
     def __init__(self):
         pygame.init()
         self.display = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
         pygame.display.set_caption("Dogtective: Main Menu")
-        self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
-        self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
-        pygame.mixer.music.load(
-            "../logic/assets/audio/BGM_menu.mp3")
-        pygame.mixer.music.play(-1)
+        # self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
+        # self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
-    def pixel_font(self, size):
-        return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
+    # def pixel_font(self, size):
+    #     return pygame.font.Font("../logic/assets/StayPixelRegular.ttf", size)
+    #
+    # def text_blit(self, text, size, colour, rect_pos_x, rect_pos_y):
+    #     text = self.pixel_font(size).render(text, True, colour)
+    #     rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
+    #     self.display.blit(text, rect)
+    #
+    # def credit_blit(self, text, pos_y):
+    #     text = self.pixel_font(40).render(text, True, "crimson")
+    #     rect = text.get_rect(center=(640, pos_y))
+    #     self.display.blit(text, rect)
 
-    def text_blit(self, text, size, colour, rect_pos_x, rect_pos_y):
-        text = self.pixel_font(size).render(text, True, colour)
-        rect = text.get_rect(center=(rect_pos_x, rect_pos_y))
-        self.display.blit(text, rect)
-
-    def credit_blit(self, text, pos_y):
-        text = self.pixel_font(40).render(text, True, "crimson")
-        rect = text.get_rect(center=(640, pos_y))
-        self.display.blit(text, rect)
-
-    def dog_walk_image(self, pos_x, pos_y):
-        smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
-        rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
-        self.display.blit(smol_dog_pic, rect_dog)
+    # def dog_walk_image(self, pos_x, pos_y):
+    #     smol_dog_pic = pygame.image.load("../logic/assets/images/characters/dogtective_sprite/Walk.png").convert_alpha()
+    #     rect_dog = smol_dog_pic.get_rect(center=(pos_x, pos_y))
+    #     self.display.blit(smol_dog_pic, rect_dog)
 
     def dogtective_image(self, pos_x, pos_y):
         dogtective_pic = pygame.image.load("../logic/assets/images/characters/Dogtective_icon_no_background_1.png").convert_alpha()
         rect_dog = dogtective_pic.get_rect(center=(pos_x, pos_y))
         self.display.blit(dogtective_pic, rect_dog)
 
-    def show_leaderboard(self):
-        leaderboard = Leaderboard(self.display)
-        leaderboard.show()
+    # def leaderboard(self):
+    #     while True:
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 pygame.quit()
+    #                 sys.exit()
+    #             if event.type == pygame.MOUSEBUTTONDOWN:
+    #                 # if go_back.check_input(mouse_pos_ldr):
+    #                 #     self.menu()
+    #                 pass
+    #         pygame.display.update()
 
-    def credit_screen(self):
-        while True:
-            width = config.WIDTH
-            height = config.HEIGHT
-            pygame.display.set_caption("Dogtective: Credits")
-            mouse_pos_credits = pygame.mouse.get_pos()
-
-            self.display.fill("pink")
-            bg = pygame.transform.smoothscale(
-                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
-                self.display.get_size())
-            self.display.blit(bg, (0, 0))
-
-            self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
-            self.dog_walk_image(640, 175)
-
-            y_offset = 250  # Initial offset
-            line_height = 50  # Space between lines
-
-            self.credit_blit("Abbeygayle Potts - co-Project Lead & architect", y_offset)
-            self.credit_blit("Estelle Walford - UI/UX", y_offset + line_height)
-            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", y_offset + 2 * line_height)
-            self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
-            self.credit_blit("Sally Davies - UI/UX", y_offset + 4 * line_height)
-            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", y_offset + 5 * line_height)
-            self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
-                           width // 2, y_offset + 8 * line_height)
-
-            button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.pixel_font(40), colour="purple4",
-                                    text_in="go back")
-            button_go_back.update_button(self.display)
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_go_back.check_input(mouse_pos_credits):
-                        self.menu()
-
-            pygame.display.update()
+    # def credit_screen(self):
+    #     while True:
+    #         width = config.WIDTH
+    #         height = config.HEIGHT
+    #         pygame.display.set_caption("Dogtective: Credits")
+    #         mouse_pos_credits = pygame.mouse.get_pos()
+    #
+    #         self.display.fill("pink")
+    #         bg = pygame.transform.smoothscale(
+    #             pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+    #             self.display.get_size())
+    #         self.display.blit(bg, (0, 0))
+    #
+    #         self.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
+    #         self.dog_walk_image(640, 175)
+    #
+    #         # Adding space between each credit
+    #         y_offset = 250  # Initial offset
+    #         line_height = 50  # Space between lines
+    #
+    #         self.credit_blit("Abbeygayle Potts - co-Project Lead, tester & architect", y_offset)
+    #         self.credit_blit("Estelle Walford - UI/UX", y_offset + line_height)
+    #         self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", y_offset + 2 * line_height)
+    #         self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
+    #         self.credit_blit("Sally Davies - UI/UX", y_offset + 4 * line_height)
+    #         self.credit_blit("Zarrin Rahman - co-Project Lead & architect", y_offset + 5 * line_height)
+    #         self.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
+    #                        width // 2, y_offset + 8 * line_height)
+    #
+    #         button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.pixel_font(40), colour="purple4",
+    #                                 text_in="go back")
+    #         button_go_back.update_button(self.display)
+    #
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 pygame.quit()
+    #                 sys.exit()
+    #             if event.type == pygame.MOUSEBUTTONDOWN:
+    #                 if button_go_back.check_input(mouse_pos_credits):
+    #                     self.menu()
+    #
+    #         pygame.display.update()
 
     def you_lose(self):
         while True:
@@ -108,8 +113,8 @@ class DogtectiveMenu:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_go_back.check_input(mouse_pos_end):
-                        self.menu()
+                    if button_go_back.check_input(self.mouse_pos_credits):
+                        menu()
 
             pygame.display.update()
 
@@ -137,41 +142,42 @@ class DogtectiveMenu:
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
-                        self.menu()
+                        menu()
 
             pygame.display.update()
 
-    def menu(self):
-        while True:
-            self.display.blit(self.background, (0, 0))
-            mouse_pos_menu = pygame.mouse.get_pos()
+    # def menu(self):
+    #     while True:
+    #         self.display.blit(self.background, (0, 0))
+    #         mouse_pos_menu = pygame.mouse.get_pos()
+    #
+    #         self.text_blit("Dogtective", 200, "royalblue4", 640, 175)
+    #         self.text_blit("MENU", 100, "royalblue4", 640, 275)
+    #         self.dogtective_image(640, 600)
+    #
+    #         button_play = Button(image=None, pos_x=640, pos_y=350, font=self.pixel_font(75), colour="brown", text_in="play")
+    #         button_ldr = Button(image=None, pos_x=640, pos_y=425, font=self.pixel_font(75), colour="lightsalmon", text_in="LEADERBOARD")
+    #         button_credits = Button(image=None, pos_x=640, pos_y=500, font=self.pixel_font(75), colour="lightsalmon", text_in="CREDITS")
+    #
+    #         for button in [button_play, button_ldr, button_credits]:
+    #             button.update_button(self.display)
+    #
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 pygame.quit()
+    #                 sys.exit()
+    #             if event.type == pygame.MOUSEBUTTONDOWN:
+    #                 if button_play.check_input(mouse_pos_menu):
+    #                     pygame.mixer.music.stop()
+    #                     pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+    #                     pygame.mixer.music.play(-1)
+    #                     # run()
+    #                 # if button_ldr.check_input(mouse_pos_menu):
+    #                 #     self.leaderboard()
+    #                 if button_credits.check_input(mouse_pos_menu):
+    #                     self.credit_screen()
+    #         pygame.display.update()
 
-            self.text_blit("Dogtective", 200, "royalblue4", 640, 175)
-            self.text_blit("MENU", 100, "royalblue4", 640, 275)
-            self.dog_walk_image(640, 600)
-
-            button_play = Button(image=None, pos_x=640, pos_y=350, font=self.pixel_font(75), colour="brown", text_in="play")
-            button_ldr = Button(image=None, pos_x=640, pos_y=425, font=self.pixel_font(75), colour="lightsalmon", text_in="LEADERBOARD")
-            button_credits = Button(image=None, pos_x=640, pos_y=500, font=self.pixel_font(75), colour="lightsalmon", text_in="CREDITS")
-
-            for button in [button_play, button_ldr, button_credits]:
-                button.update_button(self.display)
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_play.check_input(mouse_pos_menu):
-                        pygame.mixer.music.stop()
-                        pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
-                        pygame.mixer.music.play(-1)
-                        run()
-                    if button_ldr.check_input(mouse_pos_menu):
-                        self.show_leaderboard()
-                    if button_credits.check_input(mouse_pos_menu):
-                        self.credit_screen()
-            pygame.display.update()
 
 if __name__ == "__main__":
     menu = DogtectiveMenu()
