@@ -51,7 +51,6 @@ def game_on(timer, character, score):
     pygame.display.flip()
     return score.update_score()
 
-# Example of how to use these classes
 timer = Timer()
 character = Character(name="Dogtective", health=Health(max_health=5))  # Create Character with Health instance
 score = Score(timer, character)
