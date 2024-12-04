@@ -1,6 +1,12 @@
 # Dogtective
 
-Dogtective is an arcade game centered around the main pet character who must dodge obstacles to find their lost toy.
+The main character, a determined doberman, is on a mission to recover their beloved lost toy. 
+The toy has gone missing, and the dog must navigate through obstacles, dodging cars to find it.
+
+## Gameplay Mechanics:
+The main menu is controlled by mouse clicks. 
+
+To move the excitable dog around the screen, use the keyboard up, down, left and right keys.
 
 ## Game demo
 Click below to see the game in action!
@@ -53,7 +59,7 @@ pip install mysql-connector-python
 
 ### 4. run
 NEED TO CHECK WHICH FILE WILL BE RUN
-Run this file to start the game
+Run this file to start the game and.....have fun!!!
 
 ## Technologies
 - Python
