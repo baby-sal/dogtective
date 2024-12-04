@@ -5,6 +5,7 @@ from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
 from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
+from user_interface.screens.leaderboard import Leaderboard
 
 
 class Runner():
@@ -36,6 +37,7 @@ class Runner():
         game = GameLoop(self.display, self)
         credits = Credits(self.display, self)
         end_screen = EndScreen(self.display, self)
+        leaderboard = Leaderboard(self.display)
 
         game_on = True
 
@@ -46,6 +48,8 @@ class Runner():
                 game.game_loop()
             elif self.current_state == config.GameState.CREDITS:
                 credits.credit_screen()
+            elif self.current_state == config.GameState.LEADERBOARD:
+                leaderboard.show()
             elif self.current_state == config.GameState.WIN:
                 end_screen.you_win()
             elif self.current_state == config.GameState.LOSE:
