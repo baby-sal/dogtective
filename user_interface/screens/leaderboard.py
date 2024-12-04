@@ -12,14 +12,8 @@ class Leaderboard:
         self.font = pygame.font.Font(None, 36)
         self.db = DbClass()  # Initialize DbClass instance
 
-    def get_scores(self):
-        self.db.db_connect()
-        scores = self.db.get_query("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-        self.db.db_disconnect()
-        return scores
-
     def show(self):
-        scores = self.get_scores()
+        scores = self.db.get_top_ten()
         if not scores:
             print("No scores to display.")
             return

@@ -46,7 +46,7 @@ Run the `dogtective_scores_db.sql` script _(i.e. in SQLWorkbench or similar prog
 ### 3. requirements.txt
 Please refer to this document for all dependencies that need to be installed for the game to run successfully
 
-Note: If you encounter issues connecting to the database, you may wish to consider the following:
+**Note**: If you encounter issues connecting to the database, you may wish to consider the following:
 
 - Conflicts may occur if both mysql-connector and mysql-connector-python packages are installed.
   - It may be advisable to check only mysql-connector-python is installed for this project
