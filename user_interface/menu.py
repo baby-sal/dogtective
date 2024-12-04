@@ -1,7 +1,6 @@
 import pygame
 import sys
 from logic.components.button import Button
-# from game import run
 import user_interface.game_config as config
 
 class DogtectiveMenu:

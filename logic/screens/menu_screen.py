@@ -2,7 +2,7 @@ from logic.components.button import Button
 import pygame
 import user_interface.game_config as config
 import sys
-
+from user_interface.leaderboard import Leaderboard
 
 class MainMenu:
     def __init__(self):
@@ -13,7 +13,7 @@ class MainMenu:
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
     def pixel_font(self, size):
-        return pygame.font.Font("../../logic/assets/fonts/pixel_font.ttf", size)
+        return pygame.font.Font("../assets/images/StayPixelRegular.ttf", size)
 
     def menu(self):
         while True:
@@ -48,7 +48,7 @@ class MainMenu:
 
     def show_leaderboard(self):
         # Implement leaderboard display logic
-        pass
+        Leaderboard()
 
     def show_credits(self):
         # Implement credits display logic
