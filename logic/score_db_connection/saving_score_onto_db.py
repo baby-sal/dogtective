@@ -30,7 +30,7 @@ class SavingScoreOntoDB:
 
 # Example usage
 if __name__ == "__main__":
-    db_path = 'logic.score_db_connection.dogtective_scores_db.sql'  # Make sure to update this path to where your database is stored
+    db_path = 'dogtective_scores_db.sql'  # Make sure to update this path to where your database is stored
     db = SavingScoreOntoDB(db_path)
     db.add_new_score("PlayerOne", 1234)  # Example of adding a new score
     top_ten_scores = db.get_top_ten()  # Fetching top ten scores
