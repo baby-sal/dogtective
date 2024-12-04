@@ -19,11 +19,13 @@ class Character(p.sprite.Sprite):
         self.width = 100
         self.height = 50
         self.collision_immune = False
+        self.bark_button_pressed = False
         self.collision_time = 0
 
         self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
         self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
         self.hurt = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Hurt.png', 1.5, 2)
+        self.bark = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Attack.png', 1.5, 4)
 
         self.move = False
         self.direction = "right"
@@ -32,9 +34,14 @@ class Character(p.sprite.Sprite):
         self.mask = p.mask.from_surface(self.image)
         self.rect = self.mask.get_rect()
 
+        self.collision_sound = pygame.mixer.Sound("../logic/assets/audio/Car_Collision.mp3")  # play car collision sound
+        self.background_music = pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+        pygame.mixer.music.play(-1)
+
     def update(self, car_group): # do we need ball_group here?
         if pygame.time.get_ticks() - self.collision_time > 1500:  # The time is in ms.
             self.collision_immune = False
+
         self.move = False
         if self.health.current >= 0:
             self.movement()
@@ -43,8 +50,13 @@ class Character(p.sprite.Sprite):
         self.check_collision(car_group) # do we need ball_group here?
         self.rect.center = (self.x, self.y)
 
+
     def movement(self):
         keys = p.key.get_pressed()
+        if keys[p.K_b]:
+            p.mixer.Sound.play(pygame.mixer.Sound("../logic/assets/audio/Detective_Dog_Bark.mp3"))
+            self.move = True
+            self.bark_button_pressed = True
 
         if keys[p.K_LEFT]:
             self.x -= self.speed  # left key pressed negative velocity
@@ -71,6 +83,10 @@ class Character(p.sprite.Sprite):
         elif self.collision_immune:
             self.hurt.cycle_animation()
             self.image = self.hurt.frame
+        elif self.bark_button_pressed:
+            self.bark.cycle_animation()
+            self.image = self.bark.frame
+            self.bark_button_pressed = False # reset bark button after updating animation
         else:
             self.idle.cycle_animation()
             self.image = self.idle.frame
@@ -97,9 +113,14 @@ class Character(p.sprite.Sprite):
         # ball_check = p.sprite.spritecollide(self, ball_group, False, p.sprite.collide_mask)
         if car_check and not self.collision_immune:
             self.health.current -= car_check[0].damage
+            #play collision sound
+            self.collision_sound.play()
+            #pause background music
+            p.mixer_music.pause()
             # print(self.health.current)    # uncomment for testing
             self.collision_immune = True
             self.collision_time = pygame.time.get_ticks()
+        p.mixer_music.unpause()
 
         # if ball_check and not self.collision_immune:
         #     self.collision_immune = True
