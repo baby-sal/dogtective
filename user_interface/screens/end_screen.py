@@ -1,7 +1,7 @@
 import pygame
 import sys
 from user_interface.screens.screen import Screen
-from user_interface.game_config import GameState
+from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
 
 class EndScreen(Screen):
@@ -16,10 +16,10 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text.text_blit("mission complete!", 175, "indigo", 640, 300)
-            self.image.dogtective_image(640, 575, self.display)
+            self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 300)
+            self.image.dogtective_image(WIDTH/2, 575, self.display)
 
-            button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=self.text.pixel_font(40),
+            button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="go back")
 
             button_go_back.update_button(self.display)
@@ -44,10 +44,10 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text.text_blit("GAME OVER", 200, "crimson", 640, 300)
-            self.image.dogtective_image(640, 575, self.display)
+            self.text.text_blit("GAME OVER", 200, "crimson", WIDTH/2, 300)
+            self.image.dogtective_image(WIDTH/2, 575, self.display)
 
-            button_go_back = Button(image=None, pos_x=1200, pos_y=50, font=self.text.pixel_font(40),
+            button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="go back")
 
             button_go_back.update_button(self.display)

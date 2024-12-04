@@ -9,7 +9,7 @@ class Credits(Screen):
 
     def credit_blit(self, text, pos_y):
         credit_text = self.text.pixel_font(40).render(text, True, "crimson")
-        rect = credit_text.get_rect(center=(640, pos_y))
+        rect = credit_text.get_rect(center=(config.WIDTH/2, pos_y))
         self.display.blit(credit_text, rect)
 
     def credit_screen(self):
@@ -28,7 +28,7 @@ class Credits(Screen):
             self.display.blit(bg, (0, 0))
 
             self.text.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
-            self.image.dog_walk_image(640, 175, self.display)
+            self.image.dog_walk_image(600, 175, self.display)
 
             # Adding space between each credit
             y_offset = 250  # Initial offset
