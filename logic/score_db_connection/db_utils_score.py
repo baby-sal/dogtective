@@ -4,21 +4,16 @@ from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 class DbClass(object):
     connection = None
 
-    def __init__(self, host=HOST, user=USER, password=PASSWORD, database=DATABASE):
-        self.host = host
-        self.user = user
-        self.password = password
-        self.database = database
+    def __init__(self):
+        self.user = USER
+        self.password = PASSWORD
+        self.host = HOST
+        self.database = DATABASE
 
     def db_connect(self):
         if DbClass.connection is None:
             try:
-                DbClass.connection = mysql.connector.connect(
-                    host=self.host,
-                    user=self.user,
-                    password=self.password,
-                    database=self.database
-                )
+                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
                 if DbClass.connection.is_connected():
                     print("Successfully connected to the database.")
             except mysql.connector.Error as err:
@@ -34,9 +29,6 @@ class DbClass(object):
         try:
             curs.execute(sql_query, params)
             return curs.fetchall()
-        except Exception as an_error:
-            print(f"Error executing query {sql_query}: {an_error}")
-            return None
         finally:
             curs.close()
 
@@ -64,7 +56,7 @@ class DbClass(object):
     def get_top_ten(self):
         self.db_connect()
         try:
-            sql_query = "SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10"
+            sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
             return self.get_query(sql_query)
         finally:
             self.db_disconnect()
