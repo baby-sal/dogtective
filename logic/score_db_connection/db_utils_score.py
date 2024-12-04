@@ -46,6 +46,14 @@ class DbClass(object):
             return None
         finally:
             curs.close()
+    def _create_table(self):
+        # Create a table named high_scores with columns for user_id, date, nickname, and score
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS high_scores (
+                               user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                               date TEXT,
+                               nickname TEXT,
+                               score INTEGER NOT NULL)''')
+        self.conn.commit()
 
     def db_disconnect(self):
         if DbClass.connection:
