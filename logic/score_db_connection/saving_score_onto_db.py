@@ -1,9 +1,16 @@
 import sqlite3
 from datetime import datetime
+import os
 
 class DbClass:
     def __init__(self, db_path='dogtective_scores_db.sql'):
         self.db_path = db_path
+        # If the file exists but is not a database, remove it
+        if os.path.exists(self.db_path):
+            try:
+                sqlite3.connect(self.db_path).execute("SELECT 1")
+            except sqlite3.DatabaseError:
+                os.remove(self.db_path)
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
         self._create_table()
