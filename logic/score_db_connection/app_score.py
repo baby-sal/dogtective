@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request
-from logic.score_db_connection.db_utils_score import DbClass
-from logic.score_db_connection.config import HOST, USER, PASSWORD, DATABASE
+from db_utils_score import DbClass
+
+# this might be where we connect the score file from python
 
 app = Flask(__name__)
+db = DbClass()
 
-# Create an instance of DbClass
-db = DbClass(HOST, USER, PASSWORD, DATABASE)
 
 @app.route("/high-scores", methods=["GET"])
 def high_scores():
@@ -13,6 +13,7 @@ def high_scores():
     if scores is None:
         return jsonify({"error": "Unable to fetch high scores"}), 500
     return jsonify(scores)
+
 
 @app.route("/add_score", methods=["POST"])
 def add_score():
@@ -22,5 +23,8 @@ def add_score():
     db.add_new_score(nickname, score)
     return jsonify({"message": "Score added successfully!"})
 
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+# debug outputs: cannot import name 'get_top_ten' from 'db_utils_score'
