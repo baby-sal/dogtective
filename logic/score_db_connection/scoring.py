@@ -1,5 +1,5 @@
 import pygame
-from logic.score_db_connection.saving_score_onto_db import DbClass
+from saving_score_onto_db import DbClass
 
 # Initialize Pygame
 pygame.init()
