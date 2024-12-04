@@ -1,6 +1,19 @@
 import pygame
-from logic.components.character import Character  # Import the Character class
-from logic.components.health import Health  # Ensure Health class is available
+
+class Health:
+    def __init__(self, max_health):
+        self.max_health = max_health
+        self.current = max_health
+
+    def decrease_health(self, amount):
+        self.current -= amount
+        if self.current < 0:
+            self.current = 0
+
+    def increase_health(self, amount):
+        self.current += amount
+        if self.current > self.max_health:
+            self.current = self.max_health
 
 class Timer:
     def __init__(self):
@@ -22,6 +35,11 @@ class Score:
         self.points = elapsed_time * 10 + health_points * 5
         return self.points
 
+class Character:
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
+
 def game_on(timer, character, score):
     pygame.display.flip()
     return score.update_score()
@@ -38,3 +56,6 @@ while game_running:
     score_value = game_on(timer, character, score)
     print(f"Score: {score_value}")
 
+    if character.health.current == 0:
+        game_running = False
+        print("Game Over!")
