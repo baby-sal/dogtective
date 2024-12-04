@@ -96,3 +96,6 @@ class DbClass(object):
             return []
         finally:
             cursor.close()
+
+if __name__ == "__main__":
+    pass

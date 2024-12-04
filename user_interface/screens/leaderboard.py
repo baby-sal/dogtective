@@ -3,6 +3,7 @@ import sys
 from user_interface.game_config import WIDTH, HEIGHT
 from logic.score_db_connection.db_utils_score import DbClass
 
+
 class Leaderboard:
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
@@ -43,6 +44,7 @@ class Leaderboard:
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
+
 
 # Example usage
 if __name__ == "__main__":
