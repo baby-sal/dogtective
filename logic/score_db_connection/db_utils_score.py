@@ -1,5 +1,8 @@
 import mysql.connector
 from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
+import pygame
+import sys
+from user_interface.game_config import WIDTH
 
 class DbClass(object):
     connection = None
@@ -68,3 +71,52 @@ class DbClass(object):
             self.update_query(sql_query, (nickname, score))
         finally:
             self.db_disconnect()
+
+    def get_scores(self):
+        if self.connection is None:
+            print("Database connection is not established.")
+            return []
+
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
+            scores = cursor.fetchall()
+            print(f"Fetched scores: {scores}")  # Debug statement
+            return scores
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return []
+        finally:
+            cursor.close()
+
+    def show(self):
+        scores = self.get_scores()
+        if not scores:
+            print("No scores to display.")  # Debug statement
+        else:
+            print(f"Displaying scores: {scores}")  # Debug statement
+        go_back = pygame.Rect(50, 50, 100, 50)
+
+        while True:
+            self.display.fill(self.WHITE)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if go_back.collidepoint(event.pos):
+                        return  # Return to break out of the loop and go back to menu
+
+            pygame.draw.rect(self.display, self.BLACK, go_back)
+            back_text = self.font.render("Go Back", True, self.WHITE)
+            self.display.blit(back_text, (go_back.x + 10, go_back.y + 10))
+
+            title_text = self.font.render("Leaderboard", True, self.BLACK)
+            self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
+
+            # Display scores from the database
+            for i, (name, score) in enumerate(scores):
+                score_text = self.font.render(f"{name}: {score}", True, self.BLACK)
+                self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
+
+            pygame.display.update()
