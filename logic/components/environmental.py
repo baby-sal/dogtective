@@ -7,6 +7,7 @@ class Environmental(pygame.sprite.Sprite):
         super().__init__()
         width = image.get_width()
         height = image.get_height()
+        self.name = name
         self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
@@ -43,7 +44,7 @@ class Obstacle(Environmental):
             # prevents obstacle from going off the edge of the background image
 
     def __str__(self):
-        return f"Name: {self.name}, Damage:{self.speed}, Speed: {self.speed}, "
+        return f"Name: {self.name}, Damage:{self.damage}, Speed: {self.speed}, "
 
 class Collectable(Environmental):
     def __init__(self, name, image, x, y, scale):
