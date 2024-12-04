@@ -1,9 +1,7 @@
 import pygame
 import sys
-import mysql.connector
 from user_interface.game_config import WIDTH, HEIGHT
-from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
-
+from logic.score_db_connection.db_utils_score import DbClass
 
 class Leaderboard:
     WHITE = (255, 255, 255)
@@ -12,46 +10,20 @@ class Leaderboard:
     def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font(None, 36)
-        self.connection = None
-        self.connect_db()
-
-    def connect_db(self):
-        try:
-            self.connection = mysql.connector.connect(
-                user=USER,
-                password=PASSWORD,
-                host=HOST,
-                database=DATABASE
-            )
-            if self.connection.is_connected():
-                print("Successfully connected to the database.")
-        except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            self.connection = None
+        self.db = DbClass()  # Initialize DbClass instance
 
     def get_scores(self):
-        if self.connection is None:
-            print("Database connection is not established.")
-            return []
-
-        cursor = self.connection.cursor()
-        try:
-            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-            scores = cursor.fetchall()
-            print(f"Fetched scores: {scores}")  # Debug statement
-            return scores
-        except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            return []
-        finally:
-            cursor.close()
+        self.db.db_connect()
+        scores = self.db.get_query("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
+        self.db.db_disconnect()
+        return scores
 
     def show(self):
         scores = self.get_scores()
         if not scores:
-            print("No scores to display.")  # Debug statement
-        else:
-            print(f"Displaying scores: {scores}")  # Debug statement
+            print("No scores to display.")
+            return
+
         go_back = pygame.Rect(50, 50, 100, 50)
 
         while True:
@@ -72,12 +44,11 @@ class Leaderboard:
             self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
 
             # Display scores from the database
-            for i, (name, score) in enumerate(scores):
-                score_text = self.font.render(f"{name}: {score}", True, self.BLACK)
+            for i, (nickname, score) in enumerate(scores):
+                score_text = self.font.render(f"{nickname}: {score}", True, self.BLACK)
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
-
 
 # Example usage
 if __name__ == "__main__":
