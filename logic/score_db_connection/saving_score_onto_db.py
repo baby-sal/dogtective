@@ -9,8 +9,6 @@ class SavingScoreOntoDB:
         # Connect to the SQLite database with thread safety turned off
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
-        # Create the high_scores table if it doesn't exist
-        self._create_table()
 
     def _create_table(self):
         # Call the method from DbClass to create the table
