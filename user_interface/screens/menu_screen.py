@@ -1,8 +1,8 @@
-from logic.components.button import Button
+"""from logic.components.button import Button
 import pygame
 import user_interface.game_config as config
 import sys
-from user_interface.leaderboard import Leaderboard
+from user_interface.screens.leaderboard import Leaderboard
 from user_interface.screens.credits import Credits
 
 class MainMenu:
@@ -40,12 +40,12 @@ class MainMenu:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                """if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_play.check_input(mouse_pos_menu):
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
-                        run()"""
+                        run()
                 if button_ldr.check_input(mouse_pos_menu):
                     self.show_leaderboard()
                 if button_credits.check_input(mouse_pos_menu):
@@ -64,3 +64,4 @@ class MainMenu:
 if __name__ == "__main__":
     main_menu = MainMenu()
     main_menu.menu()
+"""
