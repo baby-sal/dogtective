@@ -1,5 +1,5 @@
-#use as a git ignore file, would normally be a .env file
-USER = "localhost"
-PASSWORD = "root"
-HOST = "root"
+# Enter username and password below
+USER = ""
+PASSWORD = ""
+HOST = "localhost"
 DATABASE = "dogtective"

@@ -36,7 +36,7 @@ class Leaderboard:
 
         cursor = self.connection.cursor()
         try:
-            cursor.execute("SELECT name, score FROM high_scores ORDER BY score DESC LIMIT 10")
+            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
             return cursor.fetchall()
         except mysql.connector.Error as err:
             print(f"Error: {err}")
