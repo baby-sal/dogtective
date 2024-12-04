@@ -1,8 +1,12 @@
+import os
 import sqlite3
 from datetime import datetime
 
 # Path to the database
-DB_PATH = '../logic/score_db_connection/dogtective_scores_db.sql'
+DB_PATH = 'logic_for_later/score_db_connection/dogtective_scores_db.sql'
+
+# Ensure the directory exists
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 # Create a connection to the database
 conn = sqlite3.connect(DB_PATH)
