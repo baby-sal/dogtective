@@ -3,6 +3,7 @@ import sys
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState
 from logic.components.button import Button
+from logic.components.score import Score
 
 class EndScreen(Screen):
 
