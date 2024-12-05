@@ -31,14 +31,14 @@ Click below to see the game in action!
 
 ## Set-up
 
-In order for the game to run, please follow the following configuration steps:
+To ensure the game runs smoothly, please follow the configuration steps below:
 
 ### 1. Config
 Filepath: logic/score_db_connection/config.py
 
-Add your username and password into the relevant fields in order to connect to the database.
+Add your database username and password into the appropriate fields in order to connect to the database.
 
-### 2. SQL script - IS THIS NEEDED OR IS IT BEING RAN DIRECTLY FROM PYTHON?
+### 2. SQL script
 Filepath: logic/score_db_connection/dogtective_scores_db.sql
 
 Run the `dogtective_scores_db.sql` script _(i.e. in SQLWorkbench or similar programme)_ to create the database
@@ -46,7 +46,7 @@ Run the `dogtective_scores_db.sql` script _(i.e. in SQLWorkbench or similar prog
 ### 3. requirements.txt
 Please refer to this document for all dependencies that need to be installed for the game to run successfully
 
-**Note**: If you encounter issues connecting to the database, you may wish to consider the following:
+**Note**: If you experience issues connecting to the database, consider the following troubleshooting steps:
 
 - Conflicts may occur if both mysql-connector and mysql-connector-python packages are installed.
   - It may be advisable to check only mysql-connector-python is installed for this project
