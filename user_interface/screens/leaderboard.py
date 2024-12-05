@@ -53,8 +53,8 @@ class Leaderboard(Screen):
     def show(self):
         scores = self.get_scores()
         self.display.blit(self.background, (0,0))
-        self.text.text_blit("leaderboard:", 100, "orange", WIDTH // 2, HEIGHT // 7)
-        self.image.dog_walk_image(600, 175, self.display)
+        self.text.text_blit("leaderboard:", 125, "brown", WIDTH // 2, HEIGHT // 6)
+        self.image.dogtective_image(600, 600, self.display)
 
 
         button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
@@ -83,7 +83,6 @@ class Leaderboard(Screen):
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
-
 
 
 # Example usage
