@@ -1,5 +1,4 @@
 import pygame  # Import the Pygame library
-# from saving_score_onto_db import DbClass  # Import the DbClass for handling the database
 from logic.score_db_connection.db_utils_score import DbClass
 
 # Initialize Pygame
@@ -69,7 +68,6 @@ def game_on(timer, character, score):
     return score.update_score()
 
 
-# Create instances of Timer, Character (with Health), and Score
 timer = Timer()
 character = Character(name="Dogtective", health=Health(max_health=5))
 score = Score(timer, character)
