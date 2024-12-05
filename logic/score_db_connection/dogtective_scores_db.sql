@@ -6,12 +6,11 @@ USE dogtective;
 CREATE TABLE high_scores (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     date DATE,
-    nickname VARCHAR(40),
     score INT NOT NULL
 );
 
-INSERT INTO high_scores (date, nickname, score)
+INSERT INTO high_scores (date, score)
 VALUES 
-('2024-12-03', 'player 1', 0),
-('2024-12-03', 'player 1', 2)
+('2024-12-03', 0),
+('2024-12-03', 2)
 ;
