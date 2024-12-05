@@ -14,6 +14,9 @@ class Leaderboard:
         self.font = pygame.font.Font(None, 36)
         self.connection = None
         self.connect_db()
+        pygame.display.set_caption("Dogtective: Main Menu")
+        self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
+        self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
     def connect_db(self):
         try:
