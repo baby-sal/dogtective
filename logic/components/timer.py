@@ -1,24 +1,23 @@
 import time
-#make this a decorator?
-#constants
+
+from logic.components.score import timer
+
 
 class Timer:
-
-    allowed_time = 600
-
-    def timer_start():
-         #10 minutes
-        time_start = time.time()
-        time.sleep(1)
-        return time_start
-
-    def timer_end(time_start, allowed_time):
-            time_elapsed = allowed_time - time_start
+    def timer(self, func):
+        def inner_timer(*args, **kwargs):
+            time_start = time.perf_counter()
+            value = func(*args, **kwargs)
+            end_time = time.perf_counter()
+            time_elapsed = end_time - time_start
+            print(time_elapsed)
+            return value
+        return inner_timer
 
 
-    def screen_timer():
-        pass
+    @timer
+    def addx(num):
+        return num+1
 
-    timer_start()
-    print("time passes")
-    timer_end()
+
+    print(addx(1))
