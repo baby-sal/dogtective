@@ -1,5 +1,4 @@
 import pygame  # Import the Pygame library
-from logic.score_db_connection.db_utils_score import DbClass
 
 class Health:
     def __init__(self, max_health):
@@ -49,7 +48,6 @@ class Score:
         self.timer = timer
         self.character = character
         self.points = 0
-        self.db = DbClass()
 
 timer = Timer()
 character = Character(name="Dogtective", health=Health(max_health=5))
