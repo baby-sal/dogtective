@@ -1,5 +1,5 @@
 # Enter username and password below
-HOST = ""
 USER = ""
 PASSWORD = ""
+HOST = "localhost"
 DATABASE = "dogtective"
