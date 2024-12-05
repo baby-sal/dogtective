@@ -80,22 +80,6 @@ class DbClass(object):
         finally:
             self.db_disconnect()
 
-    def get_scores(self):
-        if self.connection is None:
-            print("Database connection is not established.")
-            return []
-
-        cursor = self.connection.cursor()
-        try:
-            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-            scores = cursor.fetchall()
-            print(f"Fetched scores: {scores}")  # Debug statement
-            return scores
-        except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            return []
-        finally:
-            cursor.close()
 
 if __name__ == "__main__":
     pass
