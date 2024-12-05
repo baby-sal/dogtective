@@ -1,7 +1,7 @@
 import pygame
 import sys
 import mysql.connector
-from user_interface.game_config import WIDTH, HEIGHT
+from user_interface.game_config import WIDTH, HEIGHT, GameState
 from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 from logic.components.button import Button
 from user_interface.image_loader import Image
@@ -10,8 +10,6 @@ from user_interface.menu_runner import Screen
 
 
 class Leaderboard(Screen):
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
 
     def __init__(self, display, runner):
         super().__init__(display, runner)
@@ -20,8 +18,6 @@ class Leaderboard(Screen):
         pygame.display.set_caption("Dogtective: Leaderboard")
         self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
-        self.text = Text(display)
-        self.image = Image()
 
     def connect_db(self):
         try:
@@ -59,32 +55,35 @@ class Leaderboard(Screen):
         self.display.blit(self.background, (0,0))
         self.text.text_blit("leaderboard:", 100, "orange", WIDTH // 2, HEIGHT // 7)
         self.image.dog_walk_image(600, 175, self.display)
+
+
         button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
                                 text_in="go back")
         button_go_back.update_button(self.display)
+
         if not scores:
             print("No scores to display.")  # Debug statement
         else:
             print(f"Displaying scores: {scores}")  # Debug statement
         go_back = pygame.Rect(50, 50, 100, 50)
 
-        while True:
-            self.display.blit(self.background, (0, 0))
+        while self.runner.current_state == GameState.LEADERBOARD:
+            mouse_pos_ldr = pygame.mouse.get_pos()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if go_back.collidepoint(event.pos):
-                        return  # Return to break out of the loop and go back to menu
-
+                    if button_go_back.check_input(mouse_pos_ldr):
+                        self.runner.current_state = GameState.MENU
 
             # Display scores from the database
             for i, (user_id, score) in enumerate(scores):
-                score_text = self.font.render(f"Player {user_id}: Score {score}", True, self.BLACK)
+                score_text = self.text.text_blit(f"{user_id}: {score}", 100, "orange", WIDTH // 2, HEIGHT // 7)
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
+
 
 
 # Example usage
