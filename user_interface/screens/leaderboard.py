@@ -75,8 +75,8 @@ class Leaderboard:
             self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
 
             # Display scores from the database
-            for i, (name, score) in enumerate(scores):
-                score_text = self.font.render(f"{name}: {score}", True, self.BLACK)
+            for i, (user_id, score) in enumerate(scores):
+                score_text = self.font.render(f"Player {user_id}: Score {score}", True, self.BLACK)
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
