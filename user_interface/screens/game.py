@@ -4,7 +4,6 @@ from logic.components.environmental import Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
-from logic.assets.scrolling_background import ScrollBackground
 from logic.components.environmental import Collectable
 
 class GameLoop:
@@ -19,7 +18,6 @@ class GameLoop:
         self.clock = pygame.time.Clock()
 
         self.background_image = self.load_background_image()
-        self.scroll_background = ScrollBackground()
 
         health = Health(5)
         self.health_group = pygame.sprite.Group()
@@ -32,11 +30,19 @@ class GameLoop:
         car_img1 = pygame.image.load('../logic/assets/images/obstacles/blue_car.png').convert_alpha()
         car_img2 = pygame.image.load('../logic/assets/images/obstacles/green_car.png').convert_alpha()
         car_img3 = pygame.image.load('../logic/assets/images/obstacles/red_car.png').convert_alpha()
-        car1 = Obstacle("car1", car_img1, 200, 0, 0.2, 1, 3)
-        car2 = Obstacle("car2", car_img2, 550, 600, 0.2, 2, -5)
-        car3 = Obstacle("car3", car_img3, 975, 800, 0.2, 1, 3)
+        car_img4 = pygame.image.load('../logic/assets/images/obstacles/compact_orange.png').convert_alpha()
+        car_img5 = pygame.image.load('../logic/assets/images/obstacles/sport_yellow.png').convert_alpha()
+        #car_img6 = pygame.image.load('../logic/assets/images/obstacles/coupe_midnight.png').convert_alpha()
+        truck_img1 = pygame.image.load('../logic/assets/images/obstacles/truck_red.png').convert_alpha()
+        car1 = Obstacle("car1", car_img1, 180, 0, 0.15, 1, 3)
+        car2 = Obstacle("car2", car_img2, 530, 600, 0.15, 2, -5)
+        car3 = Obstacle("car3", car_img3, 955, 800, 0.15, 1, 3)
+        car4 = Obstacle("car4", car_img4, 230, 0, 0.15, 2, 6)
+        car5 = Obstacle("car5", car_img5, 580, 600, 0.15, 1, 8)
+        #car6 = Obstacle("car6", car_img6, 1005, 800, 0.15, 1, 5)
+        truck1 = Obstacle("truck1", truck_img1, 998, 800, 0.25, 4, 7)
         self.car_group = pygame.sprite.Group()
-        self.car_group.add(car1, car2, car3)
+        self.car_group.add(car1, car2, car3, car4, car5, truck1)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
         self.ball = Collectable("ball", ball_img, 1100, 520, 0.5)

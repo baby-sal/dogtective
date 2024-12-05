@@ -1,6 +1,7 @@
 import mysql.connector
 from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 
+
 class DbClass(object):
     connection = None
 
@@ -13,7 +14,8 @@ class DbClass(object):
     def db_connect(self):
         if DbClass.connection is None:
             try:
-                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
+                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
+                                                             database=self.database)
                 if DbClass.connection.is_connected():
                     print("Successfully connected to the database.")
             except mysql.connector.Error as err:
@@ -56,15 +58,19 @@ class DbClass(object):
     def get_top_ten(self):
         self.db_connect()
         try:
-            sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
+            sql_query = "SELECT user_id, score FROM high_scores ORDER BY score DESC LIMIT 10"
             return self.get_query(sql_query)
         finally:
             self.db_disconnect()
 
-    def add_new_score(self, nickname, score):
+    def add_new_score(self, score):
         self.db_connect()
         try:
-            sql_query = "INSERT INTO high_scores (date, nickname, score) VALUES (CURRENT_DATE(), %s, %s)"
-            self.update_query(sql_query, (nickname, score))
+            sql_query = "INSERT INTO high_scores (date, score) VALUES (CURRENT_DATE(), %s, %s)"
+            self.update_query(sql_query, score)
         finally:
             self.db_disconnect()
+
+
+if __name__ == "__main__":
+    pass
