@@ -3,20 +3,25 @@ import sys
 import mysql.connector
 from user_interface.game_config import WIDTH, HEIGHT
 from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
+from logic.components.button import Button
+from user_interface.image_loader import Image
+from user_interface.text_loader import Text
+from user_interface.menu_runner import Screen
 
 
-class Leaderboard:
+class Leaderboard(Screen):
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
 
-    def __init__(self, display):
-        self.display = display
-        self.font = pygame.font.Font(None, 36)
+    def __init__(self, display, runner):
+        super().__init__(display, runner)
         self.connection = None
         self.connect_db()
-        pygame.display.set_caption("Dogtective: Main Menu")
-        self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
+        pygame.display.set_caption("Dogtective: Leaderboard")
+        self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+        self.text = Text(display)
+        self.image = Image()
 
     def connect_db(self):
         try:
@@ -51,6 +56,12 @@ class Leaderboard:
 
     def show(self):
         scores = self.get_scores()
+        self.display.blit(self.background, (0,0))
+        self.text.text_blit("leaderboard:", 100, "orange", WIDTH // 2, HEIGHT // 7)
+        self.image.dog_walk_image(600, 175, self.display)
+        button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
+                                text_in="go back")
+        button_go_back.update_button(self.display)
         if not scores:
             print("No scores to display.")  # Debug statement
         else:
@@ -58,7 +69,7 @@ class Leaderboard:
         go_back = pygame.Rect(50, 50, 100, 50)
 
         while True:
-            self.display.fill(self.WHITE)
+            self.display.blit(self.background, (0, 0))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -67,12 +78,6 @@ class Leaderboard:
                     if go_back.collidepoint(event.pos):
                         return  # Return to break out of the loop and go back to menu
 
-            pygame.draw.rect(self.display, self.BLACK, go_back)
-            back_text = self.font.render("Go Back", True, self.WHITE)
-            self.display.blit(back_text, (go_back.x + 10, go_back.y + 10))
-
-            title_text = self.font.render("Leaderboard", True, self.BLACK)
-            self.display.blit(title_text, (WIDTH // 2 - title_text.get_width() // 2, 50))
 
             # Display scores from the database
             for i, (user_id, score) in enumerate(scores):
