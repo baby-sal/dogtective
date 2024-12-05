@@ -1,11 +1,11 @@
 # Dogtective
 
-The main character, a determined doberman, is on a mission to recover their beloved lost toy.\
-The toy has gone missing, and the dog must navigate through obstacles, dodging cars to find it.
+The main character, a determined Dogtective, is on a mission to recover a lost toy.\
+The toy has gone missing and Dogtective must dodge the moving cars to find it.
 
 ## Gameplay Mechanics:
 The main menu is controlled by mouse clicks.\
-To move the excitable dog around the screen, use the keyboard up, down, left and right keys.
+Use the keyboard arrow keys (up, down, left and right) to move Dogtective around the screen.
 
 ## Game demo
 Click below to see the game in action!
@@ -57,9 +57,9 @@ pip install mysql-connector-python
 ```
 
 ### 4. Run
-NEED TO CHECK WHICH FILE WILL BE RUN
 
-Run this file to start the game and.....enjoy!!!
+Run the `game-runner` python file to start the game. Dogtective needs your help! 😄
+
 
 ## Technologies
 - Python
