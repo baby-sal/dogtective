@@ -1,6 +1,7 @@
 import mysql.connector
 from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 
+
 class DbClass(object):
     connection = None
 
@@ -13,7 +14,8 @@ class DbClass(object):
     def db_connect(self):
         if DbClass.connection is None:
             try:
-                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
+                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
+                                                             database=self.database)
                 if DbClass.connection.is_connected():
                     print("Successfully connected to the database.")
             except mysql.connector.Error as err:
@@ -46,13 +48,14 @@ class DbClass(object):
             return None
         finally:
             curs.close()
+
     def _create_table(self):
         # Create a table named high_scores with columns for user_id, date, nickname, and score
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS high_scores (
+        self.cursor.execute("""CREATE TABLE IF NOT EXISTS high_scores (
                                user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                                date TEXT,
                                nickname TEXT,
-                               score INTEGER NOT NULL)''')
+                               score INTEGER NOT NULL)""")
         self.conn.commit()
 
     def db_disconnect(self):
@@ -64,7 +67,7 @@ class DbClass(object):
     def get_top_ten(self):
         self.db_connect()
         try:
-            sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
+            sql_query = "SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10"
             return self.get_query(sql_query)
         finally:
             self.db_disconnect()
@@ -93,3 +96,6 @@ class DbClass(object):
             return []
         finally:
             cursor.close()
+
+if __name__ == "__main__":
+    pass

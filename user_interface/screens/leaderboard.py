@@ -3,6 +3,7 @@ import sys
 from user_interface.game_config import WIDTH, HEIGHT
 from logic.score_db_connection.db_utils_score import DbClass
 
+
 class Leaderboard:
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
@@ -12,14 +13,8 @@ class Leaderboard:
         self.font = pygame.font.Font(None, 36)
         self.db = DbClass()  # Initialize DbClass instance
 
-    def get_scores(self):
-        self.db.db_connect()
-        scores = self.db.get_query("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-        self.db.db_disconnect()
-        return scores
-
     def show(self):
-        scores = self.get_scores()
+        scores = self.db.get_top_ten()
         if not scores:
             print("No scores to display.")
             return
@@ -49,6 +44,7 @@ class Leaderboard:
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
 
             pygame.display.update()
+
 
 # Example usage
 if __name__ == "__main__":
