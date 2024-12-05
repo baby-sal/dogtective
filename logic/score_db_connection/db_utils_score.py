@@ -1,64 +1,73 @@
-#connection and queries
-"""
-need to install: pip install mysql-connector-python
-"""
 import mysql.connector
-from config import USER, PASSWORD, HOST, DATABASE
+from logic.score_db_connection.config import USER, PASSWORD, HOST, DATABASE
 
-##Database class
 
 class DbClass(object):
-
     connection = None
 
-    def __init__(self, HOST, USER, PASSWORD, DATABASE):
-        self.host = HOST
+    def __init__(self):
         self.user = USER
         self.password = PASSWORD
+        self.host = HOST
         self.database = DATABASE
-        #as these are all set to empty string it prevents this file from running, so can't show what it does
 
     def db_connect(self):
         if DbClass.connection is None:
             try:
-                DbClass.connection = mysql.connector.connect(user = self.user, password = self.password, host = self.host, database = self.host)
-            except Exception as an_error:
-                print(f"Unable to connect: {an_error}")
-            else:
-                print("Successfully connected to the database.")
+                DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
+                                                             database=self.database)
+                if DbClass.connection.is_connected():
+                    print("Successfully connected to the database.")
+            except mysql.connector.Error as err:
+                print(f"Error: {err}")
+                DbClass.connection = None
 
-    def get_query(self,sql_query, params=None):
-        curs = self.connection.cursor()
+    def get_query(self, sql_query, params=None):
+        if DbClass.connection is None:
+            self.db_connect()
+            if DbClass.connection is None:
+                return None  # Connection failed
+        curs = DbClass.connection.cursor()
         try:
-            curs.execute(sql_query,params)
+            curs.execute(sql_query, params)
             return curs.fetchall()
-        except Exception as an_error:
-            print(f"Error executing query {sql_query}: {an_error}")
-            return None
         finally:
             curs.close()
 
     def update_query(self, sql_query, params):
-        curs = self.connection.cursor()
+        if DbClass.connection is None:
+            self.db_connect()
+            if DbClass.connection is None:
+                return None  # Connection failed
+        curs = DbClass.connection.cursor()
         try:
             curs.execute(sql_query, params)
-            self.connection.commit()
+            DbClass.connection.commit()
         except Exception as an_error:
             print(f"Error executing query {sql_query}: {an_error}")
             return None
         finally:
             curs.close()
 
-    def db_disconnect(self):
-        if self.connection:
-            self.connection.close()
-            return f"Disconnected from {self.database}"
+    def _create_table(self):
+        # Create a table named high_scores with columns for user_id, date, nickname, and score
+        self.cursor.execute("""CREATE TABLE IF NOT EXISTS high_scores (
+                               user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                               date TEXT,
+                               nickname TEXT,
+                               score INTEGER NOT NULL)""")
+        self.conn.commit()
 
+    def db_disconnect(self):
+        if DbClass.connection:
+            DbClass.connection.close()
+            DbClass.connection = None
+            print(f"Disconnected from {self.database}")
 
     def get_top_ten(self):
         self.db_connect()
         try:
-            sql_query = "SELECT name, score FROM high_scores ORDER BY score LIMIT 10"
+            sql_query = "SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10"
             return self.get_query(sql_query)
         finally:
             self.db_disconnect()
@@ -67,8 +76,26 @@ class DbClass(object):
         self.db_connect()
         try:
             sql_query = "INSERT INTO high_scores (date, nickname, score) VALUES (CURRENT_DATE(), %s, %s)"
-            self.update_query(sql_query, nickname, score)
+            self.update_query(sql_query, (nickname, score))
         finally:
             self.db_disconnect()
-            
 
+    def get_scores(self):
+        if self.connection is None:
+            print("Database connection is not established.")
+            return []
+
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
+            scores = cursor.fetchall()
+            print(f"Fetched scores: {scores}")  # Debug statement
+            return scores
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return []
+        finally:
+            cursor.close()
+
+if __name__ == "__main__":
+    pass

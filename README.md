@@ -1,4 +1,75 @@
-# CFG-Degree-Autumn-2024-Group-5
-## adventure (crossy roads style) / puzzle based dog detective game
+# Dogtective
 
-a dog detective navigates around cars while solving simple puzzles on the way
+The main character, a determined doberman, is on a mission to recover their beloved lost toy.\
+The toy has gone missing, and the dog must navigate through obstacles, dodging cars to find it.
+
+## Gameplay Mechanics:
+The main menu is controlled by mouse clicks.\
+To move the excitable dog around the screen, use the keyboard up, down, left and right keys.
+
+## Game demo
+Click below to see the game in action!
+
+[Dogtective demo](URL GOES HERE)
+
+## Game screenshots - NEED TO ADD ONCE GAME IS COMPLETE
+**Welcome menu**
+
+![Dogtective menu screen](filepath i.e. Assets/menu.png)
+
+**Gameplay screenshot**
+
+![Dogtective gameplay screenshot](filepath i.e. Assets/menu.png)
+
+**Game Over**
+
+![Dogtective game over](filepath i.e. Assets/menu.png)
+
+**Leaderboard**
+
+![Dogtective leaderboard](filepath i.e. Assets/menu.png)
+
+## Set-up
+
+In order for the game to run, please follow the following configuration steps:
+
+### 1. Config
+Filepath: logic/score_db_connection/config.py
+
+Add your username and password into the relevant fields in order to connect to the database.
+
+### 2. SQL script - IS THIS NEEDED OR IS IT BEING RAN DIRECTLY FROM PYTHON?
+Filepath: logic/score_db_connection/dogtective_scores_db.sql
+
+Run the `dogtective_scores_db.sql` script _(i.e. in SQLWorkbench or similar programme)_ to create the database
+
+### 3. requirements.txt
+Please refer to this document for all dependencies that need to be installed for the game to run successfully
+
+**Note**: If you encounter issues connecting to the database, you may wish to consider the following:
+
+- Conflicts may occur if both mysql-connector and mysql-connector-python packages are installed.
+  - It may be advisable to check only mysql-connector-python is installed for this project
+- Should you encounter further issues, please try uninstalling and reinstalling mysql-connector-python:
+```
+pip uninstall mysql-connector-python
+pip install mysql-connector-python
+```
+
+### 4. Run
+NEED TO CHECK WHICH FILE WILL BE RUN
+
+Run this file to start the game and.....enjoy!!!
+
+## Technologies
+- Python
+- Pygame
+- mySQL
+
+## Contributors
+* [Abbeygayle Potts](https://github.com/AbbeygayleP)
+* [Estelle Walford](https://github.com/esterwalf)
+* [Iman Abdelgani](https://github.com/AversionToDeepWater)
+* [Melanie Clark](https://github.com/Melanie-Clark)
+* [Sally Davies](https://github.com/baby-sal)
+* [Zarrin Rahman](https://github.com/z-for-zarrin)
