@@ -3,10 +3,17 @@ import sys
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
-from logic.components.score import calculate_score
-
 class EndScreen(Screen):
+    def __init__(self, display, runner):
+        self.display = display
+        self.runner = runner
+
     def you_win(self):
+        from logic.components.score import calculate_score
+        score = calculate_score((self.runner.get_elapsed_timer(), self.runner))
+
+
+
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
 
@@ -32,11 +39,15 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
 
+            print(score)
+
             pygame.display.update()
 
-            print(calculate_score())
+
 
     def you_lose(self):
+        from logic.components.score import calculate_score
+        score = calculate_score((self.runner.get_elapsed_timer(), self.runner))
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
@@ -62,5 +73,6 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_end):
                         self.runner.current_state = GameState.MENU
 
+            print(score)
+
             pygame.display.update()
-            print(calculate_score())
