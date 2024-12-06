@@ -21,11 +21,11 @@ class GameLoop:
 
         self.background_image = self.load_background_image()
 
-        self.health = Health(5)
+        health = Health(5)
         self.health_group = pygame.sprite.Group()
-        self.health_group.add(self.health)
+        self.health_group.add(health)
 
-        self.dog = Character("dog", self.health)
+        self.dog = Character("dog", health)
         self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
@@ -97,15 +97,14 @@ class GameLoop:
 
     def reset_game(self):
         #reset health and remove existing data from health group
-
-        self.health_group.remove(self.health)
+        health = Health(5)
+        self.health_group.remove(health)
         #self.health_group = pygame.sprite.Group()
-        self.health = Health(5)
-        self.health_group.add(self.health)
+        self.health_group.add(health)
 
 
         self.dog_group.remove(self.dog)
-        self.dog = Character("dog", self.health)
+        self.dog = Character("dog", health)
         #self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
 
