@@ -1,6 +1,6 @@
 import pygame
 import sys
-from user_interface.game_config import WIDTH, HEIGHT
+from user_interface.game_config import WIDTH, HEIGHT, GameState
 from logic.components.button import Button
 from user_interface.image_loader import Image
 from user_interface.text_loader import Text
