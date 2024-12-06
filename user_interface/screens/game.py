@@ -96,18 +96,13 @@ class GameLoop:
         self.dog_group.update(car_group)
 
     def reset_game(self):
-        #reset health and remove existing data from health group
+        # reset health and remove existing data from health group
+        self.health_group.empty()
+        self.dog_group.empty()
         health = Health(5)
-        self.health_group.remove(health)
-        #self.health_group = pygame.sprite.Group()
         self.health_group.add(health)
-
-
-        self.dog_group.remove(self.dog)
         self.dog = Character("dog", health)
-        #self.dog_group = pygame.sprite.Group()
         self.dog_group.add(self.dog)
-
 
 
     # Game loop: Keeps window open until quit
