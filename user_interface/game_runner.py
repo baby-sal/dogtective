@@ -1,5 +1,7 @@
 # from menu import
 import sys, pygame
+
+from logic.score_db_connection.score_connection_to_saving_score_file import score
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
@@ -7,6 +9,7 @@ from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
 from user_interface.screens.leaderboard import Leaderboard
 # from logic.components.timer import Timer
+from logic.components.score_calculator import ScoreCalculator
 
 class Runner():
 
@@ -34,8 +37,6 @@ class Runner():
     # def level_time(self):
     #     level_time = Timer
 
-
-
     def run(self):
         menu = MenuRunner(self.display, self)
         game = GameLoop(self.display, self)
@@ -51,6 +52,7 @@ class Runner():
             elif self.current_state == config.GameState.GAMEPLAY:
                 time = game.game_loop()
                 print(time)
+                #ScoreCalculator() #in the score calculator class import from character or something the health and the time
             elif self.current_state == config.GameState.CREDITS:
                 credits.credit_screen()
             elif self.current_state == config.GameState.LEADERBOARD:

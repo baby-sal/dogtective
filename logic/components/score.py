@@ -42,12 +42,13 @@ class Timer:
         return elapsed_seconds
 
 
-class Score:
-    def __init__(self, timer, character):
-        # Initialize the Score class with references to the Timer and Character instances
-        self.timer = timer
-        self.character = character
-        self.points = 0
+# class Score:
+#     def __init__(self, timer, character):
+#         # Initialize the Score class with references to the Timer and Character instances
+#         self.timer = timer
+#         self.character = character
+#         self.points = 0
+
 
 timer = Timer()
 character = Character(name="Dogtective", health=Health(max_health=5))

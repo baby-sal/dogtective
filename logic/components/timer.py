@@ -1,5 +1,4 @@
 import time
-
 from logic.components.score import timer
 
 
