@@ -10,7 +10,7 @@ class EndScreen(Screen):
 
     def you_win(self):
         from logic.components.score import calculate_score
-        score = calculate_score((self.runner.get_elapsed_timer(), self.runner))
+        score = calculate_score((self.runner.get_elapsed_time(), self.runner))
 
 
 
@@ -47,7 +47,7 @@ class EndScreen(Screen):
 
     def you_lose(self):
         from logic.components.score import calculate_score
-        score = calculate_score((self.runner.get_elapsed_timer(), self.runner))
+        score = calculate_score((self.runner.get_elapsed_time(), self.runner))
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
