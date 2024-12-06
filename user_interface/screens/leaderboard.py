@@ -2,14 +2,10 @@ import pygame
 import sys
 from user_interface.game_config import WIDTH, HEIGHT, GameState
 from logic.components.button import Button
-from user_interface.image_loader import Image
-from user_interface.text_loader import Text
 from user_interface.menu_runner import Screen
 from logic.score_db_connection.db_utils_score import DbClass
 
 class Leaderboard(Screen):
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
 
     def __init__(self, display, runner):
         super().__init__(display, runner)
@@ -18,15 +14,15 @@ class Leaderboard(Screen):
         pygame.display.set_caption("Dogtective: Leaderboard")
         self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
-        self.text = Text(display)
-        self.image = Image()
-        self.font = pygame.font.Font(None, 36)#initialise font attribute
 
     def show(self):
         scores = self.db.get_top_ten()
         if not scores:
             print("No scores to display.")
-            return
+            # return
+
+        button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
+                                text_in="go back")
 
         while self.runner.current_state == GameState.LEADERBOARD:
             mouse_pos_ldr = pygame.mouse.get_pos()
@@ -41,15 +37,15 @@ class Leaderboard(Screen):
             self.display.blit(self.background, (0, 0))
             self.text.text_blit("leaderboard:", 125, "brown", WIDTH // 2, HEIGHT // 6)
             self.image.dogtective_image(600, 600, self.display)
-
-            button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
-                                    text_in="go back")
             button_go_back.update_button(self.display)
 
             # Display scores from the database
-            for i, (user_id, score) in enumerate(scores):
-                score_text = self.font.render(f"{user_id}: {score}", True, self.BLACK)
-                self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 100 + i * 40))
+            if scores:
+                for i, (user_id, score) in enumerate(scores):
+                    score_text = self.text.pixel_font(36).render(f"{user_id}: {score}", True, "brown")
+                    self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 200 + i * 40))
+            else:
+                self.text.text_blit("No scores yet", 36, "brown", WIDTH // 2, 300)
 
             pygame.display.update()
 
