@@ -9,7 +9,7 @@ class MenuRunner(Screen):
 
     def __init__(self, display, runner):
         super().__init__(display, runner)
-        self.background = pygame.image.load("../logic/assets/images/menu/city_backgroud.png").convert_alpha()
+        self.background = pygame.image.load("../logic/assets/images/menu/city_background.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
     def menu_runner(self):
