@@ -16,7 +16,6 @@ class GameLoop:
 
         self.game_display = display
         self.runner = runner
-        pygame.display.set_caption("Dogtective")
         self.clock = pygame.time.Clock()
 
         self.background_image = self.load_background_image()
@@ -104,10 +103,9 @@ class GameLoop:
         self.dog = Character("dog", health)
         self.dog_group.add(self.dog)
 
-
     # Game loop: Keeps window open until quit
     def game_loop(self):
-        ball_active = False
+        pygame.display.set_caption("Dogtective")
 
         while self.runner.current_state == config.GameState.GAMEPLAY:
             for event in pygame.event.get():
@@ -131,11 +129,6 @@ class GameLoop:
                 # game over screen here
                 self.runner.current_state = config.GameState.LOSE
                 self.reset_game()
-
-
-
-
-
 
 # def run():
 #     game = GameLoop()
