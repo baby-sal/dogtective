@@ -34,7 +34,7 @@ class Leaderboard(Screen):
                 score_text = self.font.render(f"{user_id}: {score}", True, "brown")
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 200 + i * 40))
         else:
-            self.text.text_blit("No scores yet", 36, "brown", WIDTH // 2, 300)
+            self.text.text_blit("No scores found", 36, "brown", WIDTH // 2, 300)
 
         while self.runner.current_state == GameState.LEADERBOARD:
             mouse_pos_ldr = pygame.mouse.get_pos()
