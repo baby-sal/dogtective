@@ -9,7 +9,7 @@ class Credits(Screen):
 
     def credit_blit(self, text, pos_y):
         credit_text = self.text.pixel_font(40).render(text, True, "crimson")
-        rect = credit_text.get_rect(center=(640, pos_y))
+        rect = credit_text.get_rect(center=(config.WIDTH/2, pos_y))
         self.display.blit(credit_text, rect)
 
     def credit_screen(self):
@@ -28,20 +28,20 @@ class Credits(Screen):
             self.display.blit(bg, (0, 0))
 
             self.text.text_blit("CREDITS:", 100, "orange", width // 2, height // 7)
-            self.image.dog_walk_image(640, 175, self.display)
+            self.image.dog_walk_image(600, 175, self.display)
 
             # Adding space between each credit
             y_offset = 250  # Initial offset
             line_height = 50  # Space between lines
 
-            self.credit_blit("Abbeygayle Potts - co-Project Lead, tester & architect", y_offset)
-            self.credit_blit("Estelle Walford - UI/UX", y_offset + line_height)
-            self.credit_blit("Iman Abdelgani - UI/UX & Documentation Lead", y_offset + 2 * line_height)
-            self.credit_blit("Mel Clarke - Testing", y_offset + 3 * line_height)
-            self.credit_blit("Sally Davies - UI/UX", y_offset + 4 * line_height)
-            self.credit_blit("Zarrin Rahman - co-Project Lead & architect", y_offset + 5 * line_height)
+            self.credit_blit("Abbeygayle Potts", y_offset)
+            self.credit_blit("Estelle Walford", y_offset + line_height)
+            self.credit_blit("Iman Abdelgani", y_offset + 2 * line_height)
+            self.credit_blit("Melanie Clarke", y_offset + 3 * line_height)
+            self.credit_blit("Sally Davies", y_offset + 4 * line_height)
+            self.credit_blit("Zarrin Rahman", y_offset + 5 * line_height)
             self.text.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
-                           width // 2, y_offset + 8 * line_height)
+                           width // 2, y_offset + 7 * line_height)
 
             button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
                                     text_in="go back")
