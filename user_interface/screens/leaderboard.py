@@ -14,6 +14,8 @@ class Leaderboard(Screen):
         pygame.display.set_caption("Dogtective: Leaderboard")
         self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
+        self.text = Text()
+        self.image = Image()
 
     def show(self):
         scores = self.db.get_top_ten()
