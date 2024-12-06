@@ -2,10 +2,8 @@ from threading import Timer
 
 import pygame  # Import the Pygame library
 from logic.components.character import Character
-from logic.score_db_connection.score_connection_to_saving_score_file import health
 
-health = Character("dog", health)
-timer = Timer
+dogtective = Character("Dog", 5)
 
 
 def game_on(timer, score):
@@ -13,11 +11,12 @@ def game_on(timer, score):
     pygame.display.flip()
     return score.update_score()
 
-def Score(health, play_time):
-    lives_bonus = health * 1000  # Each life is worth 1000 points
-    time_bonus = play_time * 10  # Each second is worth 10 points
-    total_score = lives_bonus + time_bonus
-    return total_score
+class Score:
+    def calculate_score(self):
+        lives_bonus = dogtective.health * 1000  # Each life is worth 1000 points
+        time_bonus = Timer() * 10  # Each second is worth 10 points
+        total_score = lives_bonus + time_bonus
+        return total_score
 
 class Timer:
     def __init__(self):

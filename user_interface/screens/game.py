@@ -5,7 +5,6 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.components.environmental import Collectable
-from logic.components.score import Score
 
 
 class GameLoop:
