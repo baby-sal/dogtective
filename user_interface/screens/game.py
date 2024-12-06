@@ -5,6 +5,8 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.components.environmental import Collectable
+from logic.components.score import Score
+
 
 class GameLoop:
     # Game window set-up
@@ -32,14 +34,12 @@ class GameLoop:
         car_img3 = pygame.image.load('../logic/assets/images/obstacles/red_car.png').convert_alpha()
         car_img4 = pygame.image.load('../logic/assets/images/obstacles/compact_orange.png').convert_alpha()
         car_img5 = pygame.image.load('../logic/assets/images/obstacles/sport_yellow.png').convert_alpha()
-        #car_img6 = pygame.image.load('../logic/assets/images/obstacles/coupe_midnight.png').convert_alpha()
         truck_img1 = pygame.image.load('../logic/assets/images/obstacles/truck_red.png').convert_alpha()
         car1 = Obstacle("car1", car_img1, 180, 0, 0.15, 1, 3)
         car2 = Obstacle("car2", car_img2, 530, 600, 0.15, 2, -5)
         car3 = Obstacle("car3", car_img3, 955, 800, 0.15, 1, 3)
         car4 = Obstacle("car4", car_img4, 230, 0, 0.15, 2, 6)
         car5 = Obstacle("car5", car_img5, 580, 600, 0.15, 1, 8)
-        #car6 = Obstacle("car6", car_img6, 1005, 800, 0.15, 1, 5)
         truck1 = Obstacle("truck1", truck_img1, 998, 800, 0.25, 4, 7)
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3, car4, car5, truck1)
@@ -95,6 +95,14 @@ class GameLoop:
         self.dog_group.draw(self.game_display)
         self.dog_group.update(car_group)
 
+    def reset_game(self):
+        health = Health(5)
+        self.dog = Character("dog", health)
+        self.dog_group = pygame.sprite.Group()
+        self.dog_group.add(self.dog)
+
+
+
     # Game loop: Keeps window open until quit
     def game_loop(self):
         ball_active = False
@@ -113,12 +121,20 @@ class GameLoop:
                 pygame.display.update()
                 self.clock.tick(config.FPS)
 
-                if pygame.sprite.spritecollide(self.dog, self.ball_group, True):
+                if pygame.sprite.spritecollide(self.dog, self.ball_group, False):
                     self.runner.current_state = config.GameState.WIN
+                    self.reset_game()
 
             else:
                 # game over screen here
                 self.runner.current_state = config.GameState.LOSE
+                self.reset_game()
+
+
+
+
+
+
 
 # def run():
 #     game = GameLoop()
