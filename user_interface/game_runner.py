@@ -1,11 +1,14 @@
 # from menu import
 import sys, pygame
+
+from logic.score_db_connection.score_connection_to_saving_score_file import timer
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
 from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
 from user_interface.screens.leaderboard import Leaderboard
+from logic.components.timer import Timer
 
 
 class Runner():
@@ -31,6 +34,9 @@ class Runner():
 
         self.current_state = config.GameState.MENU
 
+        self.timer = Timer()
+        self.elapsed_time = 0
+
 
     def run(self):
         menu = MenuRunner(self.display, self)
@@ -42,6 +48,7 @@ class Runner():
         game_on = True
 
         while game_on:
+            self.elapsed_time = self.timer.update()
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
@@ -56,6 +63,9 @@ class Runner():
                 end_screen.you_lose()
             else:
                 game_on = False
+
+        def get_elapsed_time(self):
+            return self.elapsed_time # method to access elapsed_time
 
 
 if __name__ == "__main__":
