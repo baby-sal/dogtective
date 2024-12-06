@@ -5,9 +5,6 @@ from logic.components.score import calculate_score
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
-from logic.components.character import Character
-
-dogtective = Character("Dog", 5)
 
 class EndScreen(Screen):
     def __init__(self, display, runner):
