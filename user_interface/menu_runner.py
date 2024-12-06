@@ -3,8 +3,7 @@ import sys
 import pygame
 from logic.components.button import Button
 from user_interface.screens.screen import Screen
-from user_interface.game_config import GameState
-
+from user_interface.game_config import GameState, HEIGHT, WIDTH
 
 class MenuRunner(Screen):
 
@@ -21,13 +20,13 @@ class MenuRunner(Screen):
                 self.display.blit(self.background, (0, 0))
                 mouse_pos_menu = pygame.mouse.get_pos()
 
-                self.text.text_blit("Dogtective", 200, "royalblue4", 640, 175)
-                self.text.text_blit("MENU", 100, "royalblue4", 640, 275)
-                self.image.dogtective_image(640, 600, self.display)
+                self.text.text_blit("Dogtective", 200, "royalblue4", WIDTH/2, 175)
+                self.text.text_blit("MENU", 100, "royalblue4", WIDTH/2, 275)
+                self.image.dog_walk_image(WIDTH/2, 650, self.display)
 
-                button_play = Button(image=None, pos_x=640, pos_y=350, font=self.text.pixel_font(75), colour="brown", text_in="play")
-                button_ldr = Button(image=None, pos_x=640, pos_y=425, font=self.text.pixel_font(75), colour="lightsalmon", text_in="LEADERBOARD")
-                button_credits = Button(image=None, pos_x=640, pos_y=500, font=self.text.pixel_font(75), colour="lightsalmon", text_in="CREDITS")
+                button_play = Button(image=None, pos_x=WIDTH/2, pos_y=350, font=self.text.pixel_font(75), colour="brown", text_in="play")
+                button_ldr = Button(image=None, pos_x=WIDTH/2, pos_y=425, font=self.text.pixel_font(75), colour="lightsalmon", text_in="LEADERBOARD")
+                button_credits = Button(image=None, pos_x=WIDTH/2, pos_y=500, font=self.text.pixel_font(75), colour="lightsalmon", text_in="CREDITS")
 
                 for button in [button_play, button_ldr, button_credits]:
                     button.update_button(self.display)

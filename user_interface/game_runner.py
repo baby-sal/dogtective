@@ -37,7 +37,7 @@ class Runner():
         game = GameLoop(self.display, self)
         credits = Credits(self.display, self)
         end_screen = EndScreen(self.display, self)
-        leaderboard = Leaderboard(self.display)
+        leaderboard = Leaderboard(self.display, self)
 
         game_on = True
 

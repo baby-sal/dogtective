@@ -1,12 +1,4 @@
 # anything you'd pip install or download when its squiggly during imports
-
-# game stuff
-
 pygame
-pygame-textinput
-
-
-# MySQL stuff
-flask
 mysql-connector-python
-requests
+

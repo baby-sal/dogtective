@@ -56,7 +56,7 @@ def update_score(self):  # will need name
     elapsed_time = self.timer.update()
     health_points = self.character.health.current  # Access the health from the Character instance
     self.points = elapsed_time * 10 + health_points * 5
-    db.add_new_score("REPLACE WITH USER INPUT", 40)
+    db.add_new_score(self.points) # ------------------DUPLICATION WITH LINE 92 -----REVIEW ONCE TIME/HEALTH/SCORE SORTED--
     # return self.points - not sure if this is needed atm?
 
 
@@ -89,12 +89,10 @@ while game_running:
     if character.health.current == 0:
         # End the game if health reaches zero and save the score
         game_running = False
-        nickname = input(
-            "Enter your nickname: ")  # will this be replaced with pygame user input, as the user won't be interacting with the terminal?
-        db.add_new_score(nickname, score_value)
-        print("Game Over! Your score has been saved.")
+        db.add_new_score(score_value) # ------------------DUPLICATION WITH LINE 92 -----REVIEW ONCE TIME/HEALTH/SCORE SORTED--
+        print("Game Over!")
 
-# Retrieve and display the top ten scores
+# Retrieve and display the top ten scores - terminal output only for testing?
 print("Top Ten Scores:")
 for row in db.get_top_ten():
     print(row)
