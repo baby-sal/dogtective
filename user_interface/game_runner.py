@@ -1,7 +1,5 @@
 # from menu import
 import sys, pygame
-
-from logic.score_db_connection.score_connection_to_saving_score_file import timer
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
