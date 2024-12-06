@@ -5,6 +5,7 @@ from logic.components.button import Button
 from user_interface.image_loader import Image
 from user_interface.text_loader import Text
 from user_interface.menu_runner import Screen
+from logic.score_db_connection.db_utils_score import DbClass
 
 class Leaderboard(Screen):
     def __init__(self, display, runner):
