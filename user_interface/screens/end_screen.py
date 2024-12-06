@@ -6,7 +6,6 @@ from logic.components.button import Button
 from logic.components.score import Score
 
 class EndScreen(Screen):
-
     def you_win(self):
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
