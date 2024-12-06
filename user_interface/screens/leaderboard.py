@@ -8,6 +8,9 @@ from user_interface.menu_runner import Screen
 from logic.score_db_connection.db_utils_score import DbClass
 
 class Leaderboard(Screen):
+    WHITE = (255, 255, 255)
+    BLACK = (0, 0, 0)
+
     def __init__(self, display, runner):
         super().__init__(display, runner)
         self.connection = None
