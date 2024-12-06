@@ -59,8 +59,7 @@ class Credits(Screen):
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_go_back.check_input(mouse_pos_credits):
+                if event.type == pygame.MOUSEBUTTONDOWN and button_go_back.check_input(mouse_pos_credits):
                         self.runner.current_state = config.GameState.MENU
 
             pygame.display.update()
