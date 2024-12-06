@@ -6,7 +6,7 @@ from user_interface.screens.credits import Credits
 from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
 from user_interface.screens.leaderboard import Leaderboard
-from logic.components.timer import Timer
+# from logic.components.timer import Timer
 
 class Runner():
 
@@ -49,8 +49,8 @@ class Runner():
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
-                @Timer.
-                game.game_loop()
+                time = game.game_loop()
+                print(time)
             elif self.current_state == config.GameState.CREDITS:
                 credits.credit_screen()
             elif self.current_state == config.GameState.LEADERBOARD:

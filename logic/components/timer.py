@@ -5,12 +5,11 @@ from logic.components.score import timer
 
 # class Timer:
     #decorator, ns
-def level_timer(self, func):
+def level_timer(func):
     def inner_timer(*args, **kwargs):
         time_start = time.time()
-        value = func(*args, **kwargs)
+        func(*args, **kwargs)
         end_time = time.time()
         time_elapsed = end_time - time_start
-        print(time_elapsed)
-        return value
+        return time_elapsed
     return inner_timer
