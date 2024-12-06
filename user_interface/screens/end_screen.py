@@ -34,6 +34,8 @@ class EndScreen(Screen):
 
             pygame.display.update()
 
+            print(calculate_score())
+
     def you_lose(self):
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
@@ -61,3 +63,4 @@ class EndScreen(Screen):
                         self.runner.current_state = GameState.MENU
 
             pygame.display.update()
+            print(calculate_score())
