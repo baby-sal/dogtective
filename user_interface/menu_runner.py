@@ -2,7 +2,7 @@ import sys
 import pygame
 from logic.components.button import Button
 from user_interface.screens.screen import Screen
-from user_interface.game_config import GameState, HEIGHT, WIDTH
+from user_interface.game_config import GameState, WIDTH
 
 
 class MenuRunner(Screen):
