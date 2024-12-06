@@ -26,7 +26,7 @@ class Timer:
 
     def update(self):
         # Calculate the elapsed time in seconds since the start time
-        elapsed_seconds = (pygame.time.get_ticks() - self.start_ticks) // 1000
+        elapsed_seconds = (pygame.time.get_ticks() - self.start_ticks) // 1000#shows the time elapsed in seconds
         return elapsed_seconds
 
 
