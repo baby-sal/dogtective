@@ -3,7 +3,7 @@ import sys
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
-from logic.components.score import Score
+from logic.components.score import calculate_score
 
 class EndScreen(Screen):
     def you_win(self):
