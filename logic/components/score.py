@@ -1,35 +1,23 @@
+from threading import Timer
+
 import pygame  # Import the Pygame library
+from logic.components.character import Character
+from logic.score_db_connection.score_connection_to_saving_score_file import health
 
-class Health:
-    def __init__(self, max_health):
-        # Initialize the Health class with maximum health value
-        self.max_health = max_health
-        self.current = max_health
-
-    def decrease_health(self, amount):
-        # Decrease the current health by a given amount, ensuring it doesn't drop below zero
-        self.current -= amount
-        if self.current < 0:
-            self.current = 0
-
-    def increase_health(self, amount):
-        # Increase the current health by a given amount, ensuring it doesn't exceed the maximum health
-        self.current += amount
-        if self.current > self.max_health:
-            self.current = self.max_health
-
-class Character:
-    def __init__(self, name, health):
-        # Initialize the Character class with a name and a Health instance
-        self.name = name
-        self.health = health
+health = Character("dog", health)
+timer = Timer
 
 
-def game_on(timer, character, score):
+def game_on(timer, score):
     # Refresh the display and update the score
     pygame.display.flip()
     return score.update_score()
 
+def Score(health, play_time):
+    lives_bonus = health * 1000  # Each life is worth 1000 points
+    time_bonus = play_time * 10  # Each second is worth 10 points
+    total_score = lives_bonus + time_bonus
+    return total_score
 
 class Timer:
     def __init__(self):
@@ -42,13 +30,4 @@ class Timer:
         return elapsed_seconds
 
 
-class Score:
-    def __init__(self, timer, character):
-        # Initialize the Score class with references to the Timer and Character instances
-        self.timer = timer
-        self.character = character
-        self.points = 0
 
-timer = Timer()
-character = Character(name="Dogtective", health=Health(max_health=5))
-score = Score(timer, character)
