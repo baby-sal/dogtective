@@ -17,6 +17,7 @@ class Leaderboard(Screen):
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
         self.text = Text(display)
         self.image = Image()
+        self.font = pygame.font.Font(None, 36)#initialise font attribute
 
     def show(self):
         scores = self.db.get_top_ten()
