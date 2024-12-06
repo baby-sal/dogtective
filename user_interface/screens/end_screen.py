@@ -1,18 +1,25 @@
 import pygame
 import sys
+
+from logic.components.score import calculate_score
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
+from logic.components.character import Character
+
+dogtective = Character("Dog", 5)
+
 class EndScreen(Screen):
     def __init__(self, display, runner):
         self.display = display
         self.runner = runner
 
     def you_win(self):
-        from logic.components.score import calculate_score
-        score = calculate_score((self.runner.get_elapsed_time(), self.runner))
-
-
+        # Get health and elapsed_time from the runner
+        health = self.runner.character.health
+        elapsed_time = self.runner.get_elapsed_time()
+        # Calculate the score
+        score = calculate_score(health, elapsed_time)
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
@@ -39,15 +46,17 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
 
-            print(score)
+            print(f"Your final score is: {score}")
 
             pygame.display.update()
 
-
-
     def you_lose(self):
-        from logic.components.score import calculate_score
-        score = calculate_score((self.runner.get_elapsed_time(), self.runner))
+        # Get health and elapsed_time from the runner
+        health = self.runner.character.health
+        elapsed_time = self.runner.get_elapsed_time()
+        # Calculate the score
+        score = calculate_score(health, elapsed_time)
+
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
@@ -73,6 +82,6 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_end):
                         self.runner.current_state = GameState.MENU
 
-            print(score)
+            print(f"Your final score is: {score}")
 
             pygame.display.update()
