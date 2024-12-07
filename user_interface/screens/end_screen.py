@@ -3,8 +3,8 @@ import sys
 
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
-from logic.components.button import Button
 from logic.components.score import Score
+from logic.components.button import Button
 from logic.score_db_connection.db_utils_score import DbClass
 
 from logic.components.timer import Timer
@@ -15,31 +15,28 @@ class EndScreen(Screen):
         self.db = DbClass()
 
     def you_win(self):
-
         health = self.runner.character.health.current
         elapsed_time = self.runner.get_elapsed_time()
         score = Score.calculate_score(health, elapsed_time)
         self.db.add_new_score(score)
 
+        self.display.fill("pink")
+        bg = pygame.transform.smoothscale(
+            pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+            self.display.get_size())
+        self.display.blit(bg, (0, 0))
+
+        self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 150)
+        self.text.number_blit(f"Score: {str(score)}", 100, "indigo", WIDTH / 2, 275)
+        self.text.text_blit(f"time spent: {elapsed_time}", 60, "crimson", WIDTH/2, 400)
+        self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH/2, 450)
+        self.image.dogtective_image(WIDTH / 2, 575, self.display)
+
+        button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
+                                colour="purple4", text_in="Menu")
+
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
-
-            self.display.fill("pink")
-            bg = pygame.transform.smoothscale(
-                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
-                self.display.get_size())
-            self.display.blit(bg, (0, 0))
-
-            self.image.dogtective_image(WIDTH/2, 575, self.display)
-            print(f"DB top ten: {self.db.get_top_ten()}")
-            print(f"score: {score}")
-            self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 300)
-            self.text.text_blit(f"time spent: {elapsed_time}", 60, "crimson", WIDTH/2, 400)
-            self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH/2, 450)
-
-
-            button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
-                                    colour="purple4", text_in="Menu")
 
             button_go_back.update_button(self.display)
 
@@ -55,20 +52,20 @@ class EndScreen(Screen):
 
     def you_lose(self):
 
+        self.display.fill("pink")
+        bg = pygame.transform.smoothscale(
+            pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
+            self.display.get_size())
+        self.display.blit(bg, (0, 0))
+
+        self.text.text_blit("GAME OVER", 200, "crimson", WIDTH / 2, 300)
+        self.image.dogtective_image(WIDTH / 2, 575, self.display)
+
+        button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
+                                colour="purple4", text_in="Menu")
+
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
-
-            self.display.fill("pink")
-            bg = pygame.transform.smoothscale(
-                pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha(),
-                self.display.get_size())
-            self.display.blit(bg, (0, 0))
-
-            self.text.text_blit("GAME OVER", 200, "crimson", WIDTH/2, 300)
-            self.image.dogtective_image(WIDTH/2, 575, self.display)
-
-            button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
-                                    colour="purple4", text_in="Menu")
 
             button_go_back.update_button(self.display)
 
