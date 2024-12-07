@@ -6,8 +6,6 @@ from logic.components.score import Score
 from logic.components.button import Button
 from logic.score_db_connection.db_utils_score import DbClass
 
-from logic.components.timer import Timer
-
 class EndScreen(Screen):
     def __init__(self, display, runner):
         super().__init__(display, runner)
