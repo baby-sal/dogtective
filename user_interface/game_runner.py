@@ -22,6 +22,7 @@ class Runner():
 
         self.timer = None
         self.elapsed_time = 0
+        self.character = None
 
     def run(self):
         menu = MenuRunner(self.display, self)
@@ -36,6 +37,7 @@ class Runner():
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
+                self.character = game.dog
                 self.timer = Timer()
                 game.game_loop()
                 self.elapsed_time = self.timer.update_time()
