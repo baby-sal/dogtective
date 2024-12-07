@@ -11,18 +11,6 @@ from logic.components.score import calculate_score
 
 
 class Runner():
-
-    #while window == open:
-        #def run_game:
-            #while state = menu:
-                #menu
-            #if state = game
-            #decorator
-            #loop
-             #if teddy: return time
-                #score calc
-            #credits
-
     def __init__(self):
         pygame.init()
 
