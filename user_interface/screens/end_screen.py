@@ -36,6 +36,9 @@ class EndScreen(Screen):
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
+            self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=350, font=self.text.pixel_font(75),
+                                      colour="brown",
+                                      text_in="next level")
 
             button_go_back.update_button(self.display)
 
@@ -70,6 +73,9 @@ class EndScreen(Screen):
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
+            self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=350, font=self.text.pixel_font(75),
+                                      colour="brown",
+                                      text_in="play again?")
 
             button_go_back.update_button(self.display)
 
