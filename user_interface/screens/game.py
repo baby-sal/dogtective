@@ -5,6 +5,8 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.components.environmental import Collectable
+from logic.components.score import Score
+
 
 class GameLoop:
     # Game window set-up
@@ -127,3 +129,12 @@ class GameLoop:
                 # game over screen here
                 self.runner.current_state = config.GameState.LOSE
                 self.reset_game()
+
+# def run():
+#     game = GameLoop()
+#     game.game_loop()
+#     pygame.quit()
+#     sys.exit()
+#
+# if __name__ == '__main__':
+#     run()
