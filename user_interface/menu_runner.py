@@ -41,6 +41,9 @@ class MenuRunner(Screen):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.button_play.check_input(mouse_pos_menu):
+                        pygame.mixer.music.stop()
+                        pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+                        pygame.mixer.music.play(-1)
                         self.runner.current_state = GameState.GAMEPLAY
                     if self.button_ldr.check_input(mouse_pos_menu):
                         self.runner.current_state = GameState.LEADERBOARD
