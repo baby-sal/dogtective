@@ -1,12 +1,13 @@
 import pygame
 import sys
 
-
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
 from logic.components.score import Score
 from logic.score_db_connection.db_utils_score import DbClass
+
+from logic.components.timer import Timer
 
 class EndScreen(Screen):
     def __init__(self, display, runner):
@@ -21,6 +22,7 @@ class EndScreen(Screen):
         self.db.add_new_score(score)
         print(f"DB top ten: {self.db.get_top_ten()}")
         print(f"score: {score}")
+        print(f"time spent: {Timer}")
 
 
         while self.runner.current_state == GameState.WIN:
