@@ -49,6 +49,9 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
                     if self.button_play.check_input(mouse_pos_next_level):
+                        pygame.mixer.music.stop()
+                        pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+                        pygame.mixer.music.play(-1)
                         self.runner.current_state = GameState.GAMEPLAY
 
             pygame.display.update()
@@ -80,6 +83,9 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_end):
                         self.runner.current_state = GameState.MENU
                     if self.button_play.check_input(mouse_pos_play_again):
+                        pygame.mixer.music.stop()
+                        pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
+                        pygame.mixer.music.play(-1)
                         self.runner.current_state = GameState.GAMEPLAY
 
             pygame.display.update()
