@@ -32,7 +32,8 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 300)
+            self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 150)
+            self.text.number_blit(f"Score: {str(score)}", 100, "indigo", WIDTH / 2, 275)
             self.image.dogtective_image(WIDTH/2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
