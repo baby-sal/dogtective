@@ -20,10 +20,6 @@ class EndScreen(Screen):
         elapsed_time = self.runner.get_elapsed_time()
         score = Score.calculate_score(health, elapsed_time)
         self.db.add_new_score(score)
-        print(f"DB top ten: {self.db.get_top_ten()}")
-        print(f"score: {score}")
-
-
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
@@ -35,6 +31,8 @@ class EndScreen(Screen):
             self.display.blit(bg, (0, 0))
 
             self.image.dogtective_image(WIDTH/2, 575, self.display)
+            print(f"DB top ten: {self.db.get_top_ten()}")
+            print(f"score: {score}")
             self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 300)
             self.text.text_blit(f"time spent: {elapsed_time}", 60, "crimson", WIDTH/2, 400)
             self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH/2, 450)
