@@ -60,8 +60,9 @@ class Runner():
             else:
                 game_on = False
 
-        def get_elapsed_time(self):
-            return self.elapsed_time # method to access elapsed_time
+
+    def get_elapsed_time(self):
+        return self.elapsed_time  # Method to access elapsed_time
 
 
 if __name__ == "__main__":
