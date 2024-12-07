@@ -1,12 +1,13 @@
 import pygame
 import sys
 
-
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.score import Score
 from logic.components.button import Button
 from logic.score_db_connection.db_utils_score import DbClass
+
+from logic.components.timer import Timer
 
 class EndScreen(Screen):
     def __init__(self, display, runner):
@@ -27,7 +28,9 @@ class EndScreen(Screen):
 
         self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 150)
         self.text.number_blit(f"Score: {str(score)}", 100, "indigo", WIDTH / 2, 275)
-        self.image.dogtective_image(WIDTH / 2, 575, self.display)
+        self.text.number_blit(f"time: {elapsed_time} secs", 60, "crimson", WIDTH/2, 400)
+        self.text.number_blit(f"bones left: {health}", 60, "crimson", WIDTH/2, 450)
+        self.image.dogtective_image(5 * WIDTH / 6, 575, self.display)
 
         button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                 colour="purple4", text_in="Menu")
