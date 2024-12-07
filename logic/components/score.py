@@ -3,12 +3,10 @@ class Score:
     def __init__(self):
         pass
 
-    def calculate_score(self, health, elapsed_time):
-
+    @staticmethod
+    def calculate_score(health, elapsed_time):
         bones = health
         lives_bonus = bones * 1000  # Each life is worth 1000 points
-        time_score = elapsed_time * 10  # seconds of gameplay indicate poorer performance,\n might need caviat of if time off life bonus<0 return score as 0
-        #time_penalty = time_score #to become a negative later
+        time_score = max(0, (30 - elapsed_time) * 10)  # time bonus awarded for completing level in under 30 seconds
         total_score = lives_bonus + time_score
-        print(total_score)
         return total_score
