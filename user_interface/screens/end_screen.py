@@ -36,7 +36,7 @@ class EndScreen(Screen):
             self.image.dogtective_image(WIDTH/2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
-                                    colour="purple4", text_in="go back")
+                                    colour="purple4", text_in="Menu")
 
             button_go_back.update_button(self.display)
 
@@ -64,7 +64,7 @@ class EndScreen(Screen):
             self.image.dogtective_image(WIDTH/2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
-                                    colour="purple4", text_in="go back")
+                                    colour="purple4", text_in="Menu")
 
             button_go_back.update_button(self.display)
 
