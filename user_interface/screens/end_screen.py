@@ -13,7 +13,7 @@ class EndScreen(Screen):
 
     def you_win(self):
         # Get health and elapsed_time from the runner
-        health = self.runner.character.health
+        """health = self.runner.character.health"""
         elapsed_time = self.runner.get_elapsed_time()
         # Calculate the score
         score = calculate_score(health, elapsed_time)
@@ -49,7 +49,7 @@ class EndScreen(Screen):
 
     def you_lose(self):
         # Get health and elapsed_time from the runner
-        health = self.runner.character.health
+        """health = self.runner.character.health"""
         elapsed_time = self.runner.get_elapsed_time()
         # Calculate the score
         score = calculate_score(health, elapsed_time)
