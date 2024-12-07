@@ -23,6 +23,7 @@ class EndScreen(Screen):
         print(f"DB top ten: {self.db.get_top_ten()}")
         print(f"score: {score}")
         print(f"time spent: {Timer}")
+        print(f"health remaining: {health}")
 
 
         while self.runner.current_state == GameState.WIN:
@@ -53,6 +54,7 @@ class EndScreen(Screen):
             pygame.display.update()
 
     def you_lose(self):
+
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
