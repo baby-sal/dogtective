@@ -49,15 +49,6 @@ class DbClass(object):
         finally:
             curs.close()
 
-    def _create_table(self):
-        # Create a table named high_scores with columns for user_id, date, nickname, and score
-        self.cursor.execute("""CREATE TABLE IF NOT EXISTS high_scores (
-                               user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                               date TEXT,
-                               nickname TEXT,
-                               score INTEGER NOT NULL)""")
-        self.conn.commit()
-
     def db_disconnect(self):
         if DbClass.connection:
             DbClass.connection.close()
@@ -67,35 +58,19 @@ class DbClass(object):
     def get_top_ten(self):
         self.db_connect()
         try:
-            sql_query = "SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10"
+            sql_query = "SELECT user_id, score FROM high_scores ORDER BY score DESC LIMIT 10"
             return self.get_query(sql_query)
         finally:
             self.db_disconnect()
 
-    def add_new_score(self, nickname, score):
+    def add_new_score(self, score):
         self.db_connect()
         try:
-            sql_query = "INSERT INTO high_scores (date, nickname, score) VALUES (CURRENT_DATE(), %s, %s)"
-            self.update_query(sql_query, (nickname, score))
+            sql_query = "INSERT INTO high_scores (date, score) VALUES (CURRENT_DATE(), %s, %s)"
+            self.update_query(sql_query, score)
         finally:
             self.db_disconnect()
 
-    def get_scores(self):
-        if self.connection is None:
-            print("Database connection is not established.")
-            return []
-
-        cursor = self.connection.cursor()
-        try:
-            cursor.execute("SELECT nickname, score FROM high_scores ORDER BY score DESC LIMIT 10")
-            scores = cursor.fetchall()
-            print(f"Fetched scores: {scores}")  # Debug statement
-            return scores
-        except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            return []
-        finally:
-            cursor.close()
 
 if __name__ == "__main__":
     pass
