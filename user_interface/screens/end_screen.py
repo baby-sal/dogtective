@@ -29,10 +29,11 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
+            self.image.dogtective_image(WIDTH / 2, 575, self.display)
             self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 300)
             self.text.text_blit(f"time spent: {elapsed_time} seconds", 60, "crimson", WIDTH / 2, 400)
             self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH / 2, 450)
-            self.image.dogtective_image(WIDTH / 2, 575, self.display)
+
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
@@ -69,13 +70,13 @@ class EndScreen(Screen):
             self.display.blit(bg, (0, 0))
 
             self.text.text_blit("GAME OVER", 200, "crimson", WIDTH / 2, 300)
-            self.image.dogtective_image(WIDTH / 2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
             self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=500, font=self.text.pixel_font(75),
                                       colour="purple",
                                       text_in="Play Again")
+            self.image.dogtective_image(WIDTH / 2, 575, self.display)
 
             button_go_back.update_button(self.display)
 
