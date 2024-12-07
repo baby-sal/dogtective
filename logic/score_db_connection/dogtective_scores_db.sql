@@ -11,6 +11,6 @@ CREATE TABLE high_scores (
 
 INSERT INTO high_scores (date, score)
 VALUES 
-('2024-12-03', 0),
-('2024-12-03', 2)
+('2024-12-04', 500),
+('2024-12-03', 1000)
 ;

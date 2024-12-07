@@ -1,16 +1,10 @@
-from logic.components.health import Health
 
+class Score:
 
-def calculate_score(health, elapsed_time):
-    if isinstance(health, Health):
-        health = health.current  # Access the current health value if it's an instance of Health
-
-    lives_bonus = health * 1000  # Each life is worth 1000 points
-    time_bonus = elapsed_time * 10  # Each second is worth 10 points
-    total_score = lives_bonus + time_bonus
-    return total_score
-
-
-
-
-
+    @staticmethod
+    def calculate_score(health, elapsed_time):
+        bones = health
+        lives_bonus = bones * 1000  # Each life is worth 1000 points
+        time_score = max(0, (30 - elapsed_time) * 10)  # time bonus awarded for completing level in under 30 seconds
+        total_score = lives_bonus + time_score
+        return total_score

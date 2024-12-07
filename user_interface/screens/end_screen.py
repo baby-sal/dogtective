@@ -1,25 +1,27 @@
 import pygame
 import sys
 
-from logic.components.score import calculate_score
+
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
-
-from user_interface.text_loader import Text
-from user_interface.image_loader import Image
+from logic.components.score import Score
+from logic.score_db_connection.db_utils_score import DbClass
 
 class EndScreen(Screen):
     def __init__(self, display, runner):
-        self.display = display
-        self.runner = runner
-        self.text = Text(display)
-        self.image = Image()
+        super().__init__(display, runner)
+        self.db = DbClass()
 
     def you_win(self):
-        health = self.runner.character.health.current  # Access health correctly
-        elapsed_time = self.runner.get_elapsed_time()  # Access elapsed time correctly
-        score = calculate_score(health, elapsed_time)
+
+        health = self.runner.character.health.current
+        elapsed_time = self.runner.get_elapsed_time()
+        score = Score.calculate_score(health, elapsed_time)
+        self.db.add_new_score(score)
+        print(f"DB top ten: {self.db.get_top_ten()}")
+        print(f"score: {score}")
+
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
@@ -46,17 +48,9 @@ class EndScreen(Screen):
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
 
-            print(f"Your final score is: {score}")
-            print(f"time bonus: {elapsed_time}")
-            print(f"lives left: {health}")
-
             pygame.display.update()
 
     def you_lose(self):
-        health = self.runner.character.health.current  # Access health correctly
-        elapsed_time = self.runner.get_elapsed_time()  # Access elapsed time correctly
-        score = calculate_score(health, elapsed_time)
-
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
 
@@ -81,8 +75,5 @@ class EndScreen(Screen):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_end):
                         self.runner.current_state = GameState.MENU
-
-            print(f"Your final score is: {score}")
-            print(f"time bonus: {elapsed_time}")
 
             pygame.display.update()

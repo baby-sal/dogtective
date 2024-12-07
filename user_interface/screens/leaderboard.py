@@ -5,14 +5,15 @@ from logic.components.button import Button
 from user_interface.menu_runner import Screen
 from logic.score_db_connection.db_utils_score import DbClass
 
+
 class Leaderboard(Screen):
 
     def __init__(self, display, runner):
         super().__init__(display, runner)
-        self.connection = None
         self.db = DbClass()
         pygame.display.set_caption("Dogtective: Leaderboard")
-        self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
+        self.background = pygame.image.load(
+            "../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
         self.font = pygame.font.SysFont('comicsansms', 36)
 
@@ -26,12 +27,12 @@ class Leaderboard(Screen):
 
         self.display.blit(self.background, (0, 0))
         self.text.text_blit("leaderboard:", 125, "brown", WIDTH // 2, HEIGHT // 6)
-        self.image.dogtective_image(600, 600, self.display)
+        self.image.dogtective_image(200, 600, self.display)
 
         # Display scores from the database
         if scores:
             for i, (user_id, score) in enumerate(scores):
-                score_text = self.font.render(f"{user_id}: {score}", True, "brown")
+                score_text = self.font.render(f"Player {user_id}: {score}", True, "brown")
                 self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 200 + i * 40))
         else:
             self.text.text_blit("No scores found", 36, "brown", WIDTH // 2, 300)
@@ -49,6 +50,7 @@ class Leaderboard(Screen):
             button_go_back.update_button(self.display)
 
             pygame.display.update()
+
 
 # Example usage
 if __name__ == "__main__":
