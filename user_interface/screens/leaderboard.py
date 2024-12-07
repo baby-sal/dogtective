@@ -9,7 +9,6 @@ class Leaderboard(Screen):
 
     def __init__(self, display, runner):
         super().__init__(display, runner)
-        self.connection = None
         self.db = DbClass()
         pygame.display.set_caption("Dogtective: Leaderboard")
         self.background = pygame.image.load("../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()

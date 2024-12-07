@@ -13,6 +13,8 @@ class DbClass(object):
 
     def db_connect(self):
         if DbClass.connection is None:
+            if not all([self.user, self.password, self.host, self.database]):
+                print("Check username and password have been entered in logic/score_db_connection/config.py")
             try:
                 DbClass.connection = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
                                                              database=self.database)
@@ -24,7 +26,6 @@ class DbClass(object):
 
     def get_query(self, sql_query, params=None):
         if DbClass.connection is None:
-            self.db_connect()
             if DbClass.connection is None:
                 return None  # Connection failed
         curs = DbClass.connection.cursor()
