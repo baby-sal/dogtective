@@ -52,7 +52,7 @@ class Credits(Screen):
 
             button_go_back = Button(image=None, pos_x=width - 80, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4",
-                                    text_in="go back")
+                                    text_in="Menu")
             button_go_back.update_button(self.display)
 
             for event in pygame.event.get():
