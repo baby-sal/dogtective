@@ -22,9 +22,6 @@ class Runner():
 
         self.timer = None
         self.elapsed_time = 0
-        self.character = None
-
-
 
     def run(self):
         menu = MenuRunner(self.display, self)
@@ -32,8 +29,6 @@ class Runner():
         credits = Credits(self.display, self)
         end_screen = EndScreen(self.display, self)
         leaderboard = Leaderboard(self.display, self)
-
-        self.character = game.dog
 
         game_on = True
 
