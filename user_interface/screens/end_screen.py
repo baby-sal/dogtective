@@ -22,8 +22,8 @@ class EndScreen(Screen):
         self.db.add_new_score(score)
         print(f"DB top ten: {self.db.get_top_ten()}")
         print(f"score: {score}")
-        print(f"time spent: {elapsed_time}")
-        print(f"health remaining: {health}")
+        self.text.text_blit(f"time spent: {elapsed_time}")
+        self.text.text_blit(f"health remaining: {health}")
 
 
         while self.runner.current_state == GameState.WIN:
