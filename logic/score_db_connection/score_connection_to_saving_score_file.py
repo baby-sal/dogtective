@@ -1,16 +1,20 @@
 import pygame  # Import the Pygame library
+from logic.components.character import Character
+from logic.components.health import Health
 from logic.score_db_connection.db_utils_score import DbClass
-from logic.components.score import Health, Character, Score, Timer
+# from logic.components.score import Health, Character, Score, Timer
+from logic.components.score import Score
+from user_interface.game_runner import runner
 
 # Initialize Pygame
 pygame.init()
 
 # Set up the display
-screen = pygame.display.set_mode((800, 600))  # Create a game window with a size of 800x600 pixels
+screen = pygame.display.set_mode((800, 600))  # Create a game window with a size of 800x600 pixels commented out this
 
-health = Health()
-timer = Timer()
-score = Score()
+health = Health(5)
+timer = runner()
+score = Score.calculate_score()
 # class Health:
 #     def __init__(self, max_health):
 #         # Initialize the Health class with maximum health value
