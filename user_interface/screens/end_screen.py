@@ -22,8 +22,7 @@ class EndScreen(Screen):
         self.db.add_new_score(score)
         print(f"DB top ten: {self.db.get_top_ten()}")
         print(f"score: {score}")
-        self.text.text_blit(f"time spent: {elapsed_time}")
-        self.text.text_blit(f"health remaining: {health}")
+
 
 
         while self.runner.current_state == GameState.WIN:
@@ -36,6 +35,8 @@ class EndScreen(Screen):
             self.display.blit(bg, (0, 0))
 
             self.text.text_blit("mission complete!", 160, "indigo", WIDTH/2, 300)
+            self.text.text_blit(f"time spent: {elapsed_time}", 160, "green", 160, 400)
+            self.text.text_blit(f"health remaining: {health}", 160, "green", 200, 500)
             self.image.dogtective_image(WIDTH/2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
