@@ -11,6 +11,11 @@ class TestScore(TestCase):
         result = Score.calculate_score(1, 1)
         self.assertEqual(expected, result)
 
+    def test_full_health(self):
+        expected = 5290
+        result = Score.calculate_score(5, 1)
+        self.assertEqual(expected, result)
+
 #should the user take 5 minutes to perform achieve the end of the level
     def test_extreme_long_time(self):
         expected = 1000
