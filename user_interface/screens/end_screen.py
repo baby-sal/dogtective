@@ -12,10 +12,8 @@ class EndScreen(Screen):
         self.runner = runner
 
     def you_win(self):
-        # Get health and elapsed_time from the runner
-        health = self.runner.character.health
-        elapsed_time = self.runner.get_elapsed_time()
-        # Calculate the score
+        health = self.runner.character.health.current  # Access health correctly
+        elapsed_time = self.runner.get_elapsed_time()  # Access elapsed time correctly
         score = calculate_score(health, elapsed_time)
 
         while self.runner.current_state == GameState.WIN:
@@ -50,10 +48,8 @@ class EndScreen(Screen):
             pygame.display.update()
 
     def you_lose(self):
-        # Get health and elapsed_time from the runner
-        health = self.runner.character.health
-        elapsed_time = self.runner.get_elapsed_time()
-        # Calculate the score
+        health = self.runner.character.health.current  # Access health correctly
+        elapsed_time = self.runner.get_elapsed_time()  # Access elapsed time correctly
         score = calculate_score(health, elapsed_time)
 
         while self.runner.current_state == GameState.LOSE:
