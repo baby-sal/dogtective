@@ -1,5 +1,7 @@
 import pygame
 import sys
+
+# from logic.score_db_connection.score_connection_to_saving_score_file import score
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
@@ -7,6 +9,12 @@ from logic.components.score import Score
 
 class EndScreen(Screen):
     def you_win(self):
+
+        health = self.runner.character.health.current
+        elapsed_time = self.runner.get_elapsed_time()
+        score = Score.calculate_score(health, elapsed_time)
+        print(f"score: {score}")
+
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
 
