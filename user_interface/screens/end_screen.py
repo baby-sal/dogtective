@@ -28,7 +28,7 @@ class EndScreen(Screen):
 
         self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 150)
         self.text.number_blit(f"Score: {str(score)}", 100, "indigo", WIDTH / 2, 275)
-        self.text.number_blit(f"time: {elapsed_time}s", 60, "crimson", WIDTH/2, 400)
+        self.text.number_blit(f"time: {elapsed_time} secs", 60, "crimson", WIDTH/2, 400)
         self.text.number_blit(f"bones left: {health}", 60, "crimson", WIDTH/2, 450)
         self.image.dogtective_image(5 * WIDTH / 6, 575, self.display)
 
