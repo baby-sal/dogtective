@@ -24,8 +24,6 @@ class Runner():
         self.elapsed_time = 0
         self.character = None
 
-
-
     def run(self):
         menu = MenuRunner(self.display, self)
         game = GameLoop(self.display, self)
@@ -33,14 +31,13 @@ class Runner():
         end_screen = EndScreen(self.display, self)
         leaderboard = Leaderboard(self.display, self)
 
-        self.character = game.dog
-
         game_on = True
 
         while game_on:
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
+                self.character = game.dog
                 self.timer = Timer()
                 game.game_loop()
                 self.elapsed_time = self.timer.update_time()

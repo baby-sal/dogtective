@@ -32,17 +32,17 @@ class GameLoop:
         car_img4 = pygame.image.load('../logic/assets/images/obstacles/compact_orange.png').convert_alpha()
         car_img5 = pygame.image.load('../logic/assets/images/obstacles/sport_yellow.png').convert_alpha()
         truck_img1 = pygame.image.load('../logic/assets/images/obstacles/truck_red.png').convert_alpha()
-        car1 = Obstacle("car1", car_img1, 180, 0, 0.15, 1, 3)
-        car2 = Obstacle("car2", car_img2, 530, 600, 0.15, 2, -5)
-        car3 = Obstacle("car3", car_img3, 955, 800, 0.15, 1, 3)
-        car4 = Obstacle("car4", car_img4, 230, 0, 0.15, 2, 6)
-        car5 = Obstacle("car5", car_img5, 580, 600, 0.15, 1, 8)
-        truck1 = Obstacle("truck1", truck_img1, 998, 800, 0.25, 4, 7)
+        car1 = Obstacle("car1", car_img1, 175, 0, 1.2, 1, 3)
+        car2 = Obstacle("car2", car_img2, 525, 600, 1.2, 2, -5)
+        car3 = Obstacle("car3", car_img3, 952, 800, 1.2, 1, 3)
+        car4 = Obstacle("car4", car_img4, 227, 0, 1.25, 2, 6)
+        car5 = Obstacle("car5", car_img5, 574, 600, 1.2, 1, 8)
+        truck1 = Obstacle("truck1", truck_img1, 995, 800, 1.1, 4, 7)
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3, car4, car5, truck1)
 
         ball_img = pygame.image.load('../logic/assets/images/objects/toy.png').convert_alpha()
-        self.ball = Collectable("ball", ball_img, 1100, 520, 0.5)
+        self.ball = Collectable("ball", ball_img, 1100, 450, 2.5)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self.ball)
 
@@ -119,7 +119,7 @@ class GameLoop:
                 pygame.display.update()
                 self.clock.tick(config.FPS)
 
-                if pygame.sprite.spritecollide(self.dog, self.ball_group, False):
+                if pygame.sprite.spritecollide(self.dog, self.ball_group, False, pygame.sprite.collide_mask):
                     self.runner.current_state = config.GameState.WIN
                     self.reset_game()
 
