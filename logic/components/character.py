@@ -1,4 +1,4 @@
-import pygame as p
+import pygame
 import pygame.time
 # import sys may be needed when dog collides with ball and game ends?
 from user_interface.game_config import HEIGHT, WIDTH
@@ -6,7 +6,7 @@ from logic.assets.get_sprite_image import SpriteSheet
 
 
 # class for player character
-class Character(p.sprite.Sprite):
+class Character(pygame.sprite.Sprite):
 
     def __init__(self, name, health):
         super().__init__()
@@ -28,7 +28,7 @@ class Character(p.sprite.Sprite):
         self.direction = "right"
 
         self.image = self.idle.frame
-        self.mask = p.mask.from_surface(self.image)
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.mask.get_rect()
 
         self.collision_sound = pygame.mixer.Sound("../logic/assets/audio/Car_Collision.mp3")  # play car collision sound
@@ -48,23 +48,23 @@ class Character(p.sprite.Sprite):
         self.rect.center = (self.x, self.y)
 
     def movement(self):
-        keys = p.key.get_pressed()
+        keys = pygame.key.get_pressed()
 
-        if keys[p.K_LEFT]:
+        if keys[pygame.K_LEFT]:
             self.x -= self.speed  # left key pressed negative velocity
             self.direction = "left"
             self.move = True
 
-        elif keys[p.K_RIGHT]:
+        elif keys[pygame.K_RIGHT]:
             self.x += self.speed  # right key pressed positive velocity
             self.direction = "right"
             self.move = True
 
-        if keys[p.K_UP]:
+        if keys[pygame.K_UP]:
             self.y -= self.speed  # left key up negative velocity
             self.move = True
 
-        elif keys[p.K_DOWN]:
+        elif keys[pygame.K_DOWN]:
             self.y += self.speed  # right key down positive velocity
             self.move = True
 
@@ -97,17 +97,17 @@ class Character(p.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
 
     def check_collision(self, car_group): # add ball_group
-        car_check = p.sprite.spritecollide(self, car_group, False, p.sprite.collide_mask)
+        car_check = pygame.sprite.spritecollide(self, car_group, False, pygame.sprite.collide_mask)
         if car_check and not self.collision_immune:
             self.health.current -= car_check[0].damage
             # play collision sound
             self.collision_sound.play()
             # pause background music
-            p.mixer_music.pause()
+            pygame.mixer_music.pause()
             # print(self.health.current)    # uncomment for testing
             self.collision_immune = True
             self.collision_time = pygame.time.get_ticks()
-        p.mixer_music.unpause()
+        pygame.mixer_music.unpause()
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"
