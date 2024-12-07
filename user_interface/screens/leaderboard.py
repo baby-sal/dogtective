@@ -15,7 +15,6 @@ class Leaderboard(Screen):
         self.background = pygame.image.load(
             "../logic/assets/images/menu/urban-landscape-background-Preview.png").convert_alpha()
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
-        self.font = pygame.font.SysFont('comicsansms', 36)
 
     def show(self):
         scores = self.db.get_top_ten()
@@ -32,8 +31,7 @@ class Leaderboard(Screen):
         # Display scores from the database
         if scores:
             for i, (user_id, score) in enumerate(scores):
-                score_text = self.font.render(f"Player {user_id}: {score}", True, "brown")
-                self.display.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, 200 + i * 40))
+                self.text.number_blit(f"Player {user_id}: {score}", 36 ,"brown", WIDTH // 2, 200 + i * 40)
         else:
             self.text.text_blit("No scores found", 36, "brown", WIDTH // 2, 300)
 
