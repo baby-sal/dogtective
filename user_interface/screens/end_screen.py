@@ -10,6 +10,10 @@ class EndScreen(Screen):
     def __init__(self, display, runner):
         super().__init__(display, runner)
         self.db = DbClass()
+        self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=500, font=self.text.pixel_font(75),
+                                  colour="orange", text_in="Play Again")  # Adjusted color and text
+        self.button_next_level = Button(image=None, pos_x=WIDTH / 2, pos_y=600, font=self.text.pixel_font(75),
+                                        colour="blue", text_in="Next Level")  # Enhanced visibility
 
     def you_win(self):
         health = self.runner.character.health.current
@@ -29,19 +33,17 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
+            self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 300)
+            self.text.text_blit(f"time spent: {elapsed_time} seconds", 60, "crimson", WIDTH / 2, 400)
+            self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH / 2, 450)
             self.image.dogtective_image(WIDTH / 2, 575, self.display)
-            self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 200)
-            self.text.text_blit(f"time spent: {elapsed_time} seconds", 60, "crimson", WIDTH / 2, 300)
-            self.text.text_blit(f"health remaining: {health}", 60, "crimson", WIDTH / 2, 350)
-
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
-            self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=400, font=self.text.pixel_font(75),
-                                      colour="purple",
-                                      text_in="Next Level")
 
             button_go_back.update_button(self.display)
+            self.button_play.update_button(self.display)
+            self.button_next_level.update_button(self.display)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -50,11 +52,14 @@ class EndScreen(Screen):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
-                    if self.button_play.check_input(mouse_pos_next_level):
+                    if self.button_play.check_input(mouse_pos_complete):
                         pygame.mixer.music.stop()
                         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
                         pygame.mixer.music.play(-1)
                         self.runner.current_state = GameState.GAMEPLAY
+                    if self.button_next_level.check_input(mouse_pos_next_level):
+                        # Logic for next level
+                        print("Next level button clicked")
 
             pygame.display.update()
 
@@ -69,18 +74,19 @@ class EndScreen(Screen):
                 self.display.get_size())
             self.display.blit(bg, (0, 0))
 
-            self.text.text_blit("GAME OVER", 200, "crimson", WIDTH / 2, 200)
+            self.text.text_blit("GAME OVER", 200, "crimson", WIDTH / 2, 300)
+            self.image.dogtective_image(WIDTH / 2, 575, self.display)
 
             button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
                                     colour="purple4", text_in="Menu")
-            self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=300, font=self.text.pixel_font(75),
-                                      colour="purple",
-                                      text_in="Play Again")
-            self.image.dogtective_image(WIDTH / 2, 575, self.display)
+            self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=500, font=self.text.pixel_font(75),
+                                      colour="orange", text_in="Play Again")  # Adjusted position, color, and text
+            self.button_next_level = Button(image=None, pos_x=WIDTH / 2, pos_y=600, font=self.text.pixel_font(75),
+                                            colour="blue", text_in="Next Level")  # Enhanced visibility
 
             button_go_back.update_button(self.display)
-
             self.button_play.update_button(self.display)
+            self.button_next_level.update_button(self.display)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
