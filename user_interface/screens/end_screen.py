@@ -7,12 +7,14 @@ from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
 
 from user_interface.text_loader import Text
+from user_interface.image_loader import Image
 
 class EndScreen(Screen):
     def __init__(self, display, runner):
         self.display = display
         self.runner = runner
         self.text = Text(display)
+        self.image = Image()
 
     def you_win(self):
         health = self.runner.character.health.current  # Access health correctly
