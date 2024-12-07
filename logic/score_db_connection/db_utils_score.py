@@ -27,8 +27,7 @@ class DbClass(object):
     @staticmethod
     def get_query(sql_query, params=None):
         if DbClass.connection is None:
-            if DbClass.connection is None:
-                return None  # Connection failed
+            return None  # Connection failed
         curs = DbClass.connection.cursor()
         try:
             curs.execute(sql_query, params)
@@ -36,11 +35,10 @@ class DbClass(object):
         finally:
             curs.close()
 
-    def update_query(self, sql_query, params):
+    @staticmethod
+    def update_query(sql_query, params):
         if DbClass.connection is None:
-            self.db_connect()
-            if DbClass.connection is None:
-                return None  # Connection failed
+            return None  # Connection failed
         curs = DbClass.connection.cursor()
         try:
             curs.execute(sql_query, params)
@@ -61,7 +59,7 @@ class DbClass(object):
         self.db_connect()
         try:
             sql_query = "SELECT user_id, score FROM high_scores ORDER BY score DESC LIMIT 10"
-            return self.get_query(sql_query)
+            return DbClass.get_query(sql_query)
         finally:
             self.db_disconnect()
 
@@ -69,7 +67,7 @@ class DbClass(object):
         self.db_connect()
         try:
             sql_query = "INSERT INTO high_scores (date, score) VALUES (CURRENT_DATE(), %s)"
-            self.update_query(sql_query, [score])
+            DbClass.update_query(sql_query, [score])
         finally:
             self.db_disconnect()
 
