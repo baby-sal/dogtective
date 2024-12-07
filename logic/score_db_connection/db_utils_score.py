@@ -24,7 +24,8 @@ class DbClass(object):
                 print(f"Error: {err}")
                 DbClass.connection = None
 
-    def get_query(self, sql_query, params=None):
+    @staticmethod
+    def get_query(sql_query, params=None):
         if DbClass.connection is None:
             if DbClass.connection is None:
                 return None  # Connection failed
