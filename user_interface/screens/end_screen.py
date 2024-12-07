@@ -25,6 +25,7 @@ class EndScreen(Screen):
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
+            mouse_pos_next_level = pygame.mouse.get_pos()
 
             self.display.fill("pink")
             bg = pygame.transform.smoothscale(
@@ -47,12 +48,15 @@ class EndScreen(Screen):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
+                    if self.button_play.check_input(mouse_pos_next_level):
+                        self.runner.current_state = GameState.GAMEPLAY
 
             pygame.display.update()
 
     def you_lose(self):
         while self.runner.current_state == GameState.LOSE:
             mouse_pos_end = pygame.mouse.get_pos()
+            mouse_pos_play_again = pygame.mouse.get_pos()
 
             self.display.fill("pink")
             bg = pygame.transform.smoothscale(
@@ -75,5 +79,7 @@ class EndScreen(Screen):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_end):
                         self.runner.current_state = GameState.MENU
+                    if self.button_play.check_input(mouse_pos_play_again):
+                        self.runner.current_state = GameState.GAMEPLAY
 
             pygame.display.update()
