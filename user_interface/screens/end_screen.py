@@ -44,6 +44,8 @@ class EndScreen(Screen):
                         self.runner.current_state = GameState.MENU
 
             print(f"Your final score is: {score}")
+            print(f"time bonus: {elapsed_time}")
+            print(f"lives left: {health}")
 
             pygame.display.update()
 
@@ -80,5 +82,6 @@ class EndScreen(Screen):
                         self.runner.current_state = GameState.MENU
 
             print(f"Your final score is: {score}")
+            print(f"time bonus: {elapsed_time}")
 
             pygame.display.update()
