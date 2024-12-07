@@ -119,7 +119,7 @@ class GameLoop:
                 pygame.display.update()
                 self.clock.tick(config.FPS)
 
-                if pygame.sprite.spritecollide(self.dog, self.ball_group, False):
+                if pygame.sprite.spritecollide(self.dog, self.ball_group, False, pygame.sprite.collide_mask):
                     self.runner.current_state = config.GameState.WIN
                     self.reset_game()
 
