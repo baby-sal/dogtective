@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-# from logic.score_db_connection.score_connection_to_saving_score_file import score
+
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
 from logic.components.button import Button
