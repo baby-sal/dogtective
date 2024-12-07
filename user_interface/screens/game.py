@@ -5,7 +5,7 @@ from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
 from logic.components.environmental import Collectable
-from logic.components.timer import level_timer
+# from logic.components.timer import level_timer
 
 class GameLoop:
     # Game window set-up
@@ -97,7 +97,6 @@ class GameLoop:
         self.dog_group.update(car_group)
 
     # Game loop: Keeps window open until quit
-    @level_timer
     def game_loop(self):
         ball_active = False
 
@@ -121,12 +120,3 @@ class GameLoop:
             else:
                 # game over screen here
                 self.runner.current_state = config.GameState.LOSE
-
-# def run():
-#     game = GameLoop()
-#     game.game_loop()
-#     pygame.quit()
-#     sys.exit()
-#
-# if __name__ == '__main__':
-#     run()

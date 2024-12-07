@@ -1,10 +1,8 @@
 import pygame as p
 import pygame.time
 # import sys may be needed when dog collides with ball and game ends?
-
 from user_interface.game_config import HEIGHT, WIDTH
 from logic.assets.get_sprite_image import SpriteSheet
-
 
 # class for player character
 class Character(p.sprite.Sprite):
@@ -87,6 +85,7 @@ class Character(p.sprite.Sprite):
             self.bark.cycle_animation()
             self.image = self.bark.frame
             self.bark_button_pressed = False # reset bark button after updating animation
+        # currently barking crashes the game
         else:
             self.idle.cycle_animation()
             self.image = self.idle.frame
@@ -122,9 +121,6 @@ class Character(p.sprite.Sprite):
             self.collision_time = pygame.time.get_ticks()
         p.mixer_music.unpause()
 
-        # if ball_check and not self.collision_immune:
-        #     self.collision_immune = True
-        #     sys.exit()
 
     def __str__(self):
         return f"{self.name}: Health ({self.health})"

@@ -1,5 +1,5 @@
 import sys, pygame
-from logic.score_db_connection.score_connection_to_saving_score_file import timer, health, score
+# from logic.score_db_connection.score_connection_to_saving_score_file import timer, health, score
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
@@ -39,7 +39,7 @@ class Runner():
         game_on = True
 
         while game_on:
-            self.elapsed_time = self.timer.update()
+            self.elapsed_time = self.timer.update_time()
             if self.current_state == config.GameState.MENU:
                 menu.menu_runner()
             elif self.current_state == config.GameState.GAMEPLAY:
@@ -50,7 +50,7 @@ class Runner():
                 leaderboard.show()
             elif self.current_state == config.GameState.WIN:
                 health = self.character.health.current
-                score = Score.calculate_score(health, self.elapsed_time)
+                score = Score.calculate_score(self, health, self.elapsed_time)
                 end_screen.you_win()
                 return score
             elif self.current_state == config.GameState.LOSE:
