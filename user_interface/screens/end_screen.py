@@ -9,11 +9,6 @@ from logic.components.score import Score
 
 class EndScreen(Screen):
 
-    # def __init__(self, display, runner):
-    #     super
-    #     self.display = display
-    #     self.runner = runner
-
     def you_win(self):
 
         health = self.runner.character.health.current

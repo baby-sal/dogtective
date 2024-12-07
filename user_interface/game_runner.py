@@ -44,7 +44,6 @@ class Runner():
                 self.timer = Timer()
                 game.game_loop()
                 self.elapsed_time = self.timer.update_time()
-                print(f"time: {self.elapsed_time}")
             elif self.current_state == config.GameState.CREDITS:
                 credits.credit_screen()
             elif self.current_state == config.GameState.LEADERBOARD:

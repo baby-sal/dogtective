@@ -1,7 +1,5 @@
 
 class Score:
-    def __init__(self):
-        pass
 
     @staticmethod
     def calculate_score(health, elapsed_time):
