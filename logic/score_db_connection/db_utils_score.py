@@ -66,8 +66,8 @@ class DbClass(object):
     def add_new_score(self, score):
         self.db_connect()
         try:
-            sql_query = "INSERT INTO high_scores (date, score) VALUES (CURRENT_DATE(), %s, %s)"
-            self.update_query(sql_query, score)
+            sql_query = "INSERT INTO high_scores (date, score) VALUES (CURRENT_DATE(), %s)"
+            self.update_query(sql_query, [score])
         finally:
             self.db_disconnect()
 
