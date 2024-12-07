@@ -9,15 +9,17 @@ from logic.components.score import Score
 
 class EndScreen(Screen):
 
-    def __init__(self, display, runner):
-        self.display = display
-        self.runner = runner
+    # def __init__(self, display, runner):
+    #     super
+    #     self.display = display
+    #     self.runner = runner
 
     def you_win(self):
 
-        health = self.runner.character.health
+        health = self.runner.character.health.current
         elapsed_time = self.runner.get_elapsed_time()
-        score = Score.calculate_score(self, health, elapsed_time)
+        score = Score.calculate_score(health, elapsed_time)
+        print(f"score: {score}")
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
@@ -43,8 +45,6 @@ class EndScreen(Screen):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button_go_back.check_input(mouse_pos_complete):
                         self.runner.current_state = GameState.MENU
-
-            print(f"score: {score}")
 
             pygame.display.update()
 
