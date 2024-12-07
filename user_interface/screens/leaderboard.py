@@ -23,7 +23,7 @@ class Leaderboard(Screen):
             print("No scores to display.")
 
         button_go_back = Button(image=None, pos_x=WIDTH - 80, pos_y=50, font=self.text.pixel_font(40), colour="purple4",
-                                text_in="Menu")
+                                text_in="Menu")#changed back button to menu
 
         self.display.blit(self.background, (0, 0))
         self.text.text_blit("leaderboard:", 125, "brown", WIDTH // 2, HEIGHT // 6)
