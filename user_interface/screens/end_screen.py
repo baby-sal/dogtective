@@ -21,7 +21,6 @@ class EndScreen(Screen):
 
         while self.runner.current_state == GameState.WIN:
             mouse_pos_complete = pygame.mouse.get_pos()
-            mouse_pos_next_level = pygame.mouse.get_pos()
 
             self.display.fill("pink")
             bg = pygame.transform.smoothscale(
