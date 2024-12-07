@@ -22,7 +22,7 @@ class EndScreen(Screen):
         self.db.add_new_score(score)
         print(f"DB top ten: {self.db.get_top_ten()}")
         print(f"score: {score}")
-        print(f"time spent: {Timer}")
+        print(f"time spent: {elapsed_time}")
         print(f"health remaining: {health}")
 
 
