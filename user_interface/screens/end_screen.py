@@ -4,6 +4,7 @@ import sys
 
 from user_interface.screens.screen import Screen
 from user_interface.game_config import GameState, WIDTH
+from logic.components.score import Score
 from logic.components.button import Button
 from logic.score_db_connection.db_utils_score import DbClass
 
@@ -11,17 +12,11 @@ class EndScreen(Screen):
     def __init__(self, display, runner):
         super().__init__(display, runner)
         self.db = DbClass()
-        
-    def calculate_score(self):
-        health = self.runner.character.health.current
-        elapsed_time = self.runner.get_elapsed_time()
-        lives_bonus = health * 1000  # Each life is worth 1000 points
-        time_score = max(0, (30 - elapsed_time) * 10)  # time bonus awarded for completing level in under 30 seconds
-        total_score = lives_bonus + time_score
-        return total_score
 
     def you_win(self):
-        score = self.calculate_score()
+        health = self.runner.character.health.current
+        elapsed_time = self.runner.get_elapsed_time()
+        score = Score.calculate_score(health, elapsed_time)
         self.db.add_new_score(score)
 
         self.display.fill("pink")
