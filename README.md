@@ -109,6 +109,18 @@ pip install mysql-connector-python
 
 Run the `game-runner` python file to start the game. Dogtective needs your help! 😄
 
+## Testing
+
+**Unit Tests**
+
+Unit tests are included within the Python project files to validate the scoring component of the game.
+
+**Gherkin Testing**
+
+Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
+
+[Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+
 ## Technologies used
 
 - Python
@@ -120,11 +132,6 @@ Run the `game-runner` python file to start the game. Dogtective needs your help!
 - [Road background](https://www.freepik.com/free-vector/aerial-scene-intersection_5361164.htm#fromView=search&page=1&position=6&uuid=a2915187-2a0e-49fe-b8a5-0a10b6afb006)
 - [Dogtective game play sprites](https://free-game-assets.itch.io/free-street-animal-pixel-art-asset-pack)
 - [City background](https://lucky-loops.itch.io/parallax-city-background)
-
-## Testing - TBC - MC TO UPDATE
-
-Unit testing
-Gherkin testing and googledoc links
 
 ## Contributors
 
