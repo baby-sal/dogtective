@@ -123,7 +123,7 @@ Unit tests are included within the Python project files to validate the scoring 
 
 Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
 
-[Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+[Dogtective Gherkin Testing Document](logic/assets/images/readme/gherkin_testing_doc.pdf)
 
 ## Project Documentation
 
@@ -153,4 +153,4 @@ Behavior-driven testing using Gherkin scenarios was conducted to verify key game
 - [Melanie Clark](https://github.com/Melanie-Clark)
 - [Sally Davies](https://github.com/baby-sal)
 - [Zarrin Rahman](https://github.com/z-for-zarrin)
-- [Amanda Brown]
+- Amanda Brown (Week 1 - ideas contributor)
