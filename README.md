@@ -7,17 +7,17 @@ The toy has gone missing and Dogtective must dodge the moving cars to find it!
 
 ### Navigation
 
-Navigate the main menu with mouse clicks.
+Use mouse clicks for main menu and end screen navigation.
 
 ### Movement
 
-Use the keyboard arrow keys (up, down, left and right) to move Dogtective around the screen.
+Control Dogtective movements using the keyboard arrow keys (up, down, left and right).
 
 ### Health
 
-Dogtective starts with five health bones.
+Dogtective starts the game with five health bones in the top-left corner of the screen.
 
-Colliding with vehicles reduces Dogtectives' health _(the number of bones)_ based on the vehicle type:
+Colliding with vehicles reduces Dogtective's health _(bone count)_ with the amount lost depending on vehicle type:
 
 - ![blue_car.png](logic/assets/images/obstacles/blue_car.png) &nbsp; 1 bone damage
 - ![sport_yellow.png](logic/assets/images/obstacles/sport_yellow.png) &nbsp; 1 bone damage
@@ -37,12 +37,12 @@ calculate the score below.
 Earn **1000 points** for each health bone left at the end of the game.
 
 **Time Bonus:**
-Finish in under 30 seconds for extra points. The player receives 10 points for every second left.
+Finish in under 30 seconds for extra points. The player receives **10** points for every second left.
 
 **Examples:**
+- Finish with 4 bones in 15 seconds -> 4000 + 150 = **4150** points
+- Finish with 5 bones in 30 seconds -> 5000 + 0 = **5000** points
 
-- Finish in 20 seconds = **100 bonus points**
-- Finish in 30 seconds or more = 0 bonus points
 
 ## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
 
@@ -54,27 +54,27 @@ Click below to see the game in action!
 
 **Main menu:**
 
-<img src="logic/assets/images/readme/main_menu.png" alt="Dogtective main menu" width="300" height="200">
+<img src="logic/assets/images/readme/main_menu.png" alt="Dogtective main menu" width="400" height="300">
 
 **Gameplay:**
 
-<img src="logic/assets/images/readme/game_play.png" alt="Game play" width="300" height="200">
+<img src="logic/assets/images/readme/game_play.png" alt="Game play" width="400" height="300">
 
-**Mission Complete:**
+**Mission Complete:** MC TO UPDATE IN LINE WITH LEADERBOARD
 
-<img src="logic/assets/images/readme/mission_complete.png" alt="Mission Complete" width="300" height="200">
+<img src="logic/assets/images/readme/mission_complete.png" alt="Mission Complete" width="400" height="300">
 
 **Game Over:**
 
-<img src="logic/assets/images/readme/game_over.png" alt="Game over" width="300" height="200">
+<img src="logic/assets/images/readme/game_over.png" alt="Game over" width="400" height="300">
 
-**Leaderboard:**
+**Leaderboard:** MC TO UPDATE IN LINE WITH END SCREEN
 
-<img src="logic/assets/images/readme/leaderboard.png" alt="Leaderboard" width="300" height="200">
+<img src="logic/assets/images/readme/leaderboard.png" alt="Leaderboard" width="400" height="300">
 
 **Credits:**
 
-<img src="logic/assets/images/readme/credits.png" alt="Credits" width="300" height="200">
+<img src="logic/assets/images/readme/credits.png" alt="Credits" width="400" height="300">
 
 ## Set-up
 
