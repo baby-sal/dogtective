@@ -1,5 +1,4 @@
 import sys, pygame
-# from logic.score_db_connection.score_connection_to_saving_score_file import timer, health, score
 from user_interface.screens.game import GameLoop
 from user_interface.menu_runner import MenuRunner
 from user_interface.screens.credits import Credits
@@ -7,6 +6,7 @@ from user_interface.screens.end_screen import EndScreen
 import user_interface.game_config as config
 from user_interface.screens.leaderboard import Leaderboard
 from logic.components.timer import Timer
+
 
 class Runner():
 
@@ -61,4 +61,3 @@ if __name__ == "__main__":
     runner.run()
     pygame.quit()
     sys.exit()
-
