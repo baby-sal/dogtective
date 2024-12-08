@@ -48,7 +48,7 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 
 Click below to see the game in action!
 
-[Dogtective demo](https://youtu.be/9sauaKSex6M)
+[Dogtective demo](https://youtu.be/w2h8P_h3xVE)
 
 ## Game screenshots
 
