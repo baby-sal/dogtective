@@ -34,7 +34,7 @@ class Credits(Screen):
             y_offset = 250  # Initial offset
             line_height = 50  # Space between lines
 
-            credits = [
+            credit_names = [
                 "Abbeygayle Potts",
                 "Estelle Walford",
                 "Iman Abdelgani",
@@ -44,7 +44,7 @@ class Credits(Screen):
             ]
 
             # Loops through the credits list and renders each name, i adds an index so Abbeygayle would be index 0
-            for i, credit in enumerate(credits):
+            for i, credit in enumerate(credit_names):
                 self.credit_blit(credit, y_offset + i * line_height)
 
             self.text.text_blit("with special thanks to:\nAhmed Abdi - Sound Engineering & Design", 30, "darkblue",
