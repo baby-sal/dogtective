@@ -48,7 +48,7 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 
 Click below to see the game in action!
 
-[Dogtective demo](logic/assets/images/readme/demo.mp4)
+[Dogtective demo](https://youtu.be/9sauaKSex6M)
 
 ## Game screenshots
 
@@ -153,3 +153,4 @@ Behavior-driven testing using Gherkin scenarios was conducted to verify key game
 - [Melanie Clark](https://github.com/Melanie-Clark)
 - [Sally Davies](https://github.com/baby-sal)
 - [Zarrin Rahman](https://github.com/z-for-zarrin)
+- [Amanda Brown]
