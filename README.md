@@ -44,31 +44,35 @@ Finish in under 30 seconds for extra points. The player receives 10 points for e
 - Finish in 20 seconds = **100 bonus points**
 - Finish in 30 seconds or more = 0 bonus points
 
-## Game demo - MC TO SORT URL OR MP4
+## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
 
 Click below to see the game in action!
 
-[Dogtective demo](URL GOES HERE)
+[Dogtective Demo](https://drive.google.com/file/d/1xl2yJtKlrdo8W8zOoIzRfUl1eU_ZFgVH/view?usp=drive_link)
 
-## Game screenshots - LEADERBOARD SCREENSHOTS WILL BE UPDATED WHEN CODING IS FINISHED
+## Game screenshots
 
-**Main menu**
+**Main menu:**
 
 <img src="logic/assets/images/readme/main_menu.png" alt="Dogtective main menu" width="300" height="200">
 
-**Gameplay**
+**Gameplay:**
 
 <img src="logic/assets/images/readme/game_play.png" alt="Game play" width="300" height="200">
 
-**Game Over**
+**Mission Complete:**
+
+<img src="logic/assets/images/readme/mission_complete.png" alt="Mission Complete" width="300" height="200">
+
+**Game Over:**
 
 <img src="logic/assets/images/readme/game_over.png" alt="Game over" width="300" height="200">
 
-**Leaderboard**
+**Leaderboard:**
 
 <img src="logic/assets/images/readme/leaderboard.png" alt="Leaderboard" width="300" height="200">
 
-**Credits**
+**Credits:**
 
 <img src="logic/assets/images/readme/credits.png" alt="Credits" width="300" height="200">
 
