@@ -44,11 +44,15 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 - Finish with 4 bones in 15 seconds -> 4000 + 150 = **4150** points
 - Finish with 5 bones in 30 seconds -> 5000 + 0 = **5000** points
 
-## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
+## Game demo and sound
 
 Click below to see the game in action!
 
-[Dogtective Demo](https://drive.google.com/file/d/1xl2yJtKlrdo8W8zOoIzRfUl1eU_ZFgVH/view?usp=drive_link)
+[Dogtective demo](logic/assets/images/readme/demo.mp4)
+
+Associated game play sound file:
+
+[Dogtective sound file](logic/assets/audio/BGM_game.mp3)
 
 ## Game screenshots
 
