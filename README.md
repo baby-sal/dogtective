@@ -40,9 +40,9 @@ Earn **1000 points** for each health bone left at the end of the game.
 Finish in under 30 seconds for extra points. The player receives **10** points for every second left.
 
 **Examples:**
+
 - Finish with 4 bones in 15 seconds -> 4000 + 150 = **4150** points
 - Finish with 5 bones in 30 seconds -> 5000 + 0 = **5000** points
-
 
 ## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
 
@@ -124,6 +124,10 @@ Unit tests are included within the Python project files to validate the scoring 
 Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
 
 [Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+
+## Activity Log
+
+[Activity Log](https://docs.google.com/spreadsheets/d/1K7v3ajb6SNFz8l4yX08zlXcnUgO-Eq2qG3q0EH3rtWQ/edit?usp=drive_link)
 
 ## Technologies used
 
