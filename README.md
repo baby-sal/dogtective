@@ -1,12 +1,30 @@
 # Dogtective
 
 The main character, a determined dog detective, is on a mission to recover a lost toy.
-The toy has gone missing and Dogtective must dodge the moving cars to find it.
+The toy has gone missing and Dogtective must dodge the moving cars to find it!
 
 ## Gameplay Mechanics:
 
+### Navigation
 Navigate the main menu with mouse clicks.
+
+### Movement
 Use the keyboard arrow keys (up, down, left and right) to move Dogtective around the screen.
+
+### Health
+Dogtective starts with five health bones.
+
+Colliding with vehicles reduces health _(number of bones)_ based on the vehicle type:
+- ![blue_car.png](logic/assets/images/obstacles/blue_car.png) 1 bone damage
+- ![green_car.png](logic/assets/images/obstacles/green_car.png) 2 bone damage
+- ![red_car.png](logic/assets/images/obstacles/red_car.png) 1 bone damage
+- ![compact_orange.png](logic/assets/images/obstacles/compact_orange.png) 2 bone damage
+- ![sport_yellow.png](logic/assets/images/obstacles/sport_yellow.png) 1 bone damage
+- ![truck_red.png](logic/assets/images/obstacles/truck_red.png) 4 bone damage
+
+- Timer:
+A countdown timer adds urgency to the mission. Dogtective must recover the lost toy before the timer runs out. Failure to do so results in a game over.
+
 
 ## Game demo - MC TO SORT URL OR MP4
 
