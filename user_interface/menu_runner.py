@@ -13,11 +13,11 @@ class MenuRunner(Screen):
         self.background = pygame.transform.smoothscale(self.background, self.display.get_size())
 
         self.button_play = Button(image=None, pos_x=WIDTH / 2, pos_y=350, font=self.text.pixel_font(75), colour="brown",
-                             text_in="play")
+                                  text_in="play")
         self.button_ldr = Button(image=None, pos_x=WIDTH / 2, pos_y=425, font=self.text.pixel_font(75),
-                            colour="lightsalmon", text_in="LEADERBOARD")
+                                 colour="lightsalmon", text_in="LEADERBOARD")
         self.button_credits = Button(image=None, pos_x=WIDTH / 2, pos_y=500, font=self.text.pixel_font(75),
-                                colour="lightsalmon", text_in="CREDITS")
+                                     colour="lightsalmon", text_in="CREDITS")
 
     def menu_runner(self):
 
