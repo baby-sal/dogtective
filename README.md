@@ -60,7 +60,7 @@ Click below to see the game in action!
 
 <img src="logic/assets/images/readme/game_play.png" alt="Game play" width="400" height="300">
 
-**Mission Complete:** MC TO UPDATE IN LINE WITH LEADERBOARD
+**Mission Complete:**
 
 <img src="logic/assets/images/readme/mission_complete.png" alt="Mission Complete" width="400" height="300">
 
@@ -68,7 +68,7 @@ Click below to see the game in action!
 
 <img src="logic/assets/images/readme/game_over.png" alt="Game over" width="400" height="300">
 
-**Leaderboard:** MC TO UPDATE IN LINE WITH END SCREEN
+**Leaderboard:**
 
 <img src="logic/assets/images/readme/leaderboard.png" alt="Leaderboard" width="400" height="300">
 
