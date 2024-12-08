@@ -48,7 +48,9 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 
 Click below to see the game in action!
 
-[Dogtective demo](https://youtu.be/w2h8P_h3xVE)
+<a href="https://www.youtube.com/watch?v=6QMyTzf97R0
+" target="_blank"><img src="http://img.youtube.com/vi/6QMyTzf97R0/0.jpg"
+alt="Dogtective Pygame Demo" width="240" height="180" border="10" /></a>
 
 ## Game screenshots
 
