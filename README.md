@@ -44,11 +44,13 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 - Finish with 4 bones in 15 seconds -> 4000 + 150 = **4150** points
 - Finish with 5 bones in 30 seconds -> 5000 + 0 = **5000** points
 
-## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
+## Game demo
 
 Click below to see the game in action!
 
-[Dogtective Demo](https://drive.google.com/file/d/1xl2yJtKlrdo8W8zOoIzRfUl1eU_ZFgVH/view?usp=drive_link)
+<a href="https://www.youtube.com/watch?v=6QMyTzf97R0
+" target="_blank"><img src="http://img.youtube.com/vi/6QMyTzf97R0/0.jpg"
+alt="Dogtective Pygame Demo" width="400" height="300" border="10" /></a>
 
 ## Game screenshots
 
@@ -123,7 +125,11 @@ Unit tests are included within the Python project files to validate the scoring 
 
 Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
 
-[Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+[Dogtective Gherkin Testing Document](logic/assets/images/readme/gherkin_testing_doc.pdf)
+
+## Project Documentation
+
+[Dogtective project documentation](logic/assets/images/readme/dogtective_project_documentation.pdf)
 
 ## Activity Log
 
@@ -149,3 +155,4 @@ Behavior-driven testing using Gherkin scenarios was conducted to verify key game
 - [Melanie Clark](https://github.com/Melanie-Clark)
 - [Sally Davies](https://github.com/baby-sal)
 - [Zarrin Rahman](https://github.com/z-for-zarrin)
+- Amanda Brown (Week 1 - ideas contributor)
