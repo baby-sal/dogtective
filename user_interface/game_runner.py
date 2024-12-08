@@ -27,7 +27,7 @@ class Runner:
     def run(self):
         menu = MenuRunner(self.display, self)
         game = GameLoop(self.display, self)
-        credits = Credits(self.display, self)
+        credits_screen = Credits(self.display, self)
         end_screen = EndScreen(self.display, self)
         leaderboard = Leaderboard(self.display, self)
 
@@ -42,7 +42,7 @@ class Runner:
                 game.game_loop()
                 self.elapsed_time = self.timer.update_time()
             elif self.current_state == config.GameState.CREDITS:
-                credits.credit_screen()
+                credits_screen.credit_screen()
             elif self.current_state == config.GameState.LEADERBOARD:
                 leaderboard.show()
             elif self.current_state == config.GameState.WIN:
