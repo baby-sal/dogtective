@@ -1,7 +1,7 @@
 import pygame
 
 
-class Text():
+class Text:
 
     def __init__(self, display):
         self.display = display
