@@ -44,11 +44,6 @@ class Obstacle(Environmental):
         return f"Name: {self.name}, Damage:{self.damage}, Speed: {self.speed}, "
 
 
-class Collectable(Environmental):
-    def __init__(self, name, image, x, y, scale):
-        super().__init__(name, image, x, y, scale)
-
-
 if __name__ == "__main__":
     # insert sample outputs here
     pass

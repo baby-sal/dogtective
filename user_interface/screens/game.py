@@ -1,10 +1,9 @@
 import pygame
 import sys
-from logic.components.environmental import Obstacle
+from logic.components.environmental import Environmental, Obstacle
 from logic.components.character import Character
 from logic.components.health import Health
 import user_interface.game_config as config
-from logic.components.environmental import Collectable
 
 
 class GameLoop:
@@ -43,7 +42,7 @@ class GameLoop:
         self.car_group.add(car1, car2, car3, car4, car5, truck1)
 
         ball_img = pygame.image.load("../logic/assets/images/objects/toy.png").convert_alpha()
-        self.ball = Collectable("ball", ball_img, 1100, 450, 2.5)
+        self.ball = Environmental("ball", ball_img, 1100, 450, 2.5)
         self.ball_group = pygame.sprite.Group()
         self.ball_group.add(self.ball)
 
