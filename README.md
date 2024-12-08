@@ -50,7 +50,7 @@ Click below to see the game in action!
 
 <a href="https://www.youtube.com/watch?v=6QMyTzf97R0
 " target="_blank"><img src="http://img.youtube.com/vi/6QMyTzf97R0/0.jpg"
-alt="Dogtective Pygame Demo" width="240" height="180" border="10" /></a>
+alt="Dogtective Pygame Demo" width="400" height="300" border="10" /></a>
 
 ## Game screenshots
 
