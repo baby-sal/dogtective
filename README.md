@@ -1,38 +1,78 @@
 # Dogtective
 
 The main character, a determined dog detective, is on a mission to recover a lost toy.
-The toy has gone missing and Dogtective must dodge the moving cars to find it.
+The toy has gone missing and Dogtective must dodge the moving cars to find it!
 
 ## Gameplay Mechanics:
 
+### Navigation
+
 Navigate the main menu with mouse clicks.
+
+### Movement
+
 Use the keyboard arrow keys (up, down, left and right) to move Dogtective around the screen.
 
-## Game demo - MC TO SORT URL OR MP4
+### Health
+
+Dogtective starts with five health bones.
+
+Colliding with vehicles reduces Dogtectives' health _(the number of bones)_ based on the vehicle type:
+
+- ![blue_car.png](logic/assets/images/obstacles/blue_car.png) &nbsp; 1 bone damage
+- ![sport_yellow.png](logic/assets/images/obstacles/sport_yellow.png) &nbsp; 1 bone damage
+- ![red_car.png](logic/assets/images/obstacles/red_car.png) &nbsp; 1 bone damage
+- ![compact_orange.png](logic/assets/images/obstacles/compact_orange.png) &nbsp; 2 bone damage
+- ![green_car.png](logic/assets/images/obstacles/green_car.png) &nbsp; 2 bone damage
+- ![truck_red.png](logic/assets/images/obstacles/truck_red.png) &nbsp; 4 bone damage
+
+### Timer
+
+The game uses a background timer to calculate how much time the player has taken to complete the game, which is used to
+calculate the score below.
+
+### Scoring
+
+**Health Bonus:**
+Earn **1000 points** for each health bone left at the end of the game.
+
+**Time Bonus:**
+Finish in under 30 seconds for extra points. The player receives 10 points for every second left.
+
+**Examples:**
+
+- Finish in 20 seconds = **100 bonus points**
+- Finish in 30 seconds or more = 0 bonus points
+
+## Game demo - MC TO UPDATE VIDEO - THIS IS SAMPLE ONLY TO CHECK LINK WORKS
 
 Click below to see the game in action!
 
-[Dogtective demo](URL GOES HERE)
+[Dogtective Demo](https://drive.google.com/file/d/1xl2yJtKlrdo8W8zOoIzRfUl1eU_ZFgVH/view?usp=drive_link)
 
-## Game screenshots - LEADERBOARD SCREENSHOTS WILL BE UPDATED WHEN CODING IS FINISHED
+## Game screenshots
 
-**Main menu**
+**Main menu:**
 
 <img src="logic/assets/images/readme/main_menu.png" alt="Dogtective main menu" width="300" height="200">
 
-**Gameplay**
+**Gameplay:**
 
 <img src="logic/assets/images/readme/game_play.png" alt="Game play" width="300" height="200">
 
-**Game Over**
+**Mission Complete:**
+
+<img src="logic/assets/images/readme/mission_complete.png" alt="Mission Complete" width="300" height="200">
+
+**Game Over:**
 
 <img src="logic/assets/images/readme/game_over.png" alt="Game over" width="300" height="200">
 
-**Leaderboard**
+**Leaderboard:**
 
 <img src="logic/assets/images/readme/leaderboard.png" alt="Leaderboard" width="300" height="200">
 
-**Credits**
+**Credits:**
 
 <img src="logic/assets/images/readme/credits.png" alt="Credits" width="300" height="200">
 
@@ -73,6 +113,18 @@ pip install mysql-connector-python
 
 Run the `game-runner` python file to start the game. Dogtective needs your help! 😄
 
+## Testing
+
+**Unit Tests**
+
+Unit tests are included within the Python project files to validate the scoring component of the game.
+
+**Gherkin Testing**
+
+Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
+
+[Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+
 ## Technologies used
 
 - Python
@@ -80,15 +132,10 @@ Run the `game-runner` python file to start the game. Dogtective needs your help!
 - mySQL
 
 ## Credits
+
 - [Road background](https://www.freepik.com/free-vector/aerial-scene-intersection_5361164.htm#fromView=search&page=1&position=6&uuid=a2915187-2a0e-49fe-b8a5-0a10b6afb006)
 - [Dogtective game play sprites](https://free-game-assets.itch.io/free-street-animal-pixel-art-asset-pack)
 - [City background](https://lucky-loops.itch.io/parallax-city-background)
-
-
-## Testing - TBC - MC TO UPDATE
-
-Unit testing
-Gherkin testing and googledoc links
 
 ## Contributors
 

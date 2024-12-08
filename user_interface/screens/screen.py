@@ -7,4 +7,4 @@ class Screen:
         self.display = display
         self.runner = runner
         self.text = Text(display)
-        self.image = Image()
+        self.image = Image(display)
