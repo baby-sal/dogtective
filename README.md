@@ -17,14 +17,14 @@ Use the keyboard arrow keys (up, down, left and right) to move Dogtective around
 
 Dogtective starts with five health bones.
 
-Colliding with vehicles reduces health _(number of bones)_ based on the vehicle type:
+Colliding with vehicles reduces Dogtectives' health _(the number of bones)_ based on the vehicle type:
 
-- ![blue_car.png](logic/assets/images/obstacles/blue_car.png) 1 bone damage
-- ![green_car.png](logic/assets/images/obstacles/green_car.png) 2 bone damage
-- ![red_car.png](logic/assets/images/obstacles/red_car.png) 1 bone damage
-- ![compact_orange.png](logic/assets/images/obstacles/compact_orange.png) 2 bone damage
-- ![sport_yellow.png](logic/assets/images/obstacles/sport_yellow.png) 1 bone damage
-- ![truck_red.png](logic/assets/images/obstacles/truck_red.png) 4 bone damage
+- ![blue_car.png](logic/assets/images/obstacles/blue_car.png) &nbsp; 1 bone damage
+- ![sport_yellow.png](logic/assets/images/obstacles/sport_yellow.png) &nbsp; 1 bone damage
+- ![red_car.png](logic/assets/images/obstacles/red_car.png) &nbsp; 1 bone damage
+- ![compact_orange.png](logic/assets/images/obstacles/compact_orange.png) &nbsp; 2 bone damage
+- ![green_car.png](logic/assets/images/obstacles/green_car.png) &nbsp; 2 bone damage
+- ![truck_red.png](logic/assets/images/obstacles/truck_red.png) &nbsp; 4 bone damage
 
 ### Timer
 
