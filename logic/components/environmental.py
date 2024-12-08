@@ -25,7 +25,7 @@ class Environmental(pygame.sprite.Sprite):
 
 
 class Obstacle(Environmental):
-    # Class for Environemntal objects that can move and/or damage the player
+    # Class for Environmental objects that can move and/or damage the player
 
     def __init__(self, name, image, x, y, scale, damage, speed):
         super().__init__(name, image, x, y, scale)
