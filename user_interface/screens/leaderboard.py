@@ -48,12 +48,3 @@ class Leaderboard(Screen):
             button_go_back.update_button(self.display)
 
             pygame.display.update()
-
-
-# Example usage
-if __name__ == "__main__":
-    pygame.init()
-    display = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Dogtective: Leaderboard")
-    leaderboard = Leaderboard(display, None)  # Assuming runner instance is passed in the main game logic
-    leaderboard.show()
