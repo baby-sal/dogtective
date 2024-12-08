@@ -6,13 +6,14 @@ from logic.components.score import Score
 from logic.components.button import Button
 from logic.score_db_connection.db_utils_score import DbClass
 
+
 class EndScreen(Screen):
     def __init__(self, display, runner):
         super().__init__(display, runner)
         self.db = DbClass()
 
         self.button_go_back = Button(image=None, pos_x=1100, pos_y=50, font=self.text.pixel_font(40),
-                                colour="crimson", text_in="Menu")
+                                     colour="crimson", text_in="Menu")
 
     def you_win(self):
         health = self.runner.character.health.current
@@ -28,8 +29,8 @@ class EndScreen(Screen):
 
         self.text.text_blit("mission complete!", 160, "indigo", WIDTH / 2, 175)
         self.text.number_blit(f"Score: {str(score)}", 100, "indigo", WIDTH / 2, 300)
-        self.text.number_blit(f"time: {elapsed_time} secs", 60, "indigo", WIDTH/2, 400)
-        self.text.number_blit(f"bones left: {health}", 60, "indigo", WIDTH/2, 450)
+        self.text.number_blit(f"time: {elapsed_time} secs", 60, "indigo", WIDTH / 2, 400)
+        self.text.number_blit(f"bones left: {health}", 60, "indigo", WIDTH / 2, 450)
         self.image.dogtective_image(5 * WIDTH / 6, 575, self.display)
 
         button_play_again = Button(image=None, pos_x=WIDTH // 2, pos_y=600, font=self.text.pixel_font(50),
