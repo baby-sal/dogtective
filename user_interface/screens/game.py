@@ -41,15 +41,15 @@ class GameLoop:
         self.car_group = pygame.sprite.Group()
         self.car_group.add(car1, car2, car3, car4, car5, truck1)
 
-        ball_img = pygame.image.load("../logic/assets/images/objects/toy.png").convert_alpha()
-        self.ball = Environmental("ball", ball_img, 1100, 450, 2.5)
-        self.ball_group = pygame.sprite.Group()
-        self.ball_group.add(self.ball)
+        toy_img = pygame.image.load("../logic/assets/images/objects/toy.png").convert_alpha()
+        self.toy = Environmental("toy", toy_img, 1100, 450, 2.5)
+        self.toy_group = pygame.sprite.Group()
+        self.toy_group.add(self.toy)
 
         self.groups = {
             "car": self.car_group,
             "dog": self.dog_group,
-            "ball": self.ball_group
+            "toy": self.toy_group
         }
 
         pygame.display.update()
@@ -113,13 +113,13 @@ class GameLoop:
 
             if self.dog.health.current > 0:
                 self.render_background_image()
-                self.render_all(self.car_group, self.health_group, self.ball_group)
+                self.render_all(self.car_group, self.health_group, self.toy_group)
                 self.render_dog(self.car_group)
 
                 pygame.display.update()
                 self.clock.tick(config.FPS)
 
-                if pygame.sprite.spritecollide(self.dog, self.ball_group, False, pygame.sprite.collide_mask):
+                if pygame.sprite.spritecollide(self.dog, self.toy_group, False, pygame.sprite.collide_mask):
                     self.runner.current_state = config.GameState.WIN
                     self.reset_game()
 
