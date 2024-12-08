@@ -6,10 +6,12 @@ class Text():
     def __init__(self, display):
         self.display = display
 
-    def pixel_font(self, size):
+    @staticmethod
+    def pixel_font(size):
         return pygame.font.Font("../logic/assets/fonts/StayPixelRegular.ttf", size)
 
-    def pixel_number_font(self, size):
+    @staticmethod
+    def pixel_number_font(size):
         return pygame.font.Font("../logic/assets/fonts/PixelGame.otf", size)
 
     def text_blit(self, text, size, colour, rect_pos_x, rect_pos_y):
