@@ -1,4 +1,3 @@
-#unit test
 from unittest import TestCase
 from logic.components.score import Score, NegativeTime, ZeroOrNegativeLives
 
@@ -11,6 +10,7 @@ class TestScore(TestCase):
         result = Score.calculate_score(1, 1)
         self.assertEqual(expected, result)
 
+#that the score for full health is higher than non-full health
     def test_full_health(self):
         expected = 5290
         result = Score.calculate_score(5, 1)
@@ -27,6 +27,7 @@ class TestScore(TestCase):
         with self.assertRaises(NegativeTime):
             Score.calculate_score(1, -1)
 
+#if an error has occurred resulting in the goal achieved with fewer than 1 bone
     def test_health_1_or_fewer(self):
         with self.assertRaises(ZeroOrNegativeLives):
             Score.calculate_score(0, 60)
