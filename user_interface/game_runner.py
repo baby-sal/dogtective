@@ -8,7 +8,7 @@ from user_interface.screens.leaderboard import Leaderboard
 from logic.components.timer import Timer
 
 
-class Runner():
+class Runner:
 
     def __init__(self):
         pygame.init()
