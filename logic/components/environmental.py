@@ -2,7 +2,10 @@ import pygame
 from user_interface.game_config import HEIGHT
 
 
+# This class inherits from the in-built pygame module pygame.sprite to make use of its features such as rendering and
+# collision detection
 class Environmental(pygame.sprite.Sprite):
+    # Class for objects on screen player may interact with
 
     def __init__(self, name, image, x, y, scale):
         super().__init__()
@@ -22,11 +25,12 @@ class Environmental(pygame.sprite.Sprite):
 
 
 class Obstacle(Environmental):
+    # Class for Environemntal objects that can move and/or damage the player
 
     def __init__(self, name, image, x, y, scale, damage, speed):
         super().__init__(name, image, x, y, scale)
         self.damage = damage
-        self.speed = speed
+        self.speed = speed  # all obstacles move vertically, down is positive
 
     def update(self):
         self.rect.y += self.speed

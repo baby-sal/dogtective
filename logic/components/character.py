@@ -4,8 +4,10 @@ from user_interface.game_config import HEIGHT, WIDTH
 from logic.assets.get_sprite_image import SpriteSheet
 
 
-# class for player character
+# This class inherits from the in-built pygame module pygame.sprite to make use of its features such as rendering and
+# collision detection
 class Character(pygame.sprite.Sprite):
+    # Class for player character
 
     def __init__(self, name, health):
         super().__init__()

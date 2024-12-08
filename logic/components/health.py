@@ -1,6 +1,8 @@
 import pygame
 
 
+# This class inherits from the in-built pygame module pygame.sprite to make use of its features such as rendering and
+# collision detection
 class Health(pygame.sprite.Sprite):
     def __init__(self, max_health):
         super().__init__()
