@@ -44,15 +44,11 @@ Finish in under 30 seconds for extra points. The player receives **10** points f
 - Finish with 4 bones in 15 seconds -> 4000 + 150 = **4150** points
 - Finish with 5 bones in 30 seconds -> 5000 + 0 = **5000** points
 
-## Game demo and sound
+## Game demo
 
 Click below to see the game in action!
 
 [Dogtective demo](logic/assets/images/readme/demo.mp4)
-
-Associated game play sound file:
-
-[Dogtective sound file](logic/assets/audio/BGM_game.mp3)
 
 ## Game screenshots
 
@@ -128,6 +124,10 @@ Unit tests are included within the Python project files to validate the scoring 
 Behavior-driven testing using Gherkin scenarios was conducted to verify key game features and workflows.
 
 [Dogtective Gherkin Testing Document](https://docs.google.com/document/d/1CAA7vhVbutaQlb3D5VKj_CWAI0k222RVCaKzvvJZVbU/edit?usp=drive_link)
+
+## Project Documentation
+
+[dogtective_project_documentation.pdf](logic/assets/images/readme/dogtective_project_documentation.pdf)
 
 ## Activity Log
 
