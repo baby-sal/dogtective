@@ -1,5 +1,5 @@
-import time
 import pygame.time
+
 
 class Timer:
 

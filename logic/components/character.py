@@ -1,6 +1,5 @@
 import pygame
 import pygame.time
-# import sys may be needed when dog collides with ball and game ends?
 from user_interface.game_config import HEIGHT, WIDTH
 from logic.assets.get_sprite_image import SpriteSheet
 
@@ -20,9 +19,9 @@ class Character(pygame.sprite.Sprite):
         self.collision_immune = False
         self.collision_time = 0
 
-        self.idle = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Idle.png', 1.5, 4)
-        self.walk = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Walk.png', 1.5, 6)
-        self.hurt = SpriteSheet('../logic/assets/images/characters/dogtective_sprite/Hurt.png', 1.5, 2)
+        self.idle = SpriteSheet("../logic/assets/images/characters/dogtective_sprite/Idle.png", 1.5, 4)
+        self.walk = SpriteSheet("../logic/assets/images/characters/dogtective_sprite/Walk.png", 1.5, 6)
+        self.hurt = SpriteSheet("../logic/assets/images/characters/dogtective_sprite/Hurt.png", 1.5, 2)
 
         self.move = False
         self.direction = "right"
@@ -35,7 +34,7 @@ class Character(pygame.sprite.Sprite):
         pygame.mixer.music.load("../logic/assets/audio/BGM_game.mp3")
         pygame.mixer.music.play(-1)
 
-    def update(self, car_group): # do we need ball_group here?
+    def update(self, car_group):
         if pygame.time.get_ticks() - self.collision_time > 1500:  # The time is in ms.
             self.collision_immune = False
 
@@ -44,7 +43,7 @@ class Character(pygame.sprite.Sprite):
             self.movement()
         self.update_animation()
         self.correction()
-        self.check_collision(car_group) # do we need ball_group here?
+        self.check_collision(car_group)
         self.rect.center = (self.x, self.y)
 
     def movement(self):
@@ -96,7 +95,7 @@ class Character(pygame.sprite.Sprite):
         elif self.y + self.height / 2 > HEIGHT:
             self.y = HEIGHT - self.height / 2
 
-    def check_collision(self, car_group): # add ball_group
+    def check_collision(self, car_group):
         car_check = pygame.sprite.spritecollide(self, car_group, False, pygame.sprite.collide_mask)
         if car_check and not self.collision_immune:
             self.health.current -= car_check[0].damage

@@ -1,6 +1,7 @@
 import pygame
 from user_interface.game_config import HEIGHT
 
+
 class Environmental(pygame.sprite.Sprite):
 
     def __init__(self, name, image, x, y, scale):

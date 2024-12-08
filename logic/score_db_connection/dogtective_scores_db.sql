@@ -9,6 +9,7 @@ CREATE TABLE high_scores (
     score INT NOT NULL
 );
 
+-- sample used in game
 INSERT INTO high_scores (date, score)
 VALUES 
 ('2024-12-04', 500),

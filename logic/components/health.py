@@ -1,5 +1,4 @@
 import pygame
-from user_interface.game_config import HEIGHT, WIDTH #is HEIGHT and WIDTH referenced within this file?
 
 
 class Health(pygame.sprite.Sprite):
@@ -9,12 +8,12 @@ class Health(pygame.sprite.Sprite):
         self.current = max_health
 
         self.visible = True
-        self.x = 30     # opposite end of the screen
+        self.x = 30  # opposite end of the screen
         self.y = 30
         self.width = 50
         self.height = 50
 
-        self.bone = pygame.image.load('../logic/assets/images/objects/Bone.png').convert_alpha()
+        self.bone = pygame.image.load("../logic/assets/images/objects/Bone.png").convert_alpha()
         self.bone = pygame.transform.rotate(self.bone, -25)
         self.image = self.bone
         self.rect = self.bone.get_rect()
