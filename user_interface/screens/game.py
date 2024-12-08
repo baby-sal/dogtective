@@ -16,7 +16,7 @@ class GameLoop:
         self.runner = runner
         self.clock = pygame.time.Clock()
 
-        self.background_image = self.load_background_image()
+        self.background_image = pygame.image.load("../logic/assets/images/background/Background2_freepik_draft1.png").convert_alpha()
 
         health = Health(5)
         self.health_group = pygame.sprite.Group()
@@ -53,32 +53,6 @@ class GameLoop:
         }
 
         pygame.display.update()
-
-    def has_internal(self, sprite):
-        for group in self.groups.values():
-            if sprite in group:
-                return True
-            return False
-
-    def add_internal(self, sprite, group_name):
-        if group_name in self.groups:
-            self.groups[group_name].add(sprite)
-        else:
-            print(f"Group {group_name} not found!")
-
-    def add_sprite(self, sprite):
-        if hasattr(sprite, "_spritegroup"):
-            for spr in sprite.sprites():
-                if not self.has_internal(spr):
-                    self.add_internal(spr, spr._spritegroup)
-                    spr.add_internal(self)
-                elif not self.has_internal(sprite):
-                    self.add_internal(sprite, sprite._spritegroup)
-                    sprite.add_internal(self)
-
-    def load_background_image(self):
-        image = pygame.image.load("../logic/assets/images/background/Background2_freepik_draft1.png").convert_alpha()
-        return image
 
     def render_background_image(self):
         self.game_display.blit(self.background_image, (0, 0))
